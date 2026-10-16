@@ -158,6 +158,11 @@ JetBrains signs the Windows CLI and desktop setup executable. The macOS CLI is s
 Signed and notarized desktop DMGs require the coordinated JetBrains service pipeline; older published DMGs
 and locally built packages may still be unsigned and blocked by Gatekeeper. Linux artifacts are unsigned.
 
+## Getting started
+
+New to ThinkRail? [`GETTING_STARTED.md`](GETTING_STARTED.md) walks through the first launch, connecting a
+model provider, opening a project, choosing how to work, and reviewing and shipping the result.
+
 ## Analytics & privacy
 
 ThinkRail collects basic usage events — launches, chat creation, message sends, provider connections — tied to
