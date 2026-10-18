@@ -39,6 +39,9 @@ flowchart LR
 - **Better than PR titles.** Titles describe the code change (`feat(web): …`); changesets describe what a
   user can now do. The [changelog](../changelog.md) in this draft was reconstructed from PR bodies after
   the fact — with changesets, the same quality comes for free.
+- **Routed by area.** Each changeset carries an `area:` field whose value is a docs folder slug
+  (`workspaces`, `agent`, `specs`, `review`, `extend`, `security`, `run`), so the drafted docs update
+  lands in the area that owns the change and the changelog can group bullets the same way.
 - **Enforceable.** CI can require a changeset (or an explicit "no user-visible change" marker) on every
   PR, the same way the repository already enforces spec and boundary rules. The bundled
   `shipping-a-pr` workflow can write the changeset as part of opening the PR.
@@ -54,9 +57,13 @@ effort only on what code cannot say: purpose, context, examples, caveats.
 | [CLI](../reference/cli.md) | the argument parser in `apps/cli/src/args.ts` and the installer scripts |
 | [Settings](../reference/settings.md) | the Settings navigation in `apps/web/src/panels/settingsNav.ts` and defaults in `packages/contracts` |
 | [Keyboard shortcuts](../reference/keyboard-shortcuts.md) | the shortcut commands in `apps/web/src/shell/` and the desktop menu |
-| [Agent tools](../reference/agent-tools.md) | the TypeBox parameter schemas each tool declares, which already convert to JSON Schema |
-| [Spec format](../reference/spec-format.md) | the frontmatter schema in `packages/spec-graph` |
+| [Tools the agent can call](../agent/agent-tools.md) | the TypeBox parameter schemas each tool declares, which already convert to JSON Schema |
+| [Spec format](../specs/spec-format.md) | the frontmatter schema in `packages/spec-graph` |
 | [Files and environment](../reference/files-and-environment.md) | path helpers and every environment variable the host reads |
+
+Each generator renders into the area folder that owns its source (`packages/spec-graph` into `specs/`,
+tool schemas into `agent/`) or, for whole-product sources such as the CLI parser and the Settings
+navigation, onto the `reference/` shelf.
 
 The pipeline has three stages:
 

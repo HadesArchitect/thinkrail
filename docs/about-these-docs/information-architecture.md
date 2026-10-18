@@ -15,86 +15,79 @@ ThinkRail's own product spec names three audiences, and each arrives with a diff
 
 | Reader | Arrives asking | Lands first on |
 | --- | --- | --- |
-| **Newcomer to agents or `pi`** | "What is this, and can I get one useful change out of it today?" | [Your first change](../tutorials/first-change.md) |
-| **Experienced `pi` user** | "What do I gain over the terminal, and do I keep my skills, extensions, and providers?" | [ThinkRail and pi](../explanation/thinkrail-and-pi.md), [Use your existing skills](../how-to/use-existing-skills.md) |
-| **Agent-first builder** | "How do I run several agents in parallel without losing control of what they did?" | [Run agents in parallel](../tutorials/parallel-workspaces.md), [Review changes](../how-to/review-changes.md) |
+| **Newcomer to agents or `pi`** | "What is this, and can I get one useful change out of it today?" | [What is ThinkRail?](../get-started/what-is-thinkrail.md), [Make your first change](../get-started/first-change.md) |
+| **Experienced `pi` user** | "What do I gain over the terminal, and do I keep my skills, extensions, and providers?" | [Coming from pi](../get-started/coming-from-pi.md), [ThinkRail and pi](../agent/thinkrail-and-pi.md) |
+| **Agent-first builder** | "How do I run several agents in parallel without losing control of what they did?" | [Run agents in parallel](../workspaces/parallel-workspaces.md), [Review changes](../review/review-changes.md) |
 
 Two secondary readers matter too: **contributors** (served by `CONTRIBUTING.md`, `architecture.md`, and
 the module specs, which stay in the repository) and **evaluators** — people deciding whether ThinkRail is
-safe to point at a real repository. The [trust model](../explanation/trust-model.md) and
-[privacy](../explanation/privacy-and-analytics.md) pages exist for them.
+safe to point at a real repository. The [Security and data overview](../security/security-and-data-overview.md)
+is their entry page.
 
-## Why Diátaxis
+## Three layers
 
 ThinkRail's surface is wide — an IDE, an agent host, a spec system, workflow skills, MCP, two launchers —
-and most of it is new vocabulary. [Diátaxis](https://diataxis.fr/) keeps that manageable by separating
-four needs that otherwise blur into long, unfocused pages:
+and most of it is new vocabulary. The structure has three layers, each solving a different problem:
 
-```mermaid
-quadrantChart
-    title Diátaxis: what the reader needs
-    x-axis Acquiring skill --> Applying skill
-    y-axis Theory --> Action
-    quadrant-1 How-to guides
-    quadrant-2 Tutorials
-    quadrant-3 Explanation
-    quadrant-4 Reference
-```
+- **The front door serves the audiences.** The home page opens with four questions — deciding,
+  coming from `pi`, evaluating for a team, something broke — each answered by one page. The first
+  sidebar group, Get started, holds those entry pages and the first-run sequence.
+- **The product map is the navigation.** One sidebar group, and one folder, per thing ThinkRail has:
+  workspaces, the agent and its chats, specs and plans, review and shipping, skills and MCP, security,
+  running the host. A reader opens the box named after what they are working on, and everything about
+  one subject sits together.
+- **Diátaxis is the page discipline.** Every page is still exactly one of tutorial, how-to, reference,
+  or explanation, declared in its `type` frontmatter, and the [authoring guide](authoring-guide.md)
+  holds each type to its shape. Inside an area the types set the order: concept first, then tutorials,
+  how-tos, and the area's reference.
 
-- **Tutorials** are few and opinionated. Each ends with something real: a merged change, a spec-first
-  project, a reviewed plan.
-- **How-to guides** are the bulk of the docs and map to the questions users actually ask in issues and
-  chat ("how do I connect MCP servers?", "how do I run it on my devbox?").
-- **Reference** is generated from, or checked against, the code: CLI flags, settings, shortcuts, agent
-  tools, the spec format, files on disk.
-- **Explanation** carries ThinkRail's ideas — isolation, living specs, the `pi` relationship, explicit
-  trust. This is where the product's point of view lives, and it is the section most worth reading for
-  someone deciding whether ThinkRail fits how they work.
+The first draft used Diátaxis types as the top-level sections. It kept pages focused, but a subject
+like specs or security was split across three sections, and readers did not navigate by type. The
+structure was chosen after a reader study; see [Reader study](reader-study.md).
 
 ## The map
 
 ```mermaid
 flowchart LR
-    home([Docs home]) --> T[Tutorials]
-    home --> H[How-to guides]
+    home([Docs home]) --> GS[Get started]
+    home --> map[Product areas]
     home --> R[Reference]
-    home --> E[Explanation]
     home --> C[Changelog]
 
-    T --> t1[Your first change]
-    T --> t2[Agents in parallel]
-    T --> t3[Spec-first project]
-    T --> t4[Plan and review]
+    GS --> g1[What is ThinkRail? · Coming from pi]
+    GS --> g2[Install · Connect · First change]
 
-    H --> h1[Get set up]
-    H --> h2[Workspaces]
-    H --> h3[Work with the agent]
-    H --> h4[Review and ship]
-    H --> h5[Operate]
+    map --> a1[Workspaces]
+    map --> a2[Agent & chats]
+    map --> a3[Specs & plans]
+    map --> a4[Review & ship]
+    map --> a5[Skills, MCP & extensions]
+    map --> a6[Security & privacy]
+    map --> a7[Run & troubleshoot]
 
     R --> r1[CLI · Settings · Shortcuts]
-    R --> r2[Agent tools · Workflows]
-    R --> r3[Spec format · MCP config]
-    R --> r4[Files · Platforms · Glossary]
-
-    E --> e1[How ThinkRail works]
-    E --> e2[ThinkRail and pi]
-    E --> e3[Workspaces · Specs]
-    E --> e4[Trust · Privacy · Extensions]
+    R --> r2[Files and environment · Glossary]
 ```
 
-The authoritative order is [`navigation.yml`](../navigation.yml). How-to guides are grouped by the
-stage of work — set up, isolate, drive the agent, review and ship, operate — because that is the order
-in which a new user meets the problems.
+The authoritative order is [`navigation.yml`](../navigation.yml). Each area's folder has the same
+slug a changeset's `area:` uses, so automation can place a page without reading the navigation.
 
 ## Decisions
 
+- **Areas over types.** Folders and sidebar groups follow the product; `type` stays in frontmatter
+  and drives page shape and the type badge, not location.
+- **Reference lives with its owner.** A reference page whose source belongs to one area sits in that
+  area (Spec format, MCP configuration, Built-in workflows, Tools the agent can call, Platform support).
+  Lookups that span the product — CLI, Settings, Keyboard shortcuts, Files and environment, Glossary —
+  stay on the Reference shelf.
+- **Audience pages, not audience paths.** The front door is four pages and a home-page table, not a
+  separate tab or a set of path pages that duplicate the areas.
 - **The README stays the front page.** The docs go deeper; they don't replace the README's install
-  section or pitch. Install facts live in one place in the docs ([Install](../how-to/install.md)) and the
-  README links to it once docs are published.
+  section or pitch. Install facts live in one place in the docs ([Install](../get-started/install.md)) and
+  the README links to it once docs are published.
 - **Engineering specs stay in the repository.** `architecture.md`, `goal-and-requirements.md`, and the
-  module `SPEC.md` files are written for contributors and agents. The Explanation section retells their
-  decisions for users and links to them rather than mirroring them.
+  module `SPEC.md` files are written for contributors and agents. The concept pages retell their
+  decisions for users and link to them rather than mirroring them.
 - **One changelog for humans.** GitHub releases list every PR; the [changelog](../changelog.md) groups
   them by what a user can now do, with a short narrative per release. The nightly line has its own
   "Unreleased" section so nightly users can see what they are testing.
@@ -106,20 +99,26 @@ in which a new user meets the problems.
 
 ## What this draft contains
 
-45 pages, about 56,000 words. Every page was written from the source code and checked against it, not
-from the UI alone; nothing was verified by running the app end to end yet.
+52 pages, about 69,000 words. Every written page was drafted from the source code and checked against
+it, not from the UI alone; nothing was verified by running the app end to end yet.
 
-| Section | Pages | Complete | Draft | Outline |
+| Area | Pages | Complete | Draft | Outline |
 | --- | --- | --- | --- | --- |
-| Tutorials | 4 | — | 3 | 1 |
-| How-to guides | 18 | 2 | 16 | — |
-| Reference | 10 | 9 | 1 | — |
-| Explanation | 7 | 5 | 2 | — |
-| Home, changelog, about | 6 | 1 | 5 | — |
+| Get started | 5 | 1 | 4 | — |
+| Workspaces | 4 | 1 | 3 | — |
+| Agent & chats | 5 | 2 | 3 | — |
+| Specs & plans | 6 | 3 | 2 | 1 |
+| Review & ship | 3 | — | 3 | — |
+| Skills, MCP & extensions | 5 | 1 | 4 | — |
+| Security & privacy | 5 | 2 | 3 | — |
+| Run & troubleshoot | 7 | 2 | 5 | — |
+| Reference | 5 | 4 | 1 | — |
+| Home, changelog, about | 7 | 2 | 5 | — |
 
 `complete` means every claim on the page was checked against the code. `draft` means the page is fully
 written but carries at least one claim, label, or screenshot that needs a maintainer with a running
-build — those claims are marked with an "Unverified" warning on the page.
+build — those claims are marked with an "Unverified" warning on the page. `outline` means the page
+holds its planned sections only.
 
 ## Next steps
 

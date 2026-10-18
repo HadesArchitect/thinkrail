@@ -12,18 +12,25 @@ moved onto whatever docs platform the team picks, so it deliberately has **no pl
 
 | Path | Contents |
 | --- | --- |
-| [`index.md`](index.md) | Docs home page |
-| [`tutorials/`](tutorials/) | Learning-oriented lessons — follow along, end with a working result |
-| [`how-to/`](how-to/) | Task-oriented guides for people who already know what they want |
-| [`reference/`](reference/) | Dry, complete facts: CLI, settings, shortcuts, agent tools, file formats |
-| [`explanation/`](explanation/) | Background and the reasoning behind ThinkRail's design |
+| [`index.md`](index.md) | Docs home page: front-door questions, the first three steps, and the map |
+| [`get-started/`](get-started/) | What ThinkRail is, coming from `pi`, install, connect a provider, first change |
+| [`workspaces/`](workspaces/) | Workspaces and isolation, parallel agents, managing workspaces, your editor |
+| [`agent/`](agent/) | ThinkRail and `pi`, models, steering, subagents, the tools the agent can call |
+| [`specs/`](specs/) | Living specs, spec-first projects, plans, built-in workflows, the spec format |
+| [`review/`](review/) | Reviewing changes, undo and discard, pull requests |
+| [`extend/`](extend/) | Extensions, skills and prompt templates, MCP servers and their configuration, packages for `pi` |
+| [`security/`](security/) | Security and data overview, trust, privacy, telemetry |
+| [`run/`](run/) | Troubleshooting, updates, backup, remote machines, building from source, platforms |
+| [`reference/`](reference/) | Whole-product lookups: CLI, settings, keyboard shortcuts, files and environment, glossary |
 | [`changelog.md`](changelog.md) | Release notes from v0.1.0 to the current nightly line |
-| [`about-these-docs/`](about-these-docs/) | IA rationale, docs automation plan, hosting options, and the authoring guide |
+| [`about-these-docs/`](about-these-docs/) | IA rationale, reader study, docs automation plan, hosting options, and the authoring guide |
 | [`navigation.yml`](navigation.yml) | The single, platform-neutral source of page order and grouping |
 | [`assets/`](assets/) | Images referenced by pages |
 
-The structure follows [Diátaxis](https://diataxis.fr/): every page is exactly one of tutorial, how-to,
-reference, or explanation, and says which in its frontmatter.
+Navigation and folders follow the product: one area per thing ThinkRail has, plus a shared Reference
+shelf. [Diátaxis](https://diataxis.fr/) is the discipline for each page: every page is exactly one of
+tutorial, how-to, reference, or explanation, and says which in its `type` frontmatter. The type does
+not decide a page's folder or its place in the sidebar.
 
 ## Page status
 

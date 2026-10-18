@@ -23,6 +23,25 @@ split it and link the halves.
 Tutorials link out to reference for detail; how-tos link to explanation for "why"; explanation never
 contains step-by-step instructions.
 
+## Where a new page goes
+
+The type lives in frontmatter; the folder and the sidebar follow the product.
+
+- **The area of the thing the reader acts on.** A page goes in the area folder that owns that thing:
+  `workspaces/`, `agent/`, `specs/`, `review/`, `extend/`, `security/`, or `run/`. When a page touches
+  two areas, pick the one the reader acts on and link to it from the other.
+- **First run goes in `get-started/`.** Install, provider setup, the first tutorial, and the audience
+  entry pages live there, even though they also belong to an area.
+- **Whole-product lookups go on the Reference shelf.** A reference page whose source belongs to one area
+  lives in that area (the spec format in `specs/`, MCP configuration in `extend/`). CLI, Settings,
+  keyboard shortcuts, files and environment, and the glossary index the whole product, so they live in
+  `reference/`.
+- **Order inside an area is concept, tutorial, how-to, reference.** List the page in
+  [`navigation.yml`](../navigation.yml) in that position. Get started follows the first-run sequence,
+  and Run & troubleshoot leads with Troubleshoot because that is why most readers open it.
+- **A changeset's `area:` is the folder slug.** A changeset for a user-visible change names the folder
+  its docs update belongs in, so the drafting agent knows where to write without reading the navigation.
+
 ## Frontmatter
 
 Every page starts with exactly these keys, and only these:
@@ -47,7 +66,7 @@ with a one- or two-sentence lead paragraph, then `##` sections.
 Use CommonMark plus these GitHub-flavored extensions, all of which render on GitHub and port to every
 candidate platform:
 
-- **Links** — relative paths to `.md` files: `[Review changes](../how-to/review-changes.md)`. Add a
+- **Links** — relative paths to `.md` files: `[Review changes](../review/review-changes.md)`. Add a
   heading anchor when useful: `../reference/cli.md#flags`. External links are absolute URLs.
 - **Callouts** — GitHub alerts, one of `NOTE`, `TIP`, `IMPORTANT`, `WARNING`, `CAUTION`:
 

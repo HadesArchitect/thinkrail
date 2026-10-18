@@ -39,7 +39,7 @@ Part of **Agent**. Choose the models your chats use and review with.
 | **GPT context window → Global** | Override the context window of OpenAI Responses and Codex-style models whose limit is the 272,000-token minimum. Choose **Default**, **1M**, or **Custom** (272,000 to 1,000,000 tokens). Larger contexts can raise cost or quota use. | **Default** (the catalog limit) | Global (`pi`), in `models.json` |
 | **GPT context window → By each model** | The same choice for a single model. | **Default** | Global (`pi`), in `models.json` |
 
-New chats use updated context limits. Existing chats may need a host restart. See [Choose models](../how-to/choose-models.md).
+New chats use updated context limits. Existing chats may need a host restart. See [Choose models](../agent/choose-models.md).
 
 ## Providers
 
@@ -54,7 +54,7 @@ Part of **Agent**. Connect at least one provider so the agent can run. **Refresh
 | **Subscriptions** | **Sign in** with an existing Claude, ChatGPT, or Copilot plan, or add an **API key** instead. | none | Global (`pi`) |
 | **Available (N)** | Providers that take an API key. The first eight are listed; **Show N more** lists the rest. | none | Global (`pi`) |
 
-Credentials are stored by `pi` in `~/.pi/agent/auth.json`, never by ThinkRail. See [Connect a model provider](../how-to/connect-a-provider.md).
+Credentials are stored by `pi` in `~/.pi/agent/auth.json`, never by ThinkRail. See [Connect a model provider](../get-started/connect-a-provider.md).
 
 ## MCP servers
 
@@ -69,7 +69,7 @@ Part of **Agent**. Manage the Model Context Protocol servers available to chats 
 | Row actions | **Sign in**, **Review & approve**, **Edit**, **Test connection**, **Reconnect**, **Reload now**, **Show log**, **Share with repo**, **Remove**. | none | Same as the server |
 | **Review & approve** | Approve a server a repository defines in `.pi/mcp.json` before chats can start it. | Pending approval | Project |
 
-User servers live in `~/.pi/agent/mcp.json`; project servers live in the repository's `.pi/mcp.json` and load only when the project is trusted and each entry is approved. The file format, exposure modes, and call approvals are in [MCP configuration](mcp-configuration.md) and [Connect MCP servers](../how-to/connect-mcp-servers.md).
+User servers live in `~/.pi/agent/mcp.json`; project servers live in the repository's `.pi/mcp.json` and load only when the project is trusted and each entry is approved. The file format, exposure modes, and call approvals are in [MCP configuration](../extend/mcp-configuration.md) and [Connect MCP servers](../extend/connect-mcp-servers.md).
 
 ## Prompt templates
 
@@ -99,7 +99,7 @@ Part of **Interface**. How chats look and behave.
 | **This workspace → Allow subagents** | Override the global switch for the active workspace. The tag shows **Global** until you change it, then **Custom**; click **Custom** to return to the global value. | Follows global | Workspace |
 | **This workspace → Per chat at once** | Override the limit for the active workspace. Leave empty to follow the global value. | Follows global | Workspace |
 
-The **This workspace** rows appear only while a workspace is active, and the subagent rows only on hosts that support them. See [Delegate to subagents](../how-to/delegate-to-subagents.md).
+The **This workspace** rows appear only while a workspace is active, and the subagent rows only on hosts that support them. See [Delegate to subagents](../agent/delegate-to-subagents.md).
 
 ## Appearance
 
@@ -148,7 +148,7 @@ Part of **System**. When quiet workspaces move out of the way.
 | --- | --- | --- | --- |
 | **Settle idle workspaces after** | A workspace with no chat, terminal command, or commit for this long moves to its project's Settled shelf. Choose **1 day**, **3 days**, **7 days**, **14 days**, or **Never**. With **Never**, only a merged or closed pull request, or **Settle** by hand, moves a workspace. Open pull requests, running agents, and unread results never settle. | 7 days | Global (host) |
 
-See [Manage workspaces](../how-to/manage-workspaces.md).
+See [Manage workspaces](../workspaces/manage-workspaces.md).
 
 ## Integrations
 
@@ -166,7 +166,7 @@ Part of **System**. The ThinkRail extensions the host gives the agent.
 | --- | --- | --- | --- |
 | **Enable \<extension\>** switch (today: **Visualize**) | Turning an extension off removes its tools from new chats, and from open chats once their current turn ends. Past results still render. | On | Global (host) |
 
-Other bundled capabilities (spec tools, TODO list, workflows, web research, background commands) are not switchable here. See [Extensions](../explanation/extensions.md).
+Other bundled capabilities (spec tools, TODO list, workflows, web research, background commands) are not switchable here. See [Extensions](../extend/extensions.md).
 
 ## Notifications
 
@@ -185,7 +185,7 @@ Part of **System**. Usage analytics.
 | --- | --- | --- | --- |
 | **Share additional usage data** | Share setup, agent run, task completion, review, and pull-request outcome events, and how you found ThinkRail. Turning it off drops queued additional events. Basic events (launch, chat creation, message sends, provider connections) are not controlled by this switch. Hosts older than the additional-data consent show a **Share anonymous usage analytics** switch instead. | Off until the first-run dialog; the dialog offers it on | Global (host) |
 
-No prompts, code, files, credentials, or account identity are collected. The `--no-analytics` flag and `THINKRAIL_NO_ANALYTICS` variable turn the additional data off for one run without changing this saved choice. See [Privacy and analytics](../explanation/privacy-and-analytics.md) and [Manage privacy](../how-to/manage-privacy.md).
+No prompts, code, files, credentials, or account identity are collected. The `--no-analytics` flag and `THINKRAIL_NO_ANALYTICS` variable turn the additional data off for one run without changing this saved choice. See [Privacy and analytics](../security/privacy-and-analytics.md) and [Turn off usage data (telemetry)](../security/manage-privacy.md).
 
 ## Updates
 
@@ -199,7 +199,7 @@ Part of **System**. Software updates. The page differs by how you run ThinkRail.
 | **Run Update** | Run `thinkrail update` on the host machine in the background, even when the UI is open in a browser on another machine. After it succeeds, restart the host yourself. **Retry** appears after a failure, along with the manual `thinkrail update` command. | Installed CLI host |
 | Version line | Shows the current version and channel (**stable** or **nightly**), and the available version. | Both |
 
-The desktop updater is enabled only for packaged stable and nightly builds whose package carries an update feed. A build that is not connected to an update channel shows **Updates are unavailable**. See [Update and uninstall](../how-to/update-and-uninstall.md).
+The desktop updater is enabled only for packaged stable and nightly builds whose package carries an update feed. A build that is not connected to an update channel shows **Updates are unavailable**. See [Update and uninstall](../run/update-and-uninstall.md).
 
 ## Feedback
 

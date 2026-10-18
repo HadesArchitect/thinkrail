@@ -1,79 +1,89 @@
 # Single source of page order and grouping for every docs platform.
-# Each item is a path relative to docs/ or a nested group { label, items }.
+# Each item is a path relative to docs/ (a page; a bare top-level path is a top-level link) or a
+# nested group { label, items, collapsed? }. `collapsed: true` starts the group closed.
 # Page titles come from each page's frontmatter `title`.
+# Groups follow the product map; see about-these-docs/authoring-guide.md for where a page goes.
 
-- label: Start here
+- label: Get started
   items:
     - index.md
+    - get-started/what-is-thinkrail.md
+    - get-started/coming-from-pi.md
+    - get-started/install.md
+    - get-started/connect-a-provider.md
+    - get-started/first-change.md
 
-- label: Tutorials
+- label: Workspaces
   items:
-    - tutorials/first-change.md
-    - tutorials/parallel-workspaces.md
-    - tutorials/spec-first-project.md
-    - tutorials/plan-and-review.md
+    - workspaces/workspaces-and-isolation.md
+    - workspaces/parallel-workspaces.md
+    - workspaces/manage-workspaces.md
+    - workspaces/open-in-your-editor.md
 
-- label: How-to guides
+- label: Agent & chats
   items:
-    - label: Get set up
-      items:
-        - how-to/install.md
-        - how-to/update-and-uninstall.md
-        - how-to/connect-a-provider.md
-        - how-to/build-from-source.md
-    - label: Workspaces
-      items:
-        - how-to/manage-workspaces.md
-        - how-to/open-in-your-editor.md
-    - label: Work with the agent
-      items:
-        - how-to/steer-and-queue.md
-        - how-to/choose-models.md
-        - how-to/delegate-to-subagents.md
-        - how-to/use-existing-skills.md
-        - how-to/connect-mcp-servers.md
-    - label: Review and ship
-      items:
-        - how-to/review-changes.md
-        - how-to/open-a-pull-request.md
-    - label: Operate
-      items:
-        - how-to/trust-a-project.md
-        - how-to/run-on-a-remote-machine.md
-        - how-to/manage-privacy.md
-        - how-to/use-thinkrail-packages-in-pi.md
-        - how-to/troubleshoot.md
+    - agent/thinkrail-and-pi.md
+    - agent/choose-models.md
+    - agent/steer-and-queue.md
+    - agent/delegate-to-subagents.md
+    - agent/agent-tools.md
+
+- label: Specs & plans
+  items:
+    - specs/living-specs.md
+    - specs/spec-first-project.md
+    - specs/build-from-your-own-spec.md
+    - specs/plan-and-review.md
+    - specs/workflows.md
+    - specs/spec-format.md
+
+- label: Review & ship
+  items:
+    - review/review-changes.md
+    - review/undo-or-discard-changes.md
+    - review/open-a-pull-request.md
+
+- label: Skills, MCP & extensions
+  items:
+    - extend/extensions.md
+    - extend/use-existing-skills.md
+    - extend/connect-mcp-servers.md
+    - extend/mcp-configuration.md
+    - extend/use-thinkrail-packages-in-pi.md
+
+- label: Security & privacy
+  items:
+    - security/security-and-data-overview.md
+    - security/trust-model.md
+    - security/trust-a-project.md
+    - security/privacy-and-analytics.md
+    - security/manage-privacy.md
+
+- label: Run & troubleshoot
+  items:
+    - run/troubleshoot.md
+    - run/update-and-uninstall.md
+    - run/back-up-or-move.md
+    - run/run-on-a-remote-machine.md
+    - run/build-from-source.md
+    - run/how-thinkrail-works.md
+    - run/platform-support.md
 
 - label: Reference
   items:
     - reference/cli.md
     - reference/settings.md
     - reference/keyboard-shortcuts.md
-    - reference/agent-tools.md
-    - reference/workflows.md
-    - reference/spec-format.md
-    - reference/mcp-configuration.md
     - reference/files-and-environment.md
-    - reference/platform-support.md
     - reference/glossary.md
 
-- label: Explanation
-  items:
-    - explanation/how-thinkrail-works.md
-    - explanation/thinkrail-and-pi.md
-    - explanation/workspaces-and-isolation.md
-    - explanation/living-specs.md
-    - explanation/trust-model.md
-    - explanation/privacy-and-analytics.md
-    - explanation/extensions.md
-
-- label: Releases
-  items:
-    - changelog.md
+- changelog.md
 
 - label: About these docs
+  collapsed: true
   items:
     - about-these-docs/information-architecture.md
+    - about-these-docs/reader-study.md
     - about-these-docs/docs-automation.md
     - about-these-docs/hosting-options.md
     - about-these-docs/authoring-guide.md

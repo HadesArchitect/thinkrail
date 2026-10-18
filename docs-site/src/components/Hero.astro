@@ -4,7 +4,7 @@ import { LinkButton } from "@astrojs/starlight/components";
 import logo from "../assets/logo-mark.svg";
 import workbenchDark from "../assets/workbench-dark.png";
 import workbenchLight from "../assets/workbench-light.png";
-import { firstPageUnder } from "../lib/nav.mjs";
+import { flattenNavigation } from "../lib/nav.mjs";
 import { BASE, routeFor } from "../lib/site.mjs";
 
 const { title, tagline, actions = [] } = Astro.locals.starlightRoute.entry.data.hero ?? {};
@@ -12,30 +12,32 @@ const { title, tagline, actions = [] } = Astro.locals.starlightRoute.entry.data.
 const href = (link: string) =>
 	/^[a-z]+:/i.test(link) ? link : `${BASE}/${link.replace(/^\/+/, "")}/`;
 
+const pages = flattenNavigation();
+
 const sections = [
 	{
-		dir: "tutorials",
-		label: "Tutorials",
-		blurb: "Follow along and end with a working result.",
+		file: "get-started/what-is-thinkrail.md",
+		label: "Deciding whether it's for you?",
+		blurb: "What is ThinkRail? Who it's for, what it costs, and how it compares.",
 	},
 	{
-		dir: "how-to",
-		label: "How-to guides",
-		blurb: "Get a specific job done, from install to opening a pull request.",
+		file: "get-started/coming-from-pi.md",
+		label: "Coming from pi?",
+		blurb: "What carries over from your pi setup, and what does not.",
 	},
 	{
-		dir: "reference",
-		label: "Reference",
-		blurb: "Complete, dry facts: CLI, settings, shortcuts, agent tools, file formats.",
+		file: "security/security-and-data-overview.md",
+		label: "Evaluating for a team?",
+		blurb: "What leaves your machine, what the agent may do, and how to turn off telemetry.",
 	},
 	{
-		dir: "explanation",
-		label: "Explanation",
-		blurb: "Why ThinkRail works the way it does.",
+		file: "run/troubleshoot.md",
+		label: "Something broke?",
+		blurb: "Troubleshoot ThinkRail: fixes for common problems, from install to a lost connection.",
 	},
 ].map((section) => {
-	const first = firstPageUnder(section.dir);
-	return { ...section, href: first ? routeFor(first.slug) : routeFor("index") };
+	const page = pages.find((entry) => entry.file === section.file);
+	return { ...section, href: routeFor(page?.slug ?? "index") };
 });
 ---
 

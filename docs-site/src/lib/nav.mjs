@@ -3,6 +3,9 @@ import path from "node:path";
 import yaml from "js-yaml";
 import { DOCS_DIR } from "./site.mjs";
 
+// Parses docs/navigation.yml: each item is a page path (top-level paths become top-level links) or a
+// group { label, items, collapsed? }; `collapsed: true` passes through to the Starlight sidebar group.
+
 const toSlug = (file) => file.replace(/\.md$/, "").replace(/(^|\/)index$/, "$1index");
 
 export function readTitle(file) {
@@ -28,7 +31,9 @@ export function loadNavigation() {
 				return [{ file: item, slug: toSlug(item) }];
 			}
 			const children = walk(item.items ?? []);
-			return children.length > 0 ? [{ label: item.label, items: children }] : [];
+			return children.length > 0
+				? [{ label: item.label, items: children, collapsed: item.collapsed === true }]
+				: [];
 		});
 	cachedTree = walk(raw);
 	return cachedTree;
@@ -47,7 +52,7 @@ export function starlightSidebar() {
 	const convert = (nodes) =>
 		nodes.map((node) =>
 			node.items
-				? { label: node.label, items: convert(node.items) }
+				? { label: node.label, items: convert(node.items), collapsed: node.collapsed }
 				: { slug: node.slug, label: readTitle(node.file) ?? node.slug },
 		);
 	return convert(loadNavigation());

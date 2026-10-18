@@ -2,7 +2,6 @@ import { defineCollection } from "astro:content";
 import { docsSchema } from "@astrojs/starlight/schema";
 import { glob } from "astro/loaders";
 import { z } from "astro/zod";
-import { firstPageUnder } from "./lib/nav.mjs";
 import { DOCS_DIR } from "./lib/site.mjs";
 
 const homeFrontmatter = {
@@ -14,10 +13,10 @@ const homeFrontmatter = {
 		actions: [
 			{
 				text: "Get started",
-				link: firstPageUnder("tutorials")?.slug ?? "index",
+				link: "get-started/first-change",
 				variant: "primary",
 			},
-			{ text: "Install", link: "how-to/install", variant: "secondary" },
+			{ text: "Install", link: "get-started/install", variant: "secondary" },
 		],
 	},
 };

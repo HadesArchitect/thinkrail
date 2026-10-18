@@ -54,7 +54,7 @@ A workspace you create from a project gets its own `git worktree`:
 
 `<project-slug>` is the project's stable slug and `<branch>` is the workspace's branch name, a short kebab-case slug. The **Default** workspace is not a worktree: it is the project's own folder. An existing worktree you attach stays where it is.
 
-Removing a workspace deletes its worktree, including uncommitted work, but keeps the git branch. See [Manage workspaces](../how-to/manage-workspaces.md) and [Workspaces and isolation](../explanation/workspaces-and-isolation.md).
+Removing a workspace deletes its worktree, including uncommitted work, but keeps the git branch. See [Manage workspaces](../workspaces/manage-workspaces.md) and [Workspaces and isolation](../workspaces/workspaces-and-isolation.md).
 
 ### Inside a workspace
 
@@ -87,7 +87,7 @@ Each workspace has a scratch folder, `.thinkrail/context/`, with a `.gitignore` 
 | `~/.pi/agent/agents/` | Personal subagent definitions. |
 | `~/.pi/web-search.json` | Optional API keys for web research providers. It moves to `$PI_CODING_AGENT_DIR` if that is set, or to `$XDG_CONFIG_HOME/pi` if only `XDG_CONFIG_HOME` is set. |
 
-Inside a repository, `pi` and ThinkRail read project resources from `<repository>/.pi/`: `settings.json`, `prompts/`, `mcp.json`, `agents/`, `extensions/`, and `skills/`. These load only when the project is trusted. See [Trust a project](../how-to/trust-a-project.md).
+Inside a repository, `pi` and ThinkRail read project resources from `<repository>/.pi/`: `settings.json`, `prompts/`, `mcp.json`, `agents/`, `extensions/`, and `skills/`. These load only when the project is trusted. See [Trust a project](../security/trust-a-project.md).
 
 ### Skill locations read in place
 
@@ -102,7 +102,7 @@ ThinkRail also reads skills that other agents use, without copying them:
 | `~/.copilot/skills/` | Copilot user skills. |
 | `~/.gemini/skills/` (or `$GEMINI_CLI_HOME/.gemini/skills`) | Gemini user skills. |
 
-See [Use existing skills](../how-to/use-existing-skills.md).
+See [Use existing skills](../extend/use-existing-skills.md).
 
 ## Installer and CLI files
 
@@ -148,7 +148,14 @@ Outbound connections the host makes:
 | --- | --- |
 | Your model providers | Agent requests, through `pi`. |
 | `api.github.com` and `github.com` | Release checks for updates (CLI and desktop). Also used by the installers to download binaries. |
-| PostHog (EU endpoint) | Usage analytics, in release builds only. See [Privacy and analytics](../explanation/privacy-and-analytics.md). |
+| PostHog (EU endpoint) | Usage analytics, in release builds only. See [Privacy and analytics](../security/privacy-and-analytics.md). |
+| Web search providers | The agent's web research tools. |
+| `raw.githubusercontent.com` | Installer scripts and downloads. |
+| `thinkrail.ai` | A one-time attribution link, opened in your browser. |
+| MCP servers you configure | Tool calls to those servers. |
+
+The full list, with what is sent and how to turn each off, is in the
+[Security and data overview](../security/security-and-data-overview.md#what-leaves-your-machine).
 
 ## Environment variables
 
@@ -213,5 +220,6 @@ These are for working on ThinkRail itself, not for normal use.
 
 - [CLI reference](cli.md)
 - [Settings reference](settings.md)
-- [Platform support](platform-support.md)
-- [Troubleshoot](../how-to/troubleshoot.md)
+- [Platform support](../run/platform-support.md)
+- [Troubleshoot](../run/troubleshoot.md)
+- [Back up or move to a new machine](../run/back-up-or-move.md)

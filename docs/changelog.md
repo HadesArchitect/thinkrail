@@ -11,6 +11,11 @@ merged since the last stable. To run nightly, install the CLI with `install.sh -
 `THINKRAIL_CHANNEL=nightly` on Windows), or download a `thinkrail-desktop-*` asset from a nightly
 pre-release; both then offer updates for their own channel in **Settings → Updates**.
 
+| Channel | Version | Date | How to get it |
+| --- | --- | --- | --- |
+| Latest stable | v0.1.6 | 2026-10-06 | The default install. See [Install ThinkRail](get-started/install.md). |
+| Current nightly | 0.2.0-nightly.33 | 2026-10-17 | Choose the nightly channel. See [Choose a channel or pin a version](get-started/install.md#choose-a-channel-or-pin-a-version). |
+
 This page covers what you will notice. Every release on
 [GitHub releases](https://github.com/JetBrains/thinkrail/releases) lists its full set of pull requests.
 
@@ -85,7 +90,7 @@ nothing is deleted.
 **Improved**
 
 - Engine: `pi` 1.2.0 (via 1.1.0) adds MCP support and cancellable sign-ins; ThinkRail now imports your login-shell environment, including provider API keys, at start ([#689](https://github.com/JetBrains/thinkrail/pull/689), [#723](https://github.com/JetBrains/thinkrail/pull/723))
-- Extension dialogs ask inline in the chat next to the tool call, and MCP approvals gain **Always allow** ([#749](https://github.com/JetBrains/thinkrail/pull/749))
+- Extension dialogs ask inline in the chat next to the tool call, and MCP approvals gain **Always allow**; this merged after nightly.33 and arrives in the next nightly ([#749](https://github.com/JetBrains/thinkrail/pull/749))
 - Settings redesigned, with all review settings grouped in a Review section on the **Models** page ([#710](https://github.com/JetBrains/thinkrail/pull/710), [#744](https://github.com/JetBrains/thinkrail/pull/744))
 - Topbar location strip redesigned as quiet, captioned, clickable segments for project, workspace, branch, and PR ([#659](https://github.com/JetBrains/thinkrail/pull/659), [#712](https://github.com/JetBrains/thinkrail/pull/712))
 - Denser UI: tighter gutters, row heights, and line heights in chat and side panes ([#703](https://github.com/JetBrains/thinkrail/pull/703))

@@ -70,7 +70,7 @@ These shortcuts exist only in the desktop app.
 | Jump to the next or previous template placeholder | **Tab** / **Shift+Tab** | **Tab** / **Shift+Tab** | After a prompt template inserted placeholders |
 | End placeholder editing | **Esc** | **Esc** | Placeholder editing |
 
-The same placeholder, slash-command, and **Enter** behavior applies to the prompt box in the **Create workspace** dialog, where **Enter** creates the workspace and **Shift+Enter** adds a line. See [Steer and queue messages](../how-to/steer-and-queue.md).
+The same placeholder, slash-command, and **Enter** behavior applies to the prompt box in the **Create workspace** dialog, where **Enter** creates the workspace and **Shift+Enter** adds a line. See [Steer and queue messages](../agent/steer-and-queue.md).
 
 ## History search
 
@@ -142,5 +142,5 @@ These keys work when focus is on the control itself.
 ## Related
 
 - [Settings reference](settings.md)
-- [Steer and queue messages](../how-to/steer-and-queue.md)
-- [Review changes](../how-to/review-changes.md)
+- [Steer and queue messages](../agent/steer-and-queue.md)
+- [Review changes](../review/review-changes.md)

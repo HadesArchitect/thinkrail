@@ -5,7 +5,7 @@ type: reference
 status: complete
 ---
 
-The `thinkrail` command starts the ThinkRail host on your machine and opens the app in your browser. Its `update` and `uninstall` subcommands manage the installed binary. This page lists every option; for task-oriented steps see [Install ThinkRail](../how-to/install.md) and [Update and uninstall](../how-to/update-and-uninstall.md).
+The `thinkrail` command starts the ThinkRail host on your machine and opens the app in your browser. Its `update` and `uninstall` subcommands manage the installed binary. This page lists every option; for task-oriented steps see [Install ThinkRail](../get-started/install.md) and [Update and uninstall](../run/update-and-uninstall.md).
 
 ## Synopsis
 
@@ -36,7 +36,7 @@ Options that take a value accept both `--port 8080` and `--port=8080`.
 | `--port` | integer, 0 to 65535 | `24242` | Port to listen on. If the port is taken, the host uses a free port instead and prints `Port <n> is in use; using free port <m>.` Anything else is an error: `Invalid --port: <value>`. |
 | `--host` | host name or address | `localhost` | Address to bind. The host has no sign-in screen, so bind a non-loopback address only on a network you trust. When you bind `0.0.0.0` or `::`, the printed and opened URL uses `localhost`. |
 | `--no-open` | none | off | Do not open the browser. Use it on a headless or remote machine. |
-| `--no-analytics` | none | off | Turn off additional usage analytics for this run. Basic events stay on, and the saved choice in **Settings → Privacy** does not change. See [Privacy and analytics](../explanation/privacy-and-analytics.md). |
+| `--no-analytics` | none | off | Turn off additional usage analytics for this run. Basic events stay on, and the saved choice in **Settings → Privacy** does not change. See [Privacy and analytics](../security/privacy-and-analytics.md). |
 | `--verbose` | none | off | Debug-level logging in the terminal and in the log files under `~/.thinkrail/logs`. |
 | `-v`, `--version` | none | | Print the version and exit. |
 | `-h`, `--help` | none | | Print the usage text and exit. |
@@ -227,8 +227,8 @@ $env:THINKRAIL_CHANNEL='nightly'; irm https://raw.githubusercontent.com/JetBrain
 
 ## Related
 
-- [Install ThinkRail](../how-to/install.md)
-- [Update and uninstall](../how-to/update-and-uninstall.md)
-- [Run on a remote machine](../how-to/run-on-a-remote-machine.md)
+- [Install ThinkRail](../get-started/install.md)
+- [Update and uninstall](../run/update-and-uninstall.md)
+- [Run on a remote machine](../run/run-on-a-remote-machine.md)
 - [Files and environment](files-and-environment.md)
-- [Platform support](platform-support.md)
+- [Platform support](../run/platform-support.md)
