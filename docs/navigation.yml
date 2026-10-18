@@ -4,6 +4,8 @@
 # Page titles come from each page's frontmatter `title`.
 # Groups follow the product map; see about-these-docs/authoring-guide.md for where a page goes.
 
+- changelog.md
+
 - label: Get started
   items:
     - index.md
@@ -76,8 +78,6 @@
     - reference/keyboard-shortcuts.md
     - reference/files-and-environment.md
     - reference/glossary.md
-
-- changelog.md
 
 - label: About these docs
   collapsed: true
