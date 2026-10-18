@@ -23,7 +23,8 @@ Environment variables (all optional):
 
 | Variable | Default | Purpose |
 | --- | --- | --- |
-| `DOCS_SITE` | `https://hadesarchitect.github.io` | Astro `site` |
+| `DOCS_SITE` | `https://hadesarchitect.github.io` | Astro `site` (used only when `DOCS_NOINDEX=0`) |
+| `DOCS_NOINDEX` | `1` | Preview mode: adds `<meta name="robots" content="noindex, nofollow">` to every page and omits `site`, so no sitemap or canonical URLs are emitted. Set `0` for a real, indexable deployment |
 | `DOCS_BASE` | `/thinkrail` | Astro `base` (use `/` for a root domain) |
 | `DOCS_REPO` | `https://github.com/HadesArchitect/thinkrail` | Repo for edit links and rewritten source links |
 | `DOCS_REF` | `claude/thinkrail-docs-draft-39556b` | Branch or tag for those links |

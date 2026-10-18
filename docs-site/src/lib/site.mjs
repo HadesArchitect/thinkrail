@@ -10,6 +10,8 @@ function normalizeBase(value) {
 }
 
 export const SITE = process.env.DOCS_SITE ?? "https://hadesarchitect.github.io";
+// Preview builds stay out of search engines: robots noindex, and no `site` so Starlight emits no sitemap or canonical URLs.
+export const NOINDEX = (process.env.DOCS_NOINDEX ?? "1") !== "0";
 export const BASE = normalizeBase(process.env.DOCS_BASE ?? "/thinkrail");
 
 export const DOCS_DIR = path.resolve(siteRoot, process.env.DOCS_DIR ?? "../docs");

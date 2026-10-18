@@ -18,7 +18,7 @@ moved onto whatever docs platform the team picks, so it deliberately has **no pl
 | [`reference/`](reference/) | Dry, complete facts: CLI, settings, shortcuts, agent tools, file formats |
 | [`explanation/`](explanation/) | Background and the reasoning behind ThinkRail's design |
 | [`changelog.md`](changelog.md) | Release notes from v0.1.0 to the current nightly line |
-| [`about-these-docs/`](about-these-docs/) | IA rationale, hosting options, and the authoring guide |
+| [`about-these-docs/`](about-these-docs/) | IA rationale, docs automation plan, hosting options, and the authoring guide |
 | [`navigation.yml`](navigation.yml) | The single, platform-neutral source of page order and grouping |
 | [`assets/`](assets/) | Images referenced by pages |
 

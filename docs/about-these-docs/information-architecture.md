@@ -106,7 +106,7 @@ in which a new user meets the problems.
 
 ## What this draft contains
 
-44 pages, about 55,000 words. Every page was written from the source code and checked against it, not
+45 pages, about 56,000 words. Every page was written from the source code and checked against it, not
 from the UI alone; nothing was verified by running the app end to end yet.
 
 | Section | Pages | Complete | Draft | Outline |
@@ -115,13 +115,16 @@ from the UI alone; nothing was verified by running the app end to end yet.
 | How-to guides | 18 | 2 | 16 | — |
 | Reference | 10 | 9 | 1 | — |
 | Explanation | 7 | 5 | 2 | — |
-| Home, changelog, about | 5 | 1 | 4 | — |
+| Home, changelog, about | 6 | 1 | 5 | — |
 
 `complete` means every claim on the page was checked against the code. `draft` means the page is fully
 written but carries at least one claim, label, or screenshot that needs a maintainer with a running
 build — those claims are marked with an "Unverified" warning on the page.
 
 ## Next steps
+
+The production model behind these steps — changesets as the source of every announcement, generated
+reference, and an AI-plus-human review gate — is laid out in [Docs automation](docs-automation.md).
 
 1. **Maintainer review** of every `draft` page against the current nightly — especially the CLI,
    settings, and shortcut reference, which change fastest.

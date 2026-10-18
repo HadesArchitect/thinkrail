@@ -2,13 +2,13 @@ import { unified } from "@astrojs/markdown-remark";
 import starlight from "@astrojs/starlight";
 import { defineConfig } from "astro/config";
 import { starlightSidebar } from "./src/lib/nav.mjs";
-import { BASE, DOCS_DIR, EDIT_BASE_URL, SITE, SOCIAL_GITHUB_URL } from "./src/lib/site.mjs";
+import { BASE, DOCS_DIR, EDIT_BASE_URL, NOINDEX, SITE, SOCIAL_GITHUB_URL } from "./src/lib/site.mjs";
 import remarkDocsLinks from "./src/plugins/remark-docs-links.mjs";
 import remarkGithubAlerts from "./src/plugins/remark-github-alerts.mjs";
 import remarkMermaid from "./src/plugins/remark-mermaid.mjs";
 
 export default defineConfig({
-	site: SITE,
+	site: NOINDEX ? undefined : SITE,
 	base: BASE,
 	markdown: {
 		processor: unified({
@@ -28,6 +28,9 @@ export default defineConfig({
 			social: [{ icon: "github", label: "GitHub", href: SOCIAL_GITHUB_URL }],
 			editLink: { baseUrl: EDIT_BASE_URL },
 			lastUpdated: false,
+			head: NOINDEX
+				? [{ tag: "meta", attrs: { name: "robots", content: "noindex, nofollow" } }]
+				: [],
 			markdown: { processedDirs: [DOCS_DIR] },
 			sidebar: starlightSidebar(),
 			customCss: [

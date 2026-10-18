@@ -74,5 +74,6 @@
 - label: About these docs
   items:
     - about-these-docs/information-architecture.md
+    - about-these-docs/docs-automation.md
     - about-these-docs/hosting-options.md
     - about-these-docs/authoring-guide.md
