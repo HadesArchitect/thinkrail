@@ -1,0 +1,27 @@
+{
+	"name": "thinkrail-docs-site",
+	"private": true,
+	"type": "module",
+	"version": "0.0.0",
+	"description": "Throwaway Astro Starlight preview of the platform-neutral ThinkRail docs in ../docs. Not part of the monorepo workspace.",
+	"engines": {
+		"node": ">=22.12.0"
+	},
+	"scripts": {
+		"dev": "astro dev",
+		"build": "astro build",
+		"preview": "astro preview",
+		"astro": "astro"
+	},
+	"dependencies": {
+		"@astrojs/markdown-remark": "7.3.3",
+		"@astrojs/starlight": "0.42.6",
+		"@fontsource-variable/geist": "5.3.0",
+		"@fontsource-variable/jetbrains-mono": "5.3.0",
+		"@fontsource-variable/orbitron": "5.3.0",
+		"astro": "7.4.0",
+		"js-yaml": "4.1.0",
+		"mermaid": "11.12.0",
+		"unist-util-visit": "5.0.0"
+	}
+}

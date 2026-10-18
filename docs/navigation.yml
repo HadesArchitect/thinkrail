@@ -1,0 +1,78 @@
+# Single source of page order and grouping for every docs platform.
+# Each item is a path relative to docs/ or a nested group { label, items }.
+# Page titles come from each page's frontmatter `title`.
+
+- label: Start here
+  items:
+    - index.md
+
+- label: Tutorials
+  items:
+    - tutorials/first-change.md
+    - tutorials/parallel-workspaces.md
+    - tutorials/spec-first-project.md
+    - tutorials/plan-and-review.md
+
+- label: How-to guides
+  items:
+    - label: Get set up
+      items:
+        - how-to/install.md
+        - how-to/update-and-uninstall.md
+        - how-to/connect-a-provider.md
+        - how-to/build-from-source.md
+    - label: Workspaces
+      items:
+        - how-to/manage-workspaces.md
+        - how-to/open-in-your-editor.md
+    - label: Work with the agent
+      items:
+        - how-to/steer-and-queue.md
+        - how-to/choose-models.md
+        - how-to/delegate-to-subagents.md
+        - how-to/use-existing-skills.md
+        - how-to/connect-mcp-servers.md
+    - label: Review and ship
+      items:
+        - how-to/review-changes.md
+        - how-to/open-a-pull-request.md
+    - label: Operate
+      items:
+        - how-to/trust-a-project.md
+        - how-to/run-on-a-remote-machine.md
+        - how-to/manage-privacy.md
+        - how-to/use-thinkrail-packages-in-pi.md
+        - how-to/troubleshoot.md
+
+- label: Reference
+  items:
+    - reference/cli.md
+    - reference/settings.md
+    - reference/keyboard-shortcuts.md
+    - reference/agent-tools.md
+    - reference/workflows.md
+    - reference/spec-format.md
+    - reference/mcp-configuration.md
+    - reference/files-and-environment.md
+    - reference/platform-support.md
+    - reference/glossary.md
+
+- label: Explanation
+  items:
+    - explanation/how-thinkrail-works.md
+    - explanation/thinkrail-and-pi.md
+    - explanation/workspaces-and-isolation.md
+    - explanation/living-specs.md
+    - explanation/trust-model.md
+    - explanation/privacy-and-analytics.md
+    - explanation/extensions.md
+
+- label: Releases
+  items:
+    - changelog.md
+
+- label: About these docs
+  items:
+    - about-these-docs/information-architecture.md
+    - about-these-docs/hosting-options.md
+    - about-these-docs/authoring-guide.md

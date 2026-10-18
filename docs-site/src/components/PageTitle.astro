@@ -1,0 +1,65 @@
+---
+const { title, type, status } = Astro.locals.starlightRoute.entry.data;
+
+const typeLabels = {
+	tutorial: "Tutorial",
+	"how-to": "How-to",
+	reference: "Reference",
+	explanation: "Explanation",
+} as const;
+const statusLabels = { draft: "Draft", outline: "Outline" } as const;
+---
+
+<div class="page-meta" data-pagefind-ignore>
+	<span class={`badge badge--type badge--${type}`}>{typeLabels[type]}</span>
+	{status !== "complete" && <span class={`badge badge--status badge--${status}`}>{statusLabels[status]}</span>}
+</div>
+<h1 id="_top">{title}</h1>
+{
+	status === "outline" && (
+		<p class="outline-banner" data-pagefind-ignore>
+			<strong>Outline</strong> — planned structure. This page lists what it will cover; the prose is not written yet.
+		</p>
+	)
+}
+
+<style is:global>
+	.page-meta {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.5rem;
+		margin-top: 1rem;
+		margin-bottom: -0.5rem;
+	}
+	.badge {
+		display: inline-block;
+		padding: 0.1rem 0.55rem;
+		border: 1px solid var(--sl-color-hairline);
+		border-radius: 999px;
+		font-family: var(--sl-font-mono);
+		font-size: 0.7rem;
+		letter-spacing: 0.04em;
+		text-transform: uppercase;
+		color: var(--sl-color-gray-2);
+	}
+	.badge--status.badge--draft {
+		border-color: color-mix(in srgb, var(--sl-color-orange) 50%, transparent);
+		background: color-mix(in srgb, var(--sl-color-orange) 12%, transparent);
+		color: var(--sl-color-orange-high);
+	}
+	.badge--status.badge--outline {
+		border-style: dashed;
+		border-color: color-mix(in srgb, var(--sl-color-blue) 55%, transparent);
+		background: color-mix(in srgb, var(--sl-color-blue) 10%, transparent);
+		color: var(--sl-color-blue-high);
+	}
+	.outline-banner {
+		margin: 0.75rem 0 0;
+		padding: 0.6rem 0.9rem;
+		border: 1px dashed var(--sl-color-gray-4);
+		border-radius: 0.5rem;
+		background: var(--sl-color-gray-6);
+		font-size: var(--sl-text-sm);
+		color: var(--sl-color-gray-2);
+	}
+</style>

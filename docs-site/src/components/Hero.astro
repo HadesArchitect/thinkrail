@@ -1,0 +1,180 @@
+---
+import { Image } from "astro:assets";
+import { LinkButton } from "@astrojs/starlight/components";
+import logo from "../assets/logo-mark.svg";
+import workbenchDark from "../assets/workbench-dark.png";
+import workbenchLight from "../assets/workbench-light.png";
+import { firstPageUnder } from "../lib/nav.mjs";
+import { BASE, routeFor } from "../lib/site.mjs";
+
+const { title, tagline, actions = [] } = Astro.locals.starlightRoute.entry.data.hero ?? {};
+
+const href = (link: string) =>
+	/^[a-z]+:/i.test(link) ? link : `${BASE}/${link.replace(/^\/+/, "")}/`;
+
+const sections = [
+	{
+		dir: "tutorials",
+		label: "Tutorials",
+		blurb: "Follow along and end with a working result.",
+	},
+	{
+		dir: "how-to",
+		label: "How-to guides",
+		blurb: "Get a specific job done, from install to opening a pull request.",
+	},
+	{
+		dir: "reference",
+		label: "Reference",
+		blurb: "Complete, dry facts: CLI, settings, shortcuts, agent tools, file formats.",
+	},
+	{
+		dir: "explanation",
+		label: "Explanation",
+		blurb: "Why ThinkRail works the way it does.",
+	},
+].map((section) => {
+	const first = firstPageUnder(section.dir);
+	return { ...section, href: first ? routeFor(first.slug) : routeFor("index") };
+});
+---
+
+<div class="tr-hero">
+	<img class="tr-hero__logo" src={logo.src} width="64" height="64" alt="" />
+	<p class="tr-hero__eyebrow">Documentation</p>
+	<h1 id="_top" data-page-title>{title}</h1>
+	<p class="tr-hero__tagline">{tagline}</p>
+	<div class="tr-hero__actions">
+		{
+			actions.map((action) => (
+				<LinkButton href={href(action.link)} variant={action.variant}>
+					{action.text}
+				</LinkButton>
+			))
+		}
+	</div>
+	<div class="tr-hero__shot">
+		<Image
+			src={workbenchDark}
+			widths={[640, 960, 1280, 1600]}
+			sizes="(min-width: 72rem) 60rem, 100vw"
+			alt="The ThinkRail workbench: projects and workspaces on the left, an agent conversation in the center, the resulting diff beside it."
+			class="light:sl-hidden"
+			loading="eager"
+		/>
+		<Image
+			src={workbenchLight}
+			widths={[640, 960, 1280, 1600]}
+			sizes="(min-width: 72rem) 60rem, 100vw"
+			alt="The ThinkRail workbench: projects and workspaces on the left, an agent conversation in the center, the resulting diff beside it."
+			class="dark:sl-hidden"
+			loading="eager"
+		/>
+	</div>
+	<ul class="tr-cards">
+		{
+			sections.map((section) => (
+				<li>
+					<a class="tr-card" href={section.href}>
+						<span class="tr-card__label">{section.label}</span>
+						<span class="tr-card__blurb">{section.blurb}</span>
+					</a>
+				</li>
+			))
+		}
+	</ul>
+</div>
+
+<style is:global>
+	.tr-hero {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		text-align: center;
+		gap: 1rem;
+		padding-block: 2rem 1rem;
+	}
+	.tr-hero__logo {
+		width: 4rem;
+		height: 4rem;
+		border-radius: 1rem;
+		box-shadow: 0 0 3rem -0.5rem var(--tr-glow);
+	}
+	.tr-hero__eyebrow {
+		margin: 0;
+		font-family: var(--sl-font-mono);
+		font-size: var(--sl-text-xs);
+		letter-spacing: 0.14em;
+		text-transform: uppercase;
+		color: var(--sl-color-accent-high);
+	}
+	.tr-hero h1 {
+		margin: 0;
+		font-size: clamp(var(--sl-text-3xl), calc(0.25rem + 5vw), var(--sl-text-5xl));
+		line-height: var(--sl-line-height-headings);
+		font-weight: 600;
+		letter-spacing: -0.02em;
+		color: var(--sl-color-white);
+	}
+	.tr-hero__tagline {
+		margin: 0;
+		max-width: 38ch;
+		font-size: clamp(var(--sl-text-base), calc(0.0625rem + 2vw), var(--sl-text-xl));
+		color: var(--sl-color-gray-2);
+		text-wrap: balance;
+	}
+	.tr-hero__actions {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: center;
+		gap: 0.75rem;
+		margin-top: 0.5rem;
+	}
+	.tr-hero__shot {
+		width: 100%;
+		margin-top: 1.5rem;
+		border: 1px solid var(--sl-color-hairline);
+		border-radius: 0.75rem;
+		overflow: hidden;
+		box-shadow: 0 1.5rem 5rem -1rem var(--tr-glow);
+	}
+	.tr-hero__shot img {
+		display: block;
+		width: 100%;
+		height: auto;
+	}
+	.tr-cards {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
+		gap: 1rem;
+		width: 100%;
+		margin: 1.5rem 0 0;
+		padding: 0;
+		list-style: none;
+	}
+	.tr-card {
+		display: flex;
+		flex-direction: column;
+		gap: 0.35rem;
+		height: 100%;
+		padding: 1rem 1.1rem;
+		border: 1px solid var(--sl-color-hairline);
+		border-radius: 0.6rem;
+		background: var(--tr-surface);
+		text-align: start;
+		text-decoration: none;
+		transition: border-color 0.15s, transform 0.15s;
+	}
+	.tr-card:hover {
+		border-color: var(--sl-color-accent);
+		transform: translateY(-2px);
+	}
+	.tr-card__label {
+		font-weight: 600;
+		color: var(--sl-color-white);
+	}
+	.tr-card__blurb {
+		font-size: var(--sl-text-sm);
+		color: var(--sl-color-gray-2);
+	}
+</style>
