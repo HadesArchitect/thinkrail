@@ -6,7 +6,7 @@ import { firstPageUnder } from "./lib/nav.mjs";
 import { DOCS_DIR } from "./lib/site.mjs";
 
 const homeFrontmatter = {
-	template: "splash",
+	template: "doc",
 	tableOfContents: false,
 	hero: {
 		title: "ThinkRail documentation",
@@ -24,7 +24,7 @@ const homeFrontmatter = {
 
 const docsGlob = glob({ pattern: ["**/*.md", "!README.md"], base: DOCS_DIR });
 
-// Keeps docs/index.md platform-neutral: the splash hero is injected here, before schema validation.
+// Keeps docs/index.md platform-neutral: the home hero is injected here, before schema validation.
 const docsLoader = {
 	...docsGlob,
 	load: (context: Parameters<typeof docsGlob.load>[0]) =>
