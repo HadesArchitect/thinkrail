@@ -2,7 +2,7 @@ import { unified } from "@astrojs/markdown-remark";
 import starlight from "@astrojs/starlight";
 import { defineConfig } from "astro/config";
 import { starlightSidebar } from "./src/lib/nav.mjs";
-import { BASE, DOCS_DIR, EDIT_BASE_URL, NOINDEX, SITE, SOCIAL_DISCORD_URL, SOCIAL_GITHUB_URL } from "./src/lib/site.mjs";
+import { BASE, DOCS_DIR, EDIT_BASE_URL, NOINDEX, SITE, SOCIAL_BLOG_URL, SOCIAL_DISCORD_URL, SOCIAL_GITHUB_URL } from "./src/lib/site.mjs";
 import remarkDocsLinks from "./src/plugins/remark-docs-links.mjs";
 import remarkGithubAlerts from "./src/plugins/remark-github-alerts.mjs";
 import remarkMermaid from "./src/plugins/remark-mermaid.mjs";
@@ -28,6 +28,7 @@ export default defineConfig({
 			social: [
 				{ icon: "github", label: "GitHub", href: SOCIAL_GITHUB_URL },
 				{ icon: "discord", label: "Discord", href: SOCIAL_DISCORD_URL },
+				{ icon: "pen", label: "ThinkRail blog", href: SOCIAL_BLOG_URL },
 			],
 			editLink: { baseUrl: EDIT_BASE_URL },
 			lastUpdated: false,

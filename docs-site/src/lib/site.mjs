@@ -26,6 +26,7 @@ export const REPO_URL = (
 export const REPO_REF = process.env.DOCS_REF ?? "claude/thinkrail-docs-draft-39556b";
 export const SOCIAL_GITHUB_URL = "https://github.com/JetBrains/thinkrail";
 export const SOCIAL_DISCORD_URL = "https://discord.gg/Wybu9ceWkY";
+export const SOCIAL_BLOG_URL = "https://thinkrail.ai/blog/";
 
 export const repoBlobUrl = (repoRelativePath, kind = "blob") =>
 	`${REPO_URL}/${kind}/${REPO_REF}/${repoRelativePath.split(path.sep).join("/")}`;
