@@ -30,8 +30,9 @@ ThinkRail's surface is wide — an IDE, an agent host, a spec system, workflow s
 and most of it is new vocabulary. The structure has three layers, each solving a different problem:
 
 - **The front door serves the audiences.** The home page opens with four questions — deciding,
-  coming from `pi`, evaluating for a team, something broke — each answered by one page. The first
-  sidebar group, Get started, holds those entry pages and the first-run sequence.
+  coming from `pi`, evaluating for a team, something broke — each answered by one page. The home page,
+  What is ThinkRail?, and Coming from pi sit at the top of the sidebar as standalone links; the first
+  sidebar group, Get started, holds the first-run sequence.
 - **The product map is the navigation.** One sidebar group, and one folder, per thing ThinkRail has:
   workspaces, the agent and its chats, specs and plans, review and shipping, skills and MCP, security,
   running the host. A reader opens the box named after what they are working on, and everything about
@@ -52,10 +53,10 @@ flowchart LR
     home([Docs home]) --> GS[Get started]
     home --> map[Product areas]
     home --> R[Reference]
+    home --> E[What is ThinkRail? · Coming from pi]
     home --> C[Changelog]
 
-    GS --> g1[What is ThinkRail? · Coming from pi]
-    GS --> g2[Install · Connect · First change]
+    GS --> g1[Install · Connect · First change]
 
     map --> a1[Workspaces]
     map --> a2[Agent & chats]

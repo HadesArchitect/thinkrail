@@ -31,7 +31,9 @@ The type lives in frontmatter; the folder and the sidebar follow the product.
   `workspaces/`, `agent/`, `specs/`, `review/`, `extend/`, `security/`, or `run/`. When a page touches
   two areas, pick the one the reader acts on and link to it from the other.
 - **First run goes in `get-started/`.** Install, provider setup, the first tutorial, and the audience
-  entry pages live there, even though they also belong to an area.
+  entry pages live there, even though they also belong to an area. In the sidebar, the audience entry
+  pages (What is ThinkRail?, Coming from pi) are top-level links next to the home page, not part of the
+  Get started group.
 - **Whole-product lookups go on the Reference shelf.** A reference page whose source belongs to one area
   lives in that area (the spec format in `specs/`, MCP configuration in `extend/`). CLI, Settings,
   keyboard shortcuts, files and environment, and the glossary index the whole product, so they live in

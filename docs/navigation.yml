@@ -4,13 +4,13 @@
 # Page titles come from each page's frontmatter `title`.
 # Groups follow the product map; see about-these-docs/authoring-guide.md for where a page goes.
 
+- index.md
+- get-started/what-is-thinkrail.md
+- get-started/coming-from-pi.md
 - changelog.md
 
 - label: Get started
   items:
-    - index.md
-    - get-started/what-is-thinkrail.md
-    - get-started/coming-from-pi.md
     - get-started/install.md
     - get-started/connect-a-provider.md
     - get-started/first-change.md
