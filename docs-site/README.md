@@ -5,18 +5,18 @@ Markdown in [`../docs`](../docs) **without modifying a single page**. It exists 
 is platform-ready and what a branded site could look like; it does not pre-empt the hosting decision
 (see `docs/about-these-docs/hosting-options.md`).
 
-It is a standalone npm project, deliberately **not** part of the root Bun workspace (the root
-`bun.lock` and `package.json` are untouched). All dependencies are pinned exactly and `package-lock.json`
+It is a standalone Bun project, deliberately **not** part of the root Bun workspace (the root
+`bun.lock` and `package.json` are untouched). All dependencies are pinned exactly and its own `bun.lock`
 is committed.
 
 ## Commands
 
 ```bash
 cd docs-site
-npm ci               # install from the lockfile
-npm run dev          # http://localhost:4321/thinkrail/
-npm run build        # static site in dist/, including the Pagefind search index
-npm run preview      # serve dist/ locally
+bun install --frozen-lockfile   # install from the lockfile
+bun run dev                     # http://localhost:4321/thinkrail/
+bun run build                   # static site in dist/, including the Pagefind search index
+bun run preview                 # serve dist/ locally
 ```
 
 Environment variables (all optional):
@@ -36,7 +36,7 @@ Astro caches rendered Markdown by content digest. After editing a plugin, clear 
 
 Deploy helpers (neither runs automatically):
 
-- `.github-workflow-example/docs-preview.yml` is an example GitHub Actions workflow (npm build, then
+- `.github-workflow-example/docs-preview.yml` is an example GitHub Actions workflow (Bun build, then
   `actions/deploy-pages`). Copy it to `.github/workflows/` to use it.
 - `scripts/deploy-gh-pages.sh` builds and force-pushes `dist/` to the `gh-pages` branch of `origin`
   from a temporary directory.

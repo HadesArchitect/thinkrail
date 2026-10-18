@@ -65,8 +65,8 @@ monorepo workspace or CI:
 
 ```bash
 cd docs-site
-npm ci
-npm run dev
+bun install
+bun run dev
 ```
 
 The PoC exists to show that the content is platform-ready and what a branded site could look like — not

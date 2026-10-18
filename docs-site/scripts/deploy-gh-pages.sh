@@ -10,8 +10,8 @@ branch="${DOCS_PAGES_BRANCH:-gh-pages}"
 remote_url="$(git -C "$site_dir" remote get-url "$remote")"
 
 cd "$site_dir"
-npm ci
-npm run build
+bun install --frozen-lockfile
+bun run build
 touch dist/.nojekyll
 
 tmp="$(mktemp -d)"
