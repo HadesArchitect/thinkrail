@@ -22,7 +22,8 @@ cd "$tmp"
 git init --quiet
 git checkout --quiet -b "$branch"
 git add -A
-git commit --quiet -m "Deploy docs preview $(date -u +%Y-%m-%dT%H:%M:%SZ)"
+git -c user.name="${DOCS_DEPLOY_NAME:-docs-preview}" -c user.email="${DOCS_DEPLOY_EMAIL:-docs-preview@users.noreply.github.com}" \
+	commit --quiet -m "Deploy docs preview $(date -u +%Y-%m-%dT%H:%M:%SZ)"
 git push --force "$remote_url" "$branch"
 
 echo "Pushed docs-site/dist to $remote_url ($branch)."

@@ -59,6 +59,11 @@ Binding to the tailnet address keeps the host off the machine's other network in
 
 3. Open a project or choose the one you passed on the command line.
 
+> [!WARNING]
+> A plain `http://` URL on another machine is not a secure context, so the browser withholds features
+> that require one — for example clipboard access and browser notifications. Putting HTTPS in front of
+> the host (such as with `tailscale serve`) should restore them; that setup is untested.
+
 Most settings are stored on the host, so they follow you across browsers that use it. Layout and a few
 view preferences stay in each browser. See [Settings reference](../reference/settings.md).
 

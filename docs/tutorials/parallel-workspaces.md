@@ -49,7 +49,9 @@ Click **Create**. You now have two workspaces under the project, each with its o
 folder under `~/.thinkrail/worktrees/`. Both rows show the working badge while their agents run, and
 each agent soon renames its workspace and branch to match its task.
 
-Neither agent can see or touch the other's files. Each one edits only its own worktree.
+Each agent works in its own folder and on its own branch, so their edits never land in the same checkout.
+This is git isolation, not a sandbox: an agent's commands still run with your permissions. See
+[Workspaces and isolation](../explanation/workspaces-and-isolation.md).
 
 > [!NOTE]
 > Screenshot to add: the Projects tool with two workspaces under one project, both showing the working
