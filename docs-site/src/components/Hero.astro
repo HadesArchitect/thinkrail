@@ -3,7 +3,6 @@ import { Image } from "astro:assets";
 import { LinkButton } from "@astrojs/starlight/components";
 import logo from "../assets/logo-mark.svg";
 import workbenchDark from "../assets/workbench-dark.png";
-import workbenchLight from "../assets/workbench-light.png";
 import { flattenNavigation } from "../lib/nav.mjs";
 import { BASE, routeFor } from "../lib/site.mjs";
 
@@ -61,15 +60,6 @@ const sections = [
 			widths={[640, 960, 1280, 1600]}
 			sizes="(min-width: 72rem) 60rem, 100vw"
 			alt="The ThinkRail workbench: projects and workspaces on the left, an agent conversation in the center, the resulting diff beside it."
-			class="light:sl-hidden"
-			loading="eager"
-		/>
-		<Image
-			src={workbenchLight}
-			widths={[640, 960, 1280, 1600]}
-			sizes="(min-width: 72rem) 60rem, 100vw"
-			alt="The ThinkRail workbench: projects and workspaces on the left, an agent conversation in the center, the resulting diff beside it."
-			class="dark:sl-hidden"
 			loading="eager"
 		/>
 	</div>
