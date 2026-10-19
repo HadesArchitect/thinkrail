@@ -1,0 +1,356 @@
+<!DOCTYPE html><html lang="en" dir="ltr" data-theme="dark" data-has-toc data-has-sidebar class="astro-g5ptsecz"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><title>Hosting options | ThinkRail Docs</title><link rel="shortcut icon" href="/thinkrail/favicon.svg" type="image/svg+xml"/><meta name="generator" content="Astro v7.4.0"/><meta name="generator" content="Starlight v0.42.6"/><meta property="og:title" content="Hosting options"/><meta property="og:type" content="article"/><meta property="og:locale" content="en"/><meta property="og:description" content="Where the ThinkRail docs could be published, what JetBrains projects do today, and how the main docs tools and hosting setups compare."/><meta property="og:site_name" content="ThinkRail Docs"/><meta name="twitter:card" content="summary_large_image"/><meta name="description" content="Where the ThinkRail docs could be published, what JetBrains projects do today, and how the main docs tools and hosting setups compare."/><meta name="robots" content="noindex, nofollow"/><script>
+	window.StarlightThemeProvider = (() => {
+		const storedTheme =
+			typeof localStorage !== 'undefined' && localStorage.getItem('starlight-theme');
+		const theme =
+			storedTheme ||
+			(window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+		document.documentElement.dataset.theme = theme === 'light' ? 'light' : 'dark';
+		return {
+			updatePickers(theme = storedTheme || 'auto') {
+				document.querySelectorAll('starlight-theme-select').forEach((picker) => {
+					const select = picker.querySelector('select');
+					if (select) select.value = theme;
+					/** @type {HTMLTemplateElement | null} */
+					const tmpl = document.querySelector(`#theme-icons`);
+					const newIcon = tmpl && tmpl.content.querySelector('.' + theme);
+					if (newIcon) {
+						const oldIcon = picker.querySelector('svg.label-icon');
+						if (oldIcon) {
+							oldIcon.replaceChildren(...newIcon.cloneNode(true).childNodes);
+						}
+					}
+				});
+			},
+		};
+	})();
+</script><template id="theme-icons"><svg aria-hidden="true" class="light astro-hkc32dio" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M5 12a1 1 0 0 0-1-1H3a1 1 0 0 0 0 2h1a1 1 0 0 0 1-1Zm.64 5-.71.71a1 1 0 0 0 0 1.41 1 1 0 0 0 1.41 0l.71-.71A1 1 0 0 0 5.64 17ZM12 5a1 1 0 0 0 1-1V3a1 1 0 0 0-2 0v1a1 1 0 0 0 1 1Zm5.66 2.34a1 1 0 0 0 .7-.29l.71-.71a1 1 0 1 0-1.41-1.41l-.66.71a1 1 0 0 0 0 1.41 1 1 0 0 0 .66.29Zm-12-.29a1 1 0 0 0 1.41 0 1 1 0 0 0 0-1.41l-.71-.71a1.004 1.004 0 1 0-1.43 1.41l.73.71ZM21 11h-1a1 1 0 0 0 0 2h1a1 1 0 0 0 0-2Zm-2.64 6A1 1 0 0 0 17 18.36l.71.71a1 1 0 0 0 1.41 0 1 1 0 0 0 0-1.41l-.76-.66ZM12 6.5a5.5 5.5 0 1 0 5.5 5.5A5.51 5.51 0 0 0 12 6.5Zm0 9a3.5 3.5 0 1 1 0-7 3.5 3.5 0 0 1 0 7Zm0 3.5a1 1 0 0 0-1 1v1a1 1 0 0 0 2 0v-1a1 1 0 0 0-1-1Z"/></svg><svg aria-hidden="true" class="dark astro-hkc32dio" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M21.64 13a1 1 0 0 0-1.05-.14 8.049 8.049 0 0 1-3.37.73 8.15 8.15 0 0 1-8.14-8.1 8.59 8.59 0 0 1 .25-2A1 1 0 0 0 8 2.36a10.14 10.14 0 1 0 14 11.69 1 1 0 0 0-.36-1.05Zm-9.5 6.69A8.14 8.14 0 0 1 7.08 5.22v.27a10.15 10.15 0 0 0 10.14 10.14 9.784 9.784 0 0 0 2.1-.22 8.11 8.11 0 0 1-7.18 4.32v-.04Z"/></svg><svg aria-hidden="true" class="auto astro-hkc32dio" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M21 14h-1V7a3 3 0 0 0-3-3H7a3 3 0 0 0-3 3v7H3a1 1 0 0 0-1 1v2a3 3 0 0 0 3 3h14a3 3 0 0 0 3-3v-2a1 1 0 0 0-1-1ZM6 7a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v7H6V7Zm14 10a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-1h16v1Z"/></svg></template><link rel="stylesheet" href="/thinkrail/_astro/print.ehPL0gv-.css" media="print"><link rel="stylesheet" href="/thinkrail/_astro/common.DwVthD0l.css"><script type="module" src="/thinkrail/_astro/page.cNngjUgL.js"></script></head><body class="astro-g5ptsecz"><a class="sl-skip-link astro-qb7clj6f" href="#_top">Skip to content</a><div class="page sl-flex astro-yntsjkba"><header class="header astro-yntsjkba"><div class="header astro-by6fddyj"><div class="title-wrapper sl-flex astro-by6fddyj"><a href="/thinkrail/" class="site-title sl-flex astro-6rvad3va"><img class="astro-6rvad3va" alt="ThinkRail" src="/thinkrail/_astro/logo-mark.D_5aK2o8.svg" width="512" height="512"><span class="astro-6rvad3va" translate="no">ThinkRail Docs</span></a></div><div class="sl-flex print:hidden astro-by6fddyj"><site-search class="astro-by6fddyj astro-b5kgnn7o" data-translations="{&quot;placeholder&quot;:&quot;Search&quot;}"><button data-open-modal disabled aria-label="Search" aria-keyshortcuts="Control+K" class="astro-b5kgnn7o"><svg aria-hidden="true" class="astro-b5kgnn7o astro-hkc32dio" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M21.71 20.29 18 16.61A9 9 0 1 0 16.61 18l3.68 3.68a.999.999 0 0 0 1.42 0 1 1 0 0 0 0-1.39ZM11 18a7 7 0 1 1 0-14 7 7 0 0 1 0 14Z"/></svg><span class="sl-hidden md:sl-block astro-b5kgnn7o" aria-hidden="true">Search</span><kbd class="sl-hidden md:sl-flex astro-b5kgnn7o" style="display: none;"><kbd class="astro-b5kgnn7o">Ctrl</kbd><kbd class="astro-b5kgnn7o">K</kbd></kbd></button><dialog style="padding:0" aria-label="Search" class="astro-b5kgnn7o"><div class="dialog-frame sl-flex astro-b5kgnn7o"><button data-close-modal class="sl-flex md:sl-hidden astro-b5kgnn7o">Cancel</button><div class="search-container astro-b5kgnn7o"><div id="starlight__search" class="astro-b5kgnn7o"></div></div></div></dialog></site-search><script>
+	(() => {
+		const openBtn = document.querySelector('button[data-open-modal]');
+		const shortcut = openBtn?.querySelector('kbd');
+		if (!openBtn || !(shortcut instanceof HTMLElement)) return;
+		const platformKey = shortcut.querySelector('kbd');
+		if (platformKey && /(Mac|iPhone|iPod|iPad)/i.test(navigator.platform)) {
+			platformKey.textContent = '⌘';
+			openBtn.setAttribute('aria-keyshortcuts', 'Meta+K');
+		}
+		shortcut.style.display = '';
+	})();
+</script><script type="module" src="/thinkrail/_astro/Search.astro_astro_type_script_index_0_lang.BCOo1ecf.js"></script></div><div class="sl-hidden md:sl-flex print:hidden right-group astro-by6fddyj"><div class="sl-flex social-icons astro-by6fddyj"><a href="https://github.com/JetBrains/thinkrail" rel="me" class="sl-flex astro-n2mnl6yq"><span class="sr-only astro-n2mnl6yq">GitHub</span><svg aria-hidden="true" class="astro-n2mnl6yq astro-hkc32dio" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M12 .3a12 12 0 0 0-3.8 23.38c.6.12.83-.26.83-.57L9 21.07c-3.34.72-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.08-.74.09-.73.09-.73 1.2.09 1.83 1.24 1.83 1.24 1.08 1.83 2.81 1.3 3.5 1 .1-.78.42-1.31.76-1.61-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.14-.3-.54-1.52.1-3.18 0 0 1-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.28-1.55 3.29-1.23 3.29-1.23.64 1.66.24 2.88.12 3.18a4.65 4.65 0 0 1 1.23 3.22c0 4.61-2.8 5.63-5.48 5.92.42.36.81 1.1.81 2.22l-.01 3.29c0 .31.2.69.82.57A12 12 0 0 0 12 .3Z"/></svg></a><a href="https://discord.gg/Wybu9ceWkY" rel="me" class="sl-flex astro-n2mnl6yq"><span class="sr-only astro-n2mnl6yq">Discord</span><svg aria-hidden="true" class="astro-n2mnl6yq astro-hkc32dio" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M20.32 4.37a19.8 19.8 0 0 0-4.93-1.51 13.78 13.78 0 0 0-.64 1.28 18.27 18.27 0 0 0-5.5 0 12.64 12.64 0 0 0-.64-1.28h-.05A19.74 19.74 0 0 0 3.64 4.4 20.26 20.26 0 0 0 .11 18.09l.02.02a19.9 19.9 0 0 0 6.04 3.03l.04-.02a14.24 14.24 0 0 0 1.23-2.03.08.08 0 0 0-.05-.07 13.1 13.1 0 0 1-1.9-.92.08.08 0 0 1 .02-.1 10.2 10.2 0 0 0 .41-.31h.04a14.2 14.2 0 0 0 12.1 0l.04.01a9.63 9.63 0 0 0 .4.32.08.08 0 0 1-.03.1 12.29 12.29 0 0 1-1.9.91.08.08 0 0 0-.02.1 15.97 15.97 0 0 0 1.27 2.01h.04a19.84 19.84 0 0 0 6.03-3.05v-.03a20.12 20.12 0 0 0-3.57-13.69ZM8.02 15.33c-1.18 0-2.16-1.08-2.16-2.42 0-1.33.96-2.42 2.16-2.42 1.21 0 2.18 1.1 2.16 2.42 0 1.34-.96 2.42-2.16 2.42Zm7.97 0c-1.18 0-2.15-1.08-2.15-2.42 0-1.33.95-2.42 2.15-2.42 1.22 0 2.18 1.1 2.16 2.42 0 1.34-.94 2.42-2.16 2.42Z"/></svg></a><a href="https://thinkrail.ai/blog/" rel="me" class="sl-flex astro-n2mnl6yq"><span class="sr-only astro-n2mnl6yq">ThinkRail blog</span><svg aria-hidden="true" class="astro-n2mnl6yq astro-hkc32dio" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M16 14H8a1 1 0 0 0 0 2h8a1 1 0 0 0 0-2m0-4h-6a1 1 0 0 0 0 2h6a1 1 0 0 0 0-2m4-6h-3V3a1 1 0 0 0-2 0v1h-2V3a1 1 0 0 0-2 0v1H9V3a1 1 0 0 0-2 0v1H4a1 1 0 0 0-1 1v14a3 3 0 0 0 3 3h12a3 3 0 0 0 3-3V5a1 1 0 0 0-1-1m-1 15a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V6h2v1a1 1 0 0 0 2 0V6h2v1a1 1 0 0 0 2 0V6h2v1a1 1 0 0 0 2 0V6h2Z"/></svg></a></div><starlight-theme-select><label style="--sl-select-width: 6.25em" class="astro-2z5xp7gb"><span class="sr-only astro-2z5xp7gb">Select theme</span><svg aria-hidden="true" class="icon label-icon astro-2z5xp7gb astro-hkc32dio" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M21 14h-1V7a3 3 0 0 0-3-3H7a3 3 0 0 0-3 3v7H3a1 1 0 0 0-1 1v2a3 3 0 0 0 3 3h14a3 3 0 0 0 3-3v-2a1 1 0 0 0-1-1ZM6 7a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v7H6V7Zm14 10a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-1h16v1Z"/></svg><select autocomplete="off" class="astro-2z5xp7gb"><option value="dark" class="astro-2z5xp7gb">Dark</option><option value="light" class="astro-2z5xp7gb">Light</option><option value="auto" selected class="astro-2z5xp7gb">Auto</option></select><svg aria-hidden="true" class="icon caret astro-2z5xp7gb astro-hkc32dio" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M17 9.17a1 1 0 0 0-1.41 0L12 12.71 8.46 9.17a1 1 0 1 0-1.41 1.42l4.24 4.24a1.002 1.002 0 0 0 1.42 0L17 10.59a1.002 1.002 0 0 0 0-1.42Z"/></svg></label></starlight-theme-select><script>
+	StarlightThemeProvider.updatePickers();
+</script><script type="module">var e=`starlight-theme`,t=e=>e===`auto`||e===`dark`||e===`light`?e:`auto`,n=()=>t(typeof localStorage<`u`&&localStorage.getItem(e));function r(t){typeof localStorage<`u`&&localStorage.setItem(e,t===`light`||t===`dark`?t:``)}var i=()=>matchMedia(`(prefers-color-scheme: light)`).matches?`light`:`dark`;function a(e){StarlightThemeProvider.updatePickers(e),document.documentElement.dataset.theme=e===`auto`?i():e,r(e)}matchMedia(`(prefers-color-scheme: light)`).addEventListener(`change`,()=>{n()===`auto`&&a(`auto`)});var o=class extends HTMLElement{constructor(){super(),a(n()),this.querySelector(`select`)?.addEventListener(`change`,e=>{e.currentTarget instanceof HTMLSelectElement&&a(t(e.currentTarget.value))})}};customElements.define(`starlight-theme-select`,o);</script><script type="module">var e=class extends HTMLElement{constructor(){super();let e=this.querySelector(`select`);e&&(e.addEventListener(`change`,e=>{e.currentTarget instanceof HTMLSelectElement&&(window.location.pathname=e.currentTarget.value)}),window.addEventListener(`pageshow`,t=>{if(!t.persisted)return;let n=e.querySelector(`option[selected]`)?.index;n!==e.selectedIndex&&(e.selectedIndex=n??0)}))}};customElements.define(`starlight-lang-select`,e);</script></div></div></header><nav class="sidebar print:hidden astro-yntsjkba" aria-label="Main"><button popovertarget="starlight__sidebar" class="sl-menu-button sl-flex md:sl-hidden print:hidden astro-r2osgdlg"><svg aria-hidden="true" class="open-menu astro-r2osgdlg astro-hkc32dio" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M3 8h18a1 1 0 1 0 0-2H3a1 1 0 0 0 0 2Zm18 8H3a1 1 0 0 0 0 2h18a1 1 0 0 0 0-2Zm0-5H3a1 1 0 0 0 0 2h18a1 1 0 0 0 0-2Z"/></svg><svg aria-hidden="true" class="close-menu astro-r2osgdlg astro-hkc32dio" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="m13.41 12 6.3-6.29a1.004 1.004 0 1 0-1.42-1.42L12 10.59l-6.29-6.3a1.004 1.004 0 0 0-1.42 1.42l6.3 6.29-6.3 6.29a1 1 0 0 0 0 1.42.998.998 0 0 0 1.42 0l6.29-6.3 6.29 6.3a.999.999 0 0 0 1.42 0 1 1 0 0 0 0-1.42L13.41 12Z"/></svg><span class="sr-only astro-r2osgdlg">Menu</span></button><script type="module">var e=class extends HTMLElement{constructor(){super();let e=matchMedia(`(min-width: 50em)`),t=()=>{this.popover=e.matches?null:`auto`};t(),e.addEventListener(`change`,()=>t()),this.addEventListener(`toggle`,({newState:e})=>this.trapFocus(e===`open`))}trapFocus(e){document.querySelectorAll(`.main-frame, .sl-skip-link`).forEach(t=>{t.toggleAttribute(`inert`,e)})}};customElements.define(`sl-sidebar-pane`,e);</script><sl-sidebar-pane popover id="starlight__sidebar" class="sidebar-pane astro-yntsjkba"><div class="sidebar-content sl-flex astro-yntsjkba"><sl-sidebar-state-persist data-hash="121z9qx" class="astro-ipdry5cl"><script aria-hidden="true">
+		(() => {
+			try {
+				if (!matchMedia('(min-width: 50em)').matches) return;
+				/** @type {HTMLElement | null} */
+				const target = document.querySelector('sl-sidebar-state-persist');
+				const state = JSON.parse(sessionStorage.getItem('sl-sidebar-state') || '0');
+				if (!target || !state || target.dataset.hash !== state.hash) return;
+				window._starlightScrollRestore = state.scroll;
+				customElements.define(
+					'sl-sidebar-restore',
+					class SidebarRestore extends HTMLElement {
+						connectedCallback() {
+							try {
+								const idx = parseInt(this.dataset.index || '');
+								const details = this.closest('details');
+								if (details && typeof state.open[idx] === 'boolean') details.open = state.open[idx];
+							} catch {}
+						}
+					}
+				);
+			} catch {}
+		})();
+	</script><ul class="top-level astro-rmhv4bp6"><li class="astro-rmhv4bp6"><a href="/thinkrail/" class="large astro-rmhv4bp6"><span class="astro-rmhv4bp6">ThinkRail documentation</span></a></li><li class="astro-rmhv4bp6"><a href="/thinkrail/what-is-thinkrail/" class="large astro-rmhv4bp6"><span class="astro-rmhv4bp6">What is ThinkRail?</span></a></li><li class="astro-rmhv4bp6"><a href="/thinkrail/coming-from-pi/" class="large astro-rmhv4bp6"><span class="astro-rmhv4bp6">Coming from pi</span></a></li><li class="astro-rmhv4bp6"><a href="/thinkrail/changelog/" class="large astro-rmhv4bp6"><span class="astro-rmhv4bp6">Changelog</span></a></li><li class="astro-rmhv4bp6"><details open class="astro-rmhv4bp6"><summary class="astro-rmhv4bp6"><span class="group-label astro-rmhv4bp6"><span class="large astro-rmhv4bp6">Get started</span></span><svg aria-hidden="true" class="caret astro-rmhv4bp6 astro-hkc32dio" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.25rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg></summary><sl-sidebar-restore data-index="0"></sl-sidebar-restore><ul class="astro-rmhv4bp6"><li class="astro-rmhv4bp6"><a href="/thinkrail/get-started/install/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Install ThinkRail</span></a></li><li class="astro-rmhv4bp6"><a href="/thinkrail/get-started/connect-a-provider/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Connect a model provider</span></a></li><li class="astro-rmhv4bp6"><a href="/thinkrail/get-started/describe-your-project/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Describe your project</span></a></li><li class="astro-rmhv4bp6"><a href="/thinkrail/get-started/first-change/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Make your first change</span></a></li></ul></details></li><li class="astro-rmhv4bp6"><details open class="astro-rmhv4bp6"><summary class="astro-rmhv4bp6"><span class="group-label astro-rmhv4bp6"><span class="large astro-rmhv4bp6">Using ThinkRail</span></span><svg aria-hidden="true" class="caret astro-rmhv4bp6 astro-hkc32dio" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.25rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg></summary><sl-sidebar-restore data-index="1"></sl-sidebar-restore><ul class="astro-rmhv4bp6"><li class="astro-rmhv4bp6"><details open class="astro-rmhv4bp6"><summary class="astro-rmhv4bp6"><span class="group-label astro-rmhv4bp6"><span class="large astro-rmhv4bp6">Workspaces</span></span><svg aria-hidden="true" class="caret astro-rmhv4bp6 astro-hkc32dio" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.25rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg></summary><sl-sidebar-restore data-index="2"></sl-sidebar-restore><ul class="astro-rmhv4bp6"><li class="astro-rmhv4bp6"><a href="/thinkrail/workspaces/workspaces-and-isolation/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Workspaces and isolation</span></a></li><li class="astro-rmhv4bp6"><a href="/thinkrail/workspaces/parallel-workspaces/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Run agents in parallel</span></a></li><li class="astro-rmhv4bp6"><a href="/thinkrail/workspaces/manage-workspaces/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Manage workspaces</span></a></li><li class="astro-rmhv4bp6"><a href="/thinkrail/workspaces/open-in-your-editor/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Open a workspace in your editor</span></a></li></ul></details></li><li class="astro-rmhv4bp6"><details open class="astro-rmhv4bp6"><summary class="astro-rmhv4bp6"><span class="group-label astro-rmhv4bp6"><span class="large astro-rmhv4bp6">Agent &amp; chats</span></span><svg aria-hidden="true" class="caret astro-rmhv4bp6 astro-hkc32dio" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.25rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg></summary><sl-sidebar-restore data-index="3"></sl-sidebar-restore><ul class="astro-rmhv4bp6"><li class="astro-rmhv4bp6"><a href="/thinkrail/agent/thinkrail-and-pi/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">ThinkRail and pi</span></a></li><li class="astro-rmhv4bp6"><a href="/thinkrail/agent/choose-models/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Choose models and effort</span></a></li><li class="astro-rmhv4bp6"><a href="/thinkrail/agent/steer-and-queue/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Steer, queue, or stop the agent</span></a></li><li class="astro-rmhv4bp6"><a href="/thinkrail/agent/delegate-to-subagents/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Delegate work to subagents</span></a></li><li class="astro-rmhv4bp6"><a href="/thinkrail/agent/agent-tools/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Tools the agent can call</span></a></li></ul></details></li><li class="astro-rmhv4bp6"><details open class="astro-rmhv4bp6"><summary class="astro-rmhv4bp6"><span class="group-label astro-rmhv4bp6"><span class="large astro-rmhv4bp6">Specs &amp; plans</span></span><svg aria-hidden="true" class="caret astro-rmhv4bp6 astro-hkc32dio" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.25rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg></summary><sl-sidebar-restore data-index="4"></sl-sidebar-restore><ul class="astro-rmhv4bp6"><li class="astro-rmhv4bp6"><a href="/thinkrail/specs/living-specs/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Living specs</span></a></li><li class="astro-rmhv4bp6"><a href="/thinkrail/specs/spec-first-project/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Set up a project for spec-first work</span></a></li><li class="astro-rmhv4bp6"><a href="/thinkrail/specs/build-from-your-own-spec/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Build from your own spec</span></a></li><li class="astro-rmhv4bp6"><a href="/thinkrail/specs/plan-and-review/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Work through a plan step by step</span></a></li><li class="astro-rmhv4bp6"><a href="/thinkrail/specs/workflows/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Built-in workflows</span></a></li><li class="astro-rmhv4bp6"><a href="/thinkrail/specs/spec-format/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Spec format</span></a></li></ul></details></li><li class="astro-rmhv4bp6"><details open class="astro-rmhv4bp6"><summary class="astro-rmhv4bp6"><span class="group-label astro-rmhv4bp6"><span class="large astro-rmhv4bp6">Review &amp; ship</span></span><svg aria-hidden="true" class="caret astro-rmhv4bp6 astro-hkc32dio" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.25rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg></summary><sl-sidebar-restore data-index="5"></sl-sidebar-restore><ul class="astro-rmhv4bp6"><li class="astro-rmhv4bp6"><a href="/thinkrail/review/review-changes/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Review changes</span></a></li><li class="astro-rmhv4bp6"><a href="/thinkrail/review/undo-or-discard-changes/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Undo or discard changes</span></a></li><li class="astro-rmhv4bp6"><a href="/thinkrail/review/open-a-pull-request/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Open a pull request</span></a></li></ul></details></li><li class="astro-rmhv4bp6"><details open class="astro-rmhv4bp6"><summary class="astro-rmhv4bp6"><span class="group-label astro-rmhv4bp6"><span class="large astro-rmhv4bp6">Skills, MCP &amp; extensions</span></span><svg aria-hidden="true" class="caret astro-rmhv4bp6 astro-hkc32dio" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.25rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg></summary><sl-sidebar-restore data-index="6"></sl-sidebar-restore><ul class="astro-rmhv4bp6"><li class="astro-rmhv4bp6"><a href="/thinkrail/extend/extensions/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Extensions</span></a></li><li class="astro-rmhv4bp6"><a href="/thinkrail/extend/use-existing-skills/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Use existing skills and prompt templates</span></a></li><li class="astro-rmhv4bp6"><a href="/thinkrail/extend/connect-mcp-servers/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Connect MCP servers</span></a></li><li class="astro-rmhv4bp6"><a href="/thinkrail/extend/mcp-configuration/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">MCP configuration</span></a></li><li class="astro-rmhv4bp6"><a href="/thinkrail/extend/use-thinkrail-packages-in-pi/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Use ThinkRail packages in pi</span></a></li></ul></details></li><li class="astro-rmhv4bp6"><details open class="astro-rmhv4bp6"><summary class="astro-rmhv4bp6"><span class="group-label astro-rmhv4bp6"><span class="large astro-rmhv4bp6">Security &amp; privacy</span></span><svg aria-hidden="true" class="caret astro-rmhv4bp6 astro-hkc32dio" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.25rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg></summary><sl-sidebar-restore data-index="7"></sl-sidebar-restore><ul class="astro-rmhv4bp6"><li class="astro-rmhv4bp6"><a href="/thinkrail/security/security-and-data-overview/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Security and data overview</span></a></li><li class="astro-rmhv4bp6"><a href="/thinkrail/security/trust-model/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Trust model</span></a></li><li class="astro-rmhv4bp6"><a href="/thinkrail/security/trust-a-project/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Trust a project</span></a></li><li class="astro-rmhv4bp6"><a href="/thinkrail/security/privacy-and-analytics/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Privacy and analytics</span></a></li><li class="astro-rmhv4bp6"><a href="/thinkrail/security/manage-privacy/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Turn off usage data (telemetry)</span></a></li></ul></details></li><li class="astro-rmhv4bp6"><details open class="astro-rmhv4bp6"><summary class="astro-rmhv4bp6"><span class="group-label astro-rmhv4bp6"><span class="large astro-rmhv4bp6">Run &amp; troubleshoot</span></span><svg aria-hidden="true" class="caret astro-rmhv4bp6 astro-hkc32dio" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.25rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg></summary><sl-sidebar-restore data-index="8"></sl-sidebar-restore><ul class="astro-rmhv4bp6"><li class="astro-rmhv4bp6"><a href="/thinkrail/run/troubleshoot/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Troubleshoot ThinkRail</span></a></li><li class="astro-rmhv4bp6"><a href="/thinkrail/run/get-help/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Get help</span></a></li><li class="astro-rmhv4bp6"><a href="/thinkrail/run/update-and-uninstall/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Update and uninstall ThinkRail</span></a></li><li class="astro-rmhv4bp6"><a href="/thinkrail/run/back-up-or-move/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Back up or move to a new machine</span></a></li><li class="astro-rmhv4bp6"><a href="/thinkrail/run/run-on-a-remote-machine/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Run ThinkRail on a remote machine</span></a></li><li class="astro-rmhv4bp6"><a href="/thinkrail/run/how-thinkrail-works/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">How ThinkRail works</span></a></li><li class="astro-rmhv4bp6"><a href="/thinkrail/run/platform-support/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Platform support</span></a></li></ul></details></li></ul></details></li><li class="astro-rmhv4bp6"><details open class="astro-rmhv4bp6"><summary class="astro-rmhv4bp6"><span class="group-label astro-rmhv4bp6"><span class="large astro-rmhv4bp6">Reference</span></span><svg aria-hidden="true" class="caret astro-rmhv4bp6 astro-hkc32dio" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.25rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg></summary><sl-sidebar-restore data-index="9"></sl-sidebar-restore><ul class="astro-rmhv4bp6"><li class="astro-rmhv4bp6"><a href="/thinkrail/reference/cli/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">CLI reference</span></a></li><li class="astro-rmhv4bp6"><a href="/thinkrail/reference/settings/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Settings reference</span></a></li><li class="astro-rmhv4bp6"><a href="/thinkrail/reference/keyboard-shortcuts/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Keyboard shortcuts</span></a></li><li class="astro-rmhv4bp6"><a href="/thinkrail/reference/files-and-environment/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Files and environment</span></a></li><li class="astro-rmhv4bp6"><a href="/thinkrail/reference/glossary/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Glossary</span></a></li></ul></details></li><li class="astro-rmhv4bp6"><details open class="astro-rmhv4bp6"><summary class="astro-rmhv4bp6"><span class="group-label astro-rmhv4bp6"><span class="large astro-rmhv4bp6">Developing ThinkRail</span></span><svg aria-hidden="true" class="caret astro-rmhv4bp6 astro-hkc32dio" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.25rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg></summary><sl-sidebar-restore data-index="10"></sl-sidebar-restore><ul class="astro-rmhv4bp6"><li class="astro-rmhv4bp6"><a href="/thinkrail/develop/build-from-source/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Build ThinkRail from source</span></a></li><li class="astro-rmhv4bp6"><a href="/thinkrail/develop/contribute/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Contribute to ThinkRail</span></a></li></ul></details></li><li class="astro-rmhv4bp6"><details open class="astro-rmhv4bp6"><summary class="astro-rmhv4bp6"><span class="group-label astro-rmhv4bp6"><span class="large astro-rmhv4bp6">About these docs (private)</span></span><svg aria-hidden="true" class="caret astro-rmhv4bp6 astro-hkc32dio" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.25rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg></summary><sl-sidebar-restore data-index="11"></sl-sidebar-restore><ul class="astro-rmhv4bp6"><li class="astro-rmhv4bp6"><a href="/thinkrail/about-these-docs/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">About these docs</span></a></li><li class="astro-rmhv4bp6"><a href="/thinkrail/about-these-docs/information-architecture/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Information architecture</span></a></li><li class="astro-rmhv4bp6"><a href="/thinkrail/about-these-docs/reader-study/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Reader study</span></a></li><li class="astro-rmhv4bp6"><a href="/thinkrail/about-these-docs/docs-automation/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Docs automation</span></a></li><li class="astro-rmhv4bp6"><a href="/thinkrail/about-these-docs/hosting-options/" aria-current="page" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Hosting options</span></a></li><li class="astro-rmhv4bp6"><a href="/thinkrail/about-these-docs/authoring-guide/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Authoring guide</span></a></li><li class="astro-rmhv4bp6"><a href="/thinkrail/about-these-docs/making-docs-agent-friendly/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Making the docs agent-friendly</span></a></li></ul></details></li></ul><script aria-hidden="true">
+		(() => {
+			const scroller = document.getElementById('starlight__sidebar');
+			if (!window._starlightScrollRestore || !scroller) return;
+			scroller.scrollTop = window._starlightScrollRestore;
+			delete window._starlightScrollRestore;
+		})();
+	</script></sl-sidebar-state-persist><div class="md:sl-hidden"><div class="mobile-preferences sl-flex astro-p4azlveh"><div class="social-icons astro-p4azlveh"><a href="https://github.com/JetBrains/thinkrail" rel="me" class="sl-flex astro-n2mnl6yq"><span class="sr-only astro-n2mnl6yq">GitHub</span><svg aria-hidden="true" class="astro-n2mnl6yq astro-hkc32dio" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M12 .3a12 12 0 0 0-3.8 23.38c.6.12.83-.26.83-.57L9 21.07c-3.34.72-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.08-.74.09-.73.09-.73 1.2.09 1.83 1.24 1.83 1.24 1.08 1.83 2.81 1.3 3.5 1 .1-.78.42-1.31.76-1.61-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.14-.3-.54-1.52.1-3.18 0 0 1-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.28-1.55 3.29-1.23 3.29-1.23.64 1.66.24 2.88.12 3.18a4.65 4.65 0 0 1 1.23 3.22c0 4.61-2.8 5.63-5.48 5.92.42.36.81 1.1.81 2.22l-.01 3.29c0 .31.2.69.82.57A12 12 0 0 0 12 .3Z"/></svg></a><a href="https://discord.gg/Wybu9ceWkY" rel="me" class="sl-flex astro-n2mnl6yq"><span class="sr-only astro-n2mnl6yq">Discord</span><svg aria-hidden="true" class="astro-n2mnl6yq astro-hkc32dio" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M20.32 4.37a19.8 19.8 0 0 0-4.93-1.51 13.78 13.78 0 0 0-.64 1.28 18.27 18.27 0 0 0-5.5 0 12.64 12.64 0 0 0-.64-1.28h-.05A19.74 19.74 0 0 0 3.64 4.4 20.26 20.26 0 0 0 .11 18.09l.02.02a19.9 19.9 0 0 0 6.04 3.03l.04-.02a14.24 14.24 0 0 0 1.23-2.03.08.08 0 0 0-.05-.07 13.1 13.1 0 0 1-1.9-.92.08.08 0 0 1 .02-.1 10.2 10.2 0 0 0 .41-.31h.04a14.2 14.2 0 0 0 12.1 0l.04.01a9.63 9.63 0 0 0 .4.32.08.08 0 0 1-.03.1 12.29 12.29 0 0 1-1.9.91.08.08 0 0 0-.02.1 15.97 15.97 0 0 0 1.27 2.01h.04a19.84 19.84 0 0 0 6.03-3.05v-.03a20.12 20.12 0 0 0-3.57-13.69ZM8.02 15.33c-1.18 0-2.16-1.08-2.16-2.42 0-1.33.96-2.42 2.16-2.42 1.21 0 2.18 1.1 2.16 2.42 0 1.34-.96 2.42-2.16 2.42Zm7.97 0c-1.18 0-2.15-1.08-2.15-2.42 0-1.33.95-2.42 2.15-2.42 1.22 0 2.18 1.1 2.16 2.42 0 1.34-.94 2.42-2.16 2.42Z"/></svg></a><a href="https://thinkrail.ai/blog/" rel="me" class="sl-flex astro-n2mnl6yq"><span class="sr-only astro-n2mnl6yq">ThinkRail blog</span><svg aria-hidden="true" class="astro-n2mnl6yq astro-hkc32dio" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M16 14H8a1 1 0 0 0 0 2h8a1 1 0 0 0 0-2m0-4h-6a1 1 0 0 0 0 2h6a1 1 0 0 0 0-2m4-6h-3V3a1 1 0 0 0-2 0v1h-2V3a1 1 0 0 0-2 0v1H9V3a1 1 0 0 0-2 0v1H4a1 1 0 0 0-1 1v14a3 3 0 0 0 3 3h12a3 3 0 0 0 3-3V5a1 1 0 0 0-1-1m-1 15a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V6h2v1a1 1 0 0 0 2 0V6h2v1a1 1 0 0 0 2 0V6h2v1a1 1 0 0 0 2 0V6h2Z"/></svg></a></div><starlight-theme-select><label style="--sl-select-width: 6.25em" class="astro-2z5xp7gb"><span class="sr-only astro-2z5xp7gb">Select theme</span><svg aria-hidden="true" class="icon label-icon astro-2z5xp7gb astro-hkc32dio" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M21 14h-1V7a3 3 0 0 0-3-3H7a3 3 0 0 0-3 3v7H3a1 1 0 0 0-1 1v2a3 3 0 0 0 3 3h14a3 3 0 0 0 3-3v-2a1 1 0 0 0-1-1ZM6 7a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v7H6V7Zm14 10a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-1h16v1Z"/></svg><select autocomplete="off" class="astro-2z5xp7gb"><option value="dark" class="astro-2z5xp7gb">Dark</option><option value="light" class="astro-2z5xp7gb">Light</option><option value="auto" selected class="astro-2z5xp7gb">Auto</option></select><svg aria-hidden="true" class="icon caret astro-2z5xp7gb astro-hkc32dio" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M17 9.17a1 1 0 0 0-1.41 0L12 12.71 8.46 9.17a1 1 0 1 0-1.41 1.42l4.24 4.24a1.002 1.002 0 0 0 1.42 0L17 10.59a1.002 1.002 0 0 0 0-1.42Z"/></svg></label></starlight-theme-select><script>
+	StarlightThemeProvider.updatePickers();
+</script></div></div></div></sl-sidebar-pane></nav><div class="main-frame astro-yntsjkba"><script type="module">var e=document.getElementById(`starlight__sidebar`),t=e?.querySelector(`sl-sidebar-state-persist`),n=`sl-sidebar-state`,r=()=>{let r=[],i=t?.dataset.hash||``;try{let e=sessionStorage.getItem(n),t=JSON.parse(e||`{}`);Array.isArray(t.open)&&t.hash===i&&(r=t.open)}catch{}return{hash:i,open:r,scroll:e?.scrollTop||0}},i=e=>{try{sessionStorage.setItem(n,JSON.stringify(e))}catch{}},a=()=>i(r()),o=(e,t)=>{let n=r();n.open[t]=e,i(n)};t?.addEventListener(`click`,e=>{if(!(e.target instanceof Element))return;let t=e.target.closest(`summary`)?.closest(`details`);if(!t)return;let n=t.querySelector(`sl-sidebar-restore`),r=parseInt(n?.dataset.index||``);isNaN(r)||o(!t.open,r)}),addEventListener(`visibilitychange`,()=>{document.visibilityState===`hidden`&&a()});</script><div class="lg:sl-flex astro-lrzkfocr"><aside class="right-sidebar-container print:hidden astro-lrzkfocr"><div class="right-sidebar astro-lrzkfocr"><div class="lg:sl-hidden astro-qok35upx"><mobile-starlight-toc data-min-h="2" data-max-h="3" class="astro-66cqc7ze"><nav aria-labelledby="starlight__on-this-page--mobile" class="astro-66cqc7ze"><details id="starlight__mobile-toc" class="astro-66cqc7ze"><summary id="starlight__on-this-page--mobile" class="sl-flex astro-66cqc7ze"><span class="toggle sl-flex astro-66cqc7ze">On this page<svg aria-hidden="true" class="caret astro-66cqc7ze astro-hkc32dio" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg></span><span class="display-current astro-66cqc7ze"></span></summary><div class="dropdown astro-66cqc7ze"><ul class="isMobile astro-jugkfwgx" style="--depth: 0;"><li style="--depth: 0;" class="astro-jugkfwgx"><a href="#_top" style="--depth: 0;" class="astro-jugkfwgx"><span style="--depth: 0;" class="astro-jugkfwgx">Overview</span></a></li><li style="--depth: 0;" class="astro-jugkfwgx"><a href="#what-jetbrains-projects-do-today" style="--depth: 0;" class="astro-jugkfwgx"><span style="--depth: 0;" class="astro-jugkfwgx">What JetBrains projects do today</span></a></li><li style="--depth: 0;" class="astro-jugkfwgx"><a href="#writerside-status" style="--depth: 0;" class="astro-jugkfwgx"><span style="--depth: 0;" class="astro-jugkfwgx">Writerside status</span></a></li><li style="--depth: 0;" class="astro-jugkfwgx"><a href="#candidates-compared" style="--depth: 0;" class="astro-jugkfwgx"><span style="--depth: 0;" class="astro-jugkfwgx">Candidates compared</span></a></li><li style="--depth: 0;" class="astro-jugkfwgx"><a href="#three-hosting-options" style="--depth: 0;" class="astro-jugkfwgx"><span style="--depth: 0;" class="astro-jugkfwgx">Three hosting options</span></a><ul class="isMobile astro-jugkfwgx" style="--depth: 1;"><li style="--depth: 1;" class="astro-jugkfwgx"><a href="#option-a-starlight-at-thinkrailaidocs" style="--depth: 1;" class="astro-jugkfwgx"><span style="--depth: 1;" class="astro-jugkfwgx">Option A: Starlight at thinkrail.ai/docs</span></a></li><li style="--depth: 1;" class="astro-jugkfwgx"><a href="#option-b-github-pages" style="--depth: 1;" class="astro-jugkfwgx"><span style="--depth: 1;" class="astro-jugkfwgx">Option B: GitHub Pages</span></a></li><li style="--depth: 1;" class="astro-jugkfwgx"><a href="#option-c-docsthinkrailai-on-its-own-cloudflare-pages-project" style="--depth: 1;" class="astro-jugkfwgx"><span style="--depth: 1;" class="astro-jugkfwgx">Option C: docs.thinkrail.ai on its own Cloudflare Pages project</span></a></li></ul></li><li style="--depth: 0;" class="astro-jugkfwgx"><a href="#what-the-preview-demonstrates" style="--depth: 0;" class="astro-jugkfwgx"><span style="--depth: 0;" class="astro-jugkfwgx">What the preview demonstrates</span></a></li><li style="--depth: 0;" class="astro-jugkfwgx"><a href="#open-questions-for-maintainers" style="--depth: 0;" class="astro-jugkfwgx"><span style="--depth: 0;" class="astro-jugkfwgx">Open questions for maintainers</span></a></li></ul></div></details></nav></mobile-starlight-toc><script type="module" src="/thinkrail/_astro/MobileTableOfContents.astro_astro_type_script_index_0_lang.C3fM4Kra.js"></script></div><div class="right-sidebar-panel sl-hidden lg:sl-block astro-qok35upx"><div class="sl-container astro-qok35upx"><starlight-toc data-min-h="2" data-max-h="3"><nav aria-labelledby="starlight__on-this-page"><h2 id="starlight__on-this-page">On this page</h2><ul class="astro-jugkfwgx" style="--depth: 0;"><li style="--depth: 0;" class="astro-jugkfwgx"><a href="#_top" style="--depth: 0;" class="astro-jugkfwgx"><span style="--depth: 0;" class="astro-jugkfwgx">Overview</span></a></li><li style="--depth: 0;" class="astro-jugkfwgx"><a href="#what-jetbrains-projects-do-today" style="--depth: 0;" class="astro-jugkfwgx"><span style="--depth: 0;" class="astro-jugkfwgx">What JetBrains projects do today</span></a></li><li style="--depth: 0;" class="astro-jugkfwgx"><a href="#writerside-status" style="--depth: 0;" class="astro-jugkfwgx"><span style="--depth: 0;" class="astro-jugkfwgx">Writerside status</span></a></li><li style="--depth: 0;" class="astro-jugkfwgx"><a href="#candidates-compared" style="--depth: 0;" class="astro-jugkfwgx"><span style="--depth: 0;" class="astro-jugkfwgx">Candidates compared</span></a></li><li style="--depth: 0;" class="astro-jugkfwgx"><a href="#three-hosting-options" style="--depth: 0;" class="astro-jugkfwgx"><span style="--depth: 0;" class="astro-jugkfwgx">Three hosting options</span></a><ul class="astro-jugkfwgx" style="--depth: 1;"><li style="--depth: 1;" class="astro-jugkfwgx"><a href="#option-a-starlight-at-thinkrailaidocs" style="--depth: 1;" class="astro-jugkfwgx"><span style="--depth: 1;" class="astro-jugkfwgx">Option A: Starlight at thinkrail.ai/docs</span></a></li><li style="--depth: 1;" class="astro-jugkfwgx"><a href="#option-b-github-pages" style="--depth: 1;" class="astro-jugkfwgx"><span style="--depth: 1;" class="astro-jugkfwgx">Option B: GitHub Pages</span></a></li><li style="--depth: 1;" class="astro-jugkfwgx"><a href="#option-c-docsthinkrailai-on-its-own-cloudflare-pages-project" style="--depth: 1;" class="astro-jugkfwgx"><span style="--depth: 1;" class="astro-jugkfwgx">Option C: docs.thinkrail.ai on its own Cloudflare Pages project</span></a></li></ul></li><li style="--depth: 0;" class="astro-jugkfwgx"><a href="#what-the-preview-demonstrates" style="--depth: 0;" class="astro-jugkfwgx"><span style="--depth: 0;" class="astro-jugkfwgx">What the preview demonstrates</span></a></li><li style="--depth: 0;" class="astro-jugkfwgx"><a href="#open-questions-for-maintainers" style="--depth: 0;" class="astro-jugkfwgx"><span style="--depth: 0;" class="astro-jugkfwgx">Open questions for maintainers</span></a></li></ul></nav></starlight-toc><script type="module" src="/thinkrail/_astro/TableOfContents.astro_astro_type_script_index_0_lang.BpJaGz7G.js"></script></div></div></div></aside><div class="main-pane astro-lrzkfocr"><main data-pagefind-body class="astro-g5ptsecz" lang="en" dir="ltr"><div class="draft-notice" data-pagefind-ignore role="note"><span class="draft-notice__dot" aria-hidden="true"></span>Draft documentation preview — not official</div><div class="content-panel astro-a7po4psb"><div class="sl-container astro-a7po4psb"><div class="page-meta" data-pagefind-ignore><span class="badge badge--type badge--explanation">Explanation</span><span class="badge badge--status badge--draft">Draft</span></div><h1 id="_top">Hosting options</h1></div></div><div class="content-panel astro-a7po4psb"><div class="sl-container astro-a7po4psb"><div class="sl-markdown-content"><p>The content in <code dir="auto">docs/</code> is platform-neutral, so the choice of tool and host is still open. This page frames that decision for the maintainers: what comparable projects do, how the candidate tools differ, and three concrete hosting setups.</p>
+<p>Research for this page was done on 2026-10-18. Versions and plan terms come from package registries and vendor pages on that date and will drift.</p>
+<div class="sl-heading-wrapper level-h2"><h2 id="what-jetbrains-projects-do-today">What JetBrains projects do today</h2><a class="sl-anchor-link" href="#what-jetbrains-projects-do-today"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore="">Section titled “What JetBrains projects do today”</span></a></div>
+<p>The table lists a sample of JetBrains and JetBrains-backed projects and how they publish docs. It is not exhaustive.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Project</th><th>Docs site</th><th>Tool</th><th>Host</th></tr></thead><tbody><tr><td>Koog</td><td><a href="https://docs.koog.ai">docs.koog.ai</a></td><td>MkDocs Material, <code dir="auto">mkdocs-llmstxt</code></td><td>GitHub Pages, custom domain</td></tr><tr><td>Tracy</td><td><a href="https://jetbrains.github.io/tracy/latest/">jetbrains.github.io/tracy</a></td><td>MkDocs Material, <code dir="auto">mike</code> versioning</td><td>GitHub Pages</td></tr><tr><td>Hexana</td><td><a href="https://jetbrains.github.io/hexana/">jetbrains.github.io/hexana</a></td><td>MkDocs Material</td><td>GitHub Pages</td></tr><tr><td>Kotlin Toolchain (ex-Amper)</td><td><a href="https://kotlin-toolchain.org/latest/">kotlin-toolchain.org</a></td><td>MkDocs Material, <code dir="auto">mike</code></td><td>GitHub Pages, own domain</td></tr><tr><td>Roer (agent workspace)</td><td><a href="https://jetbrains.github.io/roer/">jetbrains.github.io/roer</a></td><td>Plain Markdown in <code dir="auto">docs/</code>, custom landing page script</td><td>GitHub Pages</td></tr><tr><td>Kotlin DataFrame</td><td><a href="https://kotlin.github.io/dataframe/home.html">kotlin.github.io/dataframe</a></td><td>Writerside</td><td>GitHub Pages</td></tr><tr><td>Kandy</td><td><a href="https://kotlin.github.io/kandy/">kotlin.github.io/kandy</a></td><td>Writerside</td><td>GitHub Pages</td></tr><tr><td>kotlinx.rpc</td><td><a href="https://kotlin.github.io/kotlinx-rpc/">kotlin.github.io/kotlinx-rpc</a></td><td>Writerside</td><td>GitHub Pages</td></tr><tr><td>Exposed</td><td><a href="https://www.jetbrains.com/help/exposed/">jetbrains.com/help/exposed</a></td><td>Writerside</td><td>JetBrains help portal</td></tr><tr><td>Ktor</td><td><a href="https://ktor.io/docs/">ktor.io/docs</a></td><td>Writerside</td><td>Own domain, S3 and CloudFront</td></tr><tr><td>Junie</td><td><a href="https://junie.jetbrains.com/docs/">junie.jetbrains.com/docs</a></td><td>Writerside</td><td>Own domain</td></tr><tr><td>Agent Client Protocol (with Zed)</td><td><a href="https://agentclientprotocol.com">agentclientprotocol.com</a></td><td>Mintlify</td><td>Vercel</td></tr><tr><td>IdeGYM (JetBrains Research)</td><td><a href="https://jetbrains-research.github.io/idegym/">jetbrains-research.github.io/idegym</a></td><td>Docusaurus</td><td>GitHub Pages</td></tr></tbody></table>
+<p>In nearly every case the docs live in the same repository as the code. GitHub Pages is the default host, both on <code dir="auto">github.io</code> subpaths and on custom domains such as Koog’s.</p>
+<p>MkDocs Material on GitHub Pages is the common choice for newer, AI-era projects (Koog, Tracy, Hexana, Kotlin Toolchain). Writerside dominates the Kotlin ecosystem and the IDE help portal. The sample contains no project on Starlight or VitePress, and Docusaurus and Mintlify each appear once. Roer, the closest peer to ThinkRail, publishes plain Markdown. Of these, only Koog and Hexana serve an <code dir="auto">llms.txt</code>, and Koog pairs it with a custom domain.</p>
+<div class="sl-heading-wrapper level-h2"><h2 id="writerside-status">Writerside status</h2><a class="sl-anchor-link" href="#writerside-status"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore="">Section titled “Writerside status”</span></a></div>
+<p>JetBrains announced in March 2025 that it was <a href="https://platform.jetbrains.com/t/sunsetting-writerside-ide/874">sunsetting the standalone Writerside IDE</a> because the market was too small to sustain it (<a href="https://blog.jetbrains.com/writerside/2025/03/sunsetting-writerside-ide/">blog announcement</a>). The plugin stays free on JetBrains Marketplace, with updates and fixes promised for the foreseeable future because JetBrains technical writers use it internally.</p>
+<p>Development continues. The <a href="https://www.jetbrains.com/help/writerside/8530.html">plugin help</a> lists a 2026 build, there is a <a href="https://www.jetbrains.com/help/writerside/generate-llms-txt.html">llms.txt generator</a>, and a <a href="https://www.jetbrains.com/help/writerside/deploy-docs-to-github-pages.html">Docker and GitHub Action builder</a> is current. No replacement has been announced.</p>
+<p>For ThinkRail the weak points are practical: authoring needs the IntelliJ plugin and a Writerside-specific project layout, the Markdown dialect does not port, theming cannot match the website, and the output is a prebuilt static folder that cannot join the Astro build. Its one unique advantage is publishing under <code dir="auto">jetbrains.com/help/</code>, which needs the JetBrains docs team and was not confirmed.</p>
+<aside aria-label="Warning" class="starlight-aside starlight-aside--caution"><p class="starlight-aside__title" aria-hidden="true"><svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" class="starlight-aside__icon"><path d="M12 16a1 1 0 1 0 0 2 1 1 0 0 0 0-2Zm10.67 1.47-8.05-14a3 3 0 0 0-5.24 0l-8 14A3 3 0 0 0 3.94 22h16.12a3 3 0 0 0 2.61-4.53Zm-1.73 2a1 1 0 0 1-.88.51H3.94a1 1 0 0 1-.88-.51 1 1 0 0 1 0-1l8-14a1 1 0 0 1 1.78 0l8.05 14a1 1 0 0 1 .05 1.02v-.02ZM12 8a1 1 0 0 0-1 1v4a1 1 0 0 0 2 0V9a1 1 0 0 0-1-1Z"></path></svg>Warning</p><div class="starlight-aside__content"><p>The blog announcement returned HTTP 403 during research. Its details come from the forum post and a search snippet.</p></div></aside>
+<div class="sl-heading-wrapper level-h2"><h2 id="candidates-compared">Candidates compared</h2><a class="sl-anchor-link" href="#candidates-compared"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore="">Section titled “Candidates compared”</span></a></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th></th><th>Starlight</th><th>Docusaurus</th><th>VitePress</th><th>MkDocs Material / Zensical</th><th>Writerside</th><th>GitBook</th><th>Mintlify</th></tr></thead><tbody><tr><td>Fit with the Astro site</td><td>Native integration</td><td>Second React app</td><td>Second Vue app</td><td>Second Python build</td><td>Prebuilt folder</td><td>Hosted, CNAME</td><td>Hosted, CNAME</td></tr><tr><td>Markdown portability</td><td>High</td><td>MDX, <code dir="auto">:::</code></td><td>Vue extensions</td><td>Python-Markdown</td><td>Own dialect</td><td>Git Sync</td><td>Proprietary MDX</td></tr><tr><td>Theming freedom</td><td>High</td><td>Very high</td><td>High</td><td>Medium</td><td>Low</td><td>Low</td><td>Low</td></tr><tr><td>Search</td><td>Pagefind, built in</td><td>Algolia</td><td>Local, built in</td><td>Built in</td><td>Built in</td><td>Built in</td><td>Built in</td></tr><tr><td>Versioning</td><td>Community plugin</td><td>Built in</td><td>None</td><td><code dir="auto">mike</code></td><td>Supported</td><td>Variants</td><td>Supported</td></tr><tr><td>llms.txt / AI output</td><td>Community plugin</td><td>Community</td><td>Community</td><td><code dir="auto">mkdocs-llmstxt</code></td><td>Built in</td><td>Built in</td><td>Built in</td></tr><tr><td>Maintenance health</td><td>Active, pre-1.0</td><td>Active, v4 in canary</td><td>Stable line stale</td><td>Material in maintenance mode</td><td>Plugin only</td><td>Vendor</td><td>Vendor</td></tr><tr><td>Cost</td><td>$0</td><td>$0</td><td>$0</td><td>$0</td><td>$0</td><td>Free tier unlikely to apply</td><td>Free tier limited</td></tr></tbody></table>
+<p>Notes that the cells cannot carry:</p>
+<ul>
+<li><strong>Starlight</strong> is pre-1.0, so Astro and Starlight bumps are coupled. <code dir="auto">@astrojs/starlight</code> 0.42 needs Astro 7.2.10 or newer.</li>
+<li><strong>MkDocs Material</strong> accepts only critical fixes until 2027-05-05. Its successor, <a href="https://squidfunk.github.io/mkdocs-material/blog/2025/11/05/zensical/">Zensical</a>, reads <code dir="auto">mkdocs.yml</code> but is pre-0.1 and lacks plugin parity. A new site on Material carries a migration within about six months.</li>
+<li><strong>VitePress</strong> has a stable line last released in August 2025, and the website spec already rejects it as a Vue stack.</li>
+<li><strong>Docusaurus</strong> is the safest large ecosystem and has built-in versioning, but it brings a second toolchain beside Astro.</li>
+<li><strong>Mintlify</strong> is ruled out: customization is limited, and white-labeling is an Enterprise feature.</li>
+<li><strong>GitBook</strong> has a <a href="https://gitbook.com/docs/account-and-billing/plans/community">Community plan</a> whose open-source rules exclude projects tied to a for-profit or venture-backed company, so a JetBrains project likely does not qualify.</li>
+</ul>
+<div class="sl-heading-wrapper level-h2"><h2 id="three-hosting-options">Three hosting options</h2><a class="sl-anchor-link" href="#three-hosting-options"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore="">Section titled “Three hosting options”</span></a></div>
+<div class="sl-heading-wrapper level-h3"><h3 id="option-a-starlight-at-thinkrailaidocs">Option A: Starlight at thinkrail.ai/docs</h3><a class="sl-anchor-link" href="#option-a-starlight-at-thinkrailaidocs"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore="">Section titled “Option A: Starlight at thinkrail.ai/docs”</span></a></div>
+<aside aria-label="Tip" class="starlight-aside starlight-aside--tip"><p class="starlight-aside__title" aria-hidden="true"><svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" class="starlight-aside__icon"><path fill-rule="evenodd" d="M1.44 8.855v-.001l3.527-3.516c.34-.344.802-.541 1.285-.548h6.649l.947-.947c3.07-3.07 6.207-3.072 7.62-2.868a1.821 1.821 0 0 1 1.557 1.557c.204 1.413.203 4.55-2.868 7.62l-.946.946v6.649a1.845 1.845 0 0 1-.549 1.286l-3.516 3.528a1.844 1.844 0 0 1-3.11-.944l-.858-4.275-4.52-4.52-2.31-.463-1.964-.394A1.847 1.847 0 0 1 .98 10.693a1.843 1.843 0 0 1 .46-1.838Zm5.379 2.017-3.873-.776L6.32 6.733h4.638l-4.14 4.14Zm8.403-5.655c2.459-2.46 4.856-2.463 5.89-2.33.134 1.035.13 3.432-2.329 5.891l-6.71 6.71-3.561-3.56 6.71-6.711Zm-1.318 15.837-.776-3.873 4.14-4.14v4.639l-3.364 3.374Z" clip-rule="evenodd"></path><path d="M9.318 18.345a.972.972 0 0 0-1.86-.561c-.482 1.435-1.687 2.204-2.934 2.619a8.22 8.22 0 0 1-1.23.302c.062-.365.157-.79.303-1.229.415-1.247 1.184-2.452 2.62-2.935a.971.971 0 1 0-.62-1.842c-.12.04-.236.084-.35.13-2.02.828-3.012 2.588-3.493 4.033a10.383 10.383 0 0 0-.51 2.845l-.001.016v.063c0 .536.434.972.97.972H2.24a7.21 7.21 0 0 0 .878-.065c.527-.063 1.248-.19 2.02-.447 1.445-.48 3.205-1.472 4.033-3.494a5.828 5.828 0 0 0 .147-.407Z"></path></svg>Tip</p><div class="starlight-aside__content"><p>Recommended. It is the fastest and most integrated route, and the Markdown moves unchanged to option C later.</p></div></aside>
+<p><strong>How it works.</strong> Add <a href="https://starlight.astro.build/">Starlight</a> to <code dir="auto">apps/website</code>, build the docs in the same Astro build, and ship them in the existing Cloudflare Pages deploy under <code dir="auto">/docs/</code>.</p>
+<p><strong>Pros</strong></p>
+<ul>
+<li>One domain, so search ranking, analytics, and navigation are shared with the marketing site.</li>
+<li>Pagefind search needs no external service.</li>
+<li>The existing PR preview workflow covers docs automatically.</li>
+<li>Starlight can be themed from the site’s palette tokens.</li>
+<li>Contributors edit plain Markdown in the same PR as the code.</li>
+</ul>
+<p><strong>Costs and risks</strong></p>
+<ul>
+<li>Starlight is pre-1.0 and breaking minors are common.</li>
+<li>Docs deploy only with the website, so a docs fix redeploys the whole site, including the D1 migration step.</li>
+<li>Versioned docs rely on a community plugin.</li>
+<li>Compatibility with the site’s Sätteri Markdown pipeline and sitemap setup has not been tested.</li>
+</ul>
+<p><strong>Work needed</strong></p>
+<ul>
+<li>Bump <code dir="auto">astro</code> from 7.2.8 to 7.2.10 or newer, and <code dir="auto">@astrojs/markdown-satteri</code> from 0.3.7 to 0.4.0 or newer. The alternative is pinning Starlight 0.41.x.</li>
+<li>Amend <code dir="auto">apps/website/SPEC.md</code>, which pins “no React, no Tailwind” for landing and blog, and the island-count constraints in <code dir="auto">validateBuild.ts</code>.</li>
+<li>Add the docs paths to the <code dir="auto">site.yml</code> workflow trigger.</li>
+<li>Wire PostHog and the sitemap filter into Starlight’s head overrides.</li>
+<li>Add community plugins for <code dir="auto">llms.txt</code>, Mermaid, and link validation.</li>
+</ul>
+<div class="sl-heading-wrapper level-h3"><h3 id="option-b-github-pages">Option B: GitHub Pages</h3><a class="sl-anchor-link" href="#option-b-github-pages"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore="">Section titled “Option B: GitHub Pages”</span></a></div>
+<p><strong>How it works.</strong> A GitHub Actions workflow builds the docs and deploys them to <code dir="auto">jetbrains.github.io/thinkrail</code>, or to a custom domain through a CNAME as Koog does. The tool can be MkDocs Material, Starlight, or Docusaurus.</p>
+<p><strong>Pros</strong></p>
+<ul>
+<li>It matches the convention of other JetBrains open-source repositories, and a <code dir="auto">github.io</code> URL signals an official project.</li>
+<li>No change to the website, its spec, or its Cloudflare deploy.</li>
+<li>Free, with independent release timing.</li>
+</ul>
+<p><strong>Costs and risks</strong></p>
+<ul>
+<li>A JetBrains org admin must enable Pages. The Pages API returns 404 for the repository today, and Roer’s workflow notes org-private Pages visibility.</li>
+<li>The docs are on a separate origin, so analytics and look and feel can drift from the website.</li>
+<li>A subpath deploy needs a base-path setting.</li>
+<li>Choosing MkDocs Material means planning the Zensical migration up front.</li>
+<li>No PR preview URLs without extra setup.</li>
+</ul>
+<p><strong>Work needed</strong></p>
+<ul>
+<li>A docs build configuration, a Pages workflow, and an org-level Pages decision.</li>
+</ul>
+<div class="sl-heading-wrapper level-h3"><h3 id="option-c-docsthinkrailai-on-its-own-cloudflare-pages-project">Option C: docs.thinkrail.ai on its own Cloudflare Pages project</h3><a class="sl-anchor-link" href="#option-c-docsthinkrailai-on-its-own-cloudflare-pages-project"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore="">Section titled “Option C: docs.thinkrail.ai on its own Cloudflare Pages project”</span></a></div>
+<p><strong>How it works.</strong> A standalone docs project, for example <code dir="auto">apps/docs</code>, deploys to its own Cloudflare Pages project with <code dir="auto">docs.thinkrail.ai</code> as a custom domain.</p>
+<p><strong>Pros</strong></p>
+<ul>
+<li>Independent deploy cadence and dependencies, with no coupling to the website’s Astro version, D1 step, or spec.</li>
+<li>Free choice of tool, including Docusaurus versioning.</li>
+</ul>
+<p><strong>Costs and risks</strong></p>
+<ul>
+<li>Two sites to theme and keep consistent, with a second <code dir="auto">package.json</code>, deploy workflow, and preview setup.</li>
+<li>A subdomain splits search authority from <code dir="auto">thinkrail.ai</code>.</li>
+<li>Cross-site navigation needs a shared header.</li>
+</ul>
+<p><strong>Work needed</strong></p>
+<ul>
+<li>A new workspace package, a Cloudflare project, DNS for the subdomain, and a deploy workflow.</li>
+</ul>
+<div class="sl-heading-wrapper level-h2"><h2 id="what-the-preview-demonstrates">What the preview demonstrates</h2><a class="sl-anchor-link" href="#what-the-preview-demonstrates"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore="">Section titled “What the preview demonstrates”</span></a></div>
+<p>The Starlight proof of concept in <a href="https://github.com/HadesArchitect/thinkrail/blob/claude/thinkrail-docs-draft-39556b/docs-site/README.md"><code dir="auto">docs-site/</code></a> renders <code dir="auto">docs/</code> unchanged. A content loader reads the folder, the sidebar is generated from <a href="https://github.com/HadesArchitect/thinkrail/blob/claude/thinkrail-docs-draft-39556b/docs/navigation.yml"><code dir="auto">navigation.yml</code></a>, and three small plugins handle relative <code dir="auto">.md</code> links, GitHub alerts, and Mermaid blocks.</p>
+<p>Because the pages need no per-page edits, option A or C is a short step from the preview. Switching to another tool means re-implementing roughly three small transforms plus a mapping from <code dir="auto">navigation.yml</code> to that tool’s sidebar format.</p>
+<div class="sl-heading-wrapper level-h2"><h2 id="open-questions-for-maintainers">Open questions for maintainers</h2><a class="sl-anchor-link" href="#open-questions-for-maintainers"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore="">Section titled “Open questions for maintainers”</span></a></div>
+<ul>
+<li><strong>Domain.</strong> Is <code dir="auto">thinkrail.ai/docs</code>, <code dir="auto">docs.thinkrail.ai</code>, or a <code dir="auto">jetbrains.github.io</code> URL the right public address? Is the JetBrains help portal on the table?</li>
+<li><strong>Review ownership.</strong> Who reviews docs changes, and do they ship with feature PRs?</li>
+<li><strong>Versioning.</strong> Do you need versioned docs at launch, or can one “latest” version serve until the nightly line stabilizes?</li>
+<li><strong>Search.</strong> Is built-in Pagefind enough, or do you want Algolia?</li>
+<li><strong>Analytics.</strong> How should docs analytics follow the website’s consent policy?</li>
+<li><strong>AI output.</strong> Should the site publish <code dir="auto">llms.txt</code> and per-page Markdown?</li>
+<li><strong>Pages access.</strong> If option B, who can enable GitHub Pages for the repository?</li>
+</ul></div><footer class="sl-flex astro-ddtxxk7k"><div class="meta sl-flex astro-ddtxxk7k"><a href="https://github.com/HadesArchitect/thinkrail/edit/claude/thinkrail-docs-draft-39556b/docs/about-these-docs/hosting-options.md" class="sl-flex print:hidden astro-qlekgd3o"><svg aria-hidden="true" class="astro-qlekgd3o astro-hkc32dio" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.2em;"><path d="M22 7.24a1 1 0 0 0-.29-.71l-4.24-4.24a1 1 0 0 0-1.1-.22 1 1 0 0 0-.32.22l-2.83 2.83L2.29 16.05a1 1 0 0 0-.29.71V21a1 1 0 0 0 1 1h4.24a1 1 0 0 0 .76-.29l10.87-10.93L21.71 8c.1-.1.17-.2.22-.33a1 1 0 0 0 0-.24v-.14l.07-.05ZM6.83 20H4v-2.83l9.93-9.93 2.83 2.83L6.83 20ZM18.17 8.66l-2.83-2.83 1.42-1.41 2.82 2.82-1.41 1.42Z"/></svg>Edit page</a></div><div class="pagination-links print:hidden astro-b5raizh3" dir="ltr"><a href="/thinkrail/about-these-docs/docs-automation/" rel="prev" class="astro-b5raizh3"><svg aria-hidden="true" class="astro-b5raizh3 astro-hkc32dio" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.5rem;"><path d="M17 11H9.41l3.3-3.29a1.004 1.004 0 1 0-1.42-1.42l-5 5a1 1 0 0 0-.21.33 1 1 0 0 0 0 .76 1 1 0 0 0 .21.33l5 5a1.002 1.002 0 0 0 1.639-.325 1 1 0 0 0-.219-1.095L9.41 13H17a1 1 0 0 0 0-2Z"/></svg><span class="astro-b5raizh3">Previous<br class="astro-b5raizh3"><span class="link-title astro-b5raizh3">Docs automation</span></span></a><a href="/thinkrail/about-these-docs/authoring-guide/" rel="next" class="astro-b5raizh3"><svg aria-hidden="true" class="astro-b5raizh3 astro-hkc32dio" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.5rem;"><path d="M17.92 11.62a1.001 1.001 0 0 0-.21-.33l-5-5a1.003 1.003 0 1 0-1.42 1.42l3.3 3.29H7a1 1 0 0 0 0 2h7.59l-3.3 3.29a1.002 1.002 0 0 0 .325 1.639 1 1 0 0 0 1.095-.219l5-5a1 1 0 0 0 .21-.33 1 1 0 0 0 0-.76Z"/></svg><span class="astro-b5raizh3">Next<br class="astro-b5raizh3"><span class="link-title astro-b5raizh3">Authoring guide</span></span></a></div></footer><script type="module" src="/thinkrail/_astro/Footer.astro_astro_type_script_index_0_lang.G9f2iu_h.js"></script></div></div></main></div></div></div></div></body></html>

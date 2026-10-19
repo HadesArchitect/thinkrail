@@ -1,0 +1,1384 @@
+<!DOCTYPE html><html lang="en" dir="ltr" data-theme="dark" data-has-toc data-has-sidebar class="astro-g5ptsecz"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><title>Tools the agent can call | ThinkRail Docs</title><link rel="shortcut icon" href="/thinkrail/favicon.svg" type="image/svg+xml"/><meta name="generator" content="Astro v7.4.0"/><meta name="generator" content="Starlight v0.42.6"/><meta property="og:title" content="Tools the agent can call"/><meta property="og:type" content="article"/><meta property="og:locale" content="en"/><meta property="og:description" content="Every tool ThinkRail adds to a pi session, with parameters, behavior, and the packages that provide them."/><meta property="og:site_name" content="ThinkRail Docs"/><meta name="twitter:card" content="summary_large_image"/><meta name="description" content="Every tool ThinkRail adds to a pi session, with parameters, behavior, and the packages that provide them."/><meta name="robots" content="noindex, nofollow"/><script>
+	window.StarlightThemeProvider = (() => {
+		const storedTheme =
+			typeof localStorage !== 'undefined' && localStorage.getItem('starlight-theme');
+		const theme =
+			storedTheme ||
+			(window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+		document.documentElement.dataset.theme = theme === 'light' ? 'light' : 'dark';
+		return {
+			updatePickers(theme = storedTheme || 'auto') {
+				document.querySelectorAll('starlight-theme-select').forEach((picker) => {
+					const select = picker.querySelector('select');
+					if (select) select.value = theme;
+					/** @type {HTMLTemplateElement | null} */
+					const tmpl = document.querySelector(`#theme-icons`);
+					const newIcon = tmpl && tmpl.content.querySelector('.' + theme);
+					if (newIcon) {
+						const oldIcon = picker.querySelector('svg.label-icon');
+						if (oldIcon) {
+							oldIcon.replaceChildren(...newIcon.cloneNode(true).childNodes);
+						}
+					}
+				});
+			},
+		};
+	})();
+</script><template id="theme-icons"><svg aria-hidden="true" class="light astro-hkc32dio" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M5 12a1 1 0 0 0-1-1H3a1 1 0 0 0 0 2h1a1 1 0 0 0 1-1Zm.64 5-.71.71a1 1 0 0 0 0 1.41 1 1 0 0 0 1.41 0l.71-.71A1 1 0 0 0 5.64 17ZM12 5a1 1 0 0 0 1-1V3a1 1 0 0 0-2 0v1a1 1 0 0 0 1 1Zm5.66 2.34a1 1 0 0 0 .7-.29l.71-.71a1 1 0 1 0-1.41-1.41l-.66.71a1 1 0 0 0 0 1.41 1 1 0 0 0 .66.29Zm-12-.29a1 1 0 0 0 1.41 0 1 1 0 0 0 0-1.41l-.71-.71a1.004 1.004 0 1 0-1.43 1.41l.73.71ZM21 11h-1a1 1 0 0 0 0 2h1a1 1 0 0 0 0-2Zm-2.64 6A1 1 0 0 0 17 18.36l.71.71a1 1 0 0 0 1.41 0 1 1 0 0 0 0-1.41l-.76-.66ZM12 6.5a5.5 5.5 0 1 0 5.5 5.5A5.51 5.51 0 0 0 12 6.5Zm0 9a3.5 3.5 0 1 1 0-7 3.5 3.5 0 0 1 0 7Zm0 3.5a1 1 0 0 0-1 1v1a1 1 0 0 0 2 0v-1a1 1 0 0 0-1-1Z"/></svg><svg aria-hidden="true" class="dark astro-hkc32dio" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M21.64 13a1 1 0 0 0-1.05-.14 8.049 8.049 0 0 1-3.37.73 8.15 8.15 0 0 1-8.14-8.1 8.59 8.59 0 0 1 .25-2A1 1 0 0 0 8 2.36a10.14 10.14 0 1 0 14 11.69 1 1 0 0 0-.36-1.05Zm-9.5 6.69A8.14 8.14 0 0 1 7.08 5.22v.27a10.15 10.15 0 0 0 10.14 10.14 9.784 9.784 0 0 0 2.1-.22 8.11 8.11 0 0 1-7.18 4.32v-.04Z"/></svg><svg aria-hidden="true" class="auto astro-hkc32dio" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M21 14h-1V7a3 3 0 0 0-3-3H7a3 3 0 0 0-3 3v7H3a1 1 0 0 0-1 1v2a3 3 0 0 0 3 3h14a3 3 0 0 0 3-3v-2a1 1 0 0 0-1-1ZM6 7a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v7H6V7Zm14 10a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-1h16v1Z"/></svg></template><link rel="stylesheet" href="/thinkrail/_astro/print.ehPL0gv-.css" media="print"><link rel="stylesheet" href="/thinkrail/_astro/common.DwVthD0l.css"><script type="module" src="/thinkrail/_astro/page.cNngjUgL.js"></script></head><body class="astro-g5ptsecz"><a class="sl-skip-link astro-qb7clj6f" href="#_top">Skip to content</a><div class="page sl-flex astro-yntsjkba"><header class="header astro-yntsjkba"><div class="header astro-by6fddyj"><div class="title-wrapper sl-flex astro-by6fddyj"><a href="/thinkrail/" class="site-title sl-flex astro-6rvad3va"><img class="astro-6rvad3va" alt="ThinkRail" src="/thinkrail/_astro/logo-mark.D_5aK2o8.svg" width="512" height="512"><span class="astro-6rvad3va" translate="no">ThinkRail Docs</span></a></div><div class="sl-flex print:hidden astro-by6fddyj"><site-search class="astro-by6fddyj astro-b5kgnn7o" data-translations="{&quot;placeholder&quot;:&quot;Search&quot;}"><button data-open-modal disabled aria-label="Search" aria-keyshortcuts="Control+K" class="astro-b5kgnn7o"><svg aria-hidden="true" class="astro-b5kgnn7o astro-hkc32dio" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M21.71 20.29 18 16.61A9 9 0 1 0 16.61 18l3.68 3.68a.999.999 0 0 0 1.42 0 1 1 0 0 0 0-1.39ZM11 18a7 7 0 1 1 0-14 7 7 0 0 1 0 14Z"/></svg><span class="sl-hidden md:sl-block astro-b5kgnn7o" aria-hidden="true">Search</span><kbd class="sl-hidden md:sl-flex astro-b5kgnn7o" style="display: none;"><kbd class="astro-b5kgnn7o">Ctrl</kbd><kbd class="astro-b5kgnn7o">K</kbd></kbd></button><dialog style="padding:0" aria-label="Search" class="astro-b5kgnn7o"><div class="dialog-frame sl-flex astro-b5kgnn7o"><button data-close-modal class="sl-flex md:sl-hidden astro-b5kgnn7o">Cancel</button><div class="search-container astro-b5kgnn7o"><div id="starlight__search" class="astro-b5kgnn7o"></div></div></div></dialog></site-search><script>
+	(() => {
+		const openBtn = document.querySelector('button[data-open-modal]');
+		const shortcut = openBtn?.querySelector('kbd');
+		if (!openBtn || !(shortcut instanceof HTMLElement)) return;
+		const platformKey = shortcut.querySelector('kbd');
+		if (platformKey && /(Mac|iPhone|iPod|iPad)/i.test(navigator.platform)) {
+			platformKey.textContent = '⌘';
+			openBtn.setAttribute('aria-keyshortcuts', 'Meta+K');
+		}
+		shortcut.style.display = '';
+	})();
+</script><script type="module" src="/thinkrail/_astro/Search.astro_astro_type_script_index_0_lang.BCOo1ecf.js"></script></div><div class="sl-hidden md:sl-flex print:hidden right-group astro-by6fddyj"><div class="sl-flex social-icons astro-by6fddyj"><a href="https://github.com/JetBrains/thinkrail" rel="me" class="sl-flex astro-n2mnl6yq"><span class="sr-only astro-n2mnl6yq">GitHub</span><svg aria-hidden="true" class="astro-n2mnl6yq astro-hkc32dio" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M12 .3a12 12 0 0 0-3.8 23.38c.6.12.83-.26.83-.57L9 21.07c-3.34.72-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.08-.74.09-.73.09-.73 1.2.09 1.83 1.24 1.83 1.24 1.08 1.83 2.81 1.3 3.5 1 .1-.78.42-1.31.76-1.61-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.14-.3-.54-1.52.1-3.18 0 0 1-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.28-1.55 3.29-1.23 3.29-1.23.64 1.66.24 2.88.12 3.18a4.65 4.65 0 0 1 1.23 3.22c0 4.61-2.8 5.63-5.48 5.92.42.36.81 1.1.81 2.22l-.01 3.29c0 .31.2.69.82.57A12 12 0 0 0 12 .3Z"/></svg></a><a href="https://discord.gg/Wybu9ceWkY" rel="me" class="sl-flex astro-n2mnl6yq"><span class="sr-only astro-n2mnl6yq">Discord</span><svg aria-hidden="true" class="astro-n2mnl6yq astro-hkc32dio" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M20.32 4.37a19.8 19.8 0 0 0-4.93-1.51 13.78 13.78 0 0 0-.64 1.28 18.27 18.27 0 0 0-5.5 0 12.64 12.64 0 0 0-.64-1.28h-.05A19.74 19.74 0 0 0 3.64 4.4 20.26 20.26 0 0 0 .11 18.09l.02.02a19.9 19.9 0 0 0 6.04 3.03l.04-.02a14.24 14.24 0 0 0 1.23-2.03.08.08 0 0 0-.05-.07 13.1 13.1 0 0 1-1.9-.92.08.08 0 0 1 .02-.1 10.2 10.2 0 0 0 .41-.31h.04a14.2 14.2 0 0 0 12.1 0l.04.01a9.63 9.63 0 0 0 .4.32.08.08 0 0 1-.03.1 12.29 12.29 0 0 1-1.9.91.08.08 0 0 0-.02.1 15.97 15.97 0 0 0 1.27 2.01h.04a19.84 19.84 0 0 0 6.03-3.05v-.03a20.12 20.12 0 0 0-3.57-13.69ZM8.02 15.33c-1.18 0-2.16-1.08-2.16-2.42 0-1.33.96-2.42 2.16-2.42 1.21 0 2.18 1.1 2.16 2.42 0 1.34-.96 2.42-2.16 2.42Zm7.97 0c-1.18 0-2.15-1.08-2.15-2.42 0-1.33.95-2.42 2.15-2.42 1.22 0 2.18 1.1 2.16 2.42 0 1.34-.94 2.42-2.16 2.42Z"/></svg></a><a href="https://thinkrail.ai/blog/" rel="me" class="sl-flex astro-n2mnl6yq"><span class="sr-only astro-n2mnl6yq">ThinkRail blog</span><svg aria-hidden="true" class="astro-n2mnl6yq astro-hkc32dio" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M16 14H8a1 1 0 0 0 0 2h8a1 1 0 0 0 0-2m0-4h-6a1 1 0 0 0 0 2h6a1 1 0 0 0 0-2m4-6h-3V3a1 1 0 0 0-2 0v1h-2V3a1 1 0 0 0-2 0v1H9V3a1 1 0 0 0-2 0v1H4a1 1 0 0 0-1 1v14a3 3 0 0 0 3 3h12a3 3 0 0 0 3-3V5a1 1 0 0 0-1-1m-1 15a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V6h2v1a1 1 0 0 0 2 0V6h2v1a1 1 0 0 0 2 0V6h2v1a1 1 0 0 0 2 0V6h2Z"/></svg></a></div><starlight-theme-select><label style="--sl-select-width: 6.25em" class="astro-2z5xp7gb"><span class="sr-only astro-2z5xp7gb">Select theme</span><svg aria-hidden="true" class="icon label-icon astro-2z5xp7gb astro-hkc32dio" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M21 14h-1V7a3 3 0 0 0-3-3H7a3 3 0 0 0-3 3v7H3a1 1 0 0 0-1 1v2a3 3 0 0 0 3 3h14a3 3 0 0 0 3-3v-2a1 1 0 0 0-1-1ZM6 7a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v7H6V7Zm14 10a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-1h16v1Z"/></svg><select autocomplete="off" class="astro-2z5xp7gb"><option value="dark" class="astro-2z5xp7gb">Dark</option><option value="light" class="astro-2z5xp7gb">Light</option><option value="auto" selected class="astro-2z5xp7gb">Auto</option></select><svg aria-hidden="true" class="icon caret astro-2z5xp7gb astro-hkc32dio" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M17 9.17a1 1 0 0 0-1.41 0L12 12.71 8.46 9.17a1 1 0 1 0-1.41 1.42l4.24 4.24a1.002 1.002 0 0 0 1.42 0L17 10.59a1.002 1.002 0 0 0 0-1.42Z"/></svg></label></starlight-theme-select><script>
+	StarlightThemeProvider.updatePickers();
+</script><script type="module">var e=`starlight-theme`,t=e=>e===`auto`||e===`dark`||e===`light`?e:`auto`,n=()=>t(typeof localStorage<`u`&&localStorage.getItem(e));function r(t){typeof localStorage<`u`&&localStorage.setItem(e,t===`light`||t===`dark`?t:``)}var i=()=>matchMedia(`(prefers-color-scheme: light)`).matches?`light`:`dark`;function a(e){StarlightThemeProvider.updatePickers(e),document.documentElement.dataset.theme=e===`auto`?i():e,r(e)}matchMedia(`(prefers-color-scheme: light)`).addEventListener(`change`,()=>{n()===`auto`&&a(`auto`)});var o=class extends HTMLElement{constructor(){super(),a(n()),this.querySelector(`select`)?.addEventListener(`change`,e=>{e.currentTarget instanceof HTMLSelectElement&&a(t(e.currentTarget.value))})}};customElements.define(`starlight-theme-select`,o);</script><script type="module">var e=class extends HTMLElement{constructor(){super();let e=this.querySelector(`select`);e&&(e.addEventListener(`change`,e=>{e.currentTarget instanceof HTMLSelectElement&&(window.location.pathname=e.currentTarget.value)}),window.addEventListener(`pageshow`,t=>{if(!t.persisted)return;let n=e.querySelector(`option[selected]`)?.index;n!==e.selectedIndex&&(e.selectedIndex=n??0)}))}};customElements.define(`starlight-lang-select`,e);</script></div></div></header><nav class="sidebar print:hidden astro-yntsjkba" aria-label="Main"><button popovertarget="starlight__sidebar" class="sl-menu-button sl-flex md:sl-hidden print:hidden astro-r2osgdlg"><svg aria-hidden="true" class="open-menu astro-r2osgdlg astro-hkc32dio" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M3 8h18a1 1 0 1 0 0-2H3a1 1 0 0 0 0 2Zm18 8H3a1 1 0 0 0 0 2h18a1 1 0 0 0 0-2Zm0-5H3a1 1 0 0 0 0 2h18a1 1 0 0 0 0-2Z"/></svg><svg aria-hidden="true" class="close-menu astro-r2osgdlg astro-hkc32dio" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="m13.41 12 6.3-6.29a1.004 1.004 0 1 0-1.42-1.42L12 10.59l-6.29-6.3a1.004 1.004 0 0 0-1.42 1.42l6.3 6.29-6.3 6.29a1 1 0 0 0 0 1.42.998.998 0 0 0 1.42 0l6.29-6.3 6.29 6.3a.999.999 0 0 0 1.42 0 1 1 0 0 0 0-1.42L13.41 12Z"/></svg><span class="sr-only astro-r2osgdlg">Menu</span></button><script type="module">var e=class extends HTMLElement{constructor(){super();let e=matchMedia(`(min-width: 50em)`),t=()=>{this.popover=e.matches?null:`auto`};t(),e.addEventListener(`change`,()=>t()),this.addEventListener(`toggle`,({newState:e})=>this.trapFocus(e===`open`))}trapFocus(e){document.querySelectorAll(`.main-frame, .sl-skip-link`).forEach(t=>{t.toggleAttribute(`inert`,e)})}};customElements.define(`sl-sidebar-pane`,e);</script><sl-sidebar-pane popover id="starlight__sidebar" class="sidebar-pane astro-yntsjkba"><div class="sidebar-content sl-flex astro-yntsjkba"><sl-sidebar-state-persist data-hash="121z9qx" class="astro-ipdry5cl"><script aria-hidden="true">
+		(() => {
+			try {
+				if (!matchMedia('(min-width: 50em)').matches) return;
+				/** @type {HTMLElement | null} */
+				const target = document.querySelector('sl-sidebar-state-persist');
+				const state = JSON.parse(sessionStorage.getItem('sl-sidebar-state') || '0');
+				if (!target || !state || target.dataset.hash !== state.hash) return;
+				window._starlightScrollRestore = state.scroll;
+				customElements.define(
+					'sl-sidebar-restore',
+					class SidebarRestore extends HTMLElement {
+						connectedCallback() {
+							try {
+								const idx = parseInt(this.dataset.index || '');
+								const details = this.closest('details');
+								if (details && typeof state.open[idx] === 'boolean') details.open = state.open[idx];
+							} catch {}
+						}
+					}
+				);
+			} catch {}
+		})();
+	</script><ul class="top-level astro-rmhv4bp6"><li class="astro-rmhv4bp6"><a href="/thinkrail/" class="large astro-rmhv4bp6"><span class="astro-rmhv4bp6">ThinkRail documentation</span></a></li><li class="astro-rmhv4bp6"><a href="/thinkrail/what-is-thinkrail/" class="large astro-rmhv4bp6"><span class="astro-rmhv4bp6">What is ThinkRail?</span></a></li><li class="astro-rmhv4bp6"><a href="/thinkrail/coming-from-pi/" class="large astro-rmhv4bp6"><span class="astro-rmhv4bp6">Coming from pi</span></a></li><li class="astro-rmhv4bp6"><a href="/thinkrail/changelog/" class="large astro-rmhv4bp6"><span class="astro-rmhv4bp6">Changelog</span></a></li><li class="astro-rmhv4bp6"><details open class="astro-rmhv4bp6"><summary class="astro-rmhv4bp6"><span class="group-label astro-rmhv4bp6"><span class="large astro-rmhv4bp6">Get started</span></span><svg aria-hidden="true" class="caret astro-rmhv4bp6 astro-hkc32dio" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.25rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg></summary><sl-sidebar-restore data-index="0"></sl-sidebar-restore><ul class="astro-rmhv4bp6"><li class="astro-rmhv4bp6"><a href="/thinkrail/get-started/install/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Install ThinkRail</span></a></li><li class="astro-rmhv4bp6"><a href="/thinkrail/get-started/connect-a-provider/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Connect a model provider</span></a></li><li class="astro-rmhv4bp6"><a href="/thinkrail/get-started/describe-your-project/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Describe your project</span></a></li><li class="astro-rmhv4bp6"><a href="/thinkrail/get-started/first-change/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Make your first change</span></a></li></ul></details></li><li class="astro-rmhv4bp6"><details open class="astro-rmhv4bp6"><summary class="astro-rmhv4bp6"><span class="group-label astro-rmhv4bp6"><span class="large astro-rmhv4bp6">Using ThinkRail</span></span><svg aria-hidden="true" class="caret astro-rmhv4bp6 astro-hkc32dio" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.25rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg></summary><sl-sidebar-restore data-index="1"></sl-sidebar-restore><ul class="astro-rmhv4bp6"><li class="astro-rmhv4bp6"><details open class="astro-rmhv4bp6"><summary class="astro-rmhv4bp6"><span class="group-label astro-rmhv4bp6"><span class="large astro-rmhv4bp6">Workspaces</span></span><svg aria-hidden="true" class="caret astro-rmhv4bp6 astro-hkc32dio" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.25rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg></summary><sl-sidebar-restore data-index="2"></sl-sidebar-restore><ul class="astro-rmhv4bp6"><li class="astro-rmhv4bp6"><a href="/thinkrail/workspaces/workspaces-and-isolation/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Workspaces and isolation</span></a></li><li class="astro-rmhv4bp6"><a href="/thinkrail/workspaces/parallel-workspaces/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Run agents in parallel</span></a></li><li class="astro-rmhv4bp6"><a href="/thinkrail/workspaces/manage-workspaces/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Manage workspaces</span></a></li><li class="astro-rmhv4bp6"><a href="/thinkrail/workspaces/open-in-your-editor/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Open a workspace in your editor</span></a></li></ul></details></li><li class="astro-rmhv4bp6"><details open class="astro-rmhv4bp6"><summary class="astro-rmhv4bp6"><span class="group-label astro-rmhv4bp6"><span class="large astro-rmhv4bp6">Agent &amp; chats</span></span><svg aria-hidden="true" class="caret astro-rmhv4bp6 astro-hkc32dio" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.25rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg></summary><sl-sidebar-restore data-index="3"></sl-sidebar-restore><ul class="astro-rmhv4bp6"><li class="astro-rmhv4bp6"><a href="/thinkrail/agent/thinkrail-and-pi/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">ThinkRail and pi</span></a></li><li class="astro-rmhv4bp6"><a href="/thinkrail/agent/choose-models/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Choose models and effort</span></a></li><li class="astro-rmhv4bp6"><a href="/thinkrail/agent/steer-and-queue/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Steer, queue, or stop the agent</span></a></li><li class="astro-rmhv4bp6"><a href="/thinkrail/agent/delegate-to-subagents/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Delegate work to subagents</span></a></li><li class="astro-rmhv4bp6"><a href="/thinkrail/agent/agent-tools/" aria-current="page" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Tools the agent can call</span></a></li></ul></details></li><li class="astro-rmhv4bp6"><details open class="astro-rmhv4bp6"><summary class="astro-rmhv4bp6"><span class="group-label astro-rmhv4bp6"><span class="large astro-rmhv4bp6">Specs &amp; plans</span></span><svg aria-hidden="true" class="caret astro-rmhv4bp6 astro-hkc32dio" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.25rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg></summary><sl-sidebar-restore data-index="4"></sl-sidebar-restore><ul class="astro-rmhv4bp6"><li class="astro-rmhv4bp6"><a href="/thinkrail/specs/living-specs/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Living specs</span></a></li><li class="astro-rmhv4bp6"><a href="/thinkrail/specs/spec-first-project/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Set up a project for spec-first work</span></a></li><li class="astro-rmhv4bp6"><a href="/thinkrail/specs/build-from-your-own-spec/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Build from your own spec</span></a></li><li class="astro-rmhv4bp6"><a href="/thinkrail/specs/plan-and-review/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Work through a plan step by step</span></a></li><li class="astro-rmhv4bp6"><a href="/thinkrail/specs/workflows/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Built-in workflows</span></a></li><li class="astro-rmhv4bp6"><a href="/thinkrail/specs/spec-format/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Spec format</span></a></li></ul></details></li><li class="astro-rmhv4bp6"><details open class="astro-rmhv4bp6"><summary class="astro-rmhv4bp6"><span class="group-label astro-rmhv4bp6"><span class="large astro-rmhv4bp6">Review &amp; ship</span></span><svg aria-hidden="true" class="caret astro-rmhv4bp6 astro-hkc32dio" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.25rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg></summary><sl-sidebar-restore data-index="5"></sl-sidebar-restore><ul class="astro-rmhv4bp6"><li class="astro-rmhv4bp6"><a href="/thinkrail/review/review-changes/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Review changes</span></a></li><li class="astro-rmhv4bp6"><a href="/thinkrail/review/undo-or-discard-changes/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Undo or discard changes</span></a></li><li class="astro-rmhv4bp6"><a href="/thinkrail/review/open-a-pull-request/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Open a pull request</span></a></li></ul></details></li><li class="astro-rmhv4bp6"><details open class="astro-rmhv4bp6"><summary class="astro-rmhv4bp6"><span class="group-label astro-rmhv4bp6"><span class="large astro-rmhv4bp6">Skills, MCP &amp; extensions</span></span><svg aria-hidden="true" class="caret astro-rmhv4bp6 astro-hkc32dio" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.25rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg></summary><sl-sidebar-restore data-index="6"></sl-sidebar-restore><ul class="astro-rmhv4bp6"><li class="astro-rmhv4bp6"><a href="/thinkrail/extend/extensions/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Extensions</span></a></li><li class="astro-rmhv4bp6"><a href="/thinkrail/extend/use-existing-skills/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Use existing skills and prompt templates</span></a></li><li class="astro-rmhv4bp6"><a href="/thinkrail/extend/connect-mcp-servers/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Connect MCP servers</span></a></li><li class="astro-rmhv4bp6"><a href="/thinkrail/extend/mcp-configuration/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">MCP configuration</span></a></li><li class="astro-rmhv4bp6"><a href="/thinkrail/extend/use-thinkrail-packages-in-pi/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Use ThinkRail packages in pi</span></a></li></ul></details></li><li class="astro-rmhv4bp6"><details open class="astro-rmhv4bp6"><summary class="astro-rmhv4bp6"><span class="group-label astro-rmhv4bp6"><span class="large astro-rmhv4bp6">Security &amp; privacy</span></span><svg aria-hidden="true" class="caret astro-rmhv4bp6 astro-hkc32dio" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.25rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg></summary><sl-sidebar-restore data-index="7"></sl-sidebar-restore><ul class="astro-rmhv4bp6"><li class="astro-rmhv4bp6"><a href="/thinkrail/security/security-and-data-overview/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Security and data overview</span></a></li><li class="astro-rmhv4bp6"><a href="/thinkrail/security/trust-model/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Trust model</span></a></li><li class="astro-rmhv4bp6"><a href="/thinkrail/security/trust-a-project/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Trust a project</span></a></li><li class="astro-rmhv4bp6"><a href="/thinkrail/security/privacy-and-analytics/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Privacy and analytics</span></a></li><li class="astro-rmhv4bp6"><a href="/thinkrail/security/manage-privacy/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Turn off usage data (telemetry)</span></a></li></ul></details></li><li class="astro-rmhv4bp6"><details open class="astro-rmhv4bp6"><summary class="astro-rmhv4bp6"><span class="group-label astro-rmhv4bp6"><span class="large astro-rmhv4bp6">Run &amp; troubleshoot</span></span><svg aria-hidden="true" class="caret astro-rmhv4bp6 astro-hkc32dio" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.25rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg></summary><sl-sidebar-restore data-index="8"></sl-sidebar-restore><ul class="astro-rmhv4bp6"><li class="astro-rmhv4bp6"><a href="/thinkrail/run/troubleshoot/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Troubleshoot ThinkRail</span></a></li><li class="astro-rmhv4bp6"><a href="/thinkrail/run/get-help/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Get help</span></a></li><li class="astro-rmhv4bp6"><a href="/thinkrail/run/update-and-uninstall/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Update and uninstall ThinkRail</span></a></li><li class="astro-rmhv4bp6"><a href="/thinkrail/run/back-up-or-move/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Back up or move to a new machine</span></a></li><li class="astro-rmhv4bp6"><a href="/thinkrail/run/run-on-a-remote-machine/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Run ThinkRail on a remote machine</span></a></li><li class="astro-rmhv4bp6"><a href="/thinkrail/run/how-thinkrail-works/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">How ThinkRail works</span></a></li><li class="astro-rmhv4bp6"><a href="/thinkrail/run/platform-support/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Platform support</span></a></li></ul></details></li></ul></details></li><li class="astro-rmhv4bp6"><details open class="astro-rmhv4bp6"><summary class="astro-rmhv4bp6"><span class="group-label astro-rmhv4bp6"><span class="large astro-rmhv4bp6">Reference</span></span><svg aria-hidden="true" class="caret astro-rmhv4bp6 astro-hkc32dio" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.25rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg></summary><sl-sidebar-restore data-index="9"></sl-sidebar-restore><ul class="astro-rmhv4bp6"><li class="astro-rmhv4bp6"><a href="/thinkrail/reference/cli/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">CLI reference</span></a></li><li class="astro-rmhv4bp6"><a href="/thinkrail/reference/settings/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Settings reference</span></a></li><li class="astro-rmhv4bp6"><a href="/thinkrail/reference/keyboard-shortcuts/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Keyboard shortcuts</span></a></li><li class="astro-rmhv4bp6"><a href="/thinkrail/reference/files-and-environment/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Files and environment</span></a></li><li class="astro-rmhv4bp6"><a href="/thinkrail/reference/glossary/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Glossary</span></a></li></ul></details></li><li class="astro-rmhv4bp6"><details open class="astro-rmhv4bp6"><summary class="astro-rmhv4bp6"><span class="group-label astro-rmhv4bp6"><span class="large astro-rmhv4bp6">Developing ThinkRail</span></span><svg aria-hidden="true" class="caret astro-rmhv4bp6 astro-hkc32dio" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.25rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg></summary><sl-sidebar-restore data-index="10"></sl-sidebar-restore><ul class="astro-rmhv4bp6"><li class="astro-rmhv4bp6"><a href="/thinkrail/develop/build-from-source/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Build ThinkRail from source</span></a></li><li class="astro-rmhv4bp6"><a href="/thinkrail/develop/contribute/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Contribute to ThinkRail</span></a></li></ul></details></li><li class="astro-rmhv4bp6"><details class="astro-rmhv4bp6"><summary class="astro-rmhv4bp6"><span class="group-label astro-rmhv4bp6"><span class="large astro-rmhv4bp6">About these docs (private)</span></span><svg aria-hidden="true" class="caret astro-rmhv4bp6 astro-hkc32dio" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.25rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg></summary><sl-sidebar-restore data-index="11"></sl-sidebar-restore><ul class="astro-rmhv4bp6"><li class="astro-rmhv4bp6"><a href="/thinkrail/about-these-docs/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">About these docs</span></a></li><li class="astro-rmhv4bp6"><a href="/thinkrail/about-these-docs/information-architecture/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Information architecture</span></a></li><li class="astro-rmhv4bp6"><a href="/thinkrail/about-these-docs/reader-study/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Reader study</span></a></li><li class="astro-rmhv4bp6"><a href="/thinkrail/about-these-docs/docs-automation/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Docs automation</span></a></li><li class="astro-rmhv4bp6"><a href="/thinkrail/about-these-docs/hosting-options/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Hosting options</span></a></li><li class="astro-rmhv4bp6"><a href="/thinkrail/about-these-docs/authoring-guide/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Authoring guide</span></a></li><li class="astro-rmhv4bp6"><a href="/thinkrail/about-these-docs/making-docs-agent-friendly/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Making the docs agent-friendly</span></a></li></ul></details></li></ul><script aria-hidden="true">
+		(() => {
+			const scroller = document.getElementById('starlight__sidebar');
+			if (!window._starlightScrollRestore || !scroller) return;
+			scroller.scrollTop = window._starlightScrollRestore;
+			delete window._starlightScrollRestore;
+		})();
+	</script></sl-sidebar-state-persist><div class="md:sl-hidden"><div class="mobile-preferences sl-flex astro-p4azlveh"><div class="social-icons astro-p4azlveh"><a href="https://github.com/JetBrains/thinkrail" rel="me" class="sl-flex astro-n2mnl6yq"><span class="sr-only astro-n2mnl6yq">GitHub</span><svg aria-hidden="true" class="astro-n2mnl6yq astro-hkc32dio" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M12 .3a12 12 0 0 0-3.8 23.38c.6.12.83-.26.83-.57L9 21.07c-3.34.72-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.08-.74.09-.73.09-.73 1.2.09 1.83 1.24 1.83 1.24 1.08 1.83 2.81 1.3 3.5 1 .1-.78.42-1.31.76-1.61-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.14-.3-.54-1.52.1-3.18 0 0 1-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.28-1.55 3.29-1.23 3.29-1.23.64 1.66.24 2.88.12 3.18a4.65 4.65 0 0 1 1.23 3.22c0 4.61-2.8 5.63-5.48 5.92.42.36.81 1.1.81 2.22l-.01 3.29c0 .31.2.69.82.57A12 12 0 0 0 12 .3Z"/></svg></a><a href="https://discord.gg/Wybu9ceWkY" rel="me" class="sl-flex astro-n2mnl6yq"><span class="sr-only astro-n2mnl6yq">Discord</span><svg aria-hidden="true" class="astro-n2mnl6yq astro-hkc32dio" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M20.32 4.37a19.8 19.8 0 0 0-4.93-1.51 13.78 13.78 0 0 0-.64 1.28 18.27 18.27 0 0 0-5.5 0 12.64 12.64 0 0 0-.64-1.28h-.05A19.74 19.74 0 0 0 3.64 4.4 20.26 20.26 0 0 0 .11 18.09l.02.02a19.9 19.9 0 0 0 6.04 3.03l.04-.02a14.24 14.24 0 0 0 1.23-2.03.08.08 0 0 0-.05-.07 13.1 13.1 0 0 1-1.9-.92.08.08 0 0 1 .02-.1 10.2 10.2 0 0 0 .41-.31h.04a14.2 14.2 0 0 0 12.1 0l.04.01a9.63 9.63 0 0 0 .4.32.08.08 0 0 1-.03.1 12.29 12.29 0 0 1-1.9.91.08.08 0 0 0-.02.1 15.97 15.97 0 0 0 1.27 2.01h.04a19.84 19.84 0 0 0 6.03-3.05v-.03a20.12 20.12 0 0 0-3.57-13.69ZM8.02 15.33c-1.18 0-2.16-1.08-2.16-2.42 0-1.33.96-2.42 2.16-2.42 1.21 0 2.18 1.1 2.16 2.42 0 1.34-.96 2.42-2.16 2.42Zm7.97 0c-1.18 0-2.15-1.08-2.15-2.42 0-1.33.95-2.42 2.15-2.42 1.22 0 2.18 1.1 2.16 2.42 0 1.34-.94 2.42-2.16 2.42Z"/></svg></a><a href="https://thinkrail.ai/blog/" rel="me" class="sl-flex astro-n2mnl6yq"><span class="sr-only astro-n2mnl6yq">ThinkRail blog</span><svg aria-hidden="true" class="astro-n2mnl6yq astro-hkc32dio" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M16 14H8a1 1 0 0 0 0 2h8a1 1 0 0 0 0-2m0-4h-6a1 1 0 0 0 0 2h6a1 1 0 0 0 0-2m4-6h-3V3a1 1 0 0 0-2 0v1h-2V3a1 1 0 0 0-2 0v1H9V3a1 1 0 0 0-2 0v1H4a1 1 0 0 0-1 1v14a3 3 0 0 0 3 3h12a3 3 0 0 0 3-3V5a1 1 0 0 0-1-1m-1 15a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V6h2v1a1 1 0 0 0 2 0V6h2v1a1 1 0 0 0 2 0V6h2v1a1 1 0 0 0 2 0V6h2Z"/></svg></a></div><starlight-theme-select><label style="--sl-select-width: 6.25em" class="astro-2z5xp7gb"><span class="sr-only astro-2z5xp7gb">Select theme</span><svg aria-hidden="true" class="icon label-icon astro-2z5xp7gb astro-hkc32dio" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M21 14h-1V7a3 3 0 0 0-3-3H7a3 3 0 0 0-3 3v7H3a1 1 0 0 0-1 1v2a3 3 0 0 0 3 3h14a3 3 0 0 0 3-3v-2a1 1 0 0 0-1-1ZM6 7a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v7H6V7Zm14 10a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-1h16v1Z"/></svg><select autocomplete="off" class="astro-2z5xp7gb"><option value="dark" class="astro-2z5xp7gb">Dark</option><option value="light" class="astro-2z5xp7gb">Light</option><option value="auto" selected class="astro-2z5xp7gb">Auto</option></select><svg aria-hidden="true" class="icon caret astro-2z5xp7gb astro-hkc32dio" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M17 9.17a1 1 0 0 0-1.41 0L12 12.71 8.46 9.17a1 1 0 1 0-1.41 1.42l4.24 4.24a1.002 1.002 0 0 0 1.42 0L17 10.59a1.002 1.002 0 0 0 0-1.42Z"/></svg></label></starlight-theme-select><script>
+	StarlightThemeProvider.updatePickers();
+</script></div></div></div></sl-sidebar-pane></nav><div class="main-frame astro-yntsjkba"><script type="module">var e=document.getElementById(`starlight__sidebar`),t=e?.querySelector(`sl-sidebar-state-persist`),n=`sl-sidebar-state`,r=()=>{let r=[],i=t?.dataset.hash||``;try{let e=sessionStorage.getItem(n),t=JSON.parse(e||`{}`);Array.isArray(t.open)&&t.hash===i&&(r=t.open)}catch{}return{hash:i,open:r,scroll:e?.scrollTop||0}},i=e=>{try{sessionStorage.setItem(n,JSON.stringify(e))}catch{}},a=()=>i(r()),o=(e,t)=>{let n=r();n.open[t]=e,i(n)};t?.addEventListener(`click`,e=>{if(!(e.target instanceof Element))return;let t=e.target.closest(`summary`)?.closest(`details`);if(!t)return;let n=t.querySelector(`sl-sidebar-restore`),r=parseInt(n?.dataset.index||``);isNaN(r)||o(!t.open,r)}),addEventListener(`visibilitychange`,()=>{document.visibilityState===`hidden`&&a()});</script><div class="lg:sl-flex astro-lrzkfocr"><aside class="right-sidebar-container print:hidden astro-lrzkfocr"><div class="right-sidebar astro-lrzkfocr"><div class="lg:sl-hidden astro-qok35upx"><mobile-starlight-toc data-min-h="2" data-max-h="3" class="astro-66cqc7ze"><nav aria-labelledby="starlight__on-this-page--mobile" class="astro-66cqc7ze"><details id="starlight__mobile-toc" class="astro-66cqc7ze"><summary id="starlight__on-this-page--mobile" class="sl-flex astro-66cqc7ze"><span class="toggle sl-flex astro-66cqc7ze">On this page<svg aria-hidden="true" class="caret astro-66cqc7ze astro-hkc32dio" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg></span><span class="display-current astro-66cqc7ze"></span></summary><div class="dropdown astro-66cqc7ze"><ul class="isMobile astro-jugkfwgx" style="--depth: 0;"><li style="--depth: 0;" class="astro-jugkfwgx"><a href="#_top" style="--depth: 0;" class="astro-jugkfwgx"><span style="--depth: 0;" class="astro-jugkfwgx">Overview</span></a></li><li style="--depth: 0;" class="astro-jugkfwgx"><a href="#what-is-and-is-not-listed-here" style="--depth: 0;" class="astro-jugkfwgx"><span style="--depth: 0;" class="astro-jugkfwgx">What is and is not listed here</span></a></li><li style="--depth: 0;" class="astro-jugkfwgx"><a href="#spec-graph-tools" style="--depth: 0;" class="astro-jugkfwgx"><span style="--depth: 0;" class="astro-jugkfwgx">Spec graph tools</span></a><ul class="isMobile astro-jugkfwgx" style="--depth: 1;"><li style="--depth: 1;" class="astro-jugkfwgx"><a href="#spec_grep" style="--depth: 1;" class="astro-jugkfwgx"><span style="--depth: 1;" class="astro-jugkfwgx">spec_grep</span></a></li><li style="--depth: 1;" class="astro-jugkfwgx"><a href="#spec_get" style="--depth: 1;" class="astro-jugkfwgx"><span style="--depth: 1;" class="astro-jugkfwgx">spec_get</span></a></li><li style="--depth: 1;" class="astro-jugkfwgx"><a href="#spec_graph" style="--depth: 1;" class="astro-jugkfwgx"><span style="--depth: 1;" class="astro-jugkfwgx">spec_graph</span></a></li><li style="--depth: 1;" class="astro-jugkfwgx"><a href="#spec_create" style="--depth: 1;" class="astro-jugkfwgx"><span style="--depth: 1;" class="astro-jugkfwgx">spec_create</span></a></li><li style="--depth: 1;" class="astro-jugkfwgx"><a href="#spec_update" style="--depth: 1;" class="astro-jugkfwgx"><span style="--depth: 1;" class="astro-jugkfwgx">spec_update</span></a></li><li style="--depth: 1;" class="astro-jugkfwgx"><a href="#spec_delete" style="--depth: 1;" class="astro-jugkfwgx"><span style="--depth: 1;" class="astro-jugkfwgx">spec_delete</span></a></li><li style="--depth: 1;" class="astro-jugkfwgx"><a href="#spec_validate" style="--depth: 1;" class="astro-jugkfwgx"><span style="--depth: 1;" class="astro-jugkfwgx">spec_validate</span></a></li></ul></li><li style="--depth: 0;" class="astro-jugkfwgx"><a href="#todo-plan-tools" style="--depth: 0;" class="astro-jugkfwgx"><span style="--depth: 0;" class="astro-jugkfwgx">TODO plan tools</span></a><ul class="isMobile astro-jugkfwgx" style="--depth: 1;"><li style="--depth: 1;" class="astro-jugkfwgx"><a href="#todo_list" style="--depth: 1;" class="astro-jugkfwgx"><span style="--depth: 1;" class="astro-jugkfwgx">todo_list</span></a></li><li style="--depth: 1;" class="astro-jugkfwgx"><a href="#todo_add" style="--depth: 1;" class="astro-jugkfwgx"><span style="--depth: 1;" class="astro-jugkfwgx">todo_add</span></a></li><li style="--depth: 1;" class="astro-jugkfwgx"><a href="#todo_update" style="--depth: 1;" class="astro-jugkfwgx"><span style="--depth: 1;" class="astro-jugkfwgx">todo_update</span></a></li><li style="--depth: 1;" class="astro-jugkfwgx"><a href="#todo_promote" style="--depth: 1;" class="astro-jugkfwgx"><span style="--depth: 1;" class="astro-jugkfwgx">todo_promote</span></a></li><li style="--depth: 1;" class="astro-jugkfwgx"><a href="#todo_remove" style="--depth: 1;" class="astro-jugkfwgx"><span style="--depth: 1;" class="astro-jugkfwgx">todo_remove</span></a></li><li style="--depth: 1;" class="astro-jugkfwgx"><a href="#todo_write" style="--depth: 1;" class="astro-jugkfwgx"><span style="--depth: 1;" class="astro-jugkfwgx">todo_write</span></a></li><li style="--depth: 1;" class="astro-jugkfwgx"><a href="#todo_plan_summary" style="--depth: 1;" class="astro-jugkfwgx"><span style="--depth: 1;" class="astro-jugkfwgx">todo_plan_summary</span></a></li></ul></li><li style="--depth: 0;" class="astro-jugkfwgx"><a href="#subagent-tools" style="--depth: 0;" class="astro-jugkfwgx"><span style="--depth: 0;" class="astro-jugkfwgx">Subagent tools</span></a><ul class="isMobile astro-jugkfwgx" style="--depth: 1;"><li style="--depth: 1;" class="astro-jugkfwgx"><a href="#agent" style="--depth: 1;" class="astro-jugkfwgx"><span style="--depth: 1;" class="astro-jugkfwgx">Agent</span></a></li><li style="--depth: 1;" class="astro-jugkfwgx"><a href="#get_subagent_result" style="--depth: 1;" class="astro-jugkfwgx"><span style="--depth: 1;" class="astro-jugkfwgx">get_subagent_result</span></a></li><li style="--depth: 1;" class="astro-jugkfwgx"><a href="#subagent-roles" style="--depth: 1;" class="astro-jugkfwgx"><span style="--depth: 1;" class="astro-jugkfwgx">Subagent roles</span></a></li><li style="--depth: 1;" class="astro-jugkfwgx"><a href="#custom-agent-definitions" style="--depth: 1;" class="astro-jugkfwgx"><span style="--depth: 1;" class="astro-jugkfwgx">Custom agent definitions</span></a></li><li style="--depth: 1;" class="astro-jugkfwgx"><a href="#subagent-settings" style="--depth: 1;" class="astro-jugkfwgx"><span style="--depth: 1;" class="astro-jugkfwgx">Subagent settings</span></a></li></ul></li><li style="--depth: 0;" class="astro-jugkfwgx"><a href="#background-command-tool" style="--depth: 0;" class="astro-jugkfwgx"><span style="--depth: 0;" class="astro-jugkfwgx">Background command tool</span></a><ul class="isMobile astro-jugkfwgx" style="--depth: 1;"><li style="--depth: 1;" class="astro-jugkfwgx"><a href="#background_command" style="--depth: 1;" class="astro-jugkfwgx"><span style="--depth: 1;" class="astro-jugkfwgx">background_command</span></a></li></ul></li><li style="--depth: 0;" class="astro-jugkfwgx"><a href="#host-tools" style="--depth: 0;" class="astro-jugkfwgx"><span style="--depth: 0;" class="astro-jugkfwgx">Host tools</span></a><ul class="isMobile astro-jugkfwgx" style="--depth: 1;"><li style="--depth: 1;" class="astro-jugkfwgx"><a href="#ask_user_question" style="--depth: 1;" class="astro-jugkfwgx"><span style="--depth: 1;" class="astro-jugkfwgx">ask_user_question</span></a></li><li style="--depth: 1;" class="astro-jugkfwgx"><a href="#set_title" style="--depth: 1;" class="astro-jugkfwgx"><span style="--depth: 1;" class="astro-jugkfwgx">set_title</span></a></li><li style="--depth: 1;" class="astro-jugkfwgx"><a href="#resolve_comment" style="--depth: 1;" class="astro-jugkfwgx"><span style="--depth: 1;" class="astro-jugkfwgx">resolve_comment</span></a></li><li style="--depth: 1;" class="astro-jugkfwgx"><a href="#request_review" style="--depth: 1;" class="astro-jugkfwgx"><span style="--depth: 1;" class="astro-jugkfwgx">request_review</span></a></li></ul></li><li style="--depth: 0;" class="astro-jugkfwgx"><a href="#web-research-tools" style="--depth: 0;" class="astro-jugkfwgx"><span style="--depth: 0;" class="astro-jugkfwgx">Web research tools</span></a><ul class="isMobile astro-jugkfwgx" style="--depth: 1;"><li style="--depth: 1;" class="astro-jugkfwgx"><a href="#web_search" style="--depth: 1;" class="astro-jugkfwgx"><span style="--depth: 1;" class="astro-jugkfwgx">web_search</span></a></li><li style="--depth: 1;" class="astro-jugkfwgx"><a href="#fetch_content" style="--depth: 1;" class="astro-jugkfwgx"><span style="--depth: 1;" class="astro-jugkfwgx">fetch_content</span></a></li><li style="--depth: 1;" class="astro-jugkfwgx"><a href="#get_search_content" style="--depth: 1;" class="astro-jugkfwgx"><span style="--depth: 1;" class="astro-jugkfwgx">get_search_content</span></a></li></ul></li><li style="--depth: 0;" class="astro-jugkfwgx"><a href="#visualize-tool" style="--depth: 0;" class="astro-jugkfwgx"><span style="--depth: 0;" class="astro-jugkfwgx">Visualize tool</span></a><ul class="isMobile astro-jugkfwgx" style="--depth: 1;"><li style="--depth: 1;" class="astro-jugkfwgx"><a href="#visualize" style="--depth: 1;" class="astro-jugkfwgx"><span style="--depth: 1;" class="astro-jugkfwgx">visualize</span></a></li></ul></li><li style="--depth: 0;" class="astro-jugkfwgx"><a href="#related" style="--depth: 0;" class="astro-jugkfwgx"><span style="--depth: 0;" class="astro-jugkfwgx">Related</span></a></li></ul></div></details></nav></mobile-starlight-toc><script type="module" src="/thinkrail/_astro/MobileTableOfContents.astro_astro_type_script_index_0_lang.C3fM4Kra.js"></script></div><div class="right-sidebar-panel sl-hidden lg:sl-block astro-qok35upx"><div class="sl-container astro-qok35upx"><starlight-toc data-min-h="2" data-max-h="3"><nav aria-labelledby="starlight__on-this-page"><h2 id="starlight__on-this-page">On this page</h2><ul class="astro-jugkfwgx" style="--depth: 0;"><li style="--depth: 0;" class="astro-jugkfwgx"><a href="#_top" style="--depth: 0;" class="astro-jugkfwgx"><span style="--depth: 0;" class="astro-jugkfwgx">Overview</span></a></li><li style="--depth: 0;" class="astro-jugkfwgx"><a href="#what-is-and-is-not-listed-here" style="--depth: 0;" class="astro-jugkfwgx"><span style="--depth: 0;" class="astro-jugkfwgx">What is and is not listed here</span></a></li><li style="--depth: 0;" class="astro-jugkfwgx"><a href="#spec-graph-tools" style="--depth: 0;" class="astro-jugkfwgx"><span style="--depth: 0;" class="astro-jugkfwgx">Spec graph tools</span></a><ul class="astro-jugkfwgx" style="--depth: 1;"><li style="--depth: 1;" class="astro-jugkfwgx"><a href="#spec_grep" style="--depth: 1;" class="astro-jugkfwgx"><span style="--depth: 1;" class="astro-jugkfwgx">spec_grep</span></a></li><li style="--depth: 1;" class="astro-jugkfwgx"><a href="#spec_get" style="--depth: 1;" class="astro-jugkfwgx"><span style="--depth: 1;" class="astro-jugkfwgx">spec_get</span></a></li><li style="--depth: 1;" class="astro-jugkfwgx"><a href="#spec_graph" style="--depth: 1;" class="astro-jugkfwgx"><span style="--depth: 1;" class="astro-jugkfwgx">spec_graph</span></a></li><li style="--depth: 1;" class="astro-jugkfwgx"><a href="#spec_create" style="--depth: 1;" class="astro-jugkfwgx"><span style="--depth: 1;" class="astro-jugkfwgx">spec_create</span></a></li><li style="--depth: 1;" class="astro-jugkfwgx"><a href="#spec_update" style="--depth: 1;" class="astro-jugkfwgx"><span style="--depth: 1;" class="astro-jugkfwgx">spec_update</span></a></li><li style="--depth: 1;" class="astro-jugkfwgx"><a href="#spec_delete" style="--depth: 1;" class="astro-jugkfwgx"><span style="--depth: 1;" class="astro-jugkfwgx">spec_delete</span></a></li><li style="--depth: 1;" class="astro-jugkfwgx"><a href="#spec_validate" style="--depth: 1;" class="astro-jugkfwgx"><span style="--depth: 1;" class="astro-jugkfwgx">spec_validate</span></a></li></ul></li><li style="--depth: 0;" class="astro-jugkfwgx"><a href="#todo-plan-tools" style="--depth: 0;" class="astro-jugkfwgx"><span style="--depth: 0;" class="astro-jugkfwgx">TODO plan tools</span></a><ul class="astro-jugkfwgx" style="--depth: 1;"><li style="--depth: 1;" class="astro-jugkfwgx"><a href="#todo_list" style="--depth: 1;" class="astro-jugkfwgx"><span style="--depth: 1;" class="astro-jugkfwgx">todo_list</span></a></li><li style="--depth: 1;" class="astro-jugkfwgx"><a href="#todo_add" style="--depth: 1;" class="astro-jugkfwgx"><span style="--depth: 1;" class="astro-jugkfwgx">todo_add</span></a></li><li style="--depth: 1;" class="astro-jugkfwgx"><a href="#todo_update" style="--depth: 1;" class="astro-jugkfwgx"><span style="--depth: 1;" class="astro-jugkfwgx">todo_update</span></a></li><li style="--depth: 1;" class="astro-jugkfwgx"><a href="#todo_promote" style="--depth: 1;" class="astro-jugkfwgx"><span style="--depth: 1;" class="astro-jugkfwgx">todo_promote</span></a></li><li style="--depth: 1;" class="astro-jugkfwgx"><a href="#todo_remove" style="--depth: 1;" class="astro-jugkfwgx"><span style="--depth: 1;" class="astro-jugkfwgx">todo_remove</span></a></li><li style="--depth: 1;" class="astro-jugkfwgx"><a href="#todo_write" style="--depth: 1;" class="astro-jugkfwgx"><span style="--depth: 1;" class="astro-jugkfwgx">todo_write</span></a></li><li style="--depth: 1;" class="astro-jugkfwgx"><a href="#todo_plan_summary" style="--depth: 1;" class="astro-jugkfwgx"><span style="--depth: 1;" class="astro-jugkfwgx">todo_plan_summary</span></a></li></ul></li><li style="--depth: 0;" class="astro-jugkfwgx"><a href="#subagent-tools" style="--depth: 0;" class="astro-jugkfwgx"><span style="--depth: 0;" class="astro-jugkfwgx">Subagent tools</span></a><ul class="astro-jugkfwgx" style="--depth: 1;"><li style="--depth: 1;" class="astro-jugkfwgx"><a href="#agent" style="--depth: 1;" class="astro-jugkfwgx"><span style="--depth: 1;" class="astro-jugkfwgx">Agent</span></a></li><li style="--depth: 1;" class="astro-jugkfwgx"><a href="#get_subagent_result" style="--depth: 1;" class="astro-jugkfwgx"><span style="--depth: 1;" class="astro-jugkfwgx">get_subagent_result</span></a></li><li style="--depth: 1;" class="astro-jugkfwgx"><a href="#subagent-roles" style="--depth: 1;" class="astro-jugkfwgx"><span style="--depth: 1;" class="astro-jugkfwgx">Subagent roles</span></a></li><li style="--depth: 1;" class="astro-jugkfwgx"><a href="#custom-agent-definitions" style="--depth: 1;" class="astro-jugkfwgx"><span style="--depth: 1;" class="astro-jugkfwgx">Custom agent definitions</span></a></li><li style="--depth: 1;" class="astro-jugkfwgx"><a href="#subagent-settings" style="--depth: 1;" class="astro-jugkfwgx"><span style="--depth: 1;" class="astro-jugkfwgx">Subagent settings</span></a></li></ul></li><li style="--depth: 0;" class="astro-jugkfwgx"><a href="#background-command-tool" style="--depth: 0;" class="astro-jugkfwgx"><span style="--depth: 0;" class="astro-jugkfwgx">Background command tool</span></a><ul class="astro-jugkfwgx" style="--depth: 1;"><li style="--depth: 1;" class="astro-jugkfwgx"><a href="#background_command" style="--depth: 1;" class="astro-jugkfwgx"><span style="--depth: 1;" class="astro-jugkfwgx">background_command</span></a></li></ul></li><li style="--depth: 0;" class="astro-jugkfwgx"><a href="#host-tools" style="--depth: 0;" class="astro-jugkfwgx"><span style="--depth: 0;" class="astro-jugkfwgx">Host tools</span></a><ul class="astro-jugkfwgx" style="--depth: 1;"><li style="--depth: 1;" class="astro-jugkfwgx"><a href="#ask_user_question" style="--depth: 1;" class="astro-jugkfwgx"><span style="--depth: 1;" class="astro-jugkfwgx">ask_user_question</span></a></li><li style="--depth: 1;" class="astro-jugkfwgx"><a href="#set_title" style="--depth: 1;" class="astro-jugkfwgx"><span style="--depth: 1;" class="astro-jugkfwgx">set_title</span></a></li><li style="--depth: 1;" class="astro-jugkfwgx"><a href="#resolve_comment" style="--depth: 1;" class="astro-jugkfwgx"><span style="--depth: 1;" class="astro-jugkfwgx">resolve_comment</span></a></li><li style="--depth: 1;" class="astro-jugkfwgx"><a href="#request_review" style="--depth: 1;" class="astro-jugkfwgx"><span style="--depth: 1;" class="astro-jugkfwgx">request_review</span></a></li></ul></li><li style="--depth: 0;" class="astro-jugkfwgx"><a href="#web-research-tools" style="--depth: 0;" class="astro-jugkfwgx"><span style="--depth: 0;" class="astro-jugkfwgx">Web research tools</span></a><ul class="astro-jugkfwgx" style="--depth: 1;"><li style="--depth: 1;" class="astro-jugkfwgx"><a href="#web_search" style="--depth: 1;" class="astro-jugkfwgx"><span style="--depth: 1;" class="astro-jugkfwgx">web_search</span></a></li><li style="--depth: 1;" class="astro-jugkfwgx"><a href="#fetch_content" style="--depth: 1;" class="astro-jugkfwgx"><span style="--depth: 1;" class="astro-jugkfwgx">fetch_content</span></a></li><li style="--depth: 1;" class="astro-jugkfwgx"><a href="#get_search_content" style="--depth: 1;" class="astro-jugkfwgx"><span style="--depth: 1;" class="astro-jugkfwgx">get_search_content</span></a></li></ul></li><li style="--depth: 0;" class="astro-jugkfwgx"><a href="#visualize-tool" style="--depth: 0;" class="astro-jugkfwgx"><span style="--depth: 0;" class="astro-jugkfwgx">Visualize tool</span></a><ul class="astro-jugkfwgx" style="--depth: 1;"><li style="--depth: 1;" class="astro-jugkfwgx"><a href="#visualize" style="--depth: 1;" class="astro-jugkfwgx"><span style="--depth: 1;" class="astro-jugkfwgx">visualize</span></a></li></ul></li><li style="--depth: 0;" class="astro-jugkfwgx"><a href="#related" style="--depth: 0;" class="astro-jugkfwgx"><span style="--depth: 0;" class="astro-jugkfwgx">Related</span></a></li></ul></nav></starlight-toc><script type="module" src="/thinkrail/_astro/TableOfContents.astro_astro_type_script_index_0_lang.BpJaGz7G.js"></script></div></div></div></aside><div class="main-pane astro-lrzkfocr"><main data-pagefind-body class="astro-g5ptsecz" lang="en" dir="ltr"><div class="draft-notice" data-pagefind-ignore role="note"><span class="draft-notice__dot" aria-hidden="true"></span>Draft documentation preview — not official</div><div class="content-panel astro-a7po4psb"><div class="sl-container astro-a7po4psb"><div class="page-meta" data-pagefind-ignore><span class="badge badge--type badge--reference">Reference</span></div><h1 id="_top">Tools the agent can call</h1></div></div><div class="content-panel astro-a7po4psb"><div class="sl-container astro-a7po4psb"><div class="sl-markdown-content"><p>ThinkRail runs <code dir="auto">pi</code> in-process and adds a fixed set of tools to every chat on top of the tools <code dir="auto">pi</code>
+ships. This page lists those additions: name, purpose, parameters, and notes. For how the pieces fit
+together, read <a href="/thinkrail/agent/thinkrail-and-pi/">ThinkRail and pi</a>.</p>
+<div class="sl-heading-wrapper level-h2"><h2 id="what-is-and-is-not-listed-here">What is and is not listed here</h2><a class="sl-anchor-link" href="#what-is-and-is-not-listed-here"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore="">Section titled “What is and is not listed here”</span></a></div>
+<p><code dir="auto">pi</code> owns its built-in tools (<code dir="auto">read</code>, <code dir="auto">bash</code>, <code dir="auto">edit</code>, <code dir="auto">write</code>, <code dir="auto">grep</code>, <code dir="auto">find</code>, <code dir="auto">ls</code>, and the rest) and its
+MCP tools. They are not documented on this page; see the <a href="https://pi.dev"><code dir="auto">pi</code> documentation</a>.
+Tools from MCP servers are named <code dir="auto">mcp__&#x3C;server>__&#x3C;tool></code> and are covered in
+<a href="/thinkrail/extend/mcp-configuration/">MCP configuration</a>.</p>
+<p>Parameter types follow the tool schemas the model sees. A parameter marked <strong>Required: no</strong> may be
+omitted.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Group</th><th>Tools</th><th>Provided by</th><th>Availability</th></tr></thead><tbody><tr><td><a href="#spec-graph-tools">Spec graph</a></td><td><code dir="auto">spec_grep</code>, <code dir="auto">spec_get</code>, <code dir="auto">spec_graph</code>, <code dir="auto">spec_create</code>, <code dir="auto">spec_update</code>, <code dir="auto">spec_delete</code>, <code dir="auto">spec_validate</code></td><td><code dir="auto">pi-spec-graph</code></td><td>Always on</td></tr><tr><td><a href="#todo-plan-tools">TODO plan</a></td><td><code dir="auto">todo_list</code>, <code dir="auto">todo_add</code>, <code dir="auto">todo_update</code>, <code dir="auto">todo_promote</code>, <code dir="auto">todo_remove</code>, <code dir="auto">todo_write</code>, <code dir="auto">todo_plan_summary</code></td><td><code dir="auto">pi-todos</code></td><td>Always on</td></tr><tr><td><a href="#subagent-tools">Subagents</a></td><td><code dir="auto">Agent</code>, <code dir="auto">get_subagent_result</code></td><td><code dir="auto">pi-subagents</code></td><td>On unless subagents are turned off</td></tr><tr><td><a href="#background-command-tool">Background commands</a></td><td><code dir="auto">background_command</code></td><td><code dir="auto">pi-background-commands</code></td><td>Always on</td></tr><tr><td><a href="#host-tools">Host tools</a></td><td><code dir="auto">ask_user_question</code>, <code dir="auto">set_title</code>, <code dir="auto">resolve_comment</code>, <code dir="auto">request_review</code></td><td>ThinkRail host</td><td><code dir="auto">request_review</code> is opt-in; the rest are always on</td></tr><tr><td><a href="#web-research-tools">Web research</a></td><td><code dir="auto">web_search</code>, <code dir="auto">fetch_content</code>, <code dir="auto">get_search_content</code></td><td><code dir="auto">pi-web-access</code></td><td>Always on</td></tr><tr><td><a href="#visualize-tool">Visualize</a></td><td><code dir="auto">visualize</code></td><td>ThinkRail extension</td><td>On unless turned off in <strong>Settings → Extensions</strong></td></tr></tbody></table>
+<aside aria-label="Note" class="starlight-aside starlight-aside--note"><p class="starlight-aside__title" aria-hidden="true"><svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" class="starlight-aside__icon"><path d="M12 11a1 1 0 0 0-1 1v4a1 1 0 0 0 2 0v-4a1 1 0 0 0-1-1Zm.38-3.92a1 1 0 0 0-.76 0 1 1 0 0 0-.33.21 1.15 1.15 0 0 0-.21.33 1 1 0 0 0 .21 1.09c.097.088.209.16.33.21A1 1 0 0 0 13 8a1.05 1.05 0 0 0-.29-.71 1 1 0 0 0-.33-.21ZM12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Zm0 18a8 8 0 1 1 0-16.001A8 8 0 0 1 12 20Z"></path></svg>Note</p><div class="starlight-aside__content"><p>ThinkRail adds no confirmation prompt to the tools on this page. The only calls it gates are MCP tool
+calls that do not declare <code dir="auto">readOnlyHint</code>; see <a href="/thinkrail/extend/mcp-configuration/#call-confirmation">MCP configuration</a>.
+<code dir="auto">pi</code>’s own tools, including <code dir="auto">bash</code>, do not ask first either. See
+<a href="/thinkrail/security/security-and-data-overview/#what-the-agent-can-do-without-asking">What the agent can do without asking</a>.</p></div></aside>
+<div class="sl-heading-wrapper level-h2"><h2 id="spec-graph-tools">Spec graph tools</h2><a class="sl-anchor-link" href="#spec-graph-tools"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore="">Section titled “Spec graph tools”</span></a></div>
+<p>Provided by the <code dir="auto">pi-spec-graph</code> package. The tools read and manage the project’s
+<a href="/thinkrail/specs/spec-format/">spec graph</a>. An always-on system prompt rule tells the agent to consult the owning spec
+when work touches a documented boundary, contract, invariant, behavior, or architecture decision. The tools
+manage frontmatter and structure only; the agent edits spec prose with <code dir="auto">pi</code>’s <code dir="auto">write</code> and <code dir="auto">edit</code>.</p>
+<p>The index is refreshed from disk on every call (changed files are re-read), so specs changed by hand or
+by another tool are always current. Paths are relative to the working directory of the chat (the workspace root).</p>
+<div class="sl-heading-wrapper level-h3"><h3 id="spec_grep"><code dir="auto">spec_grep</code></h3><a class="sl-anchor-link" href="#spec_grep"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore="">Section titled “spec_grep”</span></a></div>
+<p>Search the text of spec files, optionally narrowed by metadata. Returns <code dir="auto">path:line: snippet</code> matches.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Parameter</th><th>Type</th><th>Required</th><th>Description</th></tr></thead><tbody><tr><td><code dir="auto">pattern</code></td><td>string</td><td>yes</td><td>Substring, or a regular expression when <code dir="auto">regex</code> is true.</td></tr><tr><td><code dir="auto">regex</code></td><td>boolean</td><td>no</td><td>Treat <code dir="auto">pattern</code> as a regular expression. Default: substring.</td></tr><tr><td><code dir="auto">ignoreCase</code></td><td>boolean</td><td>no</td><td>Case-insensitive match. Default: <code dir="auto">true</code>.</td></tr><tr><td><code dir="auto">type</code></td><td>string</td><td>no</td><td>Only search specs whose <code dir="auto">type</code> equals this value.</td></tr><tr><td><code dir="auto">tag</code></td><td>string</td><td>no</td><td>Only search specs that carry this tag.</td></tr><tr><td><code dir="auto">parent</code></td><td>string</td><td>no</td><td>Only search specs whose <code dir="auto">parent</code> is this id.</td></tr><tr><td><code dir="auto">dependsOn</code></td><td>string</td><td>no</td><td>Only search specs whose <code dir="auto">depends-on</code> list contains this id.</td></tr><tr><td><code dir="auto">limit</code></td><td>number</td><td>no</td><td>Maximum matches to return. Default: 200.</td></tr></tbody></table>
+<p>An invalid regular expression returns an error result. Matching is per line; there is no semantic search.</p>
+<div class="sl-heading-wrapper level-h3"><h3 id="spec_get"><code dir="auto">spec_get</code></h3><a class="sl-anchor-link" href="#spec_get"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore="">Section titled “spec_get”</span></a></div>
+<p>Look up one spec by id. Returns its frontmatter, file path, resolved forward links, and reverse links
+(specs that point at it) across <code dir="auto">parent</code>, <code dir="auto">depends-on</code>, <code dir="auto">references</code>, and <code dir="auto">implements</code>. A link whose target
+does not exist is marked <code dir="auto">(missing)</code>. The result has no prose body; read the body with <code dir="auto">read</code> using the
+returned path.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Parameter</th><th>Type</th><th>Required</th><th>Description</th></tr></thead><tbody><tr><td><code dir="auto">id</code></td><td>string</td><td>yes</td><td>The spec id to look up.</td></tr></tbody></table>
+<div class="sl-heading-wrapper level-h3"><h3 id="spec_graph"><code dir="auto">spec_graph</code></h3><a class="sl-anchor-link" href="#spec_graph"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore="">Section titled “spec_graph”</span></a></div>
+<p>Return a bounded slice of the graph around one spec.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Parameter</th><th>Type</th><th>Required</th><th>Description</th></tr></thead><tbody><tr><td><code dir="auto">root</code></td><td>string</td><td>yes</td><td>Id of the spec to start from.</td></tr><tr><td><code dir="auto">direction</code></td><td><code dir="auto">subtree</code> | <code dir="auto">ancestors</code> | <code dir="auto">neighbors</code></td><td>yes</td><td><code dir="auto">subtree</code> walks down the <code dir="auto">parent</code> tree, <code dir="auto">ancestors</code> walks up to the root, <code dir="auto">neighbors</code> crosses one edge kind and its reverse.</td></tr><tr><td><code dir="auto">depth</code></td><td>number</td><td>no</td><td>How many hops to expand. Default: 1.</td></tr><tr><td><code dir="auto">edge</code></td><td><code dir="auto">parent</code> | <code dir="auto">depends-on</code> | <code dir="auto">references</code> | <code dir="auto">implements</code></td><td>no</td><td>For <code dir="auto">neighbors</code> only: which edge kind to cross. Default: <code dir="auto">depends-on</code>.</td></tr></tbody></table>
+<div class="sl-heading-wrapper level-h3"><h3 id="spec_create"><code dir="auto">spec_create</code></h3><a class="sl-anchor-link" href="#spec_create"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore="">Section titled “spec_create”</span></a></div>
+<p>Create a spec file with scaffolded frontmatter and a heading-only body chosen by <code dir="auto">type</code>. The scaffold
+headings are Responsibility and Boundary for module and submodule specs; Drivers, Decisions, Invariants,
+and Out of scope for architecture specs; Goal and Scope for goal specs; Purpose and Open items for
+task-specs.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Parameter</th><th>Type</th><th>Required</th><th>Description</th></tr></thead><tbody><tr><td><code dir="auto">path</code></td><td>string</td><td>yes</td><td>Path relative to the project root, ending in <code dir="auto">.md</code> (for example <code dir="auto">src/foo/SPEC.md</code>).</td></tr><tr><td><code dir="auto">id</code></td><td>string</td><td>yes</td><td>Unique spec id.</td></tr><tr><td><code dir="auto">type</code></td><td>enum</td><td>yes</td><td><code dir="auto">goal-and-requirements</code>, <code dir="auto">architecture-design</code>, <code dir="auto">module-design</code>, <code dir="auto">submodule-design</code>, or <code dir="auto">task-spec</code>.</td></tr><tr><td><code dir="auto">title</code></td><td>string</td><td>yes</td><td>Human-readable title.</td></tr><tr><td><code dir="auto">status</code></td><td>enum</td><td>no</td><td><code dir="auto">draft</code>, <code dir="auto">active</code>, <code dir="auto">stale</code>, <code dir="auto">done</code>, or <code dir="auto">deprecated</code>.</td></tr><tr><td><code dir="auto">parent</code></td><td>string</td><td>no</td><td>Id of the parent spec.</td></tr><tr><td><code dir="auto">dependsOn</code></td><td>string[]</td><td>no</td><td>Ids for the <code dir="auto">depends-on</code> list.</td></tr><tr><td><code dir="auto">references</code></td><td>string[]</td><td>no</td><td>Ids for the <code dir="auto">references</code> list.</td></tr><tr><td><code dir="auto">implements</code></td><td>string[]</td><td>no</td><td>Ids for the <code dir="auto">implements</code> list.</td></tr><tr><td><code dir="auto">covers</code></td><td>string[]</td><td>no</td><td>Free-form coverage ids.</td></tr><tr><td><code dir="auto">tags</code></td><td>string[]</td><td>no</td><td>Tags.</td></tr></tbody></table>
+<p>The call fails if the file exists, the id is already in use, or the path cannot be indexed. See
+<a href="/thinkrail/specs/spec-format/#spec-tooling-limits">Spec tooling limits</a> for the path rules.</p>
+<div class="sl-heading-wrapper level-h3"><h3 id="spec_update"><code dir="auto">spec_update</code></h3><a class="sl-anchor-link" href="#spec_update"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore="">Section titled “spec_update”</span></a></div>
+<p>Edit a spec’s frontmatter in place. Existing field order, comments, nested fields, and line endings are
+kept; the body is never touched. The <code dir="auto">id</code> cannot be renamed and <code dir="auto">id</code> and <code dir="auto">type</code> cannot be removed.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Parameter</th><th>Type</th><th>Required</th><th>Description</th></tr></thead><tbody><tr><td><code dir="auto">id</code></td><td>string</td><td>yes</td><td>Id of the spec to update.</td></tr><tr><td><code dir="auto">set</code></td><td>object (string values)</td><td>no</td><td>Scalar fields to set or overwrite, such as <code dir="auto">title</code>, <code dir="auto">status</code>, or <code dir="auto">parent</code>. List fields are rejected here.</td></tr><tr><td><code dir="auto">remove</code></td><td>string[]</td><td>no</td><td>Frontmatter field names to delete.</td></tr><tr><td><code dir="auto">addList</code></td><td>object</td><td>no</td><td>Entries to add to list fields. Keys: <code dir="auto">depends-on</code>, <code dir="auto">references</code>, <code dir="auto">implements</code>, <code dir="auto">covers</code>, <code dir="auto">tags</code>; each value is a string array. Duplicates are not added.</td></tr><tr><td><code dir="auto">removeList</code></td><td>object</td><td>no</td><td>Entries to remove from the same list fields. A list left empty is deleted.</td></tr></tbody></table>
+<div class="sl-heading-wrapper level-h3"><h3 id="spec_delete"><code dir="auto">spec_delete</code></h3><a class="sl-anchor-link" href="#spec_delete"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore="">Section titled “spec_delete”</span></a></div>
+<p>Delete a spec file by id. Other specs that link to it are not edited; run <code dir="auto">spec_validate</code> afterward.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Parameter</th><th>Type</th><th>Required</th><th>Description</th></tr></thead><tbody><tr><td><code dir="auto">id</code></td><td>string</td><td>yes</td><td>Id of the spec to delete.</td></tr></tbody></table>
+<div class="sl-heading-wrapper level-h3"><h3 id="spec_validate"><code dir="auto">spec_validate</code></h3><a class="sl-anchor-link" href="#spec_validate"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore="">Section titled “spec_validate”</span></a></div>
+<p>Report structural problems in the graph: links whose target does not exist (for <code dir="auto">parent</code>, <code dir="auto">depends-on</code>,
+<code dir="auto">references</code>, and <code dir="auto">implements</code>), duplicate ids, and cycles in the <code dir="auto">parent</code> chain. Takes no parameters.</p>
+<div class="sl-heading-wrapper level-h2"><h2 id="todo-plan-tools">TODO plan tools</h2><a class="sl-anchor-link" href="#todo-plan-tools"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore="">Section titled “TODO plan tools”</span></a></div>
+<p>Provided by the <code dir="auto">pi-todos</code> package. The tools read and write the chat’s shared plan, which you see in the
+<strong>TODO List</strong> rail and on the plan page. The plan is stored per chat at
+<code dir="auto">.thinkrail/context/todos/&#x3C;chat id>.json</code> inside the workspace, in the gitignored <code dir="auto">.thinkrail/context/</code>
+folder, so it is scratch state and not committed.</p>
+<p>A plan has <strong>groups</strong> (one task, titled by outcome) that contain ordered <strong>steps</strong>, plus a <strong>loose queue</strong>
+at the end for raw items that either side can add. A step is <code dir="auto">pending</code>, <code dir="auto">in_progress</code>, or <code dir="auto">done</code>. Exactly
+one step is <code dir="auto">in_progress</code>: setting a step to <code dir="auto">in_progress</code> returns any other to <code dir="auto">pending</code> and the result
+says it was paused. A group’s status is derived from its steps and never stored. Most results end with a
+short reminder line, such as “nothing is in_progress” or a prompt to write the plan summary once every item
+is done.</p>
+<p>An always-on rule tells the agent the list exists, that a pending loose item is promoted into its own
+group when the agent takes it into work, and that a plan is created when you ask for one or the work needs
+at least three substantive steps.</p>
+<div class="sl-heading-wrapper level-h3"><h3 id="todo_list"><code dir="auto">todo_list</code></h3><a class="sl-anchor-link" href="#todo_list"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore="">Section titled “todo_list”</span></a></div>
+<p>Read the plan. The agent re-reads it before choosing each next step because you can edit it at any time.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Parameter</th><th>Type</th><th>Required</th><th>Description</th></tr></thead><tbody><tr><td><code dir="auto">status</code></td><td><code dir="auto">pending</code> | <code dir="auto">in_progress</code> | <code dir="auto">done</code></td><td>no</td><td>Return only items with this status. Omit for the whole plan.</td></tr></tbody></table>
+<div class="sl-heading-wrapper level-h3"><h3 id="todo_add"><code dir="auto">todo_add</code></h3><a class="sl-anchor-link" href="#todo_add"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore="">Section titled “todo_add”</span></a></div>
+<p>Add one item without touching the rest of the plan.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Parameter</th><th>Type</th><th>Required</th><th>Description</th></tr></thead><tbody><tr><td><code dir="auto">title</code></td><td>string</td><td>yes</td><td>One-line step title: imperative and about the outcome.</td></tr><tr><td><code dir="auto">group</code></td><td>string</td><td>no</td><td>Title of the group to append to. The group is created if it does not exist.</td></tr><tr><td><code dir="auto">after</code></td><td>string</td><td>no</td><td>Id of an existing step to insert after. Overrides <code dir="auto">group</code>. Must be a step inside a group; an id of a loose item is rejected.</td></tr><tr><td><code dir="auto">note</code></td><td>string</td><td>no</td><td>Short secondary line for agent-facing detail.</td></tr></tbody></table>
+<p>With neither <code dir="auto">group</code> nor <code dir="auto">after</code>, the item goes into the loose queue.</p>
+<div class="sl-heading-wrapper level-h3"><h3 id="todo_update"><code dir="auto">todo_update</code></h3><a class="sl-anchor-link" href="#todo_update"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore="">Section titled “todo_update”</span></a></div>
+<p>Change one item. This is how the agent marks progress.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Parameter</th><th>Type</th><th>Required</th><th>Description</th></tr></thead><tbody><tr><td><code dir="auto">id</code></td><td>string</td><td>yes</td><td>Id of the item.</td></tr><tr><td><code dir="auto">status</code></td><td><code dir="auto">pending</code> | <code dir="auto">in_progress</code> | <code dir="auto">done</code></td><td>no</td><td>New status. Done items stay in the plan as history.</td></tr><tr><td><code dir="auto">title</code></td><td>string</td><td>no</td><td>New title.</td></tr><tr><td><code dir="auto">note</code></td><td>string</td><td>no</td><td>New note. An empty string clears it.</td></tr><tr><td><code dir="auto">summary</code></td><td>string</td><td>no</td><td>Completion summary in Markdown, set together with <code dir="auto">status</code> <code dir="auto">done</code>. An empty string clears it.</td></tr><tr><td><code dir="auto">verification</code></td><td>string</td><td>no</td><td>Checks that were run, each as <code dir="auto">check → result</code>, or <code dir="auto">not verified</code>. An empty string clears it.</td></tr><tr><td><code dir="auto">commitSubject</code></td><td>string</td><td>no</td><td>One-line commit subject for the step’s code changes, set together with <code dir="auto">status</code> <code dir="auto">done</code>. An empty string clears it.</td></tr></tbody></table>
+<p>When a step with changes goes to <code dir="auto">done</code>, the host commits that step’s delta under <code dir="auto">commitSubject</code>, falling
+back to the step title. The host only commits when its safety conditions hold (a recorded baseline, no
+unrelated changes already in the tree, an unshared window, and a non-empty delta); otherwise it skips the
+commit. Marking the last open item done prompts the agent to call <code dir="auto">todo_plan_summary</code>.</p>
+<div class="sl-heading-wrapper level-h3"><h3 id="todo_promote"><code dir="auto">todo_promote</code></h3><a class="sl-anchor-link" href="#todo_promote"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore="">Section titled “todo_promote”</span></a></div>
+<p>Turn a loose item into a group of its own in one step. The group keeps the loose item’s id and title unless
+<code dir="auto">title</code> is given.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Parameter</th><th>Type</th><th>Required</th><th>Description</th></tr></thead><tbody><tr><td><code dir="auto">id</code></td><td>string</td><td>yes</td><td>Id of a loose item. A step that is already inside a group is rejected.</td></tr><tr><td><code dir="auto">title</code></td><td>string</td><td>no</td><td>Title for the new group instead of the loose item’s own.</td></tr></tbody></table>
+<p>The call fails when the id is unknown, the resolved title is empty, or a group with that title already
+exists.</p>
+<div class="sl-heading-wrapper level-h3"><h3 id="todo_remove"><code dir="auto">todo_remove</code></h3><a class="sl-anchor-link" href="#todo_remove"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore="">Section titled “todo_remove”</span></a></div>
+<p>Delete an item by id. The agent uses it only when you ask to drop an item, because finished items are
+marked done rather than removed.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Parameter</th><th>Type</th><th>Required</th><th>Description</th></tr></thead><tbody><tr><td><code dir="auto">id</code></td><td>string</td><td>yes</td><td>Id of the item to remove.</td></tr></tbody></table>
+<div class="sl-heading-wrapper level-h3"><h3 id="todo_write"><code dir="auto">todo_write</code></h3><a class="sl-anchor-link" href="#todo_write"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore="">Section titled “todo_write”</span></a></div>
+<p>Lay out or reconcile the plan from groups. Steps are matched to existing steps by group title plus step
+title and keep their status, summary, and id, so repeating the call is safe. A <code dir="auto">status</code> passed for an
+existing step is ignored. Steps the agent leaves out are dropped, but loose items and done items are always
+kept.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Parameter</th><th>Type</th><th>Required</th><th>Description</th></tr></thead><tbody><tr><td><code dir="auto">groups</code></td><td>array</td><td>yes</td><td>The plan as tasks.</td></tr><tr><td><code dir="auto">groups[].title</code></td><td>string</td><td>yes</td><td>Task name, an outcome.</td></tr><tr><td><code dir="auto">groups[].todos</code></td><td>array</td><td>yes</td><td>The task’s ordered steps.</td></tr><tr><td><code dir="auto">groups[].todos[].title</code></td><td>string</td><td>yes</td><td>Step title.</td></tr><tr><td><code dir="auto">groups[].todos[].status</code></td><td><code dir="auto">pending</code> | <code dir="auto">in_progress</code> | <code dir="auto">done</code></td><td>no</td><td>Initial status of a new step. Default: <code dir="auto">pending</code>.</td></tr><tr><td><code dir="auto">groups[].todos[].note</code></td><td>string</td><td>no</td><td>Short secondary line.</td></tr></tbody></table>
+<div class="sl-heading-wrapper level-h3"><h3 id="todo_plan_summary"><code dir="auto">todo_plan_summary</code></h3><a class="sl-anchor-link" href="#todo_plan_summary"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore="">Section titled “todo_plan_summary”</span></a></div>
+<p>Set the plan-level completion summary after the last item is done. The summary is cumulative across the
+whole plan and shaped like a pull request body, with <code dir="auto">## Summary</code>, <code dir="auto">## Changes</code>, and <code dir="auto">## Testing</code> sections.
+The host prepends it when it renders the PR body for <a href="/thinkrail/review/open-a-pull-request/">Open PR</a>.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Parameter</th><th>Type</th><th>Required</th><th>Description</th></tr></thead><tbody><tr><td><code dir="auto">summary</code></td><td>string</td><td>yes</td><td>The cumulative summary. An empty string clears it.</td></tr></tbody></table>
+<p>If items are still open, the summary is saved but only shows once everything is done.</p>
+<div class="sl-heading-wrapper level-h2"><h2 id="subagent-tools">Subagent tools</h2><a class="sl-anchor-link" href="#subagent-tools"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore="">Section titled “Subagent tools”</span></a></div>
+<p>Provided by the <code dir="auto">pi-subagents</code> package, on top of <code dir="auto">pi-delegation</code>. A subagent is a hidden child <code dir="auto">pi</code> session
+with its own context window. It works in the parent’s workspace and branch, runs without anyone to answer
+questions, and returns one final report. See <a href="/thinkrail/agent/delegate-to-subagents/">Delegate to subagents</a> for
+the workflow.</p>
+<div class="sl-heading-wrapper level-h3"><h3 id="agent"><code dir="auto">Agent</code></h3><a class="sl-anchor-link" href="#agent"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore="">Section titled “Agent”</span></a></div>
+<p>Run a task in a subagent. Several <code dir="auto">Agent</code> calls in one assistant message run in parallel.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Parameter</th><th>Type</th><th>Required</th><th>Description</th></tr></thead><tbody><tr><td><code dir="auto">subagent_type</code></td><td>string</td><td>yes</td><td>Name of the agent definition to run, such as <code dir="auto">scout</code>.</td></tr><tr><td><code dir="auto">task</code></td><td>string</td><td>yes</td><td>The complete, self-contained task. The subagent sees only this text.</td></tr><tr><td><code dir="auto">model</code></td><td>string</td><td>no</td><td>A model for an unpinned agent, preferably <code dir="auto">provider/id</code>.</td></tr><tr><td><code dir="auto">run_in_background</code></td><td>boolean</td><td>no</td><td>Do not wait. The call returns the child session id at once.</td></tr></tbody></table>
+<p>Behavior and limits:</p>
+<ul>
+<li><strong>Foreground</strong> (default). The call waits and returns the subagent’s final report. A failed run raises a
+tool error that still carries the run’s details.</li>
+<li><strong>Background.</strong> The result is the child session id. When the run finishes, a <code dir="auto">subagent-completion</code>
+message is delivered to the chat as a follow-up and starts a new turn, unless you stopped the subagent
+yourself. <code dir="auto">get_subagent_result</code> fetches the result on demand.</li>
+<li><strong>Model.</strong> A definition’s <code dir="auto">model</code> wins over the <code dir="auto">model</code> parameter, which wins over the parent chat’s
+model. A reference matches <code dir="auto">provider/id</code> exactly, an exact id, or a unique id prefix; an ambiguous or
+unknown reference is an error.</li>
+<li><strong>Result size.</strong> Reports are capped at 50,000 characters; the full text stays in the child transcript.</li>
+<li><strong>No recursion, no MCP.</strong> Subagents cannot call <code dir="auto">Agent</code> or <code dir="auto">get_subagent_result</code>, and they cannot call
+MCP tools. The parent calls MCP tools itself and passes what the subagent needs in <code dir="auto">task</code>.</li>
+<li><strong>Concurrency.</strong> Each chat runs at most the configured number of subagents at once; the rest wait in a
+first-in, first-out queue. See <a href="#subagent-settings">Subagent settings</a>.</li>
+</ul>
+<div class="sl-heading-wrapper level-h3"><h3 id="get_subagent_result"><code dir="auto">get_subagent_result</code></h3><a class="sl-anchor-link" href="#get_subagent_result"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore="">Section titled “get_subagent_result”</span></a></div>
+<p>Collect the result or current status of a subagent started by this chat.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Parameter</th><th>Type</th><th>Required</th><th>Description</th></tr></thead><tbody><tr><td><code dir="auto">session_id</code></td><td>string</td><td>yes</td><td>The child session id that <code dir="auto">Agent</code> returned.</td></tr></tbody></table>
+<p>A running or queued subagent reports its status. An id from another chat, or from before a host restart,
+is unknown because the run registry is in memory; the error names the transcript path when it survives.</p>
+<div class="sl-heading-wrapper level-h3"><h3 id="subagent-roles">Subagent roles</h3><a class="sl-anchor-link" href="#subagent-roles"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore="">Section titled “Subagent roles”</span></a></div>
+<p>The <code dir="auto">Agent</code> tool lists the available definitions in its description. Four are built in:</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Role</th><th>Purpose</th><th>Tools</th><th>Notes</th></tr></thead><tbody><tr><td><code dir="auto">scout</code></td><td>Read-only recon. Returns compressed context: paths, symbols, call sites.</td><td><code dir="auto">read</code>, <code dir="auto">grep</code>, <code dir="auto">find</code>, <code dir="auto">ls</code>, <code dir="auto">bash</code>, <code dir="auto">spec_grep</code>, <code dir="auto">spec_get</code>, <code dir="auto">spec_graph</code>, <code dir="auto">web_search</code>, <code dir="auto">fetch_content</code></td><td><code dir="auto">bash</code> is for read-only inspection.</td></tr><tr><td><code dir="auto">planner</code></td><td>Read-only planning. Returns an ordered, file-level change plan.</td><td><code dir="auto">read</code>, <code dir="auto">grep</code>, <code dir="auto">find</code>, <code dir="auto">ls</code>, <code dir="auto">spec_grep</code>, <code dir="auto">spec_get</code>, <code dir="auto">spec_graph</code></td><td>Writes no code or files.</td></tr><tr><td><code dir="auto">worker</code></td><td>Implements a well-scoped task end to end.</td><td><code dir="auto">pi</code> defaults: <code dir="auto">read</code>, <code dir="auto">bash</code>, <code dir="auto">edit</code>, <code dir="auto">write</code></td><td>Leaves all changes uncommitted and never runs history- or index-changing <code dir="auto">git</code> commands; the parent owns commits.</td></tr><tr><td><code dir="auto">reviewer</code></td><td>Read-only review of a named diff or area. Ends with <code dir="auto">Verdict: Approve</code> or <code dir="auto">Verdict: Request changes</code>.</td><td><code dir="auto">read</code>, <code dir="auto">grep</code>, <code dir="auto">find</code>, <code dir="auto">ls</code>, <code dir="auto">bash</code>, <code dir="auto">spec_grep</code>, <code dir="auto">spec_get</code>, <code dir="auto">spec_graph</code></td><td>Also reads the repository’s agent guidance files (project context).</td></tr></tbody></table>
+<div class="sl-heading-wrapper level-h3"><h3 id="custom-agent-definitions">Custom agent definitions</h3><a class="sl-anchor-link" href="#custom-agent-definitions"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore="">Section titled “Custom agent definitions”</span></a></div>
+<p>Add your own roles as Markdown files with frontmatter. The body is the system prompt.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Location</th><th>Scope</th><th>Loaded when</th></tr></thead><tbody><tr><td><code dir="auto">&#x3C;pi agent dir>/agents/*.md</code> (by default <code dir="auto">~/.pi/agent/agents/</code>)</td><td>Personal</td><td>Always</td></tr><tr><td><code dir="auto">&#x3C;workspace>/.pi/agents/*.md</code></td><td>Project</td><td>The project is trusted</td></tr><tr><td><code dir="auto">&#x3C;workspace>/.agents/agents/*.md</code></td><td>Project</td><td>The project is trusted</td></tr></tbody></table>
+<p>Names resolve built-in first, then personal, then project, and the first definition with a name wins. A
+definition therefore cannot replace a built-in role or a personal role of the same name. Files that are
+malformed, or that lack a <code dir="auto">name</code>, a <code dir="auto">description</code>, or a body, are skipped silently. The frontmatter is read
+line by line as <code dir="auto">key: value</code>, not as full YAML.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Field</th><th>Required</th><th>Description</th></tr></thead><tbody><tr><td><code dir="auto">name</code></td><td>yes</td><td>Role name used as <code dir="auto">subagent_type</code>.</td></tr><tr><td><code dir="auto">description</code></td><td>yes</td><td>What the role is for; shown to the parent agent.</td></tr><tr><td><code dir="auto">tools</code></td><td>no</td><td>Comma-separated tool names, optionally in brackets. Omitted means <code dir="auto">pi</code>’s default tools.</td></tr><tr><td><code dir="auto">model</code></td><td>no</td><td>Pins the model. A pin cannot be overridden by the <code dir="auto">Agent</code> call.</td></tr><tr><td><code dir="auto">thinking</code></td><td>no</td><td>One of <code dir="auto">off</code>, <code dir="auto">minimal</code>, <code dir="auto">low</code>, <code dir="auto">medium</code>, <code dir="auto">high</code>, <code dir="auto">xhigh</code>, <code dir="auto">max</code>. Other values are ignored.</td></tr><tr><td><code dir="auto">max_turns</code></td><td>no</td><td>Positive integer turn cap.</td></tr><tr><td><code dir="auto">inherit_project_context</code></td><td>no</td><td><code dir="auto">true</code> to load the repository’s agent guidance files.</td></tr><tr><td><code dir="auto">skills</code></td><td>no</td><td>Comma-separated skill names to load.</td></tr><tr><td><code dir="auto">extensions</code></td><td>no</td><td><code dir="auto">true</code> to give the role ThinkRail’s curated child extension set (spec read tools and web tools).</td></tr></tbody></table>
+<div class="expressive-code"><link rel="stylesheet" href="/thinkrail/_astro/ec.w36nc.css"><script type="module" src="/thinkrail/_astro/ec.0vx5m.js"></script><figure class="frame not-content"><figcaption class="header"></figcaption><pre data-language="markdown"><code><div class="ec-line"><div class="code"><span style="--0:#D6DEEB;--1:#403F53">---</span></div></div><div class="ec-line"><div class="code"><span style="--0:#7FDBCA;--1:#111111">name</span><span style="--0:#D6DEEB;--1:#403F53">: </span><span style="--0:#ECC48D;--1:#3B61B0">docs-checker</span></div></div><div class="ec-line"><div class="code"><span style="--0:#7FDBCA;--1:#111111">description</span><span style="--0:#D6DEEB;--1:#403F53">: </span><span style="--0:#ECC48D;--1:#3B61B0">Read-only check that docs match the code they describe.</span></div></div><div class="ec-line"><div class="code"><span style="--0:#7FDBCA;--1:#111111">tools</span><span style="--0:#D6DEEB;--1:#403F53">: </span><span style="--0:#ECC48D;--1:#3B61B0">read, grep, find, ls</span></div></div><div class="ec-line"><div class="code"><span style="--0:#7FDBCA;--1:#111111">thinking</span><span style="--0:#D6DEEB;--1:#403F53">: </span><span style="--0:#ECC48D;--1:#3B61B0">medium</span></div></div><div class="ec-line"><div class="code"><span style="--0:#7FDBCA;--1:#111111">max_turns</span><span style="--0:#D6DEEB;--1:#403F53">: </span><span style="--0:#F78C6C;--1:#AA0982">20</span></div></div><div class="ec-line"><div class="code"><span style="--0:#7FDBCA;--1:#111111">inherit_project_context</span><span style="--0:#D6DEEB;--1:#403F53">: </span><span style="--0:#FF6A83;--1:#A24848">true</span></div></div><div class="ec-line"><div class="code"><span style="--0:#D6DEEB;--1:#403F53">---</span></div></div><div class="ec-line"><div class="code">
+</div></div><div class="ec-line"><div class="code"><span style="--0:#D6DEEB;--1:#403F53">You verify documentation against source. Report each mismatch as path:line with the correct fact.</span></div></div><div class="ec-line"><div class="code"><span style="--0:#D6DEEB;--1:#403F53">Never modify files.</span></div></div></code></pre><div class="copy"><div aria-live="polite"></div><button title="Copy to clipboard" data-copied="Copied!" data-code="---name: docs-checkerdescription: Read-only check that docs match the code they describe.tools: read, grep, find, lsthinking: mediummax_turns: 20inherit_project_context: true---You verify documentation against source. Report each mismatch as path:line with the correct fact.Never modify files."><div></div></button></div></figure></div>
+<div class="sl-heading-wrapper level-h3"><h3 id="subagent-settings">Subagent settings</h3><a class="sl-anchor-link" href="#subagent-settings"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore="">Section titled “Subagent settings”</span></a></div>
+<p><strong>Settings → Chat → Subagents</strong> has <strong>Allow subagents</strong> (global switch, on by default) and <strong>Per chat at
+once</strong> (concurrency limit, 1 to 16, default 4). The active workspace can override both. Work already running
+always finishes when you turn subagents off. While subagents are off, <code dir="auto">Agent</code> fails with “Subagents are
+disabled in this session.”</p>
+<div class="sl-heading-wrapper level-h2"><h2 id="background-command-tool">Background command tool</h2><a class="sl-anchor-link" href="#background-command-tool"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore="">Section titled “Background command tool”</span></a></div>
+<p>Provided by the <code dir="auto">pi-background-commands</code> package. It starts a long-running, non-interactive shell command
+that the chat owns, without holding the agent’s turn. Ordinary <code dir="auto">bash</code> is unchanged.</p>
+<div class="sl-heading-wrapper level-h3"><h3 id="background_command"><code dir="auto">background_command</code></h3><a class="sl-anchor-link" href="#background_command"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore="">Section titled “background_command”</span></a></div>
+<p>One tool with four actions. Each action accepts only its own parameters; extra parameters are rejected.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Parameter</th><th>Type</th><th>Required</th><th>Description</th></tr></thead><tbody><tr><td><code dir="auto">action</code></td><td><code dir="auto">start</code> | <code dir="auto">list</code> | <code dir="auto">output</code> | <code dir="auto">stop</code></td><td>yes</td><td>What to do.</td></tr><tr><td><code dir="auto">command</code></td><td>string</td><td><code dir="auto">start</code></td><td>The shell command, 1 to 65,536 characters. Start only.</td></tr><tr><td><code dir="auto">name</code></td><td>string</td><td>no</td><td>Display name, up to 200 characters. Start only.</td></tr><tr><td><code dir="auto">timeout</code></td><td>number</td><td>no</td><td>Timeout in seconds. Start only. There is no default timeout.</td></tr><tr><td><code dir="auto">id</code></td><td>string</td><td><code dir="auto">output</code>, <code dir="auto">stop</code></td><td>Command id returned by <code dir="auto">start</code>.</td></tr></tbody></table>
+<p>Behavior and limits:</p>
+<ul>
+<li>At most 8 commands are active at once, and the latest 20 finished records are kept.</li>
+<li>Output is a replacement snapshot of the last 2,000 lines or 50 KiB, not an archive.</li>
+<li>There is no stdin and no terminal. The agent is told not to detach with <code dir="auto">&#x26;</code>, <code dir="auto">nohup</code>, or <code dir="auto">disown</code>.</li>
+<li>When a command finishes on its own, a <code dir="auto">background-command-completion</code> message with a short excerpt is
+delivered as a follow-up and starts a turn. A command you stop does not wake the agent.</li>
+<li>Stopping requests cancellation; it is not instant.</li>
+<li>Records live in host memory. After a host restart, earlier ids are unavailable.</li>
+</ul>
+<p>You see running and finished commands in the chat’s <strong>Resources</strong> view.</p>
+<div class="sl-heading-wrapper level-h2"><h2 id="host-tools">Host tools</h2><a class="sl-anchor-link" href="#host-tools"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore="">Section titled “Host tools”</span></a></div>
+<p>These tools are registered by the ThinkRail host rather than by a portable package. They are always
+present in parent chats, except <code dir="auto">request_review</code>.</p>
+<div class="sl-heading-wrapper level-h3"><h3 id="ask_user_question"><code dir="auto">ask_user_question</code></h3><a class="sl-anchor-link" href="#ask_user_question"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore="">Section titled “ask_user_question”</span></a></div>
+<p>Ask you one or more structured multiple-choice questions. The chat shows them as an interactive card and
+the run waits for your answer.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Parameter</th><th>Type</th><th>Required</th><th>Description</th></tr></thead><tbody><tr><td><code dir="auto">questions</code></td><td>array</td><td>yes</td><td>One or more questions. Question text must be unique within a call.</td></tr><tr><td><code dir="auto">questions[].question</code></td><td>string</td><td>yes</td><td>The full question, ending with a question mark.</td></tr><tr><td><code dir="auto">questions[].header</code></td><td>string</td><td>yes</td><td>Short chip label, up to 16 characters.</td></tr><tr><td><code dir="auto">questions[].options</code></td><td>array</td><td>yes</td><td>2 to 4 options with unique labels.</td></tr><tr><td><code dir="auto">questions[].options[].label</code></td><td>string</td><td>yes</td><td>Option text, up to 60 characters.</td></tr><tr><td><code dir="auto">questions[].options[].description</code></td><td>string</td><td>yes</td><td>What the option means or what it costs.</td></tr><tr><td><code dir="auto">questions[].options[].preview</code></td><td>string</td><td>no</td><td>Markdown shown beside the option. Single-select only.</td></tr><tr><td><code dir="auto">questions[].options[].recommendedReason</code></td><td>string</td><td>no</td><td>One sentence, up to 160 characters, on why the agent recommends this option.</td></tr><tr><td><code dir="auto">questions[].multiSelect</code></td><td>boolean</td><td>no</td><td>Allow several answers. Default: <code dir="auto">false</code>.</td></tr></tbody></table>
+<p>Notes:</p>
+<ul>
+<li>Every question also gets an <strong>Other</strong> free-text answer, and you can skip the whole set. The agent must not
+write its own “Other” option; the labels <code dir="auto">Other</code>, <code dir="auto">Type something.</code>, <code dir="auto">Chat about this</code>, and <code dir="auto">Next →</code> are
+reserved and rejected.</li>
+<li>A recommended option goes first, with “(Recommended)” in its label.</li>
+<li>Replying in the chat instead of answering the card supersedes the card, and your reply arrives as the
+next message.</li>
+<li>The call should be the only tool call in its assistant message; other calls in that message are
+discarded.</li>
+</ul>
+<div class="sl-heading-wrapper level-h3"><h3 id="set_title"><code dir="auto">set_title</code></h3><a class="sl-anchor-link" href="#set_title"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore="">Section titled “set_title”</span></a></div>
+<p>Name the chat, its workspace, and the workspace branch.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Parameter</th><th>Type</th><th>Required</th><th>Description</th></tr></thead><tbody><tr><td><code dir="auto">chat_title</code></td><td>string</td><td>no</td><td>3 to 6 words, in the language you write in.</td></tr><tr><td><code dir="auto">workspace_name</code></td><td>string</td><td>no</td><td>2 to 5 words naming the task, in your language.</td></tr><tr><td><code dir="auto">branch</code></td><td>string</td><td>no</td><td>Short English kebab-case branch slug. Only valid together with <code dir="auto">workspace_name</code>.</td></tr></tbody></table>
+<p>The agent calls it once, when the task is clear, passing every name still missing. A name already set,
+by an earlier call or by you, is kept, and the result says what was applied. A per-turn reminder appears
+only while a name is still missing.</p>
+<div class="sl-heading-wrapper level-h3"><h3 id="resolve_comment"><code dir="auto">resolve_comment</code></h3><a class="sl-anchor-link" href="#resolve_comment"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore="">Section titled “resolve_comment”</span></a></div>
+<p>Mark a <a href="/thinkrail/review/review-changes/">review comment</a> as resolved after addressing it.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Parameter</th><th>Type</th><th>Required</th><th>Description</th></tr></thead><tbody><tr><td><code dir="auto">commentId</code></td><td>string</td><td>yes</td><td>The comment id from the review package the chat received, such as <code dir="auto">rc_1a2b3c4d</code>.</td></tr><tr><td><code dir="auto">note</code></td><td>string</td><td>no</td><td>One short line on what was done, shown in the review sidebar.</td></tr></tbody></table>
+<p>It is valid only for comments sent to this chat. If a comment is unclear or the agent disagrees, it replies
+in the conversation and does not resolve it.</p>
+<div class="sl-heading-wrapper level-h3"><h3 id="request_review"><code dir="auto">request_review</code></h3><a class="sl-anchor-link" href="#request_review"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore="">Section titled “request_review”</span></a></div>
+<p>Ask an independent, read-only reviewer subagent to review a completed plan step. The result is a verdict,
+<code dir="auto">approve</code> or <code dir="auto">request_changes</code>, with findings, plus text telling the agent what to do next under the current
+review policy.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Parameter</th><th>Type</th><th>Required</th><th>Description</th></tr></thead><tbody><tr><td><code dir="auto">itemId</code></td><td>string</td><td>yes</td><td>Id of the plan step whose change set to review.</td></tr></tbody></table>
+<p>The tool is withheld unless <strong>Settings → Models → Review → Agent-triggered review</strong> is on (off by default).
+The <strong>Automatic fix cycle</strong> switch in the same group decides whether the next action is to fix the findings
+once and re-review, or to stop and report them. The reviewer model comes from <strong>Review model</strong>.</p>
+<div class="sl-heading-wrapper level-h2"><h2 id="web-research-tools">Web research tools</h2><a class="sl-anchor-link" href="#web-research-tools"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore="">Section titled “Web research tools”</span></a></div>
+<p>Provided by the third-party <code dir="auto">pi-web-access</code> package, bundled at version 0.13.0. Search works without keys by
+default; optional provider keys go in <code dir="auto">~/.pi/web-search.json</code>. In ThinkRail the <code dir="auto">workflow</code> parameter
+defaults to <code dir="auto">none</code>, because the package’s browser curation page cannot open from the host. Video frame
+extraction needs <code dir="auto">ffmpeg</code> and, for YouTube, <code dir="auto">yt-dlp</code> on the host.</p>
+<div class="sl-heading-wrapper level-h3"><h3 id="web_search"><code dir="auto">web_search</code></h3><a class="sl-anchor-link" href="#web_search"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore="">Section titled “web_search”</span></a></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Parameter</th><th>Type</th><th>Required</th><th>Description</th></tr></thead><tbody><tr><td><code dir="auto">query</code></td><td>string</td><td>no</td><td>A single query.</td></tr><tr><td><code dir="auto">queries</code></td><td>string[]</td><td>no</td><td>Several queries with different angles; each gets its own answer. Preferred for research.</td></tr><tr><td><code dir="auto">numResults</code></td><td>number</td><td>no</td><td>Results per query. Default: 5, maximum 20.</td></tr><tr><td><code dir="auto">includeContent</code></td><td>boolean</td><td>no</td><td>Also fetch full page content in the background.</td></tr><tr><td><code dir="auto">recencyFilter</code></td><td><code dir="auto">day</code> | <code dir="auto">week</code> | <code dir="auto">month</code> | <code dir="auto">year</code></td><td>no</td><td>Limit results by age.</td></tr><tr><td><code dir="auto">domainFilter</code></td><td>string[]</td><td>no</td><td>Limit to domains; prefix a domain with <code dir="auto">-</code> to exclude it.</td></tr><tr><td><code dir="auto">provider</code></td><td><code dir="auto">auto</code> | <code dir="auto">openai</code> | <code dir="auto">brave</code> | <code dir="auto">parallel</code> | <code dir="auto">tavily</code> | <code dir="auto">exa</code> | <code dir="auto">perplexity</code> | <code dir="auto">gemini</code></td><td>no</td><td>Search provider. Default: <code dir="auto">auto</code>.</td></tr><tr><td><code dir="auto">workflow</code></td><td><code dir="auto">none</code> | <code dir="auto">summary-review</code> | <code dir="auto">auto-summary</code></td><td>no</td><td>Curation mode. ThinkRail sets <code dir="auto">none</code> when the agent omits it.</td></tr></tbody></table>
+<p>Provide <code dir="auto">query</code> or <code dir="auto">queries</code>; with neither, the call returns an error.</p>
+<div class="sl-heading-wrapper level-h3"><h3 id="fetch_content"><code dir="auto">fetch_content</code></h3><a class="sl-anchor-link" href="#fetch_content"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore="">Section titled “fetch_content”</span></a></div>
+<p>Fetch URLs and extract readable Markdown. Handles web pages, PDFs, GitHub repositories, YouTube
+transcripts, and local video files.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Parameter</th><th>Type</th><th>Required</th><th>Description</th></tr></thead><tbody><tr><td><code dir="auto">url</code></td><td>string</td><td>no</td><td>A single URL.</td></tr><tr><td><code dir="auto">urls</code></td><td>string[]</td><td>no</td><td>Several URLs, fetched in parallel.</td></tr><tr><td><code dir="auto">forceClone</code></td><td>boolean</td><td>no</td><td>Clone a large GitHub repository that exceeds the size threshold.</td></tr><tr><td><code dir="auto">prompt</code></td><td>string</td><td>no</td><td>Question for video analysis (YouTube and video files).</td></tr><tr><td><code dir="auto">timestamp</code></td><td>string</td><td>no</td><td>Frame time or range for video, such as <code dir="auto">23:45</code> or <code dir="auto">23:41-25:00</code>.</td></tr><tr><td><code dir="auto">frames</code></td><td>integer</td><td>no</td><td>Number of video frames, 1 to 12.</td></tr><tr><td><code dir="auto">model</code></td><td>string</td><td>no</td><td>Override the Gemini model for video analysis.</td></tr></tbody></table>
+<p>Provide <code dir="auto">url</code> or <code dir="auto">urls</code>. Content is stored for later retrieval, and long single-page results are truncated
+inline.</p>
+<div class="sl-heading-wrapper level-h3"><h3 id="get_search_content"><code dir="auto">get_search_content</code></h3><a class="sl-anchor-link" href="#get_search_content"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore="">Section titled “get_search_content”</span></a></div>
+<p>Retrieve the full stored content from an earlier <code dir="auto">web_search</code> or <code dir="auto">fetch_content</code> call.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Parameter</th><th>Type</th><th>Required</th><th>Description</th></tr></thead><tbody><tr><td><code dir="auto">responseId</code></td><td>string</td><td>yes</td><td>The id returned by the earlier call.</td></tr><tr><td><code dir="auto">query</code></td><td>string</td><td>no</td><td>Which query’s content to return (search results).</td></tr><tr><td><code dir="auto">queryIndex</code></td><td>number</td><td>no</td><td>Index of the query.</td></tr><tr><td><code dir="auto">url</code></td><td>string</td><td>no</td><td>Which URL’s content to return (fetch results).</td></tr><tr><td><code dir="auto">urlIndex</code></td><td>number</td><td>no</td><td>Index of the URL.</td></tr></tbody></table>
+<div class="sl-heading-wrapper level-h2"><h2 id="visualize-tool">Visualize tool</h2><a class="sl-anchor-link" href="#visualize-tool"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore="">Section titled “Visualize tool”</span></a></div>
+<p>Provided by the <code dir="auto">visualize</code> extension: the portable package <code dir="auto">@thinkrail/pi-visualize</code>, composed into
+ThinkRail as an extension that you can turn off in <strong>Settings → Extensions</strong>. It renders a diagram or an
+options comparison as a card in the chat instead of ASCII art or a Markdown table.</p>
+<div class="sl-heading-wrapper level-h3"><h3 id="visualize"><code dir="auto">visualize</code></h3><a class="sl-anchor-link" href="#visualize"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore="">Section titled “visualize”</span></a></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Parameter</th><th>Type</th><th>Required</th><th>Description</th></tr></thead><tbody><tr><td><code dir="auto">type</code></td><td><code dir="auto">diagram</code> | <code dir="auto">comparison</code></td><td>yes</td><td>Which visualization to render.</td></tr><tr><td><code dir="auto">title</code></td><td>string</td><td>no</td><td>Heading above the visualization.</td></tr><tr><td><code dir="auto">mermaid</code></td><td>string</td><td><code dir="auto">diagram</code></td><td>Mermaid source of any diagram kind.</td></tr><tr><td><code dir="auto">options</code></td><td>array</td><td><code dir="auto">comparison</code></td><td>The alternatives being compared.</td></tr><tr><td><code dir="auto">options[].name</code></td><td>string</td><td>yes</td><td>Short label.</td></tr><tr><td><code dir="auto">options[].description</code></td><td>string</td><td>no</td><td>One or two sentences.</td></tr><tr><td><code dir="auto">options[].pros</code></td><td>string[]</td><td>no</td><td>Advantages.</td></tr><tr><td><code dir="auto">options[].cons</code></td><td>string[]</td><td>no</td><td>Drawbacks.</td></tr><tr><td><code dir="auto">options[].recommended</code></td><td>boolean</td><td>no</td><td>Highlights the one option the agent endorses.</td></tr><tr><td><code dir="auto">options[].mermaid</code></td><td>string</td><td>no</td><td>Mermaid diagram for this option.</td></tr></tbody></table>
+<p>ThinkRail validates Mermaid syntax on the host with the same Mermaid version the browser renders. Invalid
+syntax is returned to the agent as a tool error so it can correct and retry. Fenced <code dir="auto">mermaid</code> blocks in any
+Markdown the app renders also draw as diagrams.</p>
+<div class="sl-heading-wrapper level-h2"><h2 id="related">Related</h2><a class="sl-anchor-link" href="#related"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore="">Section titled “Related”</span></a></div>
+<ul>
+<li><a href="/thinkrail/specs/spec-format/">Spec format</a></li>
+<li><a href="/thinkrail/specs/workflows/">Built-in workflows</a></li>
+<li><a href="/thinkrail/extend/mcp-configuration/">MCP configuration</a></li>
+<li><a href="/thinkrail/agent/delegate-to-subagents/">Delegate to subagents</a></li>
+<li><a href="/thinkrail/extend/extensions/">Extensions</a></li>
+</ul></div><footer class="sl-flex astro-ddtxxk7k"><div class="meta sl-flex astro-ddtxxk7k"><a href="https://github.com/HadesArchitect/thinkrail/edit/claude/thinkrail-docs-draft-39556b/docs/agent/agent-tools.md" class="sl-flex print:hidden astro-qlekgd3o"><svg aria-hidden="true" class="astro-qlekgd3o astro-hkc32dio" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.2em;"><path d="M22 7.24a1 1 0 0 0-.29-.71l-4.24-4.24a1 1 0 0 0-1.1-.22 1 1 0 0 0-.32.22l-2.83 2.83L2.29 16.05a1 1 0 0 0-.29.71V21a1 1 0 0 0 1 1h4.24a1 1 0 0 0 .76-.29l10.87-10.93L21.71 8c.1-.1.17-.2.22-.33a1 1 0 0 0 0-.24v-.14l.07-.05ZM6.83 20H4v-2.83l9.93-9.93 2.83 2.83L6.83 20ZM18.17 8.66l-2.83-2.83 1.42-1.41 2.82 2.82-1.41 1.42Z"/></svg>Edit page</a></div><div class="pagination-links print:hidden astro-b5raizh3" dir="ltr"><a href="/thinkrail/agent/delegate-to-subagents/" rel="prev" class="astro-b5raizh3"><svg aria-hidden="true" class="astro-b5raizh3 astro-hkc32dio" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.5rem;"><path d="M17 11H9.41l3.3-3.29a1.004 1.004 0 1 0-1.42-1.42l-5 5a1 1 0 0 0-.21.33 1 1 0 0 0 0 .76 1 1 0 0 0 .21.33l5 5a1.002 1.002 0 0 0 1.639-.325 1 1 0 0 0-.219-1.095L9.41 13H17a1 1 0 0 0 0-2Z"/></svg><span class="astro-b5raizh3">Previous<br class="astro-b5raizh3"><span class="link-title astro-b5raizh3">Delegate work to subagents</span></span></a><a href="/thinkrail/specs/living-specs/" rel="next" class="astro-b5raizh3"><svg aria-hidden="true" class="astro-b5raizh3 astro-hkc32dio" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.5rem;"><path d="M17.92 11.62a1.001 1.001 0 0 0-.21-.33l-5-5a1.003 1.003 0 1 0-1.42 1.42l3.3 3.29H7a1 1 0 0 0 0 2h7.59l-3.3 3.29a1.002 1.002 0 0 0 .325 1.639 1 1 0 0 0 1.095-.219l5-5a1 1 0 0 0 .21-.33 1 1 0 0 0 0-.76Z"/></svg><span class="astro-b5raizh3">Next<br class="astro-b5raizh3"><span class="link-title astro-b5raizh3">Living specs</span></span></a></div></footer><script type="module" src="/thinkrail/_astro/Footer.astro_astro_type_script_index_0_lang.G9f2iu_h.js"></script></div></div></main></div></div></div></div></body></html>

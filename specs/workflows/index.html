@@ -1,0 +1,442 @@
+<!DOCTYPE html><html lang="en" dir="ltr" data-theme="dark" data-has-toc data-has-sidebar class="astro-g5ptsecz"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><title>Built-in workflows | ThinkRail Docs</title><link rel="shortcut icon" href="/thinkrail/favicon.svg" type="image/svg+xml"/><meta name="generator" content="Astro v7.4.0"/><meta name="generator" content="Starlight v0.42.6"/><meta property="og:title" content="Built-in workflows"/><meta property="og:type" content="article"/><meta property="og:locale" content="en"/><meta property="og:description" content="The workflow skills bundled with ThinkRail — what triggers each one, the steps it follows, what it produces, and how much each has been exercised."/><meta property="og:site_name" content="ThinkRail Docs"/><meta name="twitter:card" content="summary_large_image"/><meta name="description" content="The workflow skills bundled with ThinkRail — what triggers each one, the steps it follows, what it produces, and how much each has been exercised."/><meta name="robots" content="noindex, nofollow"/><script>
+	window.StarlightThemeProvider = (() => {
+		const storedTheme =
+			typeof localStorage !== 'undefined' && localStorage.getItem('starlight-theme');
+		const theme =
+			storedTheme ||
+			(window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+		document.documentElement.dataset.theme = theme === 'light' ? 'light' : 'dark';
+		return {
+			updatePickers(theme = storedTheme || 'auto') {
+				document.querySelectorAll('starlight-theme-select').forEach((picker) => {
+					const select = picker.querySelector('select');
+					if (select) select.value = theme;
+					/** @type {HTMLTemplateElement | null} */
+					const tmpl = document.querySelector(`#theme-icons`);
+					const newIcon = tmpl && tmpl.content.querySelector('.' + theme);
+					if (newIcon) {
+						const oldIcon = picker.querySelector('svg.label-icon');
+						if (oldIcon) {
+							oldIcon.replaceChildren(...newIcon.cloneNode(true).childNodes);
+						}
+					}
+				});
+			},
+		};
+	})();
+</script><template id="theme-icons"><svg aria-hidden="true" class="light astro-hkc32dio" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M5 12a1 1 0 0 0-1-1H3a1 1 0 0 0 0 2h1a1 1 0 0 0 1-1Zm.64 5-.71.71a1 1 0 0 0 0 1.41 1 1 0 0 0 1.41 0l.71-.71A1 1 0 0 0 5.64 17ZM12 5a1 1 0 0 0 1-1V3a1 1 0 0 0-2 0v1a1 1 0 0 0 1 1Zm5.66 2.34a1 1 0 0 0 .7-.29l.71-.71a1 1 0 1 0-1.41-1.41l-.66.71a1 1 0 0 0 0 1.41 1 1 0 0 0 .66.29Zm-12-.29a1 1 0 0 0 1.41 0 1 1 0 0 0 0-1.41l-.71-.71a1.004 1.004 0 1 0-1.43 1.41l.73.71ZM21 11h-1a1 1 0 0 0 0 2h1a1 1 0 0 0 0-2Zm-2.64 6A1 1 0 0 0 17 18.36l.71.71a1 1 0 0 0 1.41 0 1 1 0 0 0 0-1.41l-.76-.66ZM12 6.5a5.5 5.5 0 1 0 5.5 5.5A5.51 5.51 0 0 0 12 6.5Zm0 9a3.5 3.5 0 1 1 0-7 3.5 3.5 0 0 1 0 7Zm0 3.5a1 1 0 0 0-1 1v1a1 1 0 0 0 2 0v-1a1 1 0 0 0-1-1Z"/></svg><svg aria-hidden="true" class="dark astro-hkc32dio" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M21.64 13a1 1 0 0 0-1.05-.14 8.049 8.049 0 0 1-3.37.73 8.15 8.15 0 0 1-8.14-8.1 8.59 8.59 0 0 1 .25-2A1 1 0 0 0 8 2.36a10.14 10.14 0 1 0 14 11.69 1 1 0 0 0-.36-1.05Zm-9.5 6.69A8.14 8.14 0 0 1 7.08 5.22v.27a10.15 10.15 0 0 0 10.14 10.14 9.784 9.784 0 0 0 2.1-.22 8.11 8.11 0 0 1-7.18 4.32v-.04Z"/></svg><svg aria-hidden="true" class="auto astro-hkc32dio" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M21 14h-1V7a3 3 0 0 0-3-3H7a3 3 0 0 0-3 3v7H3a1 1 0 0 0-1 1v2a3 3 0 0 0 3 3h14a3 3 0 0 0 3-3v-2a1 1 0 0 0-1-1ZM6 7a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v7H6V7Zm14 10a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-1h16v1Z"/></svg></template><link rel="stylesheet" href="/thinkrail/_astro/print.ehPL0gv-.css" media="print"><link rel="stylesheet" href="/thinkrail/_astro/common.DwVthD0l.css"><script type="module" src="/thinkrail/_astro/page.cNngjUgL.js"></script></head><body class="astro-g5ptsecz"><a class="sl-skip-link astro-qb7clj6f" href="#_top">Skip to content</a><div class="page sl-flex astro-yntsjkba"><header class="header astro-yntsjkba"><div class="header astro-by6fddyj"><div class="title-wrapper sl-flex astro-by6fddyj"><a href="/thinkrail/" class="site-title sl-flex astro-6rvad3va"><img class="astro-6rvad3va" alt="ThinkRail" src="/thinkrail/_astro/logo-mark.D_5aK2o8.svg" width="512" height="512"><span class="astro-6rvad3va" translate="no">ThinkRail Docs</span></a></div><div class="sl-flex print:hidden astro-by6fddyj"><site-search class="astro-by6fddyj astro-b5kgnn7o" data-translations="{&quot;placeholder&quot;:&quot;Search&quot;}"><button data-open-modal disabled aria-label="Search" aria-keyshortcuts="Control+K" class="astro-b5kgnn7o"><svg aria-hidden="true" class="astro-b5kgnn7o astro-hkc32dio" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M21.71 20.29 18 16.61A9 9 0 1 0 16.61 18l3.68 3.68a.999.999 0 0 0 1.42 0 1 1 0 0 0 0-1.39ZM11 18a7 7 0 1 1 0-14 7 7 0 0 1 0 14Z"/></svg><span class="sl-hidden md:sl-block astro-b5kgnn7o" aria-hidden="true">Search</span><kbd class="sl-hidden md:sl-flex astro-b5kgnn7o" style="display: none;"><kbd class="astro-b5kgnn7o">Ctrl</kbd><kbd class="astro-b5kgnn7o">K</kbd></kbd></button><dialog style="padding:0" aria-label="Search" class="astro-b5kgnn7o"><div class="dialog-frame sl-flex astro-b5kgnn7o"><button data-close-modal class="sl-flex md:sl-hidden astro-b5kgnn7o">Cancel</button><div class="search-container astro-b5kgnn7o"><div id="starlight__search" class="astro-b5kgnn7o"></div></div></div></dialog></site-search><script>
+	(() => {
+		const openBtn = document.querySelector('button[data-open-modal]');
+		const shortcut = openBtn?.querySelector('kbd');
+		if (!openBtn || !(shortcut instanceof HTMLElement)) return;
+		const platformKey = shortcut.querySelector('kbd');
+		if (platformKey && /(Mac|iPhone|iPod|iPad)/i.test(navigator.platform)) {
+			platformKey.textContent = '⌘';
+			openBtn.setAttribute('aria-keyshortcuts', 'Meta+K');
+		}
+		shortcut.style.display = '';
+	})();
+</script><script type="module" src="/thinkrail/_astro/Search.astro_astro_type_script_index_0_lang.BCOo1ecf.js"></script></div><div class="sl-hidden md:sl-flex print:hidden right-group astro-by6fddyj"><div class="sl-flex social-icons astro-by6fddyj"><a href="https://github.com/JetBrains/thinkrail" rel="me" class="sl-flex astro-n2mnl6yq"><span class="sr-only astro-n2mnl6yq">GitHub</span><svg aria-hidden="true" class="astro-n2mnl6yq astro-hkc32dio" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M12 .3a12 12 0 0 0-3.8 23.38c.6.12.83-.26.83-.57L9 21.07c-3.34.72-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.08-.74.09-.73.09-.73 1.2.09 1.83 1.24 1.83 1.24 1.08 1.83 2.81 1.3 3.5 1 .1-.78.42-1.31.76-1.61-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.14-.3-.54-1.52.1-3.18 0 0 1-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.28-1.55 3.29-1.23 3.29-1.23.64 1.66.24 2.88.12 3.18a4.65 4.65 0 0 1 1.23 3.22c0 4.61-2.8 5.63-5.48 5.92.42.36.81 1.1.81 2.22l-.01 3.29c0 .31.2.69.82.57A12 12 0 0 0 12 .3Z"/></svg></a><a href="https://discord.gg/Wybu9ceWkY" rel="me" class="sl-flex astro-n2mnl6yq"><span class="sr-only astro-n2mnl6yq">Discord</span><svg aria-hidden="true" class="astro-n2mnl6yq astro-hkc32dio" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M20.32 4.37a19.8 19.8 0 0 0-4.93-1.51 13.78 13.78 0 0 0-.64 1.28 18.27 18.27 0 0 0-5.5 0 12.64 12.64 0 0 0-.64-1.28h-.05A19.74 19.74 0 0 0 3.64 4.4 20.26 20.26 0 0 0 .11 18.09l.02.02a19.9 19.9 0 0 0 6.04 3.03l.04-.02a14.24 14.24 0 0 0 1.23-2.03.08.08 0 0 0-.05-.07 13.1 13.1 0 0 1-1.9-.92.08.08 0 0 1 .02-.1 10.2 10.2 0 0 0 .41-.31h.04a14.2 14.2 0 0 0 12.1 0l.04.01a9.63 9.63 0 0 0 .4.32.08.08 0 0 1-.03.1 12.29 12.29 0 0 1-1.9.91.08.08 0 0 0-.02.1 15.97 15.97 0 0 0 1.27 2.01h.04a19.84 19.84 0 0 0 6.03-3.05v-.03a20.12 20.12 0 0 0-3.57-13.69ZM8.02 15.33c-1.18 0-2.16-1.08-2.16-2.42 0-1.33.96-2.42 2.16-2.42 1.21 0 2.18 1.1 2.16 2.42 0 1.34-.96 2.42-2.16 2.42Zm7.97 0c-1.18 0-2.15-1.08-2.15-2.42 0-1.33.95-2.42 2.15-2.42 1.22 0 2.18 1.1 2.16 2.42 0 1.34-.94 2.42-2.16 2.42Z"/></svg></a><a href="https://thinkrail.ai/blog/" rel="me" class="sl-flex astro-n2mnl6yq"><span class="sr-only astro-n2mnl6yq">ThinkRail blog</span><svg aria-hidden="true" class="astro-n2mnl6yq astro-hkc32dio" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M16 14H8a1 1 0 0 0 0 2h8a1 1 0 0 0 0-2m0-4h-6a1 1 0 0 0 0 2h6a1 1 0 0 0 0-2m4-6h-3V3a1 1 0 0 0-2 0v1h-2V3a1 1 0 0 0-2 0v1H9V3a1 1 0 0 0-2 0v1H4a1 1 0 0 0-1 1v14a3 3 0 0 0 3 3h12a3 3 0 0 0 3-3V5a1 1 0 0 0-1-1m-1 15a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V6h2v1a1 1 0 0 0 2 0V6h2v1a1 1 0 0 0 2 0V6h2v1a1 1 0 0 0 2 0V6h2Z"/></svg></a></div><starlight-theme-select><label style="--sl-select-width: 6.25em" class="astro-2z5xp7gb"><span class="sr-only astro-2z5xp7gb">Select theme</span><svg aria-hidden="true" class="icon label-icon astro-2z5xp7gb astro-hkc32dio" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M21 14h-1V7a3 3 0 0 0-3-3H7a3 3 0 0 0-3 3v7H3a1 1 0 0 0-1 1v2a3 3 0 0 0 3 3h14a3 3 0 0 0 3-3v-2a1 1 0 0 0-1-1ZM6 7a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v7H6V7Zm14 10a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-1h16v1Z"/></svg><select autocomplete="off" class="astro-2z5xp7gb"><option value="dark" class="astro-2z5xp7gb">Dark</option><option value="light" class="astro-2z5xp7gb">Light</option><option value="auto" selected class="astro-2z5xp7gb">Auto</option></select><svg aria-hidden="true" class="icon caret astro-2z5xp7gb astro-hkc32dio" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M17 9.17a1 1 0 0 0-1.41 0L12 12.71 8.46 9.17a1 1 0 1 0-1.41 1.42l4.24 4.24a1.002 1.002 0 0 0 1.42 0L17 10.59a1.002 1.002 0 0 0 0-1.42Z"/></svg></label></starlight-theme-select><script>
+	StarlightThemeProvider.updatePickers();
+</script><script type="module">var e=`starlight-theme`,t=e=>e===`auto`||e===`dark`||e===`light`?e:`auto`,n=()=>t(typeof localStorage<`u`&&localStorage.getItem(e));function r(t){typeof localStorage<`u`&&localStorage.setItem(e,t===`light`||t===`dark`?t:``)}var i=()=>matchMedia(`(prefers-color-scheme: light)`).matches?`light`:`dark`;function a(e){StarlightThemeProvider.updatePickers(e),document.documentElement.dataset.theme=e===`auto`?i():e,r(e)}matchMedia(`(prefers-color-scheme: light)`).addEventListener(`change`,()=>{n()===`auto`&&a(`auto`)});var o=class extends HTMLElement{constructor(){super(),a(n()),this.querySelector(`select`)?.addEventListener(`change`,e=>{e.currentTarget instanceof HTMLSelectElement&&a(t(e.currentTarget.value))})}};customElements.define(`starlight-theme-select`,o);</script><script type="module">var e=class extends HTMLElement{constructor(){super();let e=this.querySelector(`select`);e&&(e.addEventListener(`change`,e=>{e.currentTarget instanceof HTMLSelectElement&&(window.location.pathname=e.currentTarget.value)}),window.addEventListener(`pageshow`,t=>{if(!t.persisted)return;let n=e.querySelector(`option[selected]`)?.index;n!==e.selectedIndex&&(e.selectedIndex=n??0)}))}};customElements.define(`starlight-lang-select`,e);</script></div></div></header><nav class="sidebar print:hidden astro-yntsjkba" aria-label="Main"><button popovertarget="starlight__sidebar" class="sl-menu-button sl-flex md:sl-hidden print:hidden astro-r2osgdlg"><svg aria-hidden="true" class="open-menu astro-r2osgdlg astro-hkc32dio" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M3 8h18a1 1 0 1 0 0-2H3a1 1 0 0 0 0 2Zm18 8H3a1 1 0 0 0 0 2h18a1 1 0 0 0 0-2Zm0-5H3a1 1 0 0 0 0 2h18a1 1 0 0 0 0-2Z"/></svg><svg aria-hidden="true" class="close-menu astro-r2osgdlg astro-hkc32dio" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="m13.41 12 6.3-6.29a1.004 1.004 0 1 0-1.42-1.42L12 10.59l-6.29-6.3a1.004 1.004 0 0 0-1.42 1.42l6.3 6.29-6.3 6.29a1 1 0 0 0 0 1.42.998.998 0 0 0 1.42 0l6.29-6.3 6.29 6.3a.999.999 0 0 0 1.42 0 1 1 0 0 0 0-1.42L13.41 12Z"/></svg><span class="sr-only astro-r2osgdlg">Menu</span></button><script type="module">var e=class extends HTMLElement{constructor(){super();let e=matchMedia(`(min-width: 50em)`),t=()=>{this.popover=e.matches?null:`auto`};t(),e.addEventListener(`change`,()=>t()),this.addEventListener(`toggle`,({newState:e})=>this.trapFocus(e===`open`))}trapFocus(e){document.querySelectorAll(`.main-frame, .sl-skip-link`).forEach(t=>{t.toggleAttribute(`inert`,e)})}};customElements.define(`sl-sidebar-pane`,e);</script><sl-sidebar-pane popover id="starlight__sidebar" class="sidebar-pane astro-yntsjkba"><div class="sidebar-content sl-flex astro-yntsjkba"><sl-sidebar-state-persist data-hash="121z9qx" class="astro-ipdry5cl"><script aria-hidden="true">
+		(() => {
+			try {
+				if (!matchMedia('(min-width: 50em)').matches) return;
+				/** @type {HTMLElement | null} */
+				const target = document.querySelector('sl-sidebar-state-persist');
+				const state = JSON.parse(sessionStorage.getItem('sl-sidebar-state') || '0');
+				if (!target || !state || target.dataset.hash !== state.hash) return;
+				window._starlightScrollRestore = state.scroll;
+				customElements.define(
+					'sl-sidebar-restore',
+					class SidebarRestore extends HTMLElement {
+						connectedCallback() {
+							try {
+								const idx = parseInt(this.dataset.index || '');
+								const details = this.closest('details');
+								if (details && typeof state.open[idx] === 'boolean') details.open = state.open[idx];
+							} catch {}
+						}
+					}
+				);
+			} catch {}
+		})();
+	</script><ul class="top-level astro-rmhv4bp6"><li class="astro-rmhv4bp6"><a href="/thinkrail/" class="large astro-rmhv4bp6"><span class="astro-rmhv4bp6">ThinkRail documentation</span></a></li><li class="astro-rmhv4bp6"><a href="/thinkrail/what-is-thinkrail/" class="large astro-rmhv4bp6"><span class="astro-rmhv4bp6">What is ThinkRail?</span></a></li><li class="astro-rmhv4bp6"><a href="/thinkrail/coming-from-pi/" class="large astro-rmhv4bp6"><span class="astro-rmhv4bp6">Coming from pi</span></a></li><li class="astro-rmhv4bp6"><a href="/thinkrail/changelog/" class="large astro-rmhv4bp6"><span class="astro-rmhv4bp6">Changelog</span></a></li><li class="astro-rmhv4bp6"><details open class="astro-rmhv4bp6"><summary class="astro-rmhv4bp6"><span class="group-label astro-rmhv4bp6"><span class="large astro-rmhv4bp6">Get started</span></span><svg aria-hidden="true" class="caret astro-rmhv4bp6 astro-hkc32dio" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.25rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg></summary><sl-sidebar-restore data-index="0"></sl-sidebar-restore><ul class="astro-rmhv4bp6"><li class="astro-rmhv4bp6"><a href="/thinkrail/get-started/install/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Install ThinkRail</span></a></li><li class="astro-rmhv4bp6"><a href="/thinkrail/get-started/connect-a-provider/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Connect a model provider</span></a></li><li class="astro-rmhv4bp6"><a href="/thinkrail/get-started/describe-your-project/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Describe your project</span></a></li><li class="astro-rmhv4bp6"><a href="/thinkrail/get-started/first-change/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Make your first change</span></a></li></ul></details></li><li class="astro-rmhv4bp6"><details open class="astro-rmhv4bp6"><summary class="astro-rmhv4bp6"><span class="group-label astro-rmhv4bp6"><span class="large astro-rmhv4bp6">Using ThinkRail</span></span><svg aria-hidden="true" class="caret astro-rmhv4bp6 astro-hkc32dio" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.25rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg></summary><sl-sidebar-restore data-index="1"></sl-sidebar-restore><ul class="astro-rmhv4bp6"><li class="astro-rmhv4bp6"><details open class="astro-rmhv4bp6"><summary class="astro-rmhv4bp6"><span class="group-label astro-rmhv4bp6"><span class="large astro-rmhv4bp6">Workspaces</span></span><svg aria-hidden="true" class="caret astro-rmhv4bp6 astro-hkc32dio" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.25rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg></summary><sl-sidebar-restore data-index="2"></sl-sidebar-restore><ul class="astro-rmhv4bp6"><li class="astro-rmhv4bp6"><a href="/thinkrail/workspaces/workspaces-and-isolation/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Workspaces and isolation</span></a></li><li class="astro-rmhv4bp6"><a href="/thinkrail/workspaces/parallel-workspaces/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Run agents in parallel</span></a></li><li class="astro-rmhv4bp6"><a href="/thinkrail/workspaces/manage-workspaces/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Manage workspaces</span></a></li><li class="astro-rmhv4bp6"><a href="/thinkrail/workspaces/open-in-your-editor/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Open a workspace in your editor</span></a></li></ul></details></li><li class="astro-rmhv4bp6"><details open class="astro-rmhv4bp6"><summary class="astro-rmhv4bp6"><span class="group-label astro-rmhv4bp6"><span class="large astro-rmhv4bp6">Agent &amp; chats</span></span><svg aria-hidden="true" class="caret astro-rmhv4bp6 astro-hkc32dio" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.25rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg></summary><sl-sidebar-restore data-index="3"></sl-sidebar-restore><ul class="astro-rmhv4bp6"><li class="astro-rmhv4bp6"><a href="/thinkrail/agent/thinkrail-and-pi/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">ThinkRail and pi</span></a></li><li class="astro-rmhv4bp6"><a href="/thinkrail/agent/choose-models/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Choose models and effort</span></a></li><li class="astro-rmhv4bp6"><a href="/thinkrail/agent/steer-and-queue/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Steer, queue, or stop the agent</span></a></li><li class="astro-rmhv4bp6"><a href="/thinkrail/agent/delegate-to-subagents/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Delegate work to subagents</span></a></li><li class="astro-rmhv4bp6"><a href="/thinkrail/agent/agent-tools/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Tools the agent can call</span></a></li></ul></details></li><li class="astro-rmhv4bp6"><details open class="astro-rmhv4bp6"><summary class="astro-rmhv4bp6"><span class="group-label astro-rmhv4bp6"><span class="large astro-rmhv4bp6">Specs &amp; plans</span></span><svg aria-hidden="true" class="caret astro-rmhv4bp6 astro-hkc32dio" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.25rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg></summary><sl-sidebar-restore data-index="4"></sl-sidebar-restore><ul class="astro-rmhv4bp6"><li class="astro-rmhv4bp6"><a href="/thinkrail/specs/living-specs/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Living specs</span></a></li><li class="astro-rmhv4bp6"><a href="/thinkrail/specs/spec-first-project/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Set up a project for spec-first work</span></a></li><li class="astro-rmhv4bp6"><a href="/thinkrail/specs/build-from-your-own-spec/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Build from your own spec</span></a></li><li class="astro-rmhv4bp6"><a href="/thinkrail/specs/plan-and-review/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Work through a plan step by step</span></a></li><li class="astro-rmhv4bp6"><a href="/thinkrail/specs/workflows/" aria-current="page" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Built-in workflows</span></a></li><li class="astro-rmhv4bp6"><a href="/thinkrail/specs/spec-format/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Spec format</span></a></li></ul></details></li><li class="astro-rmhv4bp6"><details open class="astro-rmhv4bp6"><summary class="astro-rmhv4bp6"><span class="group-label astro-rmhv4bp6"><span class="large astro-rmhv4bp6">Review &amp; ship</span></span><svg aria-hidden="true" class="caret astro-rmhv4bp6 astro-hkc32dio" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.25rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg></summary><sl-sidebar-restore data-index="5"></sl-sidebar-restore><ul class="astro-rmhv4bp6"><li class="astro-rmhv4bp6"><a href="/thinkrail/review/review-changes/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Review changes</span></a></li><li class="astro-rmhv4bp6"><a href="/thinkrail/review/undo-or-discard-changes/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Undo or discard changes</span></a></li><li class="astro-rmhv4bp6"><a href="/thinkrail/review/open-a-pull-request/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Open a pull request</span></a></li></ul></details></li><li class="astro-rmhv4bp6"><details open class="astro-rmhv4bp6"><summary class="astro-rmhv4bp6"><span class="group-label astro-rmhv4bp6"><span class="large astro-rmhv4bp6">Skills, MCP &amp; extensions</span></span><svg aria-hidden="true" class="caret astro-rmhv4bp6 astro-hkc32dio" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.25rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg></summary><sl-sidebar-restore data-index="6"></sl-sidebar-restore><ul class="astro-rmhv4bp6"><li class="astro-rmhv4bp6"><a href="/thinkrail/extend/extensions/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Extensions</span></a></li><li class="astro-rmhv4bp6"><a href="/thinkrail/extend/use-existing-skills/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Use existing skills and prompt templates</span></a></li><li class="astro-rmhv4bp6"><a href="/thinkrail/extend/connect-mcp-servers/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Connect MCP servers</span></a></li><li class="astro-rmhv4bp6"><a href="/thinkrail/extend/mcp-configuration/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">MCP configuration</span></a></li><li class="astro-rmhv4bp6"><a href="/thinkrail/extend/use-thinkrail-packages-in-pi/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Use ThinkRail packages in pi</span></a></li></ul></details></li><li class="astro-rmhv4bp6"><details open class="astro-rmhv4bp6"><summary class="astro-rmhv4bp6"><span class="group-label astro-rmhv4bp6"><span class="large astro-rmhv4bp6">Security &amp; privacy</span></span><svg aria-hidden="true" class="caret astro-rmhv4bp6 astro-hkc32dio" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.25rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg></summary><sl-sidebar-restore data-index="7"></sl-sidebar-restore><ul class="astro-rmhv4bp6"><li class="astro-rmhv4bp6"><a href="/thinkrail/security/security-and-data-overview/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Security and data overview</span></a></li><li class="astro-rmhv4bp6"><a href="/thinkrail/security/trust-model/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Trust model</span></a></li><li class="astro-rmhv4bp6"><a href="/thinkrail/security/trust-a-project/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Trust a project</span></a></li><li class="astro-rmhv4bp6"><a href="/thinkrail/security/privacy-and-analytics/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Privacy and analytics</span></a></li><li class="astro-rmhv4bp6"><a href="/thinkrail/security/manage-privacy/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Turn off usage data (telemetry)</span></a></li></ul></details></li><li class="astro-rmhv4bp6"><details open class="astro-rmhv4bp6"><summary class="astro-rmhv4bp6"><span class="group-label astro-rmhv4bp6"><span class="large astro-rmhv4bp6">Run &amp; troubleshoot</span></span><svg aria-hidden="true" class="caret astro-rmhv4bp6 astro-hkc32dio" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.25rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg></summary><sl-sidebar-restore data-index="8"></sl-sidebar-restore><ul class="astro-rmhv4bp6"><li class="astro-rmhv4bp6"><a href="/thinkrail/run/troubleshoot/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Troubleshoot ThinkRail</span></a></li><li class="astro-rmhv4bp6"><a href="/thinkrail/run/get-help/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Get help</span></a></li><li class="astro-rmhv4bp6"><a href="/thinkrail/run/update-and-uninstall/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Update and uninstall ThinkRail</span></a></li><li class="astro-rmhv4bp6"><a href="/thinkrail/run/back-up-or-move/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Back up or move to a new machine</span></a></li><li class="astro-rmhv4bp6"><a href="/thinkrail/run/run-on-a-remote-machine/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Run ThinkRail on a remote machine</span></a></li><li class="astro-rmhv4bp6"><a href="/thinkrail/run/how-thinkrail-works/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">How ThinkRail works</span></a></li><li class="astro-rmhv4bp6"><a href="/thinkrail/run/platform-support/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Platform support</span></a></li></ul></details></li></ul></details></li><li class="astro-rmhv4bp6"><details open class="astro-rmhv4bp6"><summary class="astro-rmhv4bp6"><span class="group-label astro-rmhv4bp6"><span class="large astro-rmhv4bp6">Reference</span></span><svg aria-hidden="true" class="caret astro-rmhv4bp6 astro-hkc32dio" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.25rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg></summary><sl-sidebar-restore data-index="9"></sl-sidebar-restore><ul class="astro-rmhv4bp6"><li class="astro-rmhv4bp6"><a href="/thinkrail/reference/cli/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">CLI reference</span></a></li><li class="astro-rmhv4bp6"><a href="/thinkrail/reference/settings/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Settings reference</span></a></li><li class="astro-rmhv4bp6"><a href="/thinkrail/reference/keyboard-shortcuts/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Keyboard shortcuts</span></a></li><li class="astro-rmhv4bp6"><a href="/thinkrail/reference/files-and-environment/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Files and environment</span></a></li><li class="astro-rmhv4bp6"><a href="/thinkrail/reference/glossary/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Glossary</span></a></li></ul></details></li><li class="astro-rmhv4bp6"><details open class="astro-rmhv4bp6"><summary class="astro-rmhv4bp6"><span class="group-label astro-rmhv4bp6"><span class="large astro-rmhv4bp6">Developing ThinkRail</span></span><svg aria-hidden="true" class="caret astro-rmhv4bp6 astro-hkc32dio" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.25rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg></summary><sl-sidebar-restore data-index="10"></sl-sidebar-restore><ul class="astro-rmhv4bp6"><li class="astro-rmhv4bp6"><a href="/thinkrail/develop/build-from-source/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Build ThinkRail from source</span></a></li><li class="astro-rmhv4bp6"><a href="/thinkrail/develop/contribute/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Contribute to ThinkRail</span></a></li></ul></details></li><li class="astro-rmhv4bp6"><details class="astro-rmhv4bp6"><summary class="astro-rmhv4bp6"><span class="group-label astro-rmhv4bp6"><span class="large astro-rmhv4bp6">About these docs (private)</span></span><svg aria-hidden="true" class="caret astro-rmhv4bp6 astro-hkc32dio" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.25rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg></summary><sl-sidebar-restore data-index="11"></sl-sidebar-restore><ul class="astro-rmhv4bp6"><li class="astro-rmhv4bp6"><a href="/thinkrail/about-these-docs/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">About these docs</span></a></li><li class="astro-rmhv4bp6"><a href="/thinkrail/about-these-docs/information-architecture/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Information architecture</span></a></li><li class="astro-rmhv4bp6"><a href="/thinkrail/about-these-docs/reader-study/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Reader study</span></a></li><li class="astro-rmhv4bp6"><a href="/thinkrail/about-these-docs/docs-automation/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Docs automation</span></a></li><li class="astro-rmhv4bp6"><a href="/thinkrail/about-these-docs/hosting-options/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Hosting options</span></a></li><li class="astro-rmhv4bp6"><a href="/thinkrail/about-these-docs/authoring-guide/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Authoring guide</span></a></li><li class="astro-rmhv4bp6"><a href="/thinkrail/about-these-docs/making-docs-agent-friendly/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Making the docs agent-friendly</span></a></li></ul></details></li></ul><script aria-hidden="true">
+		(() => {
+			const scroller = document.getElementById('starlight__sidebar');
+			if (!window._starlightScrollRestore || !scroller) return;
+			scroller.scrollTop = window._starlightScrollRestore;
+			delete window._starlightScrollRestore;
+		})();
+	</script></sl-sidebar-state-persist><div class="md:sl-hidden"><div class="mobile-preferences sl-flex astro-p4azlveh"><div class="social-icons astro-p4azlveh"><a href="https://github.com/JetBrains/thinkrail" rel="me" class="sl-flex astro-n2mnl6yq"><span class="sr-only astro-n2mnl6yq">GitHub</span><svg aria-hidden="true" class="astro-n2mnl6yq astro-hkc32dio" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M12 .3a12 12 0 0 0-3.8 23.38c.6.12.83-.26.83-.57L9 21.07c-3.34.72-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.08-.74.09-.73.09-.73 1.2.09 1.83 1.24 1.83 1.24 1.08 1.83 2.81 1.3 3.5 1 .1-.78.42-1.31.76-1.61-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.14-.3-.54-1.52.1-3.18 0 0 1-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.28-1.55 3.29-1.23 3.29-1.23.64 1.66.24 2.88.12 3.18a4.65 4.65 0 0 1 1.23 3.22c0 4.61-2.8 5.63-5.48 5.92.42.36.81 1.1.81 2.22l-.01 3.29c0 .31.2.69.82.57A12 12 0 0 0 12 .3Z"/></svg></a><a href="https://discord.gg/Wybu9ceWkY" rel="me" class="sl-flex astro-n2mnl6yq"><span class="sr-only astro-n2mnl6yq">Discord</span><svg aria-hidden="true" class="astro-n2mnl6yq astro-hkc32dio" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M20.32 4.37a19.8 19.8 0 0 0-4.93-1.51 13.78 13.78 0 0 0-.64 1.28 18.27 18.27 0 0 0-5.5 0 12.64 12.64 0 0 0-.64-1.28h-.05A19.74 19.74 0 0 0 3.64 4.4 20.26 20.26 0 0 0 .11 18.09l.02.02a19.9 19.9 0 0 0 6.04 3.03l.04-.02a14.24 14.24 0 0 0 1.23-2.03.08.08 0 0 0-.05-.07 13.1 13.1 0 0 1-1.9-.92.08.08 0 0 1 .02-.1 10.2 10.2 0 0 0 .41-.31h.04a14.2 14.2 0 0 0 12.1 0l.04.01a9.63 9.63 0 0 0 .4.32.08.08 0 0 1-.03.1 12.29 12.29 0 0 1-1.9.91.08.08 0 0 0-.02.1 15.97 15.97 0 0 0 1.27 2.01h.04a19.84 19.84 0 0 0 6.03-3.05v-.03a20.12 20.12 0 0 0-3.57-13.69ZM8.02 15.33c-1.18 0-2.16-1.08-2.16-2.42 0-1.33.96-2.42 2.16-2.42 1.21 0 2.18 1.1 2.16 2.42 0 1.34-.96 2.42-2.16 2.42Zm7.97 0c-1.18 0-2.15-1.08-2.15-2.42 0-1.33.95-2.42 2.15-2.42 1.22 0 2.18 1.1 2.16 2.42 0 1.34-.94 2.42-2.16 2.42Z"/></svg></a><a href="https://thinkrail.ai/blog/" rel="me" class="sl-flex astro-n2mnl6yq"><span class="sr-only astro-n2mnl6yq">ThinkRail blog</span><svg aria-hidden="true" class="astro-n2mnl6yq astro-hkc32dio" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M16 14H8a1 1 0 0 0 0 2h8a1 1 0 0 0 0-2m0-4h-6a1 1 0 0 0 0 2h6a1 1 0 0 0 0-2m4-6h-3V3a1 1 0 0 0-2 0v1h-2V3a1 1 0 0 0-2 0v1H9V3a1 1 0 0 0-2 0v1H4a1 1 0 0 0-1 1v14a3 3 0 0 0 3 3h12a3 3 0 0 0 3-3V5a1 1 0 0 0-1-1m-1 15a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V6h2v1a1 1 0 0 0 2 0V6h2v1a1 1 0 0 0 2 0V6h2v1a1 1 0 0 0 2 0V6h2Z"/></svg></a></div><starlight-theme-select><label style="--sl-select-width: 6.25em" class="astro-2z5xp7gb"><span class="sr-only astro-2z5xp7gb">Select theme</span><svg aria-hidden="true" class="icon label-icon astro-2z5xp7gb astro-hkc32dio" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M21 14h-1V7a3 3 0 0 0-3-3H7a3 3 0 0 0-3 3v7H3a1 1 0 0 0-1 1v2a3 3 0 0 0 3 3h14a3 3 0 0 0 3-3v-2a1 1 0 0 0-1-1ZM6 7a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v7H6V7Zm14 10a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-1h16v1Z"/></svg><select autocomplete="off" class="astro-2z5xp7gb"><option value="dark" class="astro-2z5xp7gb">Dark</option><option value="light" class="astro-2z5xp7gb">Light</option><option value="auto" selected class="astro-2z5xp7gb">Auto</option></select><svg aria-hidden="true" class="icon caret astro-2z5xp7gb astro-hkc32dio" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M17 9.17a1 1 0 0 0-1.41 0L12 12.71 8.46 9.17a1 1 0 1 0-1.41 1.42l4.24 4.24a1.002 1.002 0 0 0 1.42 0L17 10.59a1.002 1.002 0 0 0 0-1.42Z"/></svg></label></starlight-theme-select><script>
+	StarlightThemeProvider.updatePickers();
+</script></div></div></div></sl-sidebar-pane></nav><div class="main-frame astro-yntsjkba"><script type="module">var e=document.getElementById(`starlight__sidebar`),t=e?.querySelector(`sl-sidebar-state-persist`),n=`sl-sidebar-state`,r=()=>{let r=[],i=t?.dataset.hash||``;try{let e=sessionStorage.getItem(n),t=JSON.parse(e||`{}`);Array.isArray(t.open)&&t.hash===i&&(r=t.open)}catch{}return{hash:i,open:r,scroll:e?.scrollTop||0}},i=e=>{try{sessionStorage.setItem(n,JSON.stringify(e))}catch{}},a=()=>i(r()),o=(e,t)=>{let n=r();n.open[t]=e,i(n)};t?.addEventListener(`click`,e=>{if(!(e.target instanceof Element))return;let t=e.target.closest(`summary`)?.closest(`details`);if(!t)return;let n=t.querySelector(`sl-sidebar-restore`),r=parseInt(n?.dataset.index||``);isNaN(r)||o(!t.open,r)}),addEventListener(`visibilitychange`,()=>{document.visibilityState===`hidden`&&a()});</script><div class="lg:sl-flex astro-lrzkfocr"><aside class="right-sidebar-container print:hidden astro-lrzkfocr"><div class="right-sidebar astro-lrzkfocr"><div class="lg:sl-hidden astro-qok35upx"><mobile-starlight-toc data-min-h="2" data-max-h="3" class="astro-66cqc7ze"><nav aria-labelledby="starlight__on-this-page--mobile" class="astro-66cqc7ze"><details id="starlight__mobile-toc" class="astro-66cqc7ze"><summary id="starlight__on-this-page--mobile" class="sl-flex astro-66cqc7ze"><span class="toggle sl-flex astro-66cqc7ze">On this page<svg aria-hidden="true" class="caret astro-66cqc7ze astro-hkc32dio" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg></span><span class="display-current astro-66cqc7ze"></span></summary><div class="dropdown astro-66cqc7ze"><ul class="isMobile astro-jugkfwgx" style="--depth: 0;"><li style="--depth: 0;" class="astro-jugkfwgx"><a href="#_top" style="--depth: 0;" class="astro-jugkfwgx"><span style="--depth: 0;" class="astro-jugkfwgx">Overview</span></a></li><li style="--depth: 0;" class="astro-jugkfwgx"><a href="#how-workflows-work" style="--depth: 0;" class="astro-jugkfwgx"><span style="--depth: 0;" class="astro-jugkfwgx">How workflows work</span></a></li><li style="--depth: 0;" class="astro-jugkfwgx"><a href="#how-a-workflow-starts" style="--depth: 0;" class="astro-jugkfwgx"><span style="--depth: 0;" class="astro-jugkfwgx">How a workflow starts</span></a></li><li style="--depth: 0;" class="astro-jugkfwgx"><a href="#maturity" style="--depth: 0;" class="astro-jugkfwgx"><span style="--depth: 0;" class="astro-jugkfwgx">Maturity</span></a></li><li style="--depth: 0;" class="astro-jugkfwgx"><a href="#router" style="--depth: 0;" class="astro-jugkfwgx"><span style="--depth: 0;" class="astro-jugkfwgx">Router</span></a><ul class="isMobile astro-jugkfwgx" style="--depth: 1;"><li style="--depth: 1;" class="astro-jugkfwgx"><a href="#choosing-a-workflow" style="--depth: 1;" class="astro-jugkfwgx"><span style="--depth: 1;" class="astro-jugkfwgx">choosing-a-workflow</span></a></li></ul></li><li style="--depth: 0;" class="astro-jugkfwgx"><a href="#design-and-build" style="--depth: 0;" class="astro-jugkfwgx"><span style="--depth: 0;" class="astro-jugkfwgx">Design and build</span></a><ul class="isMobile astro-jugkfwgx" style="--depth: 1;"><li style="--depth: 1;" class="astro-jugkfwgx"><a href="#brainstorming" style="--depth: 1;" class="astro-jugkfwgx"><span style="--depth: 1;" class="astro-jugkfwgx">brainstorming</span></a></li></ul></li><li style="--depth: 0;" class="astro-jugkfwgx"><a href="#project-setup" style="--depth: 0;" class="astro-jugkfwgx"><span style="--depth: 0;" class="astro-jugkfwgx">Project setup</span></a><ul class="isMobile astro-jugkfwgx" style="--depth: 1;"><li style="--depth: 1;" class="astro-jugkfwgx"><a href="#setting-up-a-project" style="--depth: 1;" class="astro-jugkfwgx"><span style="--depth: 1;" class="astro-jugkfwgx">setting-up-a-project</span></a></li><li style="--depth: 1;" class="astro-jugkfwgx"><a href="#starting-a-new-project" style="--depth: 1;" class="astro-jugkfwgx"><span style="--depth: 1;" class="astro-jugkfwgx">starting-a-new-project</span></a></li><li style="--depth: 1;" class="astro-jugkfwgx"><a href="#importing-a-codebase" style="--depth: 1;" class="astro-jugkfwgx"><span style="--depth: 1;" class="astro-jugkfwgx">importing-a-codebase</span></a></li></ul></li><li style="--depth: 0;" class="astro-jugkfwgx"><a href="#shipping" style="--depth: 0;" class="astro-jugkfwgx"><span style="--depth: 0;" class="astro-jugkfwgx">Shipping</span></a><ul class="isMobile astro-jugkfwgx" style="--depth: 1;"><li style="--depth: 1;" class="astro-jugkfwgx"><a href="#shipping-a-pr" style="--depth: 1;" class="astro-jugkfwgx"><span style="--depth: 1;" class="astro-jugkfwgx">shipping-a-pr</span></a></li></ul></li><li style="--depth: 0;" class="astro-jugkfwgx"><a href="#concept-skills" style="--depth: 0;" class="astro-jugkfwgx"><span style="--depth: 0;" class="astro-jugkfwgx">Concept skills</span></a></li><li style="--depth: 0;" class="astro-jugkfwgx"><a href="#other-bundled-skills" style="--depth: 0;" class="astro-jugkfwgx"><span style="--depth: 0;" class="astro-jugkfwgx">Other bundled skills</span></a></li><li style="--depth: 0;" class="astro-jugkfwgx"><a href="#related" style="--depth: 0;" class="astro-jugkfwgx"><span style="--depth: 0;" class="astro-jugkfwgx">Related</span></a></li></ul></div></details></nav></mobile-starlight-toc><script type="module" src="/thinkrail/_astro/MobileTableOfContents.astro_astro_type_script_index_0_lang.C3fM4Kra.js"></script></div><div class="right-sidebar-panel sl-hidden lg:sl-block astro-qok35upx"><div class="sl-container astro-qok35upx"><starlight-toc data-min-h="2" data-max-h="3"><nav aria-labelledby="starlight__on-this-page"><h2 id="starlight__on-this-page">On this page</h2><ul class="astro-jugkfwgx" style="--depth: 0;"><li style="--depth: 0;" class="astro-jugkfwgx"><a href="#_top" style="--depth: 0;" class="astro-jugkfwgx"><span style="--depth: 0;" class="astro-jugkfwgx">Overview</span></a></li><li style="--depth: 0;" class="astro-jugkfwgx"><a href="#how-workflows-work" style="--depth: 0;" class="astro-jugkfwgx"><span style="--depth: 0;" class="astro-jugkfwgx">How workflows work</span></a></li><li style="--depth: 0;" class="astro-jugkfwgx"><a href="#how-a-workflow-starts" style="--depth: 0;" class="astro-jugkfwgx"><span style="--depth: 0;" class="astro-jugkfwgx">How a workflow starts</span></a></li><li style="--depth: 0;" class="astro-jugkfwgx"><a href="#maturity" style="--depth: 0;" class="astro-jugkfwgx"><span style="--depth: 0;" class="astro-jugkfwgx">Maturity</span></a></li><li style="--depth: 0;" class="astro-jugkfwgx"><a href="#router" style="--depth: 0;" class="astro-jugkfwgx"><span style="--depth: 0;" class="astro-jugkfwgx">Router</span></a><ul class="astro-jugkfwgx" style="--depth: 1;"><li style="--depth: 1;" class="astro-jugkfwgx"><a href="#choosing-a-workflow" style="--depth: 1;" class="astro-jugkfwgx"><span style="--depth: 1;" class="astro-jugkfwgx">choosing-a-workflow</span></a></li></ul></li><li style="--depth: 0;" class="astro-jugkfwgx"><a href="#design-and-build" style="--depth: 0;" class="astro-jugkfwgx"><span style="--depth: 0;" class="astro-jugkfwgx">Design and build</span></a><ul class="astro-jugkfwgx" style="--depth: 1;"><li style="--depth: 1;" class="astro-jugkfwgx"><a href="#brainstorming" style="--depth: 1;" class="astro-jugkfwgx"><span style="--depth: 1;" class="astro-jugkfwgx">brainstorming</span></a></li></ul></li><li style="--depth: 0;" class="astro-jugkfwgx"><a href="#project-setup" style="--depth: 0;" class="astro-jugkfwgx"><span style="--depth: 0;" class="astro-jugkfwgx">Project setup</span></a><ul class="astro-jugkfwgx" style="--depth: 1;"><li style="--depth: 1;" class="astro-jugkfwgx"><a href="#setting-up-a-project" style="--depth: 1;" class="astro-jugkfwgx"><span style="--depth: 1;" class="astro-jugkfwgx">setting-up-a-project</span></a></li><li style="--depth: 1;" class="astro-jugkfwgx"><a href="#starting-a-new-project" style="--depth: 1;" class="astro-jugkfwgx"><span style="--depth: 1;" class="astro-jugkfwgx">starting-a-new-project</span></a></li><li style="--depth: 1;" class="astro-jugkfwgx"><a href="#importing-a-codebase" style="--depth: 1;" class="astro-jugkfwgx"><span style="--depth: 1;" class="astro-jugkfwgx">importing-a-codebase</span></a></li></ul></li><li style="--depth: 0;" class="astro-jugkfwgx"><a href="#shipping" style="--depth: 0;" class="astro-jugkfwgx"><span style="--depth: 0;" class="astro-jugkfwgx">Shipping</span></a><ul class="astro-jugkfwgx" style="--depth: 1;"><li style="--depth: 1;" class="astro-jugkfwgx"><a href="#shipping-a-pr" style="--depth: 1;" class="astro-jugkfwgx"><span style="--depth: 1;" class="astro-jugkfwgx">shipping-a-pr</span></a></li></ul></li><li style="--depth: 0;" class="astro-jugkfwgx"><a href="#concept-skills" style="--depth: 0;" class="astro-jugkfwgx"><span style="--depth: 0;" class="astro-jugkfwgx">Concept skills</span></a></li><li style="--depth: 0;" class="astro-jugkfwgx"><a href="#other-bundled-skills" style="--depth: 0;" class="astro-jugkfwgx"><span style="--depth: 0;" class="astro-jugkfwgx">Other bundled skills</span></a></li><li style="--depth: 0;" class="astro-jugkfwgx"><a href="#related" style="--depth: 0;" class="astro-jugkfwgx"><span style="--depth: 0;" class="astro-jugkfwgx">Related</span></a></li></ul></nav></starlight-toc><script type="module" src="/thinkrail/_astro/TableOfContents.astro_astro_type_script_index_0_lang.BpJaGz7G.js"></script></div></div></div></aside><div class="main-pane astro-lrzkfocr"><main data-pagefind-body class="astro-g5ptsecz" lang="en" dir="ltr"><div class="draft-notice" data-pagefind-ignore role="note"><span class="draft-notice__dot" aria-hidden="true"></span>Draft documentation preview — not official</div><div class="content-panel astro-a7po4psb"><div class="sl-container astro-a7po4psb"><div class="page-meta" data-pagefind-ignore><span class="badge badge--type badge--reference">Reference</span></div><h1 id="_top">Built-in workflows</h1></div></div><div class="content-panel astro-a7po4psb"><div class="sl-container astro-a7po4psb"><div class="sl-markdown-content"><p>A workflow is a set of <code dir="auto">pi</code> skills that tell the agent how to run a piece of work: ask before building,
+record the design, amend the specs, ship the pull request. ThinkRail bundles a small family of them in
+the <code dir="auto">pi-thinkrail-workflow</code> package. This page lists each skill, how it starts, what it does, and what it
+leaves behind. For why ThinkRail works this way, read <a href="/thinkrail/specs/living-specs/">Living specs</a>.</p>
+<div class="sl-heading-wrapper level-h2"><h2 id="how-workflows-work">How workflows work</h2><a class="sl-anchor-link" href="#how-workflows-work"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore="">Section titled “How workflows work”</span></a></div>
+<p>There is no workflow engine. A workflow is plain skill text that the agent reads and follows, so a run is
+as reliable as the model following the instructions. Skills come in three roles:</p>
+<ul>
+<li><strong>Router.</strong> Classifies the work and names the skill that governs it.</li>
+<li><strong>Worker.</strong> Carries out the steps of one workflow.</li>
+<li><strong>Concept.</strong> Holds norms that several workers share, such as how to ask questions or how to write a
+spec. Workers load concepts by name.</li>
+</ul>
+<p>The workflow skills use <code dir="auto">ask_user_question</code> to interview you, so they run only inside ThinkRail. The
+<a href="/thinkrail/agent/agent-tools/#spec-graph-tools">spec tools</a> and the <a href="/thinkrail/agent/agent-tools/#todo-plan-tools">TODO plan</a> are
+separate packages that the workflows build on.</p>
+<div class="sl-heading-wrapper level-h2"><h2 id="how-a-workflow-starts">How a workflow starts</h2><a class="sl-anchor-link" href="#how-a-workflow-starts"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore="">Section titled “How a workflow starts”</span></a></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Trigger</th><th>What happens</th></tr></thead><tbody><tr><td><strong>Always-on routing rule</strong></td><td>A short rule is added to every chat’s system prompt. At the start of new work it tells the agent to read the <code dir="auto">choosing-a-workflow</code> skill before any other tool call when the work is project onboarding, pull request lifecycle work (including checking a PR’s CI), or any change to what the product does: a feature, a behavior change, or a bug fix, however small. Questions, explanations, checks, and edits that change no behavior (typos, documentation-only or configuration-only edits, mechanical refactors) proceed without a workflow. Work already routed to a workflow continues without routing again.</td></tr><tr><td><strong><code dir="auto">/skill:&#x3C;name></code></strong></td><td>Type <code dir="auto">/skill:</code> in the composer and pick a skill, or type the full command. This forces the skill to load instead of relying on the agent to match its description. Text after the name is passed to the skill as your request.</td></tr><tr><td><strong>Welcome card</strong></td><td>In a project with no specs, <strong>Set up project</strong> on the Welcome screen opens the <strong>Create workspace</strong> dialog with <code dir="auto">/skill:setting-up-a-project</code> already in the prompt. A project that has specs shows <strong>Start building</strong> instead.</td></tr><tr><td><strong>Skill description</strong></td><td>Skills with a narrow description, such as <code dir="auto">setting-up-a-project</code>, <code dir="auto">starting-a-new-project</code>, <code dir="auto">importing-a-codebase</code>, and <code dir="auto">shipping-a-pr</code>, can also load when the request matches.</td></tr></tbody></table>
+<p>You can see which skills a chat has, and turn them on or off, in the <strong>Skills</strong> dialog. Skills from other
+agents’ folders and from the project are covered in <a href="/thinkrail/extend/use-existing-skills/">Use existing skills</a>.</p>
+<pre class="mermaid" data-pagefind-ignore="">flowchart TD
+    Rule["Always-on rule: new work"] --> Router["choosing-a-workflow"]
+    Router -->|Onboarding| Setup["setting-up-a-project"]
+    Router -->|Pull request| Ship["shipping-a-pr"]
+    Router -->|Feature, behavior change, bug fix| Brain["brainstorming"]
+    Router -->|Changes no behavior| Direct["Proceed directly"]
+    Setup -->|Empty repo| New["starting-a-new-project"]
+    Setup -->|Code, no specs| Import["importing-a-codebase"]
+    Setup -->|Has specs| Offer["Offer to review or extend"]</pre>
+<div class="sl-heading-wrapper level-h2"><h2 id="maturity">Maturity</h2><a class="sl-anchor-link" href="#maturity"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore="">Section titled “Maturity”</span></a></div>
+<p>The workflows are in active use but are not equally proven. The routing in <code dir="auto">choosing-a-workflow</code> and the
+route into <code dir="auto">brainstorming</code>, <code dir="auto">setting-up-a-project</code>, and <code dir="auto">importing-a-codebase</code> have been observed working
+in automated runs against a real model. Other parts have been written but not yet observed in use:</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Skill</th><th>Observed working</th><th>Not yet observed</th></tr></thead><tbody><tr><td><code dir="auto">choosing-a-workflow</code></td><td>Every classification, including small behavior changes and bug reports.</td><td></td></tr><tr><td><code dir="auto">brainstorming</code></td><td>Routing in, a small specified change, a bug report reaching the bug branch with no source edit, and a mid-flow round trip.</td><td>The full two-phase interview and the self-driven spec amendment.</td></tr><tr><td><code dir="auto">setting-up-a-project</code></td><td>Routing to the new-project and import paths.</td><td>The offer to review or extend an existing graph.</td></tr><tr><td><code dir="auto">starting-a-new-project</code></td><td>Routing in.</td><td>The interview and the goal-document template itself.</td></tr><tr><td><code dir="auto">importing-a-codebase</code></td><td>The first-graph flow end to end in the browser test, and the offer to adopt existing documents.</td><td>The “why” and known-limitation questions.</td></tr><tr><td><code dir="auto">shipping-a-pr</code></td><td></td><td>Snapshot-by-default completion and reuse of earlier verification.</td></tr><tr><td><code dir="auto">asking-user-questions</code></td><td>An earlier single-round form.</td><td>The current multi-round interview model.</td></tr><tr><td><code dir="auto">writing-specs</code></td><td>Loaded and applied when revising a spec.</td><td></td></tr></tbody></table>
+<aside aria-label="Note" class="starlight-aside starlight-aside--note"><p class="starlight-aside__title" aria-hidden="true"><svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" class="starlight-aside__icon"><path d="M12 11a1 1 0 0 0-1 1v4a1 1 0 0 0 2 0v-4a1 1 0 0 0-1-1Zm.38-3.92a1 1 0 0 0-.76 0 1 1 0 0 0-.33.21 1.15 1.15 0 0 0-.21.33 1 1 0 0 0 .21 1.09c.097.088.209.16.33.21A1 1 0 0 0 13 8a1.05 1.05 0 0 0-.29-.71 1 1 0 0 0-.33-.21ZM12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Zm0 18a8 8 0 1 1 0-16.001A8 8 0 0 1 12 20Z"></path></svg>Note</p><div class="starlight-aside__content"><p>Treat each workflow as a strong default, not a guarantee. If the agent skips a step, name the skill with
+<code dir="auto">/skill:&#x3C;name></code> and tell it which step it missed. Automated workflow tests run on demand, spend real
+provider tokens, and are not part of the ordinary build checks.</p></div></aside>
+<div class="sl-heading-wrapper level-h2"><h2 id="router">Router</h2><a class="sl-anchor-link" href="#router"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore="">Section titled “Router”</span></a></div>
+<div class="sl-heading-wrapper level-h3"><h3 id="choosing-a-workflow"><code dir="auto">choosing-a-workflow</code></h3><a class="sl-anchor-link" href="#choosing-a-workflow"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore="">Section titled “choosing-a-workflow”</span></a></div>
+<p>The root router. It classifies new work with three questions and names exactly one outcome.</p>
+<ol>
+<li>Is this <strong>project onboarding</strong>: no spec graph yet, either an empty workspace with a raw idea or an
+existing codebase being set up for the first time?</li>
+<li>Is this the <strong>pull request lifecycle</strong>: finished work shipping as a pull request, or an existing pull
+request being tended? Fixes that come from a pull request’s own review comments belong here.</li>
+<li>Does the work <strong>change what the product does</strong>: a feature, a behavior change, or a bug fix?</li>
+</ol>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Classification</th><th>Routes to</th></tr></thead><tbody><tr><td>Onboarding</td><td><code dir="auto">setting-up-a-project</code></td></tr><tr><td>Pull request lifecycle</td><td><code dir="auto">shipping-a-pr</code></td></tr><tr><td>Feature, behavior change, or bug fix</td><td><code dir="auto">brainstorming</code></td></tr><tr><td>None of the above</td><td>No workflow; the agent proceeds directly and does not announce a routing result</td></tr></tbody></table>
+<p>If the route is unclear, the agent asks one short clarifying question. A request that bundles unfinished
+implementation with pull request work routes the implementation first.</p>
+<p><strong>Output:</strong> none. The router only hands off.</p>
+<div class="sl-heading-wrapper level-h2"><h2 id="design-and-build">Design and build</h2><a class="sl-anchor-link" href="#design-and-build"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore="">Section titled “Design and build”</span></a></div>
+<div class="sl-heading-wrapper level-h3"><h3 id="brainstorming"><code dir="auto">brainstorming</code></h3><a class="sl-anchor-link" href="#brainstorming"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore="">Section titled “brainstorming”</span></a></div>
+<p><strong>Starts:</strong> the router, for any feature, behavior change, or bug fix. Depth scales with the change and never
+drops to zero: a small change gets one short round and a few lines of design. The agent does not implement
+until you have accepted the design; a design or acceptance criteria already in your request count as
+approval of what they cover.</p>
+<p><strong>Steps:</strong></p>
+<ol>
+<li><strong>Orient.</strong> Find the specs that govern the area through the spec graph, then confirm details in code.</li>
+<li><strong>Scope check.</strong> Separate independent product decisions or subsystems.</li>
+<li><strong>Open a task-spec</strong> at <code dir="auto">.thinkrail/context/TASK-&#x3C;slug>.md</code> with <code dir="auto">status: draft</code> and the nearest
+relevant module as <code dir="auto">parent</code>.</li>
+<li><strong>Bug?</strong> For a bug report, follow the bug branch below, which rejoins at step 5 or step 8.</li>
+<li><strong>Product phase.</strong> Interview what the change is for: why, for whom, what you will see and do including
+empty, error, and edge states, and how you will know it is done. Questions come in rounds until no
+decision is assumed. The answers go in the task-spec’s Product section and are confirmed with one
+question before any technical choice.</li>
+<li><strong>Technical phase.</strong> Interview the decisions the product answers leave open: constraints,
+compatibility, verification, and the reason behind any decision whose reason is not recorded. Rejected
+alternatives are shown with their trade-off. The Design section records the chosen approach.</li>
+<li><strong>Self-review, then review once.</strong> The agent removes placeholders, contradictions, and scope creep, then
+presents one design and asks for approval unless the request already approved it.</li>
+<li><strong>Build</strong> against the accepted design, then review its own diff for suppressed lint or type errors,
+duplicated logic, rationale left as code comments, and leftovers of a replaced pattern.</li>
+<li><strong>Amend specs.</strong> See the amend step below.</li>
+</ol>
+<p><strong>Bug branch (<code dir="auto">fixing-a-bug</code>).</strong> Pin the symptom, expected behavior, and trigger; reproduce when a safe
+command can show it, ideally with a failing test; locate the code and its specs; then classify the bug as
+<strong>Silent</strong> (no spec covers the behavior), <strong>Wrong</strong> (a spec states the buggy behavior), <strong>Right</strong> (the spec
+is correct and only the code is wrong), or <strong>Feature</strong> (the code does what the specs intend, so this is a
+new capability and the flow continues at step 5). The confirmed intended behavior is recorded in the
+task-spec’s Bug section and counts as the accepted design. The fix is test-first when practical.</p>
+<p><strong>Amend step (<code dir="auto">amending-specs</code>).</strong> The agent updates the durable specs itself, top-down from the goal
+document to architecture to module specs, without asking you to approve each edit. It writes decisions and
+their reasons once, in the spec that owns them, runs <code dir="auto">spec_validate</code>, makes no edits when nothing durable
+changed, reports in a line or two which specs changed, and deletes the task-spec.</p>
+<p><strong>Outputs:</strong> a temporary task-spec (deleted at the end), the code change, amended durable specs, and a short
+report. The edits land on the workspace branch, so you review them in <strong>Changes</strong> with the code. Pull
+request work, if you ask for it, starts <code dir="auto">shipping-a-pr</code> separately.</p>
+<div class="sl-heading-wrapper level-h2"><h2 id="project-setup">Project setup</h2><a class="sl-anchor-link" href="#project-setup"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore="">Section titled “Project setup”</span></a></div>
+<div class="sl-heading-wrapper level-h3"><h3 id="setting-up-a-project"><code dir="auto">setting-up-a-project</code></h3><a class="sl-anchor-link" href="#setting-up-a-project"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore="">Section titled “setting-up-a-project”</span></a></div>
+<p><strong>Starts:</strong> the router, the <strong>Set up project</strong> card, <code dir="auto">/skill:setting-up-a-project</code>, or a request such as
+“set up this project”. It is a dispatcher and does no drafting itself.</p>
+<p><strong>Steps:</strong> detect whether the workspace has a spec graph and whether it has real source code, using the spec
+tools, then route:</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Situation</th><th>Result</th></tr></thead><tbody><tr><td>Already has specs</td><td>Does not redo setup. Offers to review or extend the graph, for example a missing architecture document or un-specced modules. Declining stops. Accepting continues on the agent’s own judgment, with no dedicated skill, against the <code dir="auto">writing-specs</code> bar.</td></tr><tr><td>No specs, empty or near-empty repository</td><td><code dir="auto">starting-a-new-project</code></td></tr><tr><td>No specs, real source code</td><td><code dir="auto">importing-a-codebase</code></td></tr></tbody></table>
+<p><strong>Output:</strong> none of its own.</p>
+<div class="sl-heading-wrapper level-h3"><h3 id="starting-a-new-project"><code dir="auto">starting-a-new-project</code></h3><a class="sl-anchor-link" href="#starting-a-new-project"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore="">Section titled “starting-a-new-project”</span></a></div>
+<p><strong>Starts:</strong> <code dir="auto">setting-up-a-project</code> for an empty workspace with a raw idea, or a matching request.</p>
+<p><strong>Steps:</strong></p>
+<ol>
+<li>State the plan: settle the goal and scope, then save <code dir="auto">goal-and-requirements.md</code>.</li>
+<li>Infer and confirm an <strong>Overview</strong>, then a <strong>Problem</strong> statement, using questions tailored to the domain.</li>
+<li>Choose the template from inferred context: a short <strong>Personal spec</strong> for personal or first-person
+projects, or a full product requirements document for public or multi-user projects.</li>
+<li>Elicit the template’s sections one at a time, inferring a draft and letting you correct it, and save each
+confirmed section as you go.</li>
+<li>Offer to research alternatives with <code dir="auto">web_search</code> and <code dir="auto">fetch_content</code> and add an <strong>Alternatives
+Considered</strong> section.</li>
+<li>Show the full draft for review, then finalize.</li>
+</ol>
+<p>A request that already reads like a spec is treated as confirmed and saved immediately; the agent asks only
+about what is missing.</p>
+<p><strong>Outputs:</strong> <code dir="auto">goal-and-requirements.md</code> at the project root, created with <code dir="auto">status: draft</code> and set to
+<code dir="auto">active</code> when you approve the reviewed draft. The workflow ends there and suggests sketching
+<code dir="auto">architecture.md</code> next.</p>
+<div class="sl-heading-wrapper level-h3"><h3 id="importing-a-codebase"><code dir="auto">importing-a-codebase</code></h3><a class="sl-anchor-link" href="#importing-a-codebase"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore="">Section titled “importing-a-codebase”</span></a></div>
+<p><strong>Starts:</strong> <code dir="auto">setting-up-a-project</code> for a repository with code and no specs, or a matching request.</p>
+<p><strong>Steps:</strong></p>
+<ol>
+<li><strong>Read first, ask last.</strong> Read agent files (<code dir="auto">AGENTS.md</code>, <code dir="auto">CLAUDE.md</code>, Cursor and Copilot rule files),
+documentation, manifests, and entry points. Collect existing architecture documents, decision records,
+glossaries, and contract documents as candidates to adopt.</li>
+<li><strong>Build a working model</strong> in the conversation: purpose, domain, stack, module boundaries and their
+dependencies, invariants the code enforces, and non-obvious decisions.</li>
+<li><strong>Interview only the gaps.</strong> Ask what the files cannot answer and what would change a spec: the primary
+job, non-goals, the reason behind non-obvious decisions, known limitations, and which candidate
+documents to adopt. If the files answer everything, the interview is skipped and the agent says so.</li>
+<li><strong>Draft the graph top-down.</strong> <code dir="auto">goal-and-requirements.md</code>, then <code dir="auto">architecture.md</code>, then one short
+<code dir="auto">SPEC.md</code> per genuine module. Adopted documents gain frontmatter in place and keep their content,
+except where they have drifted from the code and the correction is called out.</li>
+<li><strong>Validate and hand off.</strong> Run <code dir="auto">spec_validate</code>, then tell you what was inferred versus confirmed, which
+documents were adopted, and any corrections.</li>
+</ol>
+<p><strong>Outputs:</strong> a draft spec graph on the workspace branch. You review it in <strong>Changes</strong>; nothing reaches your
+base branch until you merge it. Everything starts as <code dir="auto">draft</code>.</p>
+<div class="sl-heading-wrapper level-h2"><h2 id="shipping">Shipping</h2><a class="sl-anchor-link" href="#shipping"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore="">Section titled “Shipping”</span></a></div>
+<div class="sl-heading-wrapper level-h3"><h3 id="shipping-a-pr"><code dir="auto">shipping-a-pr</code></h3><a class="sl-anchor-link" href="#shipping-a-pr"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore="">Section titled “shipping-a-pr”</span></a></div>
+<p><strong>Starts:</strong> the router, or a request to create a pull request, bring it up to date, update its title or
+body, add screenshots, check CI, or address review comments. It uses the <code dir="auto">gh</code> CLI.</p>
+<p><strong>Modes.</strong> <em>Snapshot</em> is the default: one fresh read of checks and merge state, reported as observed, with
+no polling and no repair. <em>Wait</em> applies only when you explicitly ask to monitor or watch checks, wait until
+green, or make the pull request merge-ready; it finishes only when every configured check is green, the
+head is current with its base, and GitHub reports an affirmative merge state. A repository with no CI is
+reported as having none.</p>
+<p><strong>Rules for every phase.</strong> The agent re-verifies the state it is about to change immediately before it
+pushes or edits; keeps verification tied to the final tree; fetches remote state fresh; and treats a
+pending or unknown answer as indeterminate rather than good.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Ask</th><th>Phase</th><th>What it does</th></tr></thead><tbody><tr><td>Create a PR</td><td><code dir="auto">creating</code></td><td>Five gates in order: committed and clean worktree, fresh rebased base, clean branch with no scratch files, verification evidence for the final tree, and a self-review of the full diff. Then the title (<code dir="auto">scope: imperative summary</code>), a body that follows the repository’s pull request template or the Summary, Changes, Testing shape (and reuses the plan summary when a TODO plan drove the work), push, and <code dir="auto">gh pr create</code>.</td></tr><tr><td>Bring it up to date</td><td><code dir="auto">syncing</code></td><td>Fetch, rebase or merge following the pull request’s existing style, resolve conflicts by reading both sides’ history, and reassess which verification the changes invalidated.</td></tr><tr><td>Update title or body</td><td><code dir="auto">body</code></td><td>Fetch the current text, apply only the requested change, re-fetch immediately before editing, and verify the result.</td></tr><tr><td>Add screenshots</td><td><code dir="auto">screenshots</code></td><td>Capture matching before and after shots of the same scenario and attach them without adding them to the pull request’s files.</td></tr><tr><td>Check CI or merge state</td><td><code dir="auto">checks</code></td><td>Snapshot or wait, as above. Every phase ends here.</td></tr><tr><td>Address review comments</td><td><code dir="auto">review-comments</code></td><td>Read the whole pull request, give each comment a verdict (apply, push back, or clarify) before touching code, apply accepted changes, push, then reply to every thread.</td></tr></tbody></table>
+<p><strong>Outputs:</strong> the pull request, plus working files under <code dir="auto">.thinkrail/context/</code>: <code dir="auto">pr-body.md</code> for the body
+draft and <code dir="auto">pr-shots/</code> for staged screenshots. Both are deleted when their phase completes. This workflow is
+separate from ThinkRail’s built-in <strong>Open PR</strong> button; see
+<a href="/thinkrail/review/open-a-pull-request/">Open a pull request</a>.</p>
+<div class="sl-heading-wrapper level-h2"><h2 id="concept-skills">Concept skills</h2><a class="sl-anchor-link" href="#concept-skills"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore="">Section titled “Concept skills”</span></a></div>
+<p>These are loaded by name from the workers above. They are not workflows and have nothing to run.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Skill</th><th>Purpose</th></tr></thead><tbody><tr><td><code dir="auto">asking-user-questions</code></td><td>Norms for <code dir="auto">ask_user_question</code> rounds: multi-round interviews, question quality, option design, confirming inferences, and what to do when you skip a question.</td></tr><tr><td><code dir="auto">writing-specs</code></td><td>The quality bar for any spec a workflow writes: short, honest, and on-rails.</td></tr><tr><td><code dir="auto">writing-workflow-skills</code></td><td>An authoring checklist for changing this skill family. It is staged into every project but does nothing outside the ThinkRail repository.</td></tr></tbody></table>
+<div class="sl-heading-wrapper level-h2"><h2 id="other-bundled-skills">Other bundled skills</h2><a class="sl-anchor-link" href="#other-bundled-skills"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore="">Section titled “Other bundled skills”</span></a></div>
+<p>Three more skills ship with every chat but are tool guides, not workflows.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Skill</th><th>Purpose</th></tr></thead><tbody><tr><td><code dir="auto">spec-graph</code></td><td>How to use the <code dir="auto">spec_*</code> tools and the spec frontmatter. See <a href="/thinkrail/specs/spec-format/">Spec format</a>.</td></tr><tr><td><code dir="auto">todos</code></td><td>How to keep the chat’s TODO plan: groups as tasks, one step in progress, promote loose items, and re-read the list because you edit it too.</td></tr><tr><td><code dir="auto">managing-mcp-servers</code></td><td>How to edit <code dir="auto">mcp.json</code> safely. It tells the agent to use the config files and <strong>Settings → MCP servers</strong>, not <code dir="auto">pi mcp</code> commands, because ThinkRail has no <code dir="auto">pi</code> executable. See <a href="/thinkrail/extend/mcp-configuration/">MCP configuration</a>.</td></tr></tbody></table>
+<div class="sl-heading-wrapper level-h2"><h2 id="related">Related</h2><a class="sl-anchor-link" href="#related"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore="">Section titled “Related”</span></a></div>
+<ul>
+<li><a href="/thinkrail/specs/living-specs/">Living specs</a></li>
+<li><a href="/thinkrail/specs/spec-first-project/">Set up a project for spec-first work</a></li>
+<li><a href="/thinkrail/agent/agent-tools/">Tools the agent can call</a></li>
+<li><a href="/thinkrail/extend/use-existing-skills/">Use existing skills</a></li>
+</ul></div><footer class="sl-flex astro-ddtxxk7k"><div class="meta sl-flex astro-ddtxxk7k"><a href="https://github.com/HadesArchitect/thinkrail/edit/claude/thinkrail-docs-draft-39556b/docs/specs/workflows.md" class="sl-flex print:hidden astro-qlekgd3o"><svg aria-hidden="true" class="astro-qlekgd3o astro-hkc32dio" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.2em;"><path d="M22 7.24a1 1 0 0 0-.29-.71l-4.24-4.24a1 1 0 0 0-1.1-.22 1 1 0 0 0-.32.22l-2.83 2.83L2.29 16.05a1 1 0 0 0-.29.71V21a1 1 0 0 0 1 1h4.24a1 1 0 0 0 .76-.29l10.87-10.93L21.71 8c.1-.1.17-.2.22-.33a1 1 0 0 0 0-.24v-.14l.07-.05ZM6.83 20H4v-2.83l9.93-9.93 2.83 2.83L6.83 20ZM18.17 8.66l-2.83-2.83 1.42-1.41 2.82 2.82-1.41 1.42Z"/></svg>Edit page</a></div><div class="pagination-links print:hidden astro-b5raizh3" dir="ltr"><a href="/thinkrail/specs/plan-and-review/" rel="prev" class="astro-b5raizh3"><svg aria-hidden="true" class="astro-b5raizh3 astro-hkc32dio" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.5rem;"><path d="M17 11H9.41l3.3-3.29a1.004 1.004 0 1 0-1.42-1.42l-5 5a1 1 0 0 0-.21.33 1 1 0 0 0 0 .76 1 1 0 0 0 .21.33l5 5a1.002 1.002 0 0 0 1.639-.325 1 1 0 0 0-.219-1.095L9.41 13H17a1 1 0 0 0 0-2Z"/></svg><span class="astro-b5raizh3">Previous<br class="astro-b5raizh3"><span class="link-title astro-b5raizh3">Work through a plan step by step</span></span></a><a href="/thinkrail/specs/spec-format/" rel="next" class="astro-b5raizh3"><svg aria-hidden="true" class="astro-b5raizh3 astro-hkc32dio" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.5rem;"><path d="M17.92 11.62a1.001 1.001 0 0 0-.21-.33l-5-5a1.003 1.003 0 1 0-1.42 1.42l3.3 3.29H7a1 1 0 0 0 0 2h7.59l-3.3 3.29a1.002 1.002 0 0 0 .325 1.639 1 1 0 0 0 1.095-.219l5-5a1 1 0 0 0 .21-.33 1 1 0 0 0 0-.76Z"/></svg><span class="astro-b5raizh3">Next<br class="astro-b5raizh3"><span class="link-title astro-b5raizh3">Spec format</span></span></a></div></footer><script type="module" src="/thinkrail/_astro/Footer.astro_astro_type_script_index_0_lang.G9f2iu_h.js"></script></div></div></main></div></div></div></div></body></html>

@@ -1,0 +1,496 @@
+<!DOCTYPE html><html lang="en" dir="ltr" data-theme="dark" data-has-toc data-has-sidebar class="astro-g5ptsecz"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><title>MCP configuration | ThinkRail Docs</title><link rel="shortcut icon" href="/thinkrail/favicon.svg" type="image/svg+xml"/><meta name="generator" content="Astro v7.4.0"/><meta name="generator" content="Starlight v0.42.6"/><meta property="og:title" content="MCP configuration"/><meta property="og:type" content="article"/><meta property="og:locale" content="en"/><meta property="og:description" content="Where mcp.json lives, the schema of a server entry, the presets in Settings, call confirmation, repository approvals, sign-in, and logs."/><meta property="og:site_name" content="ThinkRail Docs"/><meta name="twitter:card" content="summary_large_image"/><meta name="description" content="Where mcp.json lives, the schema of a server entry, the presets in Settings, call confirmation, repository approvals, sign-in, and logs."/><meta name="robots" content="noindex, nofollow"/><script>
+	window.StarlightThemeProvider = (() => {
+		const storedTheme =
+			typeof localStorage !== 'undefined' && localStorage.getItem('starlight-theme');
+		const theme =
+			storedTheme ||
+			(window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+		document.documentElement.dataset.theme = theme === 'light' ? 'light' : 'dark';
+		return {
+			updatePickers(theme = storedTheme || 'auto') {
+				document.querySelectorAll('starlight-theme-select').forEach((picker) => {
+					const select = picker.querySelector('select');
+					if (select) select.value = theme;
+					/** @type {HTMLTemplateElement | null} */
+					const tmpl = document.querySelector(`#theme-icons`);
+					const newIcon = tmpl && tmpl.content.querySelector('.' + theme);
+					if (newIcon) {
+						const oldIcon = picker.querySelector('svg.label-icon');
+						if (oldIcon) {
+							oldIcon.replaceChildren(...newIcon.cloneNode(true).childNodes);
+						}
+					}
+				});
+			},
+		};
+	})();
+</script><template id="theme-icons"><svg aria-hidden="true" class="light astro-hkc32dio" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M5 12a1 1 0 0 0-1-1H3a1 1 0 0 0 0 2h1a1 1 0 0 0 1-1Zm.64 5-.71.71a1 1 0 0 0 0 1.41 1 1 0 0 0 1.41 0l.71-.71A1 1 0 0 0 5.64 17ZM12 5a1 1 0 0 0 1-1V3a1 1 0 0 0-2 0v1a1 1 0 0 0 1 1Zm5.66 2.34a1 1 0 0 0 .7-.29l.71-.71a1 1 0 1 0-1.41-1.41l-.66.71a1 1 0 0 0 0 1.41 1 1 0 0 0 .66.29Zm-12-.29a1 1 0 0 0 1.41 0 1 1 0 0 0 0-1.41l-.71-.71a1.004 1.004 0 1 0-1.43 1.41l.73.71ZM21 11h-1a1 1 0 0 0 0 2h1a1 1 0 0 0 0-2Zm-2.64 6A1 1 0 0 0 17 18.36l.71.71a1 1 0 0 0 1.41 0 1 1 0 0 0 0-1.41l-.76-.66ZM12 6.5a5.5 5.5 0 1 0 5.5 5.5A5.51 5.51 0 0 0 12 6.5Zm0 9a3.5 3.5 0 1 1 0-7 3.5 3.5 0 0 1 0 7Zm0 3.5a1 1 0 0 0-1 1v1a1 1 0 0 0 2 0v-1a1 1 0 0 0-1-1Z"/></svg><svg aria-hidden="true" class="dark astro-hkc32dio" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M21.64 13a1 1 0 0 0-1.05-.14 8.049 8.049 0 0 1-3.37.73 8.15 8.15 0 0 1-8.14-8.1 8.59 8.59 0 0 1 .25-2A1 1 0 0 0 8 2.36a10.14 10.14 0 1 0 14 11.69 1 1 0 0 0-.36-1.05Zm-9.5 6.69A8.14 8.14 0 0 1 7.08 5.22v.27a10.15 10.15 0 0 0 10.14 10.14 9.784 9.784 0 0 0 2.1-.22 8.11 8.11 0 0 1-7.18 4.32v-.04Z"/></svg><svg aria-hidden="true" class="auto astro-hkc32dio" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M21 14h-1V7a3 3 0 0 0-3-3H7a3 3 0 0 0-3 3v7H3a1 1 0 0 0-1 1v2a3 3 0 0 0 3 3h14a3 3 0 0 0 3-3v-2a1 1 0 0 0-1-1ZM6 7a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v7H6V7Zm14 10a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-1h16v1Z"/></svg></template><link rel="stylesheet" href="/thinkrail/_astro/print.ehPL0gv-.css" media="print"><link rel="stylesheet" href="/thinkrail/_astro/common.DwVthD0l.css"><script type="module" src="/thinkrail/_astro/page.cNngjUgL.js"></script></head><body class="astro-g5ptsecz"><a class="sl-skip-link astro-qb7clj6f" href="#_top">Skip to content</a><div class="page sl-flex astro-yntsjkba"><header class="header astro-yntsjkba"><div class="header astro-by6fddyj"><div class="title-wrapper sl-flex astro-by6fddyj"><a href="/thinkrail/" class="site-title sl-flex astro-6rvad3va"><img class="astro-6rvad3va" alt="ThinkRail" src="/thinkrail/_astro/logo-mark.D_5aK2o8.svg" width="512" height="512"><span class="astro-6rvad3va" translate="no">ThinkRail Docs</span></a></div><div class="sl-flex print:hidden astro-by6fddyj"><site-search class="astro-by6fddyj astro-b5kgnn7o" data-translations="{&quot;placeholder&quot;:&quot;Search&quot;}"><button data-open-modal disabled aria-label="Search" aria-keyshortcuts="Control+K" class="astro-b5kgnn7o"><svg aria-hidden="true" class="astro-b5kgnn7o astro-hkc32dio" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M21.71 20.29 18 16.61A9 9 0 1 0 16.61 18l3.68 3.68a.999.999 0 0 0 1.42 0 1 1 0 0 0 0-1.39ZM11 18a7 7 0 1 1 0-14 7 7 0 0 1 0 14Z"/></svg><span class="sl-hidden md:sl-block astro-b5kgnn7o" aria-hidden="true">Search</span><kbd class="sl-hidden md:sl-flex astro-b5kgnn7o" style="display: none;"><kbd class="astro-b5kgnn7o">Ctrl</kbd><kbd class="astro-b5kgnn7o">K</kbd></kbd></button><dialog style="padding:0" aria-label="Search" class="astro-b5kgnn7o"><div class="dialog-frame sl-flex astro-b5kgnn7o"><button data-close-modal class="sl-flex md:sl-hidden astro-b5kgnn7o">Cancel</button><div class="search-container astro-b5kgnn7o"><div id="starlight__search" class="astro-b5kgnn7o"></div></div></div></dialog></site-search><script>
+	(() => {
+		const openBtn = document.querySelector('button[data-open-modal]');
+		const shortcut = openBtn?.querySelector('kbd');
+		if (!openBtn || !(shortcut instanceof HTMLElement)) return;
+		const platformKey = shortcut.querySelector('kbd');
+		if (platformKey && /(Mac|iPhone|iPod|iPad)/i.test(navigator.platform)) {
+			platformKey.textContent = '⌘';
+			openBtn.setAttribute('aria-keyshortcuts', 'Meta+K');
+		}
+		shortcut.style.display = '';
+	})();
+</script><script type="module" src="/thinkrail/_astro/Search.astro_astro_type_script_index_0_lang.BCOo1ecf.js"></script></div><div class="sl-hidden md:sl-flex print:hidden right-group astro-by6fddyj"><div class="sl-flex social-icons astro-by6fddyj"><a href="https://github.com/JetBrains/thinkrail" rel="me" class="sl-flex astro-n2mnl6yq"><span class="sr-only astro-n2mnl6yq">GitHub</span><svg aria-hidden="true" class="astro-n2mnl6yq astro-hkc32dio" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M12 .3a12 12 0 0 0-3.8 23.38c.6.12.83-.26.83-.57L9 21.07c-3.34.72-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.08-.74.09-.73.09-.73 1.2.09 1.83 1.24 1.83 1.24 1.08 1.83 2.81 1.3 3.5 1 .1-.78.42-1.31.76-1.61-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.14-.3-.54-1.52.1-3.18 0 0 1-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.28-1.55 3.29-1.23 3.29-1.23.64 1.66.24 2.88.12 3.18a4.65 4.65 0 0 1 1.23 3.22c0 4.61-2.8 5.63-5.48 5.92.42.36.81 1.1.81 2.22l-.01 3.29c0 .31.2.69.82.57A12 12 0 0 0 12 .3Z"/></svg></a><a href="https://discord.gg/Wybu9ceWkY" rel="me" class="sl-flex astro-n2mnl6yq"><span class="sr-only astro-n2mnl6yq">Discord</span><svg aria-hidden="true" class="astro-n2mnl6yq astro-hkc32dio" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M20.32 4.37a19.8 19.8 0 0 0-4.93-1.51 13.78 13.78 0 0 0-.64 1.28 18.27 18.27 0 0 0-5.5 0 12.64 12.64 0 0 0-.64-1.28h-.05A19.74 19.74 0 0 0 3.64 4.4 20.26 20.26 0 0 0 .11 18.09l.02.02a19.9 19.9 0 0 0 6.04 3.03l.04-.02a14.24 14.24 0 0 0 1.23-2.03.08.08 0 0 0-.05-.07 13.1 13.1 0 0 1-1.9-.92.08.08 0 0 1 .02-.1 10.2 10.2 0 0 0 .41-.31h.04a14.2 14.2 0 0 0 12.1 0l.04.01a9.63 9.63 0 0 0 .4.32.08.08 0 0 1-.03.1 12.29 12.29 0 0 1-1.9.91.08.08 0 0 0-.02.1 15.97 15.97 0 0 0 1.27 2.01h.04a19.84 19.84 0 0 0 6.03-3.05v-.03a20.12 20.12 0 0 0-3.57-13.69ZM8.02 15.33c-1.18 0-2.16-1.08-2.16-2.42 0-1.33.96-2.42 2.16-2.42 1.21 0 2.18 1.1 2.16 2.42 0 1.34-.96 2.42-2.16 2.42Zm7.97 0c-1.18 0-2.15-1.08-2.15-2.42 0-1.33.95-2.42 2.15-2.42 1.22 0 2.18 1.1 2.16 2.42 0 1.34-.94 2.42-2.16 2.42Z"/></svg></a><a href="https://thinkrail.ai/blog/" rel="me" class="sl-flex astro-n2mnl6yq"><span class="sr-only astro-n2mnl6yq">ThinkRail blog</span><svg aria-hidden="true" class="astro-n2mnl6yq astro-hkc32dio" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M16 14H8a1 1 0 0 0 0 2h8a1 1 0 0 0 0-2m0-4h-6a1 1 0 0 0 0 2h6a1 1 0 0 0 0-2m4-6h-3V3a1 1 0 0 0-2 0v1h-2V3a1 1 0 0 0-2 0v1H9V3a1 1 0 0 0-2 0v1H4a1 1 0 0 0-1 1v14a3 3 0 0 0 3 3h12a3 3 0 0 0 3-3V5a1 1 0 0 0-1-1m-1 15a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V6h2v1a1 1 0 0 0 2 0V6h2v1a1 1 0 0 0 2 0V6h2v1a1 1 0 0 0 2 0V6h2Z"/></svg></a></div><starlight-theme-select><label style="--sl-select-width: 6.25em" class="astro-2z5xp7gb"><span class="sr-only astro-2z5xp7gb">Select theme</span><svg aria-hidden="true" class="icon label-icon astro-2z5xp7gb astro-hkc32dio" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M21 14h-1V7a3 3 0 0 0-3-3H7a3 3 0 0 0-3 3v7H3a1 1 0 0 0-1 1v2a3 3 0 0 0 3 3h14a3 3 0 0 0 3-3v-2a1 1 0 0 0-1-1ZM6 7a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v7H6V7Zm14 10a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-1h16v1Z"/></svg><select autocomplete="off" class="astro-2z5xp7gb"><option value="dark" class="astro-2z5xp7gb">Dark</option><option value="light" class="astro-2z5xp7gb">Light</option><option value="auto" selected class="astro-2z5xp7gb">Auto</option></select><svg aria-hidden="true" class="icon caret astro-2z5xp7gb astro-hkc32dio" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M17 9.17a1 1 0 0 0-1.41 0L12 12.71 8.46 9.17a1 1 0 1 0-1.41 1.42l4.24 4.24a1.002 1.002 0 0 0 1.42 0L17 10.59a1.002 1.002 0 0 0 0-1.42Z"/></svg></label></starlight-theme-select><script>
+	StarlightThemeProvider.updatePickers();
+</script><script type="module">var e=`starlight-theme`,t=e=>e===`auto`||e===`dark`||e===`light`?e:`auto`,n=()=>t(typeof localStorage<`u`&&localStorage.getItem(e));function r(t){typeof localStorage<`u`&&localStorage.setItem(e,t===`light`||t===`dark`?t:``)}var i=()=>matchMedia(`(prefers-color-scheme: light)`).matches?`light`:`dark`;function a(e){StarlightThemeProvider.updatePickers(e),document.documentElement.dataset.theme=e===`auto`?i():e,r(e)}matchMedia(`(prefers-color-scheme: light)`).addEventListener(`change`,()=>{n()===`auto`&&a(`auto`)});var o=class extends HTMLElement{constructor(){super(),a(n()),this.querySelector(`select`)?.addEventListener(`change`,e=>{e.currentTarget instanceof HTMLSelectElement&&a(t(e.currentTarget.value))})}};customElements.define(`starlight-theme-select`,o);</script><script type="module">var e=class extends HTMLElement{constructor(){super();let e=this.querySelector(`select`);e&&(e.addEventListener(`change`,e=>{e.currentTarget instanceof HTMLSelectElement&&(window.location.pathname=e.currentTarget.value)}),window.addEventListener(`pageshow`,t=>{if(!t.persisted)return;let n=e.querySelector(`option[selected]`)?.index;n!==e.selectedIndex&&(e.selectedIndex=n??0)}))}};customElements.define(`starlight-lang-select`,e);</script></div></div></header><nav class="sidebar print:hidden astro-yntsjkba" aria-label="Main"><button popovertarget="starlight__sidebar" class="sl-menu-button sl-flex md:sl-hidden print:hidden astro-r2osgdlg"><svg aria-hidden="true" class="open-menu astro-r2osgdlg astro-hkc32dio" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M3 8h18a1 1 0 1 0 0-2H3a1 1 0 0 0 0 2Zm18 8H3a1 1 0 0 0 0 2h18a1 1 0 0 0 0-2Zm0-5H3a1 1 0 0 0 0 2h18a1 1 0 0 0 0-2Z"/></svg><svg aria-hidden="true" class="close-menu astro-r2osgdlg astro-hkc32dio" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="m13.41 12 6.3-6.29a1.004 1.004 0 1 0-1.42-1.42L12 10.59l-6.29-6.3a1.004 1.004 0 0 0-1.42 1.42l6.3 6.29-6.3 6.29a1 1 0 0 0 0 1.42.998.998 0 0 0 1.42 0l6.29-6.3 6.29 6.3a.999.999 0 0 0 1.42 0 1 1 0 0 0 0-1.42L13.41 12Z"/></svg><span class="sr-only astro-r2osgdlg">Menu</span></button><script type="module">var e=class extends HTMLElement{constructor(){super();let e=matchMedia(`(min-width: 50em)`),t=()=>{this.popover=e.matches?null:`auto`};t(),e.addEventListener(`change`,()=>t()),this.addEventListener(`toggle`,({newState:e})=>this.trapFocus(e===`open`))}trapFocus(e){document.querySelectorAll(`.main-frame, .sl-skip-link`).forEach(t=>{t.toggleAttribute(`inert`,e)})}};customElements.define(`sl-sidebar-pane`,e);</script><sl-sidebar-pane popover id="starlight__sidebar" class="sidebar-pane astro-yntsjkba"><div class="sidebar-content sl-flex astro-yntsjkba"><sl-sidebar-state-persist data-hash="121z9qx" class="astro-ipdry5cl"><script aria-hidden="true">
+		(() => {
+			try {
+				if (!matchMedia('(min-width: 50em)').matches) return;
+				/** @type {HTMLElement | null} */
+				const target = document.querySelector('sl-sidebar-state-persist');
+				const state = JSON.parse(sessionStorage.getItem('sl-sidebar-state') || '0');
+				if (!target || !state || target.dataset.hash !== state.hash) return;
+				window._starlightScrollRestore = state.scroll;
+				customElements.define(
+					'sl-sidebar-restore',
+					class SidebarRestore extends HTMLElement {
+						connectedCallback() {
+							try {
+								const idx = parseInt(this.dataset.index || '');
+								const details = this.closest('details');
+								if (details && typeof state.open[idx] === 'boolean') details.open = state.open[idx];
+							} catch {}
+						}
+					}
+				);
+			} catch {}
+		})();
+	</script><ul class="top-level astro-rmhv4bp6"><li class="astro-rmhv4bp6"><a href="/thinkrail/" class="large astro-rmhv4bp6"><span class="astro-rmhv4bp6">ThinkRail documentation</span></a></li><li class="astro-rmhv4bp6"><a href="/thinkrail/what-is-thinkrail/" class="large astro-rmhv4bp6"><span class="astro-rmhv4bp6">What is ThinkRail?</span></a></li><li class="astro-rmhv4bp6"><a href="/thinkrail/coming-from-pi/" class="large astro-rmhv4bp6"><span class="astro-rmhv4bp6">Coming from pi</span></a></li><li class="astro-rmhv4bp6"><a href="/thinkrail/changelog/" class="large astro-rmhv4bp6"><span class="astro-rmhv4bp6">Changelog</span></a></li><li class="astro-rmhv4bp6"><details open class="astro-rmhv4bp6"><summary class="astro-rmhv4bp6"><span class="group-label astro-rmhv4bp6"><span class="large astro-rmhv4bp6">Get started</span></span><svg aria-hidden="true" class="caret astro-rmhv4bp6 astro-hkc32dio" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.25rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg></summary><sl-sidebar-restore data-index="0"></sl-sidebar-restore><ul class="astro-rmhv4bp6"><li class="astro-rmhv4bp6"><a href="/thinkrail/get-started/install/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Install ThinkRail</span></a></li><li class="astro-rmhv4bp6"><a href="/thinkrail/get-started/connect-a-provider/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Connect a model provider</span></a></li><li class="astro-rmhv4bp6"><a href="/thinkrail/get-started/describe-your-project/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Describe your project</span></a></li><li class="astro-rmhv4bp6"><a href="/thinkrail/get-started/first-change/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Make your first change</span></a></li></ul></details></li><li class="astro-rmhv4bp6"><details open class="astro-rmhv4bp6"><summary class="astro-rmhv4bp6"><span class="group-label astro-rmhv4bp6"><span class="large astro-rmhv4bp6">Using ThinkRail</span></span><svg aria-hidden="true" class="caret astro-rmhv4bp6 astro-hkc32dio" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.25rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg></summary><sl-sidebar-restore data-index="1"></sl-sidebar-restore><ul class="astro-rmhv4bp6"><li class="astro-rmhv4bp6"><details open class="astro-rmhv4bp6"><summary class="astro-rmhv4bp6"><span class="group-label astro-rmhv4bp6"><span class="large astro-rmhv4bp6">Workspaces</span></span><svg aria-hidden="true" class="caret astro-rmhv4bp6 astro-hkc32dio" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.25rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg></summary><sl-sidebar-restore data-index="2"></sl-sidebar-restore><ul class="astro-rmhv4bp6"><li class="astro-rmhv4bp6"><a href="/thinkrail/workspaces/workspaces-and-isolation/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Workspaces and isolation</span></a></li><li class="astro-rmhv4bp6"><a href="/thinkrail/workspaces/parallel-workspaces/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Run agents in parallel</span></a></li><li class="astro-rmhv4bp6"><a href="/thinkrail/workspaces/manage-workspaces/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Manage workspaces</span></a></li><li class="astro-rmhv4bp6"><a href="/thinkrail/workspaces/open-in-your-editor/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Open a workspace in your editor</span></a></li></ul></details></li><li class="astro-rmhv4bp6"><details open class="astro-rmhv4bp6"><summary class="astro-rmhv4bp6"><span class="group-label astro-rmhv4bp6"><span class="large astro-rmhv4bp6">Agent &amp; chats</span></span><svg aria-hidden="true" class="caret astro-rmhv4bp6 astro-hkc32dio" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.25rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg></summary><sl-sidebar-restore data-index="3"></sl-sidebar-restore><ul class="astro-rmhv4bp6"><li class="astro-rmhv4bp6"><a href="/thinkrail/agent/thinkrail-and-pi/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">ThinkRail and pi</span></a></li><li class="astro-rmhv4bp6"><a href="/thinkrail/agent/choose-models/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Choose models and effort</span></a></li><li class="astro-rmhv4bp6"><a href="/thinkrail/agent/steer-and-queue/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Steer, queue, or stop the agent</span></a></li><li class="astro-rmhv4bp6"><a href="/thinkrail/agent/delegate-to-subagents/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Delegate work to subagents</span></a></li><li class="astro-rmhv4bp6"><a href="/thinkrail/agent/agent-tools/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Tools the agent can call</span></a></li></ul></details></li><li class="astro-rmhv4bp6"><details open class="astro-rmhv4bp6"><summary class="astro-rmhv4bp6"><span class="group-label astro-rmhv4bp6"><span class="large astro-rmhv4bp6">Specs &amp; plans</span></span><svg aria-hidden="true" class="caret astro-rmhv4bp6 astro-hkc32dio" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.25rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg></summary><sl-sidebar-restore data-index="4"></sl-sidebar-restore><ul class="astro-rmhv4bp6"><li class="astro-rmhv4bp6"><a href="/thinkrail/specs/living-specs/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Living specs</span></a></li><li class="astro-rmhv4bp6"><a href="/thinkrail/specs/spec-first-project/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Set up a project for spec-first work</span></a></li><li class="astro-rmhv4bp6"><a href="/thinkrail/specs/build-from-your-own-spec/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Build from your own spec</span></a></li><li class="astro-rmhv4bp6"><a href="/thinkrail/specs/plan-and-review/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Work through a plan step by step</span></a></li><li class="astro-rmhv4bp6"><a href="/thinkrail/specs/workflows/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Built-in workflows</span></a></li><li class="astro-rmhv4bp6"><a href="/thinkrail/specs/spec-format/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Spec format</span></a></li></ul></details></li><li class="astro-rmhv4bp6"><details open class="astro-rmhv4bp6"><summary class="astro-rmhv4bp6"><span class="group-label astro-rmhv4bp6"><span class="large astro-rmhv4bp6">Review &amp; ship</span></span><svg aria-hidden="true" class="caret astro-rmhv4bp6 astro-hkc32dio" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.25rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg></summary><sl-sidebar-restore data-index="5"></sl-sidebar-restore><ul class="astro-rmhv4bp6"><li class="astro-rmhv4bp6"><a href="/thinkrail/review/review-changes/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Review changes</span></a></li><li class="astro-rmhv4bp6"><a href="/thinkrail/review/undo-or-discard-changes/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Undo or discard changes</span></a></li><li class="astro-rmhv4bp6"><a href="/thinkrail/review/open-a-pull-request/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Open a pull request</span></a></li></ul></details></li><li class="astro-rmhv4bp6"><details open class="astro-rmhv4bp6"><summary class="astro-rmhv4bp6"><span class="group-label astro-rmhv4bp6"><span class="large astro-rmhv4bp6">Skills, MCP &amp; extensions</span></span><svg aria-hidden="true" class="caret astro-rmhv4bp6 astro-hkc32dio" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.25rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg></summary><sl-sidebar-restore data-index="6"></sl-sidebar-restore><ul class="astro-rmhv4bp6"><li class="astro-rmhv4bp6"><a href="/thinkrail/extend/extensions/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Extensions</span></a></li><li class="astro-rmhv4bp6"><a href="/thinkrail/extend/use-existing-skills/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Use existing skills and prompt templates</span></a></li><li class="astro-rmhv4bp6"><a href="/thinkrail/extend/connect-mcp-servers/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Connect MCP servers</span></a></li><li class="astro-rmhv4bp6"><a href="/thinkrail/extend/mcp-configuration/" aria-current="page" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">MCP configuration</span></a></li><li class="astro-rmhv4bp6"><a href="/thinkrail/extend/use-thinkrail-packages-in-pi/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Use ThinkRail packages in pi</span></a></li></ul></details></li><li class="astro-rmhv4bp6"><details open class="astro-rmhv4bp6"><summary class="astro-rmhv4bp6"><span class="group-label astro-rmhv4bp6"><span class="large astro-rmhv4bp6">Security &amp; privacy</span></span><svg aria-hidden="true" class="caret astro-rmhv4bp6 astro-hkc32dio" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.25rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg></summary><sl-sidebar-restore data-index="7"></sl-sidebar-restore><ul class="astro-rmhv4bp6"><li class="astro-rmhv4bp6"><a href="/thinkrail/security/security-and-data-overview/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Security and data overview</span></a></li><li class="astro-rmhv4bp6"><a href="/thinkrail/security/trust-model/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Trust model</span></a></li><li class="astro-rmhv4bp6"><a href="/thinkrail/security/trust-a-project/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Trust a project</span></a></li><li class="astro-rmhv4bp6"><a href="/thinkrail/security/privacy-and-analytics/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Privacy and analytics</span></a></li><li class="astro-rmhv4bp6"><a href="/thinkrail/security/manage-privacy/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Turn off usage data (telemetry)</span></a></li></ul></details></li><li class="astro-rmhv4bp6"><details open class="astro-rmhv4bp6"><summary class="astro-rmhv4bp6"><span class="group-label astro-rmhv4bp6"><span class="large astro-rmhv4bp6">Run &amp; troubleshoot</span></span><svg aria-hidden="true" class="caret astro-rmhv4bp6 astro-hkc32dio" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.25rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg></summary><sl-sidebar-restore data-index="8"></sl-sidebar-restore><ul class="astro-rmhv4bp6"><li class="astro-rmhv4bp6"><a href="/thinkrail/run/troubleshoot/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Troubleshoot ThinkRail</span></a></li><li class="astro-rmhv4bp6"><a href="/thinkrail/run/get-help/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Get help</span></a></li><li class="astro-rmhv4bp6"><a href="/thinkrail/run/update-and-uninstall/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Update and uninstall ThinkRail</span></a></li><li class="astro-rmhv4bp6"><a href="/thinkrail/run/back-up-or-move/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Back up or move to a new machine</span></a></li><li class="astro-rmhv4bp6"><a href="/thinkrail/run/run-on-a-remote-machine/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Run ThinkRail on a remote machine</span></a></li><li class="astro-rmhv4bp6"><a href="/thinkrail/run/how-thinkrail-works/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">How ThinkRail works</span></a></li><li class="astro-rmhv4bp6"><a href="/thinkrail/run/platform-support/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Platform support</span></a></li></ul></details></li></ul></details></li><li class="astro-rmhv4bp6"><details open class="astro-rmhv4bp6"><summary class="astro-rmhv4bp6"><span class="group-label astro-rmhv4bp6"><span class="large astro-rmhv4bp6">Reference</span></span><svg aria-hidden="true" class="caret astro-rmhv4bp6 astro-hkc32dio" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.25rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg></summary><sl-sidebar-restore data-index="9"></sl-sidebar-restore><ul class="astro-rmhv4bp6"><li class="astro-rmhv4bp6"><a href="/thinkrail/reference/cli/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">CLI reference</span></a></li><li class="astro-rmhv4bp6"><a href="/thinkrail/reference/settings/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Settings reference</span></a></li><li class="astro-rmhv4bp6"><a href="/thinkrail/reference/keyboard-shortcuts/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Keyboard shortcuts</span></a></li><li class="astro-rmhv4bp6"><a href="/thinkrail/reference/files-and-environment/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Files and environment</span></a></li><li class="astro-rmhv4bp6"><a href="/thinkrail/reference/glossary/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Glossary</span></a></li></ul></details></li><li class="astro-rmhv4bp6"><details open class="astro-rmhv4bp6"><summary class="astro-rmhv4bp6"><span class="group-label astro-rmhv4bp6"><span class="large astro-rmhv4bp6">Developing ThinkRail</span></span><svg aria-hidden="true" class="caret astro-rmhv4bp6 astro-hkc32dio" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.25rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg></summary><sl-sidebar-restore data-index="10"></sl-sidebar-restore><ul class="astro-rmhv4bp6"><li class="astro-rmhv4bp6"><a href="/thinkrail/develop/build-from-source/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Build ThinkRail from source</span></a></li><li class="astro-rmhv4bp6"><a href="/thinkrail/develop/contribute/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Contribute to ThinkRail</span></a></li></ul></details></li><li class="astro-rmhv4bp6"><details class="astro-rmhv4bp6"><summary class="astro-rmhv4bp6"><span class="group-label astro-rmhv4bp6"><span class="large astro-rmhv4bp6">About these docs (private)</span></span><svg aria-hidden="true" class="caret astro-rmhv4bp6 astro-hkc32dio" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.25rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg></summary><sl-sidebar-restore data-index="11"></sl-sidebar-restore><ul class="astro-rmhv4bp6"><li class="astro-rmhv4bp6"><a href="/thinkrail/about-these-docs/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">About these docs</span></a></li><li class="astro-rmhv4bp6"><a href="/thinkrail/about-these-docs/information-architecture/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Information architecture</span></a></li><li class="astro-rmhv4bp6"><a href="/thinkrail/about-these-docs/reader-study/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Reader study</span></a></li><li class="astro-rmhv4bp6"><a href="/thinkrail/about-these-docs/docs-automation/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Docs automation</span></a></li><li class="astro-rmhv4bp6"><a href="/thinkrail/about-these-docs/hosting-options/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Hosting options</span></a></li><li class="astro-rmhv4bp6"><a href="/thinkrail/about-these-docs/authoring-guide/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Authoring guide</span></a></li><li class="astro-rmhv4bp6"><a href="/thinkrail/about-these-docs/making-docs-agent-friendly/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Making the docs agent-friendly</span></a></li></ul></details></li></ul><script aria-hidden="true">
+		(() => {
+			const scroller = document.getElementById('starlight__sidebar');
+			if (!window._starlightScrollRestore || !scroller) return;
+			scroller.scrollTop = window._starlightScrollRestore;
+			delete window._starlightScrollRestore;
+		})();
+	</script></sl-sidebar-state-persist><div class="md:sl-hidden"><div class="mobile-preferences sl-flex astro-p4azlveh"><div class="social-icons astro-p4azlveh"><a href="https://github.com/JetBrains/thinkrail" rel="me" class="sl-flex astro-n2mnl6yq"><span class="sr-only astro-n2mnl6yq">GitHub</span><svg aria-hidden="true" class="astro-n2mnl6yq astro-hkc32dio" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M12 .3a12 12 0 0 0-3.8 23.38c.6.12.83-.26.83-.57L9 21.07c-3.34.72-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.08-.74.09-.73.09-.73 1.2.09 1.83 1.24 1.83 1.24 1.08 1.83 2.81 1.3 3.5 1 .1-.78.42-1.31.76-1.61-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.14-.3-.54-1.52.1-3.18 0 0 1-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.28-1.55 3.29-1.23 3.29-1.23.64 1.66.24 2.88.12 3.18a4.65 4.65 0 0 1 1.23 3.22c0 4.61-2.8 5.63-5.48 5.92.42.36.81 1.1.81 2.22l-.01 3.29c0 .31.2.69.82.57A12 12 0 0 0 12 .3Z"/></svg></a><a href="https://discord.gg/Wybu9ceWkY" rel="me" class="sl-flex astro-n2mnl6yq"><span class="sr-only astro-n2mnl6yq">Discord</span><svg aria-hidden="true" class="astro-n2mnl6yq astro-hkc32dio" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M20.32 4.37a19.8 19.8 0 0 0-4.93-1.51 13.78 13.78 0 0 0-.64 1.28 18.27 18.27 0 0 0-5.5 0 12.64 12.64 0 0 0-.64-1.28h-.05A19.74 19.74 0 0 0 3.64 4.4 20.26 20.26 0 0 0 .11 18.09l.02.02a19.9 19.9 0 0 0 6.04 3.03l.04-.02a14.24 14.24 0 0 0 1.23-2.03.08.08 0 0 0-.05-.07 13.1 13.1 0 0 1-1.9-.92.08.08 0 0 1 .02-.1 10.2 10.2 0 0 0 .41-.31h.04a14.2 14.2 0 0 0 12.1 0l.04.01a9.63 9.63 0 0 0 .4.32.08.08 0 0 1-.03.1 12.29 12.29 0 0 1-1.9.91.08.08 0 0 0-.02.1 15.97 15.97 0 0 0 1.27 2.01h.04a19.84 19.84 0 0 0 6.03-3.05v-.03a20.12 20.12 0 0 0-3.57-13.69ZM8.02 15.33c-1.18 0-2.16-1.08-2.16-2.42 0-1.33.96-2.42 2.16-2.42 1.21 0 2.18 1.1 2.16 2.42 0 1.34-.96 2.42-2.16 2.42Zm7.97 0c-1.18 0-2.15-1.08-2.15-2.42 0-1.33.95-2.42 2.15-2.42 1.22 0 2.18 1.1 2.16 2.42 0 1.34-.94 2.42-2.16 2.42Z"/></svg></a><a href="https://thinkrail.ai/blog/" rel="me" class="sl-flex astro-n2mnl6yq"><span class="sr-only astro-n2mnl6yq">ThinkRail blog</span><svg aria-hidden="true" class="astro-n2mnl6yq astro-hkc32dio" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M16 14H8a1 1 0 0 0 0 2h8a1 1 0 0 0 0-2m0-4h-6a1 1 0 0 0 0 2h6a1 1 0 0 0 0-2m4-6h-3V3a1 1 0 0 0-2 0v1h-2V3a1 1 0 0 0-2 0v1H9V3a1 1 0 0 0-2 0v1H4a1 1 0 0 0-1 1v14a3 3 0 0 0 3 3h12a3 3 0 0 0 3-3V5a1 1 0 0 0-1-1m-1 15a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V6h2v1a1 1 0 0 0 2 0V6h2v1a1 1 0 0 0 2 0V6h2v1a1 1 0 0 0 2 0V6h2Z"/></svg></a></div><starlight-theme-select><label style="--sl-select-width: 6.25em" class="astro-2z5xp7gb"><span class="sr-only astro-2z5xp7gb">Select theme</span><svg aria-hidden="true" class="icon label-icon astro-2z5xp7gb astro-hkc32dio" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M21 14h-1V7a3 3 0 0 0-3-3H7a3 3 0 0 0-3 3v7H3a1 1 0 0 0-1 1v2a3 3 0 0 0 3 3h14a3 3 0 0 0 3-3v-2a1 1 0 0 0-1-1ZM6 7a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v7H6V7Zm14 10a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-1h16v1Z"/></svg><select autocomplete="off" class="astro-2z5xp7gb"><option value="dark" class="astro-2z5xp7gb">Dark</option><option value="light" class="astro-2z5xp7gb">Light</option><option value="auto" selected class="astro-2z5xp7gb">Auto</option></select><svg aria-hidden="true" class="icon caret astro-2z5xp7gb astro-hkc32dio" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M17 9.17a1 1 0 0 0-1.41 0L12 12.71 8.46 9.17a1 1 0 1 0-1.41 1.42l4.24 4.24a1.002 1.002 0 0 0 1.42 0L17 10.59a1.002 1.002 0 0 0 0-1.42Z"/></svg></label></starlight-theme-select><script>
+	StarlightThemeProvider.updatePickers();
+</script></div></div></div></sl-sidebar-pane></nav><div class="main-frame astro-yntsjkba"><script type="module">var e=document.getElementById(`starlight__sidebar`),t=e?.querySelector(`sl-sidebar-state-persist`),n=`sl-sidebar-state`,r=()=>{let r=[],i=t?.dataset.hash||``;try{let e=sessionStorage.getItem(n),t=JSON.parse(e||`{}`);Array.isArray(t.open)&&t.hash===i&&(r=t.open)}catch{}return{hash:i,open:r,scroll:e?.scrollTop||0}},i=e=>{try{sessionStorage.setItem(n,JSON.stringify(e))}catch{}},a=()=>i(r()),o=(e,t)=>{let n=r();n.open[t]=e,i(n)};t?.addEventListener(`click`,e=>{if(!(e.target instanceof Element))return;let t=e.target.closest(`summary`)?.closest(`details`);if(!t)return;let n=t.querySelector(`sl-sidebar-restore`),r=parseInt(n?.dataset.index||``);isNaN(r)||o(!t.open,r)}),addEventListener(`visibilitychange`,()=>{document.visibilityState===`hidden`&&a()});</script><div class="lg:sl-flex astro-lrzkfocr"><aside class="right-sidebar-container print:hidden astro-lrzkfocr"><div class="right-sidebar astro-lrzkfocr"><div class="lg:sl-hidden astro-qok35upx"><mobile-starlight-toc data-min-h="2" data-max-h="3" class="astro-66cqc7ze"><nav aria-labelledby="starlight__on-this-page--mobile" class="astro-66cqc7ze"><details id="starlight__mobile-toc" class="astro-66cqc7ze"><summary id="starlight__on-this-page--mobile" class="sl-flex astro-66cqc7ze"><span class="toggle sl-flex astro-66cqc7ze">On this page<svg aria-hidden="true" class="caret astro-66cqc7ze astro-hkc32dio" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg></span><span class="display-current astro-66cqc7ze"></span></summary><div class="dropdown astro-66cqc7ze"><ul class="isMobile astro-jugkfwgx" style="--depth: 0;"><li style="--depth: 0;" class="astro-jugkfwgx"><a href="#_top" style="--depth: 0;" class="astro-jugkfwgx"><span style="--depth: 0;" class="astro-jugkfwgx">Overview</span></a></li><li style="--depth: 0;" class="astro-jugkfwgx"><a href="#configuration-files" style="--depth: 0;" class="astro-jugkfwgx"><span style="--depth: 0;" class="astro-jugkfwgx">Configuration files</span></a></li><li style="--depth: 0;" class="astro-jugkfwgx"><a href="#file-format" style="--depth: 0;" class="astro-jugkfwgx"><span style="--depth: 0;" class="astro-jugkfwgx">File format</span></a><ul class="isMobile astro-jugkfwgx" style="--depth: 1;"><li style="--depth: 1;" class="astro-jugkfwgx"><a href="#entry-fields" style="--depth: 1;" class="astro-jugkfwgx"><span style="--depth: 1;" class="astro-jugkfwgx">Entry fields</span></a></li><li style="--depth: 1;" class="astro-jugkfwgx"><a href="#tool-exposure" style="--depth: 1;" class="astro-jugkfwgx"><span style="--depth: 1;" class="astro-jugkfwgx">Tool exposure</span></a></li><li style="--depth: 1;" class="astro-jugkfwgx"><a href="#oauth" style="--depth: 1;" class="astro-jugkfwgx"><span style="--depth: 1;" class="astro-jugkfwgx">OAuth</span></a></li></ul></li><li style="--depth: 0;" class="astro-jugkfwgx"><a href="#presets" style="--depth: 0;" class="astro-jugkfwgx"><span style="--depth: 0;" class="astro-jugkfwgx">Presets</span></a></li><li style="--depth: 0;" class="astro-jugkfwgx"><a href="#managing-servers-in-settings" style="--depth: 0;" class="astro-jugkfwgx"><span style="--depth: 0;" class="astro-jugkfwgx">Managing servers in Settings</span></a></li><li style="--depth: 0;" class="astro-jugkfwgx"><a href="#repository-defined-servers-and-approval" style="--depth: 0;" class="astro-jugkfwgx"><span style="--depth: 0;" class="astro-jugkfwgx">Repository-defined servers and approval</span></a></li><li style="--depth: 0;" class="astro-jugkfwgx"><a href="#call-confirmation" style="--depth: 0;" class="astro-jugkfwgx"><span style="--depth: 0;" class="astro-jugkfwgx">Call confirmation</span></a></li><li style="--depth: 0;" class="astro-jugkfwgx"><a href="#sign-in" style="--depth: 0;" class="astro-jugkfwgx"><span style="--depth: 0;" class="astro-jugkfwgx">Sign-in</span></a></li><li style="--depth: 0;" class="astro-jugkfwgx"><a href="#logs-and-diagnostics" style="--depth: 0;" class="astro-jugkfwgx"><span style="--depth: 0;" class="astro-jugkfwgx">Logs and diagnostics</span></a></li><li style="--depth: 0;" class="astro-jugkfwgx"><a href="#related" style="--depth: 0;" class="astro-jugkfwgx"><span style="--depth: 0;" class="astro-jugkfwgx">Related</span></a></li></ul></div></details></nav></mobile-starlight-toc><script type="module" src="/thinkrail/_astro/MobileTableOfContents.astro_astro_type_script_index_0_lang.C3fM4Kra.js"></script></div><div class="right-sidebar-panel sl-hidden lg:sl-block astro-qok35upx"><div class="sl-container astro-qok35upx"><starlight-toc data-min-h="2" data-max-h="3"><nav aria-labelledby="starlight__on-this-page"><h2 id="starlight__on-this-page">On this page</h2><ul class="astro-jugkfwgx" style="--depth: 0;"><li style="--depth: 0;" class="astro-jugkfwgx"><a href="#_top" style="--depth: 0;" class="astro-jugkfwgx"><span style="--depth: 0;" class="astro-jugkfwgx">Overview</span></a></li><li style="--depth: 0;" class="astro-jugkfwgx"><a href="#configuration-files" style="--depth: 0;" class="astro-jugkfwgx"><span style="--depth: 0;" class="astro-jugkfwgx">Configuration files</span></a></li><li style="--depth: 0;" class="astro-jugkfwgx"><a href="#file-format" style="--depth: 0;" class="astro-jugkfwgx"><span style="--depth: 0;" class="astro-jugkfwgx">File format</span></a><ul class="astro-jugkfwgx" style="--depth: 1;"><li style="--depth: 1;" class="astro-jugkfwgx"><a href="#entry-fields" style="--depth: 1;" class="astro-jugkfwgx"><span style="--depth: 1;" class="astro-jugkfwgx">Entry fields</span></a></li><li style="--depth: 1;" class="astro-jugkfwgx"><a href="#tool-exposure" style="--depth: 1;" class="astro-jugkfwgx"><span style="--depth: 1;" class="astro-jugkfwgx">Tool exposure</span></a></li><li style="--depth: 1;" class="astro-jugkfwgx"><a href="#oauth" style="--depth: 1;" class="astro-jugkfwgx"><span style="--depth: 1;" class="astro-jugkfwgx">OAuth</span></a></li></ul></li><li style="--depth: 0;" class="astro-jugkfwgx"><a href="#presets" style="--depth: 0;" class="astro-jugkfwgx"><span style="--depth: 0;" class="astro-jugkfwgx">Presets</span></a></li><li style="--depth: 0;" class="astro-jugkfwgx"><a href="#managing-servers-in-settings" style="--depth: 0;" class="astro-jugkfwgx"><span style="--depth: 0;" class="astro-jugkfwgx">Managing servers in Settings</span></a></li><li style="--depth: 0;" class="astro-jugkfwgx"><a href="#repository-defined-servers-and-approval" style="--depth: 0;" class="astro-jugkfwgx"><span style="--depth: 0;" class="astro-jugkfwgx">Repository-defined servers and approval</span></a></li><li style="--depth: 0;" class="astro-jugkfwgx"><a href="#call-confirmation" style="--depth: 0;" class="astro-jugkfwgx"><span style="--depth: 0;" class="astro-jugkfwgx">Call confirmation</span></a></li><li style="--depth: 0;" class="astro-jugkfwgx"><a href="#sign-in" style="--depth: 0;" class="astro-jugkfwgx"><span style="--depth: 0;" class="astro-jugkfwgx">Sign-in</span></a></li><li style="--depth: 0;" class="astro-jugkfwgx"><a href="#logs-and-diagnostics" style="--depth: 0;" class="astro-jugkfwgx"><span style="--depth: 0;" class="astro-jugkfwgx">Logs and diagnostics</span></a></li><li style="--depth: 0;" class="astro-jugkfwgx"><a href="#related" style="--depth: 0;" class="astro-jugkfwgx"><span style="--depth: 0;" class="astro-jugkfwgx">Related</span></a></li></ul></nav></starlight-toc><script type="module" src="/thinkrail/_astro/TableOfContents.astro_astro_type_script_index_0_lang.BpJaGz7G.js"></script></div></div></div></aside><div class="main-pane astro-lrzkfocr"><main data-pagefind-body class="astro-g5ptsecz" lang="en" dir="ltr"><div class="draft-notice" data-pagefind-ignore role="note"><span class="draft-notice__dot" aria-hidden="true"></span>Draft documentation preview — not official</div><div class="content-panel astro-a7po4psb"><div class="sl-container astro-a7po4psb"><div class="page-meta" data-pagefind-ignore><span class="badge badge--type badge--reference">Reference</span></div><h1 id="_top">MCP configuration</h1></div></div><div class="content-panel astro-a7po4psb"><div class="sl-container astro-a7po4psb"><div class="sl-markdown-content"><p>ThinkRail connects to <a href="https://modelcontextprotocol.io">Model Context Protocol</a> servers through the MCP
+support built into <code dir="auto">pi</code>. <code dir="auto">pi</code> owns the connections, OAuth, and tool exposure; ThinkRail adds a management
+page, approvals for servers that a repository defines, and a confirmation prompt for calls that may change
+data. This page covers the configuration files and the behavior around them. For the task-oriented guide,
+read <a href="/thinkrail/extend/connect-mcp-servers/">Connect MCP servers</a>.</p>
+<aside aria-label="Note" class="starlight-aside starlight-aside--note"><p class="starlight-aside__title" aria-hidden="true"><svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" class="starlight-aside__icon"><path d="M12 11a1 1 0 0 0-1 1v4a1 1 0 0 0 2 0v-4a1 1 0 0 0-1-1Zm.38-3.92a1 1 0 0 0-.76 0 1 1 0 0 0-.33.21 1.15 1.15 0 0 0-.21.33 1 1 0 0 0 .21 1.09c.097.088.209.16.33.21A1 1 0 0 0 13 8a1.05 1.05 0 0 0-.29-.71 1 1 0 0 0-.33-.21ZM12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Zm0 18a8 8 0 1 1 0-16.001A8 8 0 0 1 12 20Z"></path></svg>Note</p><div class="starlight-aside__content"><p>ThinkRail has no <code dir="auto">pi</code> executable, so the <code dir="auto">pi mcp add</code> and <code dir="auto">pi mcp login</code> shell commands from the <code dir="auto">pi</code>
+documentation are not available. Use <strong>Settings → MCP servers</strong>, edit the files below, or use <code dir="auto">/mcp</code> in a
+chat.</p></div></aside>
+<div class="sl-heading-wrapper level-h2"><h2 id="configuration-files">Configuration files</h2><a class="sl-anchor-link" href="#configuration-files"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore="">Section titled “Configuration files”</span></a></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Scope</th><th>File</th><th>Applies to</th><th>Loaded when</th></tr></thead><tbody><tr><td>User</td><td><code dir="auto">mcp.json</code> in the <code dir="auto">pi</code> agent directory, by default <code dir="auto">~/.pi/agent/mcp.json</code> (set <code dir="auto">PI_CODING_AGENT_DIR</code> to move it)</td><td>Every project on this host</td><td>Always</td></tr><tr><td>Project</td><td><code dir="auto">.pi/mcp.json</code> in the workspace</td><td>Chats in that project</td><td>The project is trusted, and each entry is approved</td></tr></tbody></table>
+<p>Keep personal servers and servers that need credentials in the user file. Use the project file for servers
+the repository needs, since it is committed with the code.</p>
+<p>A project entry with the same name as a user entry replaces it. A project entry with none of <code dir="auto">command</code>,
+<code dir="auto">url</code>, or <code dir="auto">type</code> is an <strong>override</strong>: it can set only <code dir="auto">enabled</code>, <code dir="auto">exposure</code>, and <code dir="auto">toolExposure</code> on the
+user-level server of the same name and keeps everything else, including <code dir="auto">env</code>, <code dir="auto">headers</code>, and <code dir="auto">auth</code>.</p>
+<div class="expressive-code"><link rel="stylesheet" href="/thinkrail/_astro/ec.w36nc.css"><script type="module" src="/thinkrail/_astro/ec.0vx5m.js"></script><figure class="frame not-content"><figcaption class="header"></figcaption><pre data-language="json"><code><div class="ec-line"><div class="code"><span style="--0:#D6DEEB;--1:#403F53">{</span></div></div><div class="ec-line"><div class="code"><span class="indent">  </span><span style="--0:#7FDBCA;--1:#096E72">"mcpServers"</span><span style="--0:#D6DEEB;--1:#403F53">: {</span></div></div><div class="ec-line"><div class="code"><span class="indent">    </span><span style="--0:#7FDBCA;--1:#096E72">"internal-tools"</span><span style="--0:#D6DEEB;--1:#403F53">: { </span><span style="--0:#7FDBCA;--1:#096E72">"enabled"</span><span style="--0:#D6DEEB;--1:#403F53">: </span><span style="--0:#FF6A83;--1:#A24848">false</span><span style="--0:#D6DEEB;--1:#403F53"> }</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#D6DEEB;--1:#403F53">  </span></span><span style="--0:#D6DEEB;--1:#403F53">}</span></div></div><div class="ec-line"><div class="code"><span style="--0:#D6DEEB;--1:#403F53">}</span></div></div></code></pre><div class="copy"><div aria-live="polite"></div><button title="Copy to clipboard" data-copied="Copied!" data-code="{  &#x22;mcpServers&#x22;: {    &#x22;internal-tools&#x22;: { &#x22;enabled&#x22;: false }  }}"><div></div></button></div></figure></div>
+<p>A changed file reaches a running chat at its next idle reload; a busy chat waits until it is idle.
+Invalid entries are reported and skipped without stopping other servers from loading. Settings shows an
+unreadable file or a file without a valid <code dir="auto">mcpServers</code> object as a file-level error.</p>
+<div class="sl-heading-wrapper level-h2"><h2 id="file-format">File format</h2><a class="sl-anchor-link" href="#file-format"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore="">Section titled “File format”</span></a></div>
+<p>The file is a JSON object with a <code dir="auto">mcpServers</code> object that maps server names to entries.</p>
+<div class="expressive-code"><figure class="frame not-content"><figcaption class="header"></figcaption><pre data-language="json"><code><div class="ec-line"><div class="code"><span style="--0:#D6DEEB;--1:#403F53">{</span></div></div><div class="ec-line"><div class="code"><span class="indent">  </span><span style="--0:#7FDBCA;--1:#096E72">"mcpServers"</span><span style="--0:#D6DEEB;--1:#403F53">: {</span></div></div><div class="ec-line"><div class="code"><span class="indent">    </span><span style="--0:#7FDBCA;--1:#096E72">"filesystem"</span><span style="--0:#D6DEEB;--1:#403F53">: {</span></div></div><div class="ec-line"><div class="code"><span class="indent">      </span><span style="--0:#7FDBCA;--1:#096E72">"command"</span><span style="--0:#D6DEEB;--1:#403F53">: </span><span style="--0:#D9F5DD;--1:#111111">"</span><span style="--0:#C789D6;--1:#7C5686">npx</span><span style="--0:#D9F5DD;--1:#111111">"</span><span style="--0:#D6DEEB;--1:#403F53">,</span></div></div><div class="ec-line"><div class="code"><span class="indent">      </span><span style="--0:#7FDBCA;--1:#096E72">"args"</span><span style="--0:#D6DEEB;--1:#403F53">: [</span><span style="--0:#D9F5DD;--1:#111111">"</span><span style="--0:#C789D6;--1:#7C5686">-y</span><span style="--0:#D9F5DD;--1:#111111">"</span><span style="--0:#D6DEEB;--1:#403F53">, </span><span style="--0:#D9F5DD;--1:#111111">"</span><span style="--0:#C789D6;--1:#7C5686">@modelcontextprotocol/server-filesystem</span><span style="--0:#D9F5DD;--1:#111111">"</span><span style="--0:#D6DEEB;--1:#403F53">, </span><span style="--0:#D9F5DD;--1:#111111">"</span><span style="--0:#C789D6;--1:#7C5686">.</span><span style="--0:#D9F5DD;--1:#111111">"</span><span style="--0:#D6DEEB;--1:#403F53">]</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#D6DEEB;--1:#403F53">    </span></span><span style="--0:#D6DEEB;--1:#403F53">},</span></div></div><div class="ec-line"><div class="code"><span class="indent">    </span><span style="--0:#7FDBCA;--1:#096E72">"docs"</span><span style="--0:#D6DEEB;--1:#403F53">: {</span></div></div><div class="ec-line"><div class="code"><span class="indent">      </span><span style="--0:#7FDBCA;--1:#096E72">"url"</span><span style="--0:#D6DEEB;--1:#403F53">: </span><span style="--0:#D9F5DD;--1:#111111">"</span><span style="--0:#C789D6;--1:#7C5686">https://example.com/mcp</span><span style="--0:#D9F5DD;--1:#111111">"</span><span style="--0:#D6DEEB;--1:#403F53">,</span></div></div><div class="ec-line"><div class="code"><span class="indent">      </span><span style="--0:#7FDBCA;--1:#096E72">"headers"</span><span style="--0:#D6DEEB;--1:#403F53">: { </span><span style="--0:#7FDBCA;--1:#096E72">"Authorization"</span><span style="--0:#D6DEEB;--1:#403F53">: </span><span style="--0:#D9F5DD;--1:#111111">"</span><span style="--0:#C789D6;--1:#7C5686">Bearer ${DOCS_TOKEN}</span><span style="--0:#D9F5DD;--1:#111111">"</span><span style="--0:#D6DEEB;--1:#403F53"> },</span></div></div><div class="ec-line"><div class="code"><span class="indent">      </span><span style="--0:#7FDBCA;--1:#096E72">"description"</span><span style="--0:#D6DEEB;--1:#403F53">: </span><span style="--0:#D9F5DD;--1:#111111">"</span><span style="--0:#C789D6;--1:#7C5686">Search and read the product documentation</span><span style="--0:#D9F5DD;--1:#111111">"</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#D6DEEB;--1:#403F53">    </span></span><span style="--0:#D6DEEB;--1:#403F53">}</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#D6DEEB;--1:#403F53">  </span></span><span style="--0:#D6DEEB;--1:#403F53">}</span></div></div><div class="ec-line"><div class="code"><span style="--0:#D6DEEB;--1:#403F53">}</span></div></div></code></pre><div class="copy"><div aria-live="polite"></div><button title="Copy to clipboard" data-copied="Copied!" data-code="{  &#x22;mcpServers&#x22;: {    &#x22;filesystem&#x22;: {      &#x22;command&#x22;: &#x22;npx&#x22;,      &#x22;args&#x22;: [&#x22;-y&#x22;, &#x22;@modelcontextprotocol/server-filesystem&#x22;, &#x22;.&#x22;]    },    &#x22;docs&#x22;: {      &#x22;url&#x22;: &#x22;https://example.com/mcp&#x22;,      &#x22;headers&#x22;: { &#x22;Authorization&#x22;: &#x22;Bearer ${DOCS_TOKEN}&#x22; },      &#x22;description&#x22;: &#x22;Search and read the product documentation&#x22;    }  }}"><div></div></button></div></figure></div>
+<p><strong>Server names</strong> may contain only letters, digits, <code dir="auto">_</code>, and <code dir="auto">-</code>. Names that differ only in <code dir="auto">-</code> versus <code dir="auto">_</code>
+count as the same server, and a second one is rejected. A server’s tools are named
+<code dir="auto">mcp__&#x3C;server>__&#x3C;tool></code>.</p>
+<div class="sl-heading-wrapper level-h3"><h3 id="entry-fields">Entry fields</h3><a class="sl-anchor-link" href="#entry-fields"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore="">Section titled “Entry fields”</span></a></div>
+<p>An entry is a stdio server (it has <code dir="auto">command</code>) or a streamable HTTP server (it has <code dir="auto">url</code>). The legacy
+<code dir="auto">sse</code> transport is rejected.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Field</th><th>Type</th><th>Applies to</th><th>Description</th></tr></thead><tbody><tr><td><code dir="auto">command</code></td><td>string</td><td>stdio</td><td>One executable, not a shell string. A leading <code dir="auto">~/</code> means your home directory.</td></tr><tr><td><code dir="auto">args</code></td><td>string[]</td><td>stdio</td><td>Arguments, one per element. Never split by a shell.</td></tr><tr><td><code dir="auto">env</code></td><td>object (string values)</td><td>stdio</td><td>Environment variables for the process.</td></tr><tr><td><code dir="auto">cwd</code></td><td>string</td><td>stdio</td><td>Working directory. A relative path resolves against the chat’s directory.</td></tr><tr><td><code dir="auto">url</code></td><td>string</td><td>HTTP</td><td>The server’s streamable HTTP endpoint; <code dir="auto">http:</code> or <code dir="auto">https:</code>.</td></tr><tr><td><code dir="auto">headers</code></td><td>object (string values)</td><td>HTTP</td><td>Request headers.</td></tr><tr><td><code dir="auto">oauth</code></td><td>object</td><td>HTTP</td><td>OAuth client settings; see <a href="#oauth">OAuth</a>.</td></tr><tr><td><code dir="auto">auth</code></td><td>object</td><td>HTTP</td><td><code dir="auto">{ "provider": "&#x3C;name>" }</code>, using a <code dir="auto">pi</code> provider’s credentials. Allowed only in the user file, and only for <code dir="auto">https</code> URLs or loopback addresses.</td></tr><tr><td><code dir="auto">type</code></td><td>string</td><td>both</td><td>Optional. <code dir="auto">stdio</code>, <code dir="auto">http</code>, or <code dir="auto">streamable-http</code>. <code dir="auto">command</code> or <code dir="auto">url</code> selects the transport when it is omitted.</td></tr><tr><td><code dir="auto">timeout</code></td><td>number</td><td>both</td><td>Per-request timeout in seconds. Positive. Default: 60.</td></tr><tr><td><code dir="auto">enabled</code></td><td>boolean</td><td>both</td><td><code dir="auto">false</code> keeps the entry without connecting.</td></tr><tr><td><code dir="auto">exposure</code></td><td>string</td><td>both</td><td>How tools reach the model; see <a href="#tool-exposure">Tool exposure</a>.</td></tr><tr><td><code dir="auto">toolExposure</code></td><td>object</td><td>both</td><td>Per-tool exposure. Keys are tool names or patterns where <code dir="auto">*</code> matches any characters.</td></tr><tr><td><code dir="auto">description</code></td><td>string</td><td>both</td><td>One sentence about what the server offers. It lists the server for the model and for tool search.</td></tr></tbody></table>
+<p><code dir="auto">env</code> and <code dir="auto">headers</code> values can reference environment variables as <code dir="auto">${NAME}</code>. A value can also be a command
+that produces the value, written as a <code dir="auto">!</code> prefix that makes up the whole value:</p>
+<div class="expressive-code"><figure class="frame not-content"><figcaption class="header"></figcaption><pre data-language="json"><code><div class="ec-line"><div class="code"><span style="--0:#D6DEEB;--1:#403F53">{</span></div></div><div class="ec-line"><div class="code"><span class="indent">  </span><span style="--0:#7FDBCA;--1:#096E72">"mcpServers"</span><span style="--0:#D6DEEB;--1:#403F53">: {</span></div></div><div class="ec-line"><div class="code"><span class="indent">    </span><span style="--0:#7FDBCA;--1:#096E72">"github"</span><span style="--0:#D6DEEB;--1:#403F53">: {</span></div></div><div class="ec-line"><div class="code"><span class="indent">      </span><span style="--0:#7FDBCA;--1:#096E72">"url"</span><span style="--0:#D6DEEB;--1:#403F53">: </span><span style="--0:#D9F5DD;--1:#111111">"</span><span style="--0:#C789D6;--1:#7C5686">https://api.githubcopilot.com/mcp/readonly</span><span style="--0:#D9F5DD;--1:#111111">"</span><span style="--0:#D6DEEB;--1:#403F53">,</span></div></div><div class="ec-line"><div class="code"><span class="indent">      </span><span style="--0:#7FDBCA;--1:#096E72">"headers"</span><span style="--0:#D6DEEB;--1:#403F53">: { </span><span style="--0:#7FDBCA;--1:#096E72">"Authorization"</span><span style="--0:#D6DEEB;--1:#403F53">: </span><span style="--0:#D9F5DD;--1:#111111">"</span><span style="--0:#C789D6;--1:#7C5686">!echo Bearer $(gh auth token)</span><span style="--0:#D9F5DD;--1:#111111">"</span><span style="--0:#D6DEEB;--1:#403F53"> }</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#D6DEEB;--1:#403F53">    </span></span><span style="--0:#D6DEEB;--1:#403F53">}</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#D6DEEB;--1:#403F53">  </span></span><span style="--0:#D6DEEB;--1:#403F53">}</span></div></div><div class="ec-line"><div class="code"><span style="--0:#D6DEEB;--1:#403F53">}</span></div></div></code></pre><div class="copy"><div aria-live="polite"></div><button title="Copy to clipboard" data-copied="Copied!" data-code="{  &#x22;mcpServers&#x22;: {    &#x22;github&#x22;: {      &#x22;url&#x22;: &#x22;https://api.githubcopilot.com/mcp/readonly&#x22;,      &#x22;headers&#x22;: { &#x22;Authorization&#x22;: &#x22;!echo Bearer $(gh auth token)&#x22; }    }  }}"><div></div></button></div></figure></div>
+<p>Commands run on the host. Prefer <code dir="auto">${NAME}</code> references over literal secrets; Settings warns when a value
+looks like a secret.</p>
+<div class="sl-heading-wrapper level-h3"><h3 id="tool-exposure">Tool exposure</h3><a class="sl-anchor-link" href="#tool-exposure"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore="">Section titled “Tool exposure”</span></a></div>
+<p><code dir="auto">exposure</code> decides how the model reaches a server’s tools.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Value</th><th>Behavior</th></tr></thead><tbody><tr><td><code dir="auto">deferred</code></td><td>The default in ThinkRail. Tools are not declared up front; the agent loads them through <code dir="auto">tool_search</code> when it needs them.</td></tr><tr><td><code dir="auto">direct</code></td><td>Tools are declared to the model up front, like built-in tools. Best for small, frequently used servers.</td></tr><tr><td><code dir="auto">hidden</code></td><td>Tools are registered but unreachable.</td></tr></tbody></table>
+<p><code dir="auto">codemode</code> and <code dir="auto">codemode-deferred</code> are valid values in the file format, but ThinkRail does not ship the
+codemode runtime and treats them, and an unset value, as <code dir="auto">deferred</code>. <code dir="auto">toolExposure</code> overrides the server’s
+value for individual tools; an exact tool name beats a pattern, and among patterns the first match wins.</p>
+<div class="expressive-code"><figure class="frame not-content"><figcaption class="header"></figcaption><pre data-language="json"><code><div class="ec-line"><div class="code"><span style="--0:#D6DEEB;--1:#403F53">{</span></div></div><div class="ec-line"><div class="code"><span class="indent">  </span><span style="--0:#7FDBCA;--1:#096E72">"mcpServers"</span><span style="--0:#D6DEEB;--1:#403F53">: {</span></div></div><div class="ec-line"><div class="code"><span class="indent">    </span><span style="--0:#7FDBCA;--1:#096E72">"github"</span><span style="--0:#D6DEEB;--1:#403F53">: {</span></div></div><div class="ec-line"><div class="code"><span class="indent">      </span><span style="--0:#7FDBCA;--1:#096E72">"url"</span><span style="--0:#D6DEEB;--1:#403F53">: </span><span style="--0:#D9F5DD;--1:#111111">"</span><span style="--0:#C789D6;--1:#7C5686">https://api.githubcopilot.com/mcp/</span><span style="--0:#D9F5DD;--1:#111111">"</span><span style="--0:#D6DEEB;--1:#403F53">,</span></div></div><div class="ec-line"><div class="code"><span class="indent">      </span><span style="--0:#7FDBCA;--1:#096E72">"exposure"</span><span style="--0:#D6DEEB;--1:#403F53">: </span><span style="--0:#D9F5DD;--1:#111111">"</span><span style="--0:#C789D6;--1:#7C5686">deferred</span><span style="--0:#D9F5DD;--1:#111111">"</span><span style="--0:#D6DEEB;--1:#403F53">,</span></div></div><div class="ec-line"><div class="code"><span class="indent">      </span><span style="--0:#7FDBCA;--1:#096E72">"toolExposure"</span><span style="--0:#D6DEEB;--1:#403F53">: { </span><span style="--0:#7FDBCA;--1:#096E72">"search_code"</span><span style="--0:#D6DEEB;--1:#403F53">: </span><span style="--0:#D9F5DD;--1:#111111">"</span><span style="--0:#C789D6;--1:#7C5686">direct</span><span style="--0:#D9F5DD;--1:#111111">"</span><span style="--0:#D6DEEB;--1:#403F53">, </span><span style="--0:#7FDBCA;--1:#096E72">"delete_*"</span><span style="--0:#D6DEEB;--1:#403F53">: </span><span style="--0:#D9F5DD;--1:#111111">"</span><span style="--0:#C789D6;--1:#7C5686">hidden</span><span style="--0:#D9F5DD;--1:#111111">"</span><span style="--0:#D6DEEB;--1:#403F53"> }</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#D6DEEB;--1:#403F53">    </span></span><span style="--0:#D6DEEB;--1:#403F53">}</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#D6DEEB;--1:#403F53">  </span></span><span style="--0:#D6DEEB;--1:#403F53">}</span></div></div><div class="ec-line"><div class="code"><span style="--0:#D6DEEB;--1:#403F53">}</span></div></div></code></pre><div class="copy"><div aria-live="polite"></div><button title="Copy to clipboard" data-copied="Copied!" data-code="{  &#x22;mcpServers&#x22;: {    &#x22;github&#x22;: {      &#x22;url&#x22;: &#x22;https://api.githubcopilot.com/mcp/&#x22;,      &#x22;exposure&#x22;: &#x22;deferred&#x22;,      &#x22;toolExposure&#x22;: { &#x22;search_code&#x22;: &#x22;direct&#x22;, &#x22;delete_*&#x22;: &#x22;hidden&#x22; }    }  }}"><div></div></button></div></figure></div>
+<div class="sl-heading-wrapper level-h3"><h3 id="oauth">OAuth</h3><a class="sl-anchor-link" href="#oauth"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore="">Section titled “OAuth”</span></a></div>
+<p>HTTP servers that use OAuth need no credentials in the file. When a server rejects an unauthenticated
+connection, its row shows <strong>Needs sign-in</strong>. Servers that support dynamic client registration need nothing
+else; for others, configure a registered client in <code dir="auto">oauth</code>:</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Field</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code dir="auto">clientId</code></td><td>string</td><td>Registered client id.</td></tr><tr><td><code dir="auto">clientSecret</code></td><td>string</td><td>Optional secret. May use <code dir="auto">${NAME}</code> or a <code dir="auto">!command</code>.</td></tr><tr><td><code dir="auto">callbackPort</code></td><td>integer</td><td>Loopback port, 1 to 65535. The redirect URI is <code dir="auto">http://127.0.0.1:&#x3C;port>/callback</code>.</td></tr><tr><td><code dir="auto">callbackUrl</code></td><td>string</td><td>Redirect URI. Must be <code dir="auto">http</code> on <code dir="auto">localhost</code>, <code dir="auto">127.0.0.1</code>, or <code dir="auto">[::1]</code>, with no query or fragment.</td></tr><tr><td><code dir="auto">scope</code></td><td>string</td><td>Space-separated scopes, for servers that do not advertise theirs.</td></tr><tr><td><code dir="auto">clientName</code></td><td>string</td><td>Name to register under, for servers that accept only known clients.</td></tr><tr><td><code dir="auto">clientRegistration</code></td><td><code dir="auto">dcr</code> | <code dir="auto">cimd</code></td><td><code dir="auto">cimd</code> identifies <code dir="auto">pi</code> by a client metadata document instead of registering. It cannot be combined with <code dir="auto">clientId</code> or <code dir="auto">clientName</code>.</td></tr><tr><td><code dir="auto">authServerMetadataUrl</code></td><td>string</td><td>Metadata document of the right authorization server, when the server advertises the wrong one. <code dir="auto">https</code>, or <code dir="auto">http</code> on a loopback address.</td></tr></tbody></table>
+<p>A running chat uses new credentials on its next turn. <code dir="auto">pi</code> stores tokens, not ThinkRail:</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>File</th><th>Purpose</th></tr></thead><tbody><tr><td><code dir="auto">~/.pi/agent/mcp-auth.json</code></td><td>OAuth tokens (inside the <code dir="auto">pi</code> agent directory).</td></tr><tr><td><code dir="auto">~/.pi/agent/mcp.log</code></td><td>Messages that servers send, one entry per message. Moves to <code dir="auto">mcp.log.1</code> after 5 MB.</td></tr></tbody></table>
+<p>Credentials belong to a server name and URL. Servers with the same URL under different names sign in
+separately.</p>
+<div class="sl-heading-wrapper level-h2"><h2 id="presets">Presets</h2><a class="sl-anchor-link" href="#presets"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore="">Section titled “Presets”</span></a></div>
+<p><strong>Settings → MCP servers</strong> lists presets in its empty state and in the <strong>Presets</strong> section of the <strong>Add a
+server</strong> dialog. A preset prefills the form and still goes through the confirmation step.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Preset</th><th>Endpoint</th><th>Exposure</th><th>Notes</th></tr></thead><tbody><tr><td>Context7</td><td><code dir="auto">https://mcp.context7.com/mcp</code></td><td><code dir="auto">direct</code></td><td>Current library and framework documentation. No sign-in.</td></tr><tr><td>DeepWiki</td><td><code dir="auto">https://mcp.deepwiki.com/mcp</code></td><td><code dir="auto">direct</code></td><td>Questions about public GitHub repositories. No sign-in.</td></tr><tr><td>Linear (read-only)</td><td><code dir="auto">https://mcp.linear.app/mcp/readonly</code></td><td>default</td><td>Read-only endpoint. Sign in after adding.</td></tr><tr><td>Sentry</td><td><code dir="auto">https://mcp.sentry.dev/mcp</code></td><td>default</td><td>Issues, events, and releases. Sign in after adding. Flagged as able to modify data.</td></tr><tr><td>Playwright</td><td><code dir="auto">npx -y @playwright/mcp@0.0.83</code></td><td>default</td><td>Drives a browser on the host. Added disabled; you turn it on per project. Flagged as able to modify the sites its browser opens.</td></tr></tbody></table>
+<p>All presets are added at user scope. The same dialog has a <strong>GitHub</strong> recipe under <strong>Paste JSON</strong>
+(labeled “Not a preset”): the read-only GitHub endpoint with an <code dir="auto">Authorization</code> header built from your
+GitHub CLI token, which needs <code dir="auto">gh</code> signed in on the host.</p>
+<div class="sl-heading-wrapper level-h2"><h2 id="managing-servers-in-settings">Managing servers in Settings</h2><a class="sl-anchor-link" href="#managing-servers-in-settings"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore="">Section titled “Managing servers in Settings”</span></a></div>
+<p><strong>Settings → MCP servers</strong> needs an open workspace. Each row shows the server name, a scope tag (<strong>User</strong>
+or <strong>Project</strong>), the transport (<strong>stdio</strong> or <strong>HTTP</strong>), an exposure menu, a status, an on/off switch, and a
+menu with the actions available for its state.</p>
+<p>Status labels: Starting, Connected, Needs sign-in, Failed, Disconnected, Disabled, Disabled in this
+project, Disabled in this chat, Pending approval, Invalid config, Pending reload, Not running, Handled
+elsewhere, and Unknown. Actions that can appear include <strong>Sign in</strong>, <strong>Review &#x26; approve</strong>, <strong>Edit</strong>,
+<strong>Test connection</strong>, <strong>Reconnect</strong>, <strong>Reload now</strong>, <strong>Open a chat</strong>, <strong>Show log</strong>, <strong>Share with repo</strong>, and
+<strong>Remove</strong>.</p>
+<ul>
+<li><strong>Add a server</strong> and <strong>Import mcpServers JSON</strong> open the <strong>Add MCP servers</strong> dialog with <strong>Form</strong> and
+<strong>Paste JSON</strong> tabs. Choose scope <strong>User — all projects</strong> or <strong>Project — .pi/mcp.json</strong>. A server that
+runs a command or carries secrets goes through a <strong>Confirm what will run</strong> step before it is saved.</li>
+<li><strong>Share with repo</strong> writes a project override entry for a user-level server so that the repository can
+record its enabled state or exposure.</li>
+<li><strong>Show log</strong> shows the latest 200 lines of that server’s messages from <code dir="auto">mcp.log</code>, with credential-looking
+values masked.</li>
+<li>Secret-looking values and endpoint credentials are masked in the page, in logs, and in error text.</li>
+<li>Writes keep unknown keys and indentation and replace the file atomically. The host refuses to write a
+project file when <code dir="auto">.pi</code> or <code dir="auto">mcp.json</code> is a symbolic link, with error <code dir="auto">MCP_PATH_UNSAFE</code>. An invalid config
+is refused with <code dir="auto">MCP_CONFIG_INVALID</code>.</li>
+<li>If another extension has taken over <code dir="auto">/mcp</code>, or <code dir="auto">pi</code> settings contain <code dir="auto">-builtin:mcp</code>, management in
+Settings is read-only and the code is <code dir="auto">MCP_HANDLED_ELSEWHERE</code>.</li>
+</ul>
+<p>In a chat, <strong>Resources</strong> lists MCP servers with <strong>Enable in this chat</strong> and <strong>Disable in this chat</strong>, which
+restart that chat’s servers when it is idle, and <strong>Sign in</strong>. Chat-level choices are not saved.</p>
+<div class="sl-heading-wrapper level-h2"><h2 id="repository-defined-servers-and-approval">Repository-defined servers and approval</h2><a class="sl-anchor-link" href="#repository-defined-servers-and-approval"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore="">Section titled “Repository-defined servers and approval”</span></a></div>
+<p>A server in the project’s <code dir="auto">.pi/mcp.json</code> can run commands on your machine, so two separate consents gate
+it:</p>
+<ol>
+<li><strong>Project trust.</strong> The project must be trusted at the <code dir="auto">pi</code>-resource level. See
+<a href="/thinkrail/security/trust-a-project/">Trust a project</a> and <a href="/thinkrail/security/trust-model/">Trust model</a>.</li>
+<li><strong>Per-entry approval.</strong> Even in a trusted project, each repository entry stays <strong>Pending approval</strong>
+until you choose <strong>Review &#x26; approve</strong> and confirm what it will run: where it connects, its working
+directory, and the names of its environment variables.</li>
+</ol>
+<p>Approval is stored per project in <code dir="auto">projects.json</code> in the ThinkRail data directory (<code dir="auto">~/.thinkrail</code>, or
+<code dir="auto">THINKRAIL_DATA_DIR</code>) under <code dir="auto">mcpApprovals</code>, which maps each server name to a SHA-256 fingerprint of the
+whole entry as written. If the entry changes in any way, including a reordering of <code dir="auto">toolExposure</code>, its
+fingerprint no longer matches, the row shows <strong>Changed since approval</strong>, and the server stops loading until
+you approve it again. Repository override entries are approved the same way. Per-project switches for
+user-level servers are kept in <code dir="auto">mcpOverrides</code> in the same file and are not part of the repository.</p>
+<p>User-level servers are not gated by trust or approval.</p>
+<div class="sl-heading-wrapper level-h2"><h2 id="call-confirmation">Call confirmation</h2><a class="sl-anchor-link" href="#call-confirmation"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore="">Section titled “Call confirmation”</span></a></div>
+<p>Before any <code dir="auto">mcp__&#x3C;server>__&#x3C;tool></code> call, ThinkRail checks the tool’s <code dir="auto">readOnlyHint</code> annotation. A tool that
+declares <code dir="auto">readOnlyHint: true</code> runs without asking. For any other MCP tool, the chat shows “Allow the MCP
+call <code dir="auto">&#x3C;server>/&#x3C;tool></code>? It may change data.” with a preview of the arguments (first 160 characters) and
+three answers:</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Answer</th><th>Effect</th></tr></thead><tbody><tr><td><strong>Deny</strong></td><td>The call is blocked and the agent is told you denied it.</td></tr><tr><td><strong>Allow once</strong></td><td>The call runs.</td></tr><tr><td><strong>Allow in this chat</strong></td><td>The call runs, and later calls to the same tool in this chat run without asking. The grant is not saved and ends with the chat.</td></tr></tbody></table>
+<aside aria-label="Note" class="starlight-aside starlight-aside--note"><p class="starlight-aside__title" aria-hidden="true"><svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" class="starlight-aside__icon"><path d="M12 11a1 1 0 0 0-1 1v4a1 1 0 0 0 2 0v-4a1 1 0 0 0-1-1Zm.38-3.92a1 1 0 0 0-.76 0 1 1 0 0 0-.33.21 1.15 1.15 0 0 0-.21.33 1 1 0 0 0 .21 1.09c.097.088.209.16.33.21A1 1 0 0 0 13 8a1.05 1.05 0 0 0-.29-.71 1 1 0 0 0-.33-.21ZM12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Zm0 18a8 8 0 1 1 0-16.001A8 8 0 0 1 12 20Z"></path></svg>Note</p><div class="starlight-aside__content"><p>Builds after <code dir="auto">0.2.0-nightly.33</code> ask in the chat next to the tool call and add an <strong>Always allow</strong> answer
+that remembers the approval (<a href="https://github.com/JetBrains/thinkrail/pull/749">#749</a>). This page describes
+the behavior up to <code dir="auto">0.2.0-nightly.33</code>.</p></div></aside>
+<p>Dismissing the prompt, stopping the run, or having no interface attached blocks the call. Sending a steer
+message cancels any confirmations that are waiting. The prompt covers MCP tools only; the tool search and
+resource tools are not named <code dir="auto">mcp__...</code>, and <code dir="auto">pi</code> marks the resource tools read-only.</p>
+<p>Subagents cannot call MCP tools at all. The parent calls them and passes the results in the task text.</p>
+<div class="sl-heading-wrapper level-h2"><h2 id="sign-in">Sign-in</h2><a class="sl-anchor-link" href="#sign-in"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore="">Section titled “Sign-in”</span></a></div>
+<p><strong>Sign in</strong> on a row, <code dir="auto">/mcp login &#x3C;name></code> in a chat, and the same in the chat’s server list all start an
+OAuth flow. Settings returns the authorization URL to your browser; a chat never opens a browser on the
+host. If your browser runs on a different machine from the host, paste the redirected URL back into the
+sign-in screen. A per-server lock allows one sign-in at a time and reports “A sign-in for <code dir="auto">&#x3C;name></code> is
+already running in Settings” (or “in a chat”) otherwise. <strong>Sign out</strong> deletes the stored credentials.</p>
+<div class="sl-heading-wrapper level-h2"><h2 id="logs-and-diagnostics">Logs and diagnostics</h2><a class="sl-anchor-link" href="#logs-and-diagnostics"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore="">Section titled “Logs and diagnostics”</span></a></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>What</th><th>Where</th></tr></thead><tbody><tr><td>Messages a server sends</td><td><code dir="auto">~/.pi/agent/mcp.log</code>, and <code dir="auto">mcp.log.1</code> after rotation. Use <strong>Show log</strong> on the row.</td></tr><tr><td>Connection errors and a failed stdio server’s stderr tail</td><td>The row’s status detail, masked.</td></tr><tr><td><strong>Test connection</strong></td><td>Row menu action for HTTP servers that are in effect; probes the connection from Settings.</td></tr><tr><td>Host logs</td><td><code dir="auto">~/.thinkrail/logs/</code>; see <a href="/thinkrail/reference/files-and-environment/">Files and environment</a>.</td></tr></tbody></table>
+<p>MCP results appear in chat as bounded cards that summarize content blocks by kind, URI, type, and size and
+never embed image or audio data.</p>
+<div class="sl-heading-wrapper level-h2"><h2 id="related">Related</h2><a class="sl-anchor-link" href="#related"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore="">Section titled “Related”</span></a></div>
+<ul>
+<li><a href="/thinkrail/extend/connect-mcp-servers/">Connect MCP servers</a></li>
+<li><a href="/thinkrail/security/trust-a-project/">Trust a project</a></li>
+<li><a href="/thinkrail/security/trust-model/">Trust model</a></li>
+<li><a href="/thinkrail/agent/agent-tools/">Tools the agent can call</a></li>
+<li><a href="https://pi.dev"><code dir="auto">pi</code> MCP documentation</a></li>
+</ul></div><footer class="sl-flex astro-ddtxxk7k"><div class="meta sl-flex astro-ddtxxk7k"><a href="https://github.com/HadesArchitect/thinkrail/edit/claude/thinkrail-docs-draft-39556b/docs/extend/mcp-configuration.md" class="sl-flex print:hidden astro-qlekgd3o"><svg aria-hidden="true" class="astro-qlekgd3o astro-hkc32dio" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.2em;"><path d="M22 7.24a1 1 0 0 0-.29-.71l-4.24-4.24a1 1 0 0 0-1.1-.22 1 1 0 0 0-.32.22l-2.83 2.83L2.29 16.05a1 1 0 0 0-.29.71V21a1 1 0 0 0 1 1h4.24a1 1 0 0 0 .76-.29l10.87-10.93L21.71 8c.1-.1.17-.2.22-.33a1 1 0 0 0 0-.24v-.14l.07-.05ZM6.83 20H4v-2.83l9.93-9.93 2.83 2.83L6.83 20ZM18.17 8.66l-2.83-2.83 1.42-1.41 2.82 2.82-1.41 1.42Z"/></svg>Edit page</a></div><div class="pagination-links print:hidden astro-b5raizh3" dir="ltr"><a href="/thinkrail/extend/connect-mcp-servers/" rel="prev" class="astro-b5raizh3"><svg aria-hidden="true" class="astro-b5raizh3 astro-hkc32dio" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.5rem;"><path d="M17 11H9.41l3.3-3.29a1.004 1.004 0 1 0-1.42-1.42l-5 5a1 1 0 0 0-.21.33 1 1 0 0 0 0 .76 1 1 0 0 0 .21.33l5 5a1.002 1.002 0 0 0 1.639-.325 1 1 0 0 0-.219-1.095L9.41 13H17a1 1 0 0 0 0-2Z"/></svg><span class="astro-b5raizh3">Previous<br class="astro-b5raizh3"><span class="link-title astro-b5raizh3">Connect MCP servers</span></span></a><a href="/thinkrail/extend/use-thinkrail-packages-in-pi/" rel="next" class="astro-b5raizh3"><svg aria-hidden="true" class="astro-b5raizh3 astro-hkc32dio" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.5rem;"><path d="M17.92 11.62a1.001 1.001 0 0 0-.21-.33l-5-5a1.003 1.003 0 1 0-1.42 1.42l3.3 3.29H7a1 1 0 0 0 0 2h7.59l-3.3 3.29a1.002 1.002 0 0 0 .325 1.639 1 1 0 0 0 1.095-.219l5-5a1 1 0 0 0 .21-.33 1 1 0 0 0 0-.76Z"/></svg><span class="astro-b5raizh3">Next<br class="astro-b5raizh3"><span class="link-title astro-b5raizh3">Use ThinkRail packages in pi</span></span></a></div></footer><script type="module" src="/thinkrail/_astro/Footer.astro_astro_type_script_index_0_lang.G9f2iu_h.js"></script></div></div></main></div></div></div></div></body></html>
