@@ -65,7 +65,7 @@ after you trust that project. The [trust model](../security/trust-model.md) expl
 >
 > - ThinkRail embeds its own copy of `pi`, which may be a different version from the one you installed.
 >   An extension that depends on a specific `pi` version can behave differently. See
->   [Coming from pi](../get-started/coming-from-pi.md) for which version each release embeds.
+>   [Coming from pi](../coming-from-pi.md) for which version each release embeds.
 > - Extensions that change `pi`'s terminal UI, such as themes or custom TUI rendering, do nothing in
 >   ThinkRail. Engine-side behavior — tools, event hooks, slash commands, simple dialogs — works.
 > - Tools from your own extensions show in the chat with a generic tool card, not a custom renderer.

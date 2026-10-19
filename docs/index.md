@@ -14,8 +14,8 @@ agent that owns models, skills, and sessions, so a `pi` setup you already have k
 
 | If you are… | Start with |
 | --- | --- |
-| Deciding whether ThinkRail is for you | [What is ThinkRail?](get-started/what-is-thinkrail.md) |
-| Coming from `pi` in the terminal | [Coming from pi](get-started/coming-from-pi.md) |
+| Deciding whether ThinkRail is for you | [What is ThinkRail?](what-is-thinkrail.md) |
+| Coming from `pi` in the terminal | [Coming from pi](coming-from-pi.md) |
 | Evaluating ThinkRail for a team | [Security and data overview](security/security-and-data-overview.md) |
 | Stuck because something broke | [Troubleshoot ThinkRail](run/troubleshoot.md), and the [changelog](changelog.md) for what changed |
 

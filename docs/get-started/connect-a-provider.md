@@ -17,7 +17,7 @@ Connect at least one model provider so the agent can run. You can use JetBrains 
 | A working `pi` setup, or keys in environment variables | Nothing to do. ThinkRail uses it, as long as the host can see your environment variables. | [Coming from pi](coming-from-pi.md#environment-variables) |
 
 Whether your plan's usage limits are enough for agent work is up to the provider. See
-[What is ThinkRail?](what-is-thinkrail.md#what-it-costs).
+[What is ThinkRail?](../what-is-thinkrail.md#what-it-costs).
 
 ## Before you begin
 

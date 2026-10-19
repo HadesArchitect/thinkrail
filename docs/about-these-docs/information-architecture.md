@@ -15,8 +15,8 @@ ThinkRail's own product spec names three audiences, and each arrives with a diff
 
 | Reader | Arrives asking | Lands first on |
 | --- | --- | --- |
-| **Newcomer to agents or `pi`** | "What is this, and can I get one useful change out of it today?" | [What is ThinkRail?](../get-started/what-is-thinkrail.md), [Make your first change](../get-started/first-change.md) |
-| **Experienced `pi` user** | "What do I gain over the terminal, and do I keep my skills, extensions, and providers?" | [Coming from pi](../get-started/coming-from-pi.md), [ThinkRail and pi](../agent/thinkrail-and-pi.md) |
+| **Newcomer to agents or `pi`** | "What is this, and can I get one useful change out of it today?" | [What is ThinkRail?](../what-is-thinkrail.md), [Make your first change](../get-started/first-change.md) |
+| **Experienced `pi` user** | "What do I gain over the terminal, and do I keep my skills, extensions, and providers?" | [Coming from pi](../coming-from-pi.md), [ThinkRail and pi](../agent/thinkrail-and-pi.md) |
 | **Agent-first builder** | "How do I run several agents in parallel without losing control of what they did?" | [Run agents in parallel](../workspaces/parallel-workspaces.md), [Review changes](../review/review-changes.md) |
 
 Two secondary readers matter too: **contributors** (served by `CONTRIBUTING.md`, `architecture.md`, and
