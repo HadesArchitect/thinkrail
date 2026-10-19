@@ -93,8 +93,8 @@ Pick the folder of your cloned repository.
 
 ThinkRail adds it to the **Projects** tool on the left and shows the project's home: its name in large
 type and a row of cards, including **Start building** and **Work in project folder**. A repository
-without specs also gets a **Set up project** card first; you use that one in
-[Set up a project for spec-first work](../specs/spec-first-project.md).
+without specs in its project folder also gets a **Set up project** card first; that is the card from
+[Describe your project](describe-your-project.md), and this tutorial works with or without it.
 
 > [!TIP]
 > If a project trust notice appears, leave the project untrusted for now. Nothing in this tutorial

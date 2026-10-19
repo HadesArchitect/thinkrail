@@ -28,21 +28,25 @@ contains step-by-step instructions.
 The type lives in frontmatter; the folder and the sidebar follow the product.
 
 - **The area of the thing the reader acts on.** A page goes in the area folder that owns that thing:
-  `workspaces/`, `agent/`, `specs/`, `review/`, `extend/`, `security/`, or `run/`. When a page touches
-  two areas, pick the one the reader acts on and link to it from the other.
-- **First run goes in `get-started/`.** Install, provider setup, the first tutorial, and the audience
-  entry pages live there, even though they also belong to an area. In the sidebar, the audience entry
-  pages (What is ThinkRail?, Coming from pi) are top-level links next to the home page, not part of the
-  Get started group.
+  `workspaces/`, `agent/`, `specs/`, `review/`, `extend/`, `security/`, `run/`, or `develop/`. When a
+  page touches two areas, pick the one the reader acts on and link to it from the other.
+- **Pages for people building ThinkRail go in `develop/`.** Build from source and the contributing rules
+  live there (sidebar group "Developing ThinkRail"). Pages for people who use the product never go in
+  `develop/`.
+- **First run goes in `get-started/`.** Get started holds the first-run sequence: Install, Connect a
+  model provider, Describe your project, and Make your first change. The audience entry pages (What is
+  ThinkRail?, Coming from pi) are top-level files next to `index.md`, not part of Get started.
 - **Whole-product lookups go on the Reference shelf.** A reference page whose source belongs to one area
   lives in that area (the spec format in `specs/`, MCP configuration in `extend/`). CLI, Settings,
   keyboard shortcuts, files and environment, and the glossary index the whole product, so they live in
   `reference/`.
 - **Order inside an area is concept, tutorial, how-to, reference.** List the page in
   [`navigation.yml`](../navigation.yml) in that position. Get started follows the first-run sequence,
-  and Run & troubleshoot leads with Troubleshoot because that is why most readers open it.
+  and Run & troubleshoot leads with Troubleshoot because that is why most readers open it. Get help
+  lives in `run/` right after it.
 - **A changeset's `area:` is the folder slug.** A changeset for a user-visible change names the folder
   its docs update belongs in, so the drafting agent knows where to write without reading the navigation.
+  Any area folder is valid, including `develop`.
 
 ## Frontmatter
 

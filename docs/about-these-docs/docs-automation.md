@@ -40,7 +40,7 @@ flowchart LR
   user can now do. The [changelog](../changelog.md) in this draft was reconstructed from PR bodies after
   the fact — with changesets, the same quality comes for free.
 - **Routed by area.** Each changeset carries an `area:` field whose value is a docs folder slug
-  (`workspaces`, `agent`, `specs`, `review`, `extend`, `security`, `run`), so the drafted docs update
+  (`workspaces`, `agent`, `specs`, `review`, `extend`, `security`, `run`, `develop`), so the drafted docs update
   lands in the area that owns the change and the changelog can group bullets the same way.
 - **Enforceable.** CI can require a changeset (or an explicit "no user-visible change" marker) on every
   PR, the same way the repository already enforces spec and boundary rules. The bundled

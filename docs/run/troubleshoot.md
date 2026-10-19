@@ -100,7 +100,7 @@ dialog reads **Git push couldn't authenticate**, load your SSH key (`ssh-add`) o
 | Platform | Cause | Fix |
 | --- | --- | --- |
 | macOS | An older or locally built DMG is unsigned, so Gatekeeper blocks it. The macOS CLI is signed but not yet notarized. | Download a current release from GitHub. If you trust the file, macOS lets you open it anyway from System Settings → Privacy & Security. |
-| macOS on Intel | There is no Intel desktop or prebuilt CLI build. | Use an Apple Silicon Mac, or [build from source](build-from-source.md). |
+| macOS on Intel | There is no Intel desktop or prebuilt CLI build. | Use an Apple Silicon Mac, or [build from source](../develop/build-from-source.md). |
 | Windows | The setup executable was moved away from its payload. | Extract the whole ZIP and run the setup executable in place. |
 | Linux | Artifacts are unsigned, and the desktop app needs system libraries. | See the next section. |
 

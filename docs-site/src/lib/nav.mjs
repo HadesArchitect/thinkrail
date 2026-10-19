@@ -6,7 +6,7 @@ import { DOCS_DIR } from "./site.mjs";
 // Parses docs/navigation.yml: each item is a page path (top-level paths become top-level links) or a
 // group { label, items, collapsed? }; `collapsed: true` passes through to the Starlight sidebar group.
 
-const toSlug = (file) => file.replace(/\.md$/, "").replace(/(^|\/)index$/, "$1index");
+const toSlug = (file) => file.replace(/\.md$/, "").replace(/\/index$/, "");
 
 export function readTitle(file) {
 	const source = fs.readFileSync(path.join(DOCS_DIR, file), "utf8");

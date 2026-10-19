@@ -13,11 +13,11 @@ function resolveTarget(target) {
 
 	if (insideDocs && !isDirectory && rel.endsWith(".md") && rel !== "README.md") {
 		if (!fs.existsSync(target)) console.warn(`[docs-site] link to missing docs page: ${rel}`);
-		return routeFor(rel.replace(/\.md$/, ""));
+		return routeFor(rel.replace(/\.md$/, "").replace(/\/index$/, ""));
 	}
 	if (insideDocs && isDirectory) {
 		if (rel === "") return routeFor("index");
-		if (fs.existsSync(path.join(target, "index.md"))) return routeFor(`${rel}/index`);
+		if (fs.existsSync(path.join(target, "index.md"))) return routeFor(rel);
 		const first = firstPageUnder(rel);
 		if (first) return routeFor(first.slug);
 	}

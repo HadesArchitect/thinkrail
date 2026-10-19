@@ -10,7 +10,7 @@ Install ThinkRail as a native desktop app, as the self-contained `thinkrail` CLI
 ## Before you begin
 
 - Install `git` and make sure it is on your `PATH`. ThinkRail creates workspaces with `git worktree`.
-- Check your platform. Desktop builds exist for macOS on Apple Silicon, Windows x64, and Linux x64 and ARM64. The CLI also runs on those platforms, except Intel Macs: there is no prebuilt binary for Intel macOS, so [build from source](../run/build-from-source.md) there.
+- Check your platform. Desktop builds exist for macOS on Apple Silicon, Windows x64, and Linux x64 and ARM64. The CLI also runs on those platforms, except Intel Macs: there is no prebuilt binary for Intel macOS, so [build from source](../develop/build-from-source.md) there.
 - Plan to connect a model provider after installing. See [Connect a model provider](connect-a-provider.md).
 
 **Not sure which form to pick?** Install the desktop app. Choose the CLI if you want to run ThinkRail on
@@ -21,7 +21,7 @@ a remote machine or prefer to start it from a terminal. You can install both lat
 The prebuilt desktop app and CLI run only on Macs with Apple Silicon. To check, open the Apple menu and choose **About This
 Mac**. If the **Chip** line names Apple M1, M2, or later, you have Apple Silicon. If the window shows a
 **Processor** line that names Intel, there is no prebuilt ThinkRail for your Mac; see
-[Build from source](../run/build-from-source.md).
+[Build from source](../develop/build-from-source.md).
 
 ## Install the desktop app
 
@@ -124,4 +124,4 @@ The CLI prints `thinkrail → http://localhost:24242` and opens your browser. Fo
 - [Connect a model provider](connect-a-provider.md)
 - [CLI reference](../reference/cli.md) for every flag and environment variable
 - [Platform support](../run/platform-support.md)
-- [Build from source](../run/build-from-source.md)
+- [Build from source](../develop/build-from-source.md)

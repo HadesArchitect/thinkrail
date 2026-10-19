@@ -12,18 +12,20 @@ moved onto whatever docs platform the team picks, so it deliberately has **no pl
 
 | Path | Contents |
 | --- | --- |
-| [`index.md`](index.md) | Docs home page: front-door questions, the first three steps, and the map |
-| [`get-started/`](get-started/) | What ThinkRail is, coming from `pi`, install, connect a provider, first change |
+| [`index.md`](index.md) | Docs home page: intro, the four main features, "Where are you starting?", the four-step quick start, the area map, and Get help |
+| [`what-is-thinkrail.md`](what-is-thinkrail.md), [`coming-from-pi.md`](coming-from-pi.md) | What ThinkRail is, and what changes (and what stays the same) if you already use `pi` in the terminal |
+| [`get-started/`](get-started/) | Install, connect a provider, describe your project (set up its specs), first change |
 | [`workspaces/`](workspaces/) | Workspaces and isolation, parallel agents, managing workspaces, your editor |
 | [`agent/`](agent/) | ThinkRail and `pi`, models, steering, subagents, the tools the agent can call |
 | [`specs/`](specs/) | Living specs, spec-first projects, plans, built-in workflows, the spec format |
 | [`review/`](review/) | Reviewing changes, undo and discard, pull requests |
 | [`extend/`](extend/) | Extensions, skills and prompt templates, MCP servers and their configuration, packages for `pi` |
 | [`security/`](security/) | Security and data overview, trust, privacy, telemetry |
-| [`run/`](run/) | Troubleshooting, updates, backup, remote machines, building from source, platforms |
+| [`run/`](run/) | Troubleshooting, getting help, updates, backup, remote machines, platforms |
 | [`reference/`](reference/) | Whole-product lookups: CLI, settings, keyboard shortcuts, files and environment, glossary |
 | [`changelog.md`](changelog.md) | Release notes from v0.1.0 to the current nightly line |
-| [`about-these-docs/`](about-these-docs/) | IA rationale, reader study, docs automation plan, hosting options, and the authoring guide |
+| [`develop/`](develop/) | Developing ThinkRail: build from source, contributing |
+| [`about-these-docs/`](about-these-docs/) | Section index, IA rationale, reader study, docs automation plan, hosting options, the authoring guide, and making the docs agent-friendly |
 | [`navigation.yml`](navigation.yml) | The single, platform-neutral source of page order and grouping |
 | [`assets/`](assets/) | Images referenced by pages |
 

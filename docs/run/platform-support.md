@@ -12,7 +12,7 @@ ThinkRail ships as a native desktop app and as a self-contained `thinkrail` CLI 
 | Platform | Desktop app | CLI |
 | --- | --- | --- |
 | macOS, Apple Silicon (arm64) | Yes. DMG. | Yes. Signed binary. |
-| macOS, Intel (x64) | No build. | No prebuilt binary. [Build from source](build-from-source.md). |
+| macOS, Intel (x64) | No build. | No prebuilt binary. [Build from source](../develop/build-from-source.md). |
 | Windows x64 | Yes. Setup ZIP. | Yes. Signed `.exe`. |
 | Windows on ARM | No build. | The x64 binary runs under emulation. |
 | Linux x64 | Yes. Setup tarball. | Yes. |
@@ -68,7 +68,7 @@ You do not need Node.js or Bun to run the desktop app or the installed CLI. They
 
 ### To develop ThinkRail
 
-Building from source needs Bun 1.4.0 (the pinned package manager and runtime) and Node.js 22.19 or newer, which the in-process `pi` engine requires. See [Build from source](build-from-source.md).
+Building from source needs Bun 1.4.0 (the pinned package manager and runtime) and Node.js 22.19 or newer, which the in-process `pi` engine requires. See [Build from source](../develop/build-from-source.md).
 
 ## Browsers
 

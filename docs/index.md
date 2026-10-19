@@ -1,20 +1,29 @@
 ---
 title: ThinkRail documentation
-description: Learn ThinkRail, the open-source agentic IDE built around pi — run agents in isolated workspaces, review their work, and keep intent in specs.
+description: Learn ThinkRail, the open-source, spec-first agentic IDE built around pi, with isolated workspaces, reviewed diffs, and living specs.
 type: explanation
 status: draft
 ---
 
-ThinkRail is a free, open-source workbench for coding agents. Every task gets its own git worktree,
-you review the agent's work as diffs before anything ships, and your project's intent lives in specs
-the agent reads and keeps current. The agent inside is [`pi`](https://pi.dev), an open-source coding
-agent that owns models, skills, and sessions, so a `pi` setup you already have keeps working.
+ThinkRail is the open-source agentic IDE that gets better every time you use it. It is built around
+one agent, [`pi`](https://pi.dev), and gives it a full IDE: isolated workspaces, diffs to review, and
+chats you can steer. ThinkRail is spec-first: your project's intent lives in living specs that the
+agent reads and keeps current, so it builds on what it learned instead of relearning your project
+every session.
 
-> NOTE: "workbench for coding agents" is a strange thing - what are those agents? Only Pi is supported with no plan to extebnd right now. Is the workbench used on the website?
+## Main features
 
-> NOTE: for anyone into AI coding, it's "just another coding agent". We need to at least mention specs. spec-first?
-
-> NOTE: I commented out cards from hero.astro. They'll have better use as the main features presentation: provider-agnostic, parallel-agent-run friendly (worktrees and isolation), spec first, something else. 4 overall. they also need representation in "what is thinkrail"
+- **Spec-first.** `SPEC.md` files and project goal specs sit beside your code as ground truth, and the
+  agent maintains them as it works. See [Living specs](specs/living-specs.md).
+- **Parallel agents, isolated workspaces.** Each task runs in its own git worktree and branch, so
+  several agents work at once without touching your checkout. You review every diff before it ships.
+  See [Run agents in parallel](workspaces/parallel-workspaces.md) and
+  [Review changes](review/review-changes.md).
+- **Provider-agnostic.** Bring your own model: a Claude, ChatGPT, or GitHub Copilot subscription,
+  JetBrains AI, or an API key for any provider `pi` supports. See
+  [Connect a model provider](get-started/connect-a-provider.md).
+- **Open and extensible, built on `pi`.** ThinkRail is Apache 2.0, and your `pi` skills, extensions,
+  MCP servers, and prompt templates keep working. See [ThinkRail and pi](agent/thinkrail-and-pi.md).
 
 ## Where are you starting?
 
@@ -22,31 +31,24 @@ agent that owns models, skills, and sessions, so a `pi` setup you already have k
 | --- | --- |
 | Deciding whether ThinkRail is for you | [What is ThinkRail?](what-is-thinkrail.md) |
 | Coming from `pi` in the terminal | [Coming from pi](coming-from-pi.md) |
-| Evaluating ThinkRail for a team | [Security and data overview](security/security-and-data-overview.md) |
-
-> NOTE: I'm not sure I want sec and data overview here... But I can be wrong.
-
-> NOTE: I want "how to get help" here. And we need a support page (discord, github issues)
-
-> NOTE: I want "developing ThinkRail" section with how to build locally and contributing rules. Move "build TR from source" from Run to Developing.
+| Stuck, or have a question | [Get help](run/get-help.md) |
+| Want to build or contribute to ThinkRail | [Build from source](develop/build-from-source.md) and [Contribute](develop/contribute.md) |
 
 ## Quick start
 
-Install ThinkRail, connect a model provider, and ship one reviewed change in about 20 minutes:
+Install ThinkRail, connect a model, give the agent your project's specs, and ship one reviewed change:
 
 1. [Install ThinkRail](get-started/install.md) — the desktop app or the `thinkrail` CLI.
 2. [Connect a model provider](get-started/connect-a-provider.md) — JetBrains AI, a subscription
    sign-in, or your own API keys.
-3. [Make your first change](get-started/first-change.md) — from an empty workspace to a pull request.
+3. [Describe your project](get-started/describe-your-project.md) — the agent drafts your project's
+   specs with the bundled `setting-up-a-project` skill.
+4. [Make your first change](get-started/first-change.md) — from an empty workspace to a pull request.
 
-> NOTE: get-started gets a new page - build the specs (suggest better name). After model provider, before first change. There is a skill for that
+## The documentation
 
-> NOTE: should we add a quick-start page, that shows all steps with screenshots, without redundant detials, so one can have quick look without installing anything? Real question, not instruction.
-
-## The documentaion
-
-The documentation follows the product. Each area opens with the idea behind it, then the guides, then its
-reference.
+The documentation follows the product. Each area opens with the idea behind it, then the guides, then
+its reference.
 
 | Area | What it covers |
 | --- | --- |
@@ -56,25 +58,20 @@ reference.
 | [Review & ship](review/review-changes.md) | Diffs, review comments, undo and discard, pull requests |
 | [Skills, MCP & extensions](extend/extensions.md) | Skills, prompt templates, MCP servers, extensions, ThinkRail packages in `pi` |
 | [Security & privacy](security/security-and-data-overview.md) | What leaves your machine, project trust, permissions, telemetry |
-| [Run & troubleshoot](run/troubleshoot.md) | Fixes, updates, backup, remote machines and SSH, building from source, platforms |
+| [Run & troubleshoot](run/troubleshoot.md) | Fixes, getting help, updates, backup, remote machines and SSH, platforms |
 | [Reference](reference/cli.md) | CLI flags, settings, keyboard shortcuts, files and environment variables, glossary |
+| [Developing ThinkRail](develop/build-from-source.md) | Building from source, contributing |
 | [Changelog](changelog.md) | What changed in each release, stable and nightly |
 
 ![The Specs tool listing a project's spec tree while the product goal spec is rendered in the editor](assets/specs-dark.png)
 
-> NOTE: Is that table helpful to agents or to readers? Honest question.
-
-> NOTE: Do we need screenshot here? Honest question.
-
 ## Get help
 
+- Ask questions on [Discord](https://discord.gg/Wybu9ceWkY).
 - Report bugs and request features in [GitHub issues](https://github.com/JetBrains/thinkrail/issues).
-- Read the source and the engineering specs on [GitHub](https://github.com/JetBrains/thinkrail).
-- Follow releases on the [ThinkRail blog](https://thinkrail.ai/blog/) and in the
-  [changelog](changelog.md).
+- Follow releases on the [ThinkRail blog](https://thinkrail.ai/blog/), in the
+  [changelog](changelog.md), and on [GitHub releases](https://github.com/JetBrains/thinkrail/releases).
 
-> NOTE: get help -> read source code. Funny :)
-
-> NOTE: add discord
+For where to go with each kind of question, see [Get help](run/get-help.md).
 
 ThinkRail is open source under the Apache License 2.0 and is a JetBrains incubator project.

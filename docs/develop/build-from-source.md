@@ -90,4 +90,4 @@ App state still lives in `~/.thinkrail`, shared with any installed copy. Run an 
 - [`CONTRIBUTING.md`](../../CONTRIBUTING.md)
 - [Install ThinkRail](../get-started/install.md) for prebuilt binaries
 - [Files and environment](../reference/files-and-environment.md)
-- [How ThinkRail works](how-thinkrail-works.md)
+- [How ThinkRail works](../run/how-thinkrail-works.md)

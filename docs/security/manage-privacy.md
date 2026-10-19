@@ -84,7 +84,7 @@ give you team-wide control:
 ## Builds that never report
 
 A build you compile from source carries no analytics key and sends nothing. Neither do test and CI runs.
-See [Build ThinkRail from source](../run/build-from-source.md).
+See [Build ThinkRail from source](../develop/build-from-source.md).
 
 ## What each tier covers
 

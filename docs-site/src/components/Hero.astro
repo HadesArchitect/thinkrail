@@ -1,43 +1,12 @@
 ---
-import { Image } from "astro:assets";
 import { LinkButton } from "@astrojs/starlight/components";
 import logo from "../assets/logo-mark.svg";
-import workbenchDark from "../assets/workbench-dark.png";
-import { flattenNavigation } from "../lib/nav.mjs";
-import { BASE, routeFor } from "../lib/site.mjs";
+import { BASE } from "../lib/site.mjs";
 
 const { title, tagline, actions = [] } = Astro.locals.starlightRoute.entry.data.hero ?? {};
 
 const href = (link: string) =>
 	/^[a-z]+:/i.test(link) ? link : `${BASE}/${link.replace(/^\/+/, "")}/`;
-
-const pages = flattenNavigation();
-
-const sections = [
-	{
-		file: "what-is-thinkrail.md",
-		label: "Deciding whether it's for you?",
-		blurb: "What is ThinkRail? Who it's for, what it costs, and how it compares.",
-	},
-	{
-		file: "coming-from-pi.md",
-		label: "Coming from pi?",
-		blurb: "What carries over from your pi setup, and what does not.",
-	},
-	{
-		file: "security/security-and-data-overview.md",
-		label: "Evaluating for a team?",
-		blurb: "What leaves your machine, what the agent may do, and how to turn off telemetry.",
-	},
-	{
-		file: "run/troubleshoot.md",
-		label: "Something broke?",
-		blurb: "Troubleshoot ThinkRail: fixes for common problems, from install to a lost connection.",
-	},
-].map((section) => {
-	const page = pages.find((entry) => entry.file === section.file);
-	return { ...section, href: routeFor(page?.slug ?? "index") };
-});
 ---
 
 <div class="tr-hero">
@@ -54,27 +23,6 @@ const sections = [
 			))
 		}
 	</div>
-	<!-- <div class="tr-hero__shot">
-		<Image
-			src={workbenchDark}
-			widths={[640, 960, 1280, 1600]}
-			sizes="(min-width: 72rem) 60rem, 100vw"
-			alt="The ThinkRail workbench: projects and workspaces on the left, an agent conversation in the center, the resulting diff beside it."
-			loading="eager"
-		/>
-	</div>
-	<ul class="tr-cards">
-		{
-			sections.map((section) => (
-				<li>
-					<a class="tr-card" href={section.href}>
-						<span class="tr-card__label">{section.label}</span>
-						<span class="tr-card__blurb">{section.blurb}</span>
-					</a>
-				</li>
-			))
-		}
-	</ul> -->
 </div>
 
 <style is:global>
@@ -121,57 +69,5 @@ const sections = [
 		justify-content: center;
 		gap: 0.75rem;
 		margin-top: 0.5rem;
-	}
-	.tr-hero__shot {
-		width: 100%;
-		margin-top: 1.5rem;
-		border: 1px solid var(--sl-color-hairline);
-		border-radius: 0.75rem;
-		overflow: hidden;
-		box-shadow: 0 1.5rem 5rem -1rem var(--tr-glow);
-	}
-	.tr-hero__shot img {
-		display: block;
-		width: 100%;
-		height: auto;
-	}
-	.tr-cards {
-		display: grid;
-		grid-template-columns: 1fr;
-		gap: 1rem;
-		width: 100%;
-		margin: 1.5rem 0 0;
-		padding: 0;
-		list-style: none;
-	}
-	@media (min-width: 40rem) {
-		.tr-cards {
-			grid-template-columns: repeat(2, minmax(0, 1fr));
-		}
-	}
-	.tr-card {
-		display: flex;
-		flex-direction: column;
-		gap: 0.35rem;
-		height: 100%;
-		padding: 1rem 1.1rem;
-		border: 1px solid var(--sl-color-hairline);
-		border-radius: 0.6rem;
-		background: var(--tr-surface);
-		text-align: start;
-		text-decoration: none;
-		transition: border-color 0.15s, transform 0.15s;
-	}
-	.tr-card:hover {
-		border-color: var(--sl-color-accent);
-		transform: translateY(-2px);
-	}
-	.tr-card__label {
-		font-weight: 600;
-		color: var(--sl-color-white);
-	}
-	.tr-card__blurb {
-		font-size: var(--sl-text-sm);
-		color: var(--sl-color-gray-2);
 	}
 </style>

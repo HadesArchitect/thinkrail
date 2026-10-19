@@ -1,58 +1,83 @@
 ---
 title: What is ThinkRail?
-description: Who ThinkRail is for, what you need to run it, what it costs, and how it compares with Cursor, Claude Code, GitHub Copilot, and plain pi.
+description: Who ThinkRail is for, what makes it different, what you need to run it, what it costs, and how it compares with Cursor, Claude Code, Copilot, and pi.
 type: explanation
 status: draft
 ---
 
-ThinkRail is a free, open-source app for working with a coding agent on your own git repositories. Each
-task runs in its own copy of the repository, you review what the agent changed as a diff before anything
-ships, and your project's intent lives in spec files the agent reads. This page answers the questions
-people ask before installation.
+ThinkRail is a free, open-source agentic IDE for working with a coding agent on your own git
+repositories. Each task runs in its own copy of the repository, and you review what the agent changed as
+a diff before anything ships. Your project's intent and decisions live in specs that the agent reads and
+keeps current, so it does not relearn the project every session and its work stays consistent with what
+you decided. This page answers the questions people ask before installation.
 
-> NOTE: agent-first IDE? Like, old IDEs were human-centric, but humans don't type code themselves anymore. ThinkRail helps organizing run of a multiple agents at once, helping you bring it to production faster and easier. Old era IDEs are not the best fit for it. (I'm just thinking out aloud. Not an instruction.)
-
-> NOTE: "your project's intent lives in spec files the agent reads." not sure I like this line. Why would someone care? But yeah we need to talk about it
-
-> NOTE: actually, as spec is that important and a differentiator, do we need a dedicated page in the main docs section, or a good section in "what is TR" will suffice? Honest question.
-
-![thinkrail interface](assets/workbench-dark.png)
+![The ThinkRail window: projects and workspaces on the left, an agent chat in the center, and the resulting diff beside it](assets/workbench-dark.png)
 
 ## What it is, in plain words
 
 You open a git repository in ThinkRail and describe a task in a chat. The agent reads and edits files,
-runs commands, and reports back while you watch, steer it, or start another task in parallel. Every task
-gets an isolated workspace, a git worktree on its own branch, so your own checkout stays untouched until
-you merge. See [Workspaces and isolation](../workspaces/workspaces-and-isolation.md) and
-[Open a workspace in your editor](../workspaces/open-in-your-editor.md).
+runs commands, and reports back while you watch, steer it, or start another task in parallel. Around the
+chat you get an editor, a live git **Changes** view, terminals, and diff review, all scoped to the task's
+workspace.
 
 ThinkRail comes as a desktop app or as the `thinkrail` CLI, which opens the same app in your browser.
 
-> NOTE: good place to put killer feature cards... But if they are already on the index page, it's a duplication. Maybe we want them short there as cards, and more detailed (still brief) here as sections. Sections must be better, but not just inject them, think how they fit the best.
+## What makes it different
+
+### Spec-first
+
+A chat ends, and the decisions made in it end with it unless they are written down. ThinkRail keeps a
+project's intent in a graph of Markdown specs beside the code: `goal-and-requirements.md` for the goal,
+`architecture.md` for cross-cutting decisions, and a `SPEC.md` beside each module. The agent searches,
+reads, and updates that graph through dedicated `spec_*` tools, reads the spec closest to the code it
+touches, and amends the affected specs in the same change as the code. Spec edits show up in **Changes**
+and you review them like any other edit. A project without specs gets a **Set up project** action that
+drafts them with you. See [Living specs](specs/living-specs.md) for how it works and why.
+
+### Parallel agents in isolated workspaces
+
+Each task gets its own workspace: a git worktree on its own branch, with its own working directory. Several
+agents can run at once, each in a different workspace, and none of them touches your own checkout. You
+read each diff, leave comments that go back to the agent, and merge the branch you want to keep. Working
+directly in your project folder is possible, but it is an explicit choice. See
+[Workspaces and isolation](workspaces/workspaces-and-isolation.md),
+[Review changes](review/review-changes.md), and
+[Open a workspace in your editor](workspaces/open-in-your-editor.md).
+
+### Bring your own model
+
+ThinkRail has no accounts and no models of its own. You sign in with a subscription you already pay for
+(Claude, ChatGPT, or GitHub Copilot), use JetBrains AI, or add an API key for any provider `pi` supports,
+such as Anthropic, OpenAI, Google, or OpenRouter. Each chat has its own model, so two chats in the same
+workspace can use different providers. See [Connect a model provider](get-started/connect-a-provider.md)
+and [Choose models and effort](agent/choose-models.md).
+
+### Open and extensible, built on pi
+
+ThinkRail is open source under the Apache License 2.0. Its agent is [`pi`](https://pi.dev), an MIT-licensed
+open-source coding agent that otherwise runs in a terminal. ThinkRail runs `pi` inside its own process and
+builds the UI around it, so models, credentials, skills, and sessions all belong to `pi`. Your existing
+`pi` setup, skills, extensions, MCP servers, and prompt templates keep working, and ThinkRail's own
+portable packages also run in plain `pi`. See [ThinkRail and pi](agent/thinkrail-and-pi.md) and
+[Extensions](extend/extensions.md).
 
 ## Who it is for
 
-- **Newcomers to coding agents** who want to see and review what an agent does instead of reading a
-  terminal scrollback.
+- **Newcomers to AI-first coding** who want modern tools fit for the job, and want to see and review what
+  an agent does instead of reading a terminal scrollback.
 - **`pi` users** who want an IDE around the agent without giving up their setup. See
   [Coming from pi](coming-from-pi.md).
-- **Agent-first builders** who run several agents at once and want each one's work isolated and
-  reviewable.
-
-> NOTE: Newcomers "to AI-first coding, looking for modern tools fit for the job?" ?
-
-> NOTE: Power AI users looking for full customization and extensibility, beyond locks of proprietary tools
+- **Builders who run several agents at once** and want each one's work isolated and reviewable.
+- **Power AI users** who want full customization and extensibility, without the lock-in of a proprietary
+  tool.
 
 ## What you need
 
-- **A computer ThinkRail runs on:** macOS on Apple Silicon, Windows x64, or Linux x64 or ARM64. See [Platform support](../run/platform-support.md).
+- **A computer ThinkRail runs on:** macOS on Apple Silicon, Windows x64, or Linux x64 or ARM64. See
+  [Platform support](run/platform-support.md).
 - **`git` on your `PATH`**.
-- **A model provider.** ThinkRail has no model of its own. Connect one of:
-  - **a subscription you already pay for**, by signing in with Claude, ChatGPT, or GitHub Copilot;
-  - **JetBrains AI**, through the JetBrains `central` CLI;
-  - **an API key** for any provider `pi` supports, such as Anthropic, OpenAI, Google, or OpenRouter.
-
-  See [Connect a model provider](get-started/connect-a-provider.md).
+- **A model provider:** a subscription sign-in, JetBrains AI through the JetBrains `central` CLI, or an
+  API key. See [Bring your own model](#bring-your-own-model).
 - **Recommended: the GitHub CLI (`gh`)**, signed in, to open pull requests in one click.
 
 ## What it costs
@@ -72,7 +97,7 @@ Copilot sign-in exists alongside them.
 
 ## How it compares
 
-ThinkRail is an agent-first workbench, rather than an IDE editor with AI added or an agent of its
+ThinkRail is an agentic IDE built around `pi`, rather than an editor with AI added or an agent of its
 own.
 
 | Tool | What it is | How ThinkRail relates |
@@ -86,22 +111,16 @@ own.
 > The descriptions of Cursor, Claude Code, and GitHub Copilot summarize how those products
 > present themselves. They are not a feature-by-feature comparison. Check each product's own docs.
 
-## What pi is
-
-[`pi`](https://pi.dev) is an open-source coding agent, MIT-licensed, that runs in a terminal: it talks to
-models, calls tools such as the shell and file edits, and keeps each session on disk. ThinkRail runs
-`pi` inside its own process and builds the UI around it, so models, credentials, skills, and sessions all
-belong to `pi`. See [ThinkRail and pi](../agent/thinkrail-and-pi.md).
-
 ## Maturity
 
 - **Early.** ThinkRail is at version 0.x and is a JetBrains incubator project.
-- **Two channels.** Stable releases (`v0.1.x`) and Nightly builds (`0.2.0-nightly.N`) are published most days and carry everything merged since the last stable. See [Install ThinkRail](get-started/install.md#choose-a-channel-or-pin-a-version) and the [changelog](../changelog.md).
+- **Two channels.** Stable releases (`v0.1.x`) and Nightly builds (`0.2.0-nightly.N`) are published most days and carry everything merged since the last stable. See [Install ThinkRail](get-started/install.md#choose-a-channel-or-pin-a-version) and the [changelog](changelog.md).
 - **No published support policy.** There is no stated stability promise or support commitment yet.
-  Report bugs and ask questions in [GitHub issues](https://github.com/JetBrains/thinkrail/issues) and using Discord.
+  Report bugs in [GitHub issues](https://github.com/JetBrains/thinkrail/issues) and ask questions on
+  [Discord](https://discord.gg/Wybu9ceWkY). See [Get help](run/get-help.md).
 
 For what leaves your machine, what the agent can do without asking, and how to turn off usage data, see
-[Security and data overview](../security/security-and-data-overview.md).
+[Security and data overview](security/security-and-data-overview.md).
 
 ## License
 
@@ -111,7 +130,6 @@ The source is on [GitHub](https://github.com/JetBrains/thinkrail).
 ## Next steps
 
 - [Install ThinkRail](get-started/install.md)
-- [Connect a model provider](get-started/connect-a-provider.md)
+- [Describe your project](get-started/describe-your-project.md)
 - [Make your first change](get-started/first-change.md)
-
-> NOTE: remove connect provider, add to the end of the list more advanced topic
+- [Run agents in parallel](workspaces/parallel-workspaces.md)

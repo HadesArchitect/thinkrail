@@ -97,7 +97,7 @@ How to turn it off:
 | One CLI run | `thinkrail --no-analytics` | Additional events stop for that run; the saved choice is unchanged |
 | A team | Set `THINKRAIL_NO_ANALYTICS=1` in the environment ThinkRail starts from, through a managed shell profile or your device management | Additional events and the website link never start, even while the first-run dialog shows the switch on |
 | A team, basic events too | Also set `THINKRAIL_POSTHOG_HOST` to an analytics host you run | Every event goes to that host instead of PostHog |
-| Everything | [Build ThinkRail from source](../run/build-from-source.md) | A source build has no analytics key and sends nothing |
+| Everything | [Build ThinkRail from source](../develop/build-from-source.md) | A source build has no analytics key and sends nothing |
 
 The honest limit: in a packaged build, basic events still report unless you redirect them with
 `THINKRAIL_POSTHOG_HOST`. ThinkRail has no policy file or admin console. Set the variables before the

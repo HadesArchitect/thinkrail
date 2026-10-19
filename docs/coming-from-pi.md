@@ -19,11 +19,11 @@ not, and how to check it.
 | **Keys in environment variables**, such as `ANTHROPIC_API_KEY` or `OPENROUTER_API_KEY` | Count as connected and show as **Managed**. The host must see the variable; see [Environment variables](#environment-variables). |
 | **`models.json`**: custom endpoints, base URLs, model overrides | Read as is. Providers it configures show as **Managed**. The **GPT context window** section in **Settings → Models** edits the same file. |
 | **OpenRouter** | A built-in `pi` provider. Find **OpenRouter** in **Settings → Providers** and sign in or paste a key, or set `OPENROUTER_API_KEY`. A regional base URL in `models.json` applies too. |
-| **Skills** in `~/.pi/agent/skills/`, `~/.agents/skills/`, and `pi` packages | Load in every chat. Invoke them with `/skill:<name>`. ThinkRail also reads skills you keep for Claude, Codex, Copilot, and Gemini. See [Use existing skills and prompt templates](../extend/use-existing-skills.md). |
+| **Skills** in `~/.pi/agent/skills/`, `~/.agents/skills/`, and `pi` packages | Load in every chat. Invoke them with `/skill:<name>`. ThinkRail also reads skills you keep for Claude, Codex, Copilot, and Gemini. See [Use existing skills and prompt templates](extend/use-existing-skills.md). |
 | **Prompt templates** in `~/.pi/agent/prompts/` | Become `/name` commands in the composer. Manage them in **Settings → Prompt templates**. |
-| **Extensions and packages** from your `pi` settings | Load into every chat. Tools, event hooks, slash commands, and simple dialogs work. See [Extensions](../extend/extensions.md). |
-| **`settings.json`** | Read for packages, extensions, and resource paths. The model and effort a new chat starts with come from **Settings → Models**, not from `pi`'s defaults. See [Choose models and effort](../agent/choose-models.md). |
-| **MCP servers** in `~/.pi/agent/mcp.json` | Run in every chat from ThinkRail 0.2.0, currently nightly, on `pi`'s built-in MCP. Manage them in **Settings → MCP servers**. See [Connect MCP servers](../extend/connect-mcp-servers.md). |
+| **Extensions and packages** from your `pi` settings | Load into every chat. Tools, event hooks, slash commands, and simple dialogs work. See [Extensions](extend/extensions.md). |
+| **`settings.json`** | Read for packages, extensions, and resource paths. The model and effort a new chat starts with come from **Settings → Models**, not from `pi`'s defaults. See [Choose models and effort](agent/choose-models.md). |
+| **MCP servers** in `~/.pi/agent/mcp.json` | Run in every chat from ThinkRail 0.2.0, currently nightly, on `pi`'s built-in MCP. Manage them in **Settings → MCP servers**. See [Connect MCP servers](extend/connect-mcp-servers.md). |
 | **Sessions** in `~/.pi/agent/sessions/` | Shared. Sessions you ran in a project folder appear in that project's Default workspace chat history, and history search (**Ctrl+R**, scope **Everywhere**) covers every `pi` session on disk, including ones outside ThinkRail. |
 | **`AGENTS.md` and `CLAUDE.md`** | Loaded by `pi` as usual, without project trust. See [Context files](#context-files). |
 | **Folders `pi` already trusts** | Start trusted in ThinkRail. See [Project resources wait for trust](#project-resources-wait-for-trust). |
@@ -60,8 +60,8 @@ Where a chat runs changes which files apply:
 ## What does not carry over
 
 - **Terminal UI.** Themes, custom TUI rendering, and `pi`'s terminal keybindings do nothing in ThinkRail,
-  which has its own UI, [themes](../reference/settings.md), and
-  [keyboard shortcuts](../reference/keyboard-shortcuts.md).
+  which has its own UI, [themes](reference/settings.md), and
+  [keyboard shortcuts](reference/keyboard-shortcuts.md).
 - **Custom tool rendering.** Tools from your own extensions work, but the chat shows them with a generic
   tool card, not the renderer you wrote for the terminal.
 - **Most interactive commands.** Of `pi`'s built-in commands, the composer offers `/compact`, `/name`,
@@ -81,7 +81,7 @@ differently.
 | Stable v0.1.6 | 1.0.2 |
 | 0.2.0 nightly | 1.2.0 |
 
-The [changelog](../changelog.md) records every `pi` upgrade in an **Engine:** line under the release that ships it.
+The [changelog](changelog.md) records every `pi` upgrade in an **Engine:** line under the release that ships it.
 
 ## Project resources wait for trust
 
@@ -90,7 +90,7 @@ skills, prompts, themes, and subagent definitions, and skills it commits for oth
 also need a separate approval each. Your personal setup in `~/.pi/agent` is never gated.
 
 If `pi` already trusts a folder, through a saved decision or a global "always" setting, its `pi`
-resources start trusted in ThinkRail. See [Trust a project](../security/trust-a-project.md).
+resources start trusted in ThinkRail. See [Trust a project](security/trust-a-project.md).
 
 ## Check your setup in ThinkRail
 
@@ -113,7 +113,7 @@ sessions show up in search.
 
 ## Related
 
-- [ThinkRail and pi](../agent/thinkrail-and-pi.md): what `pi` owns and what ThinkRail adds
+- [ThinkRail and pi](agent/thinkrail-and-pi.md): what `pi` owns and what ThinkRail adds
 - [Connect a model provider](get-started/connect-a-provider.md)
-- [Use ThinkRail packages in pi](../extend/use-thinkrail-packages-in-pi.md): the reverse direction
-- [Files and environment](../reference/files-and-environment.md)
+- [Use ThinkRail packages in pi](extend/use-thinkrail-packages-in-pi.md): the reverse direction
+- [Files and environment](reference/files-and-environment.md)

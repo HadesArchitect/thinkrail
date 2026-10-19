@@ -13,6 +13,7 @@
   items:
     - get-started/install.md
     - get-started/connect-a-provider.md
+    - get-started/describe-your-project.md
     - get-started/first-change.md
 
 - label: Using ThinkRail
@@ -66,10 +67,10 @@
     - label: Run & troubleshoot
       items:
         - run/troubleshoot.md
+        - run/get-help.md
         - run/update-and-uninstall.md
         - run/back-up-or-move.md
         - run/run-on-a-remote-machine.md
-        - run/build-from-source.md
         - run/how-thinkrail-works.md
         - run/platform-support.md
 
@@ -81,11 +82,18 @@
     - reference/files-and-environment.md
     - reference/glossary.md
 
+- label: Developing ThinkRail
+  items:
+    - develop/build-from-source.md
+    - develop/contribute.md
+
 - label: About these docs (private)
   collapsed: true
   items:
+    - about-these-docs/index.md
     - about-these-docs/information-architecture.md
     - about-these-docs/reader-study.md
     - about-these-docs/docs-automation.md
     - about-these-docs/hosting-options.md
     - about-these-docs/authoring-guide.md
+    - about-these-docs/making-docs-agent-friendly.md
