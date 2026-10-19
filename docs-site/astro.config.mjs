@@ -28,7 +28,7 @@ export default defineConfig({
 			social: [
 				{ icon: "github", label: "GitHub", href: SOCIAL_GITHUB_URL },
 				{ icon: "discord", label: "Discord", href: SOCIAL_DISCORD_URL },
-				{ icon: "pen", label: "ThinkRail blog", href: SOCIAL_BLOG_URL },
+				{ icon: "notes", label: "ThinkRail blog", href: SOCIAL_BLOG_URL },
 			],
 			editLink: { baseUrl: EDIT_BASE_URL },
 			lastUpdated: false,

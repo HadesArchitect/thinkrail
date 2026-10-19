@@ -12,11 +12,13 @@ const homeFrontmatter = {
 		tagline: "The agentic IDE that gets better every time you use it.",
 		actions: [
 			{
-				text: "Get started",
-				link: "get-started/first-change",
+				text: "What is ThinkRail?",
+				link: "what-is-thinkrail",
 				variant: "primary",
 			},
 			{ text: "Install", link: "get-started/install", variant: "secondary" },
+			{ text: "Changelog", link: "changelog", variant: "secondary" },
+			{ text: "Get help", link: "https://discord.gg/Wybu9ceWkY", variant: "secondary" },
 		],
 	},
 };

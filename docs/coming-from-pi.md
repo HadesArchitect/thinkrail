@@ -81,9 +81,7 @@ differently.
 | Stable v0.1.6 | 1.0.2 |
 | 0.2.0 nightly | 1.2.0 |
 
-No screen in ThinkRail shows the embedded version. The [changelog](../changelog.md) records every `pi`
-upgrade in an **Engine:** line under the release that ships it. Compare it with `pi --version` in your
-terminal.
+The [changelog](../changelog.md) records every `pi` upgrade in an **Engine:** line under the release that ships it.
 
 ## Project resources wait for trust
 
@@ -96,7 +94,7 @@ resources start trusted in ThinkRail. See [Trust a project](../security/trust-a-
 
 ## Check your setup in ThinkRail
 
-1. Install ThinkRail and start it. See [Install ThinkRail](install.md). If you moved `pi`'s agent
+1. Install ThinkRail and start it. See [Install ThinkRail](get-started/install.md). If you moved `pi`'s agent
    directory, start the `thinkrail` CLI from a shell where `PI_CODING_AGENT_DIR` is set.
 2. Open **Settings → Providers**. Your `pi` sign-ins appear under **Connected**, and keys from the
    environment or `models.json` appear as **Managed**. If one is missing, check that the host can see its
@@ -116,6 +114,6 @@ sessions show up in search.
 ## Related
 
 - [ThinkRail and pi](../agent/thinkrail-and-pi.md): what `pi` owns and what ThinkRail adds
-- [Connect a model provider](connect-a-provider.md)
+- [Connect a model provider](get-started/connect-a-provider.md)
 - [Use ThinkRail packages in pi](../extend/use-thinkrail-packages-in-pi.md): the reverse direction
 - [Files and environment](../reference/files-and-environment.md)

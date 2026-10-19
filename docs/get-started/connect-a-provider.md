@@ -14,7 +14,7 @@ Connect at least one model provider so the agent can run. You can use JetBrains 
 | A ChatGPT, Claude, or GitHub Copilot plan | Sign in with that plan. No API key needed. | [Connect a subscription or API key](#connect-a-subscription-or-api-key) |
 | A JetBrains AI account | JetBrains AI, through the `central` CLI | [Connect JetBrains AI](#connect-jetbrains-ai) |
 | An API key, for example from Anthropic, OpenAI, or OpenRouter | Paste the key | [Connect a subscription or API key](#connect-a-subscription-or-api-key) |
-| A working `pi` setup, or keys in environment variables | Nothing to do. ThinkRail uses it, as long as the host can see your environment variables. | [Coming from pi](coming-from-pi.md#environment-variables) |
+| A working `pi` setup, or keys in environment variables | Nothing to do. ThinkRail uses it, as long as the host can see your environment variables. | [Coming from pi](../coming-from-pi.md#environment-variables) |
 
 Whether your plan's usage limits are enough for agent work is up to the provider. See
 [What is ThinkRail?](../what-is-thinkrail.md#what-it-costs).

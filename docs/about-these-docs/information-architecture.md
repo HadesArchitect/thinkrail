@@ -5,6 +5,10 @@ type: explanation
 status: draft
 ---
 
+> NOTE: Add missing page "index.md" (ToC mostly) to "about this docs"
+
+> NOTE: Add missing page "making docs agent-friendly" to "about this docs"
+
 ThinkRail had no documentation beyond its README and the engineering specs in the repository. This
 page explains the structure chosen for the first docs set, the reasoning behind it, and the work that
 remains before it can ship.
